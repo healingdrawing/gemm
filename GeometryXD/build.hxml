@@ -1,0 +1,8 @@
+-cp .
+-D doc-gen
+--macro include('geometryxd')
+--no-output
+--each
+
+--next
+-xml bin/cpp.xml

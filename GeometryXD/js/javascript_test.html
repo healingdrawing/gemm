@@ -1,0 +1,867 @@
+<html><head>
+    <script src="geo.js"></script>
+    <style type="text/css">
+    table{border-collapse: collapse;}
+    td,th{padding: 3px;
+    border: 1px solid black;}
+    </style>
+    <title>GeometryXD test compiled to javascript</title>
+</head><body>
+    <table style="border:1px solid black;">
+<script>
+    function p(name="noname",head=false){
+        if(!head){
+            var n= name.split("(")[1];
+            document.write("<tr><td>f("+n+"</td><td>"+JSON.stringify(eval(name)).split(",").join(", ")+"</td></tr>");
+        
+        }else{
+            document.write("<tr><td colspan='2'>"+name+ "</td></tr>");
+        }
+    }
+    var geo = new GeometryXD();
+    p("GeometryXD functions test. geo.f(...)","test value","testing result");
+    
+    p("maxabs([Float Array])",true);
+    p("geo.maxabs([1.1, 2, -4])");
+    p("geo.maxabs([1.1, 2, 3])");
+    
+    p("positive_inside_I([Int Array])", true);
+    p("geo.positive_inside_I([-1, -2, -3, 4])");
+    p("geo.positive_inside_I([-1, -2, -3, 0])");
+    
+    p("zero_inside_I([Int Array])", true);
+    p("geo.zero_inside_I([-1, -2, -3, 0])");
+    p("geo.zero_inside_I([-1, -2, -3, 1])");
+    
+    p("negative_inside_I([Int Array])", true);
+    p("geo.negative_inside_I([-1, 2, 3])");
+    p("geo.negative_inside_I([0, 2, 3])");
+    
+    p("positive_inside_F([Float Array])", true);
+    p("geo.positive_inside_F([0.1, -2, -3])");
+    p("geo.positive_inside_F([-1.1, 0, -3])");
+    
+    p("zero_inside_F([Float Array])", true);
+    p("geo.zero_inside_F([-1.1, 0, -3])");
+    p("geo.zero_inside_F([-1.1, 1, -3])");
+    
+    p("negative_inside_F([Float Array])", true);
+    p("geo.negative_inside_F([-1.1, 0, 3])");
+    p("geo.negative_inside_F([1.1, 0, 3])");
+    
+    p("same_size_I([[Int Array], [Int Array]])", true);
+    p("geo.same_size_I([[1, 2], [3, 4]])");
+    p("geo.same_size_I([[0, 1, 2], [3, 4]])");
+    
+    p("same_size_F([[Float Array], [Float Array]])", true);
+    p("geo.same_size_F([[1.1, 2], [3, 4]])");
+    p("geo.same_size_F([[0.1, 1, 2], [3, 4]])");
+    
+    p("same_xI([[Int Array], [Int Array]])", true);
+    p("geo.same_xI([[1, 2], [1, 2]])");
+    p("geo.same_xI([[1, 2], [3, 4]])");
+    
+    p("same_xF([[Float Array], [Float Array]])", true);
+    p("geo.same_xF([[1.1, 2], [1.1, 2]])");
+    p("geo.same_xF([[0.1, 2], [3, 4]])");
+    
+    p("sum_I([Int Array])", true);
+    p("geo.sum_I([1, 0, 1])");
+    p("geo.sum_I([1, 0, -1])");
+    
+    p("sum_F([Float Array])", true);
+    p("geo.sum_F([1.1, 2, 3])");
+    p("geo.sum_F([1.1, 2, -3])");
+    
+    p("diff_I([Int Array])", true);
+    p("geo.diff_I([1, 0, 1])");
+    p("geo.diff_I([1, 0, -1])");
+    
+    p("diff_F([Float Array])", true);
+    p("geo.diff_F([1.1, 2, 3])");
+    p("geo.diff_F([1.1, 2, -3])");
+    
+    p("middle_F([Float Array])", true);
+    p("geo.middle_F([1, 2, 3])");
+    p("geo.middle_F([-5, -5, -6, -8])");
+    
+    p("multiply_I_I([Int Array], Int) : Int Array", true);
+    p("geo.multiply_I_I([1, 2, 3], 3)");
+    p("geo.multiply_I_I([-5, -5, -6, -8], -1)");
+    
+    p("multiply_F_F([Float Array], Float) : Float Array", true);
+    p("geo.multiply_F_F([1.8, 2, 3], 1.2)");
+    p("geo.multiply_F_F([-6, -8], -1.4)");
+    
+    p("multiply_I([Int Array]) : Int", true);
+    p("geo.multiply_I([1, 2, 3])");
+    p("geo.multiply_I([-5, -6, -8])");
+    
+    p("multiply_F([Float Array]) : Float", true);
+    p("geo.multiply_F([1.8, 2, 3])");
+    p("geo.multiply_F([-1.2, -6, -8])");
+    
+    p("minus_I([Int Array]) : Int Array", true);
+    p("geo.minus_I([1, 2, 3])");
+    p("geo.minus_I([-5, -6, -8])");
+    
+    p("minus_F([Float Array]) : Float Array", true);
+    p("geo.minus_F([1.8, 2, 3])");
+    p("geo.minus_F([-1.2, -6, -8])");
+    
+    p("sum_xI([Array Int Array]) : Int Array", true);
+    p("geo.sum_xI([[1, 2, 3], [3, 2, 1]])");
+    p("geo.sum_xI([[-5, -6, -8], [1, 2]])");
+    
+    p("sum_xF([Array Float Array]) : Float Array", true);
+    p("geo.sum_xF([[1.8, 2, 3], [1, 2, 3]])");
+    p("geo.sum_xF([[-1.2, -6, -8], [1, 2]])");
+    
+    p("diff_xI([Array Int Array]) : Int Array", true);
+    p("geo.diff_xI([[1, 2, 3], [3, 2, 1]])");
+    p("geo.diff_xI([[-5, -6, -8], [1, 2]])");
+    
+    p("diff_xF([Array Float Array]) : Float Array", true);
+    p("geo.diff_xF([[1.8, 2, 3], [1, 2, 3]])");
+    p("geo.diff_xF([[-1.2, -6, -8], [1, 2]])");
+    
+    p("middle_xF([Array Float Array]) : Float Array", true);
+    p("geo.middle_xF([[1.8, 2, 3], [1, 2, 3]])");
+    p("geo.middle_xF([[-1.2, -6, -8], [1, 2]])");
+    
+    p("multiply_xI_I([Array Int Array], Int) : Array Int Array", true);
+    p("geo.multiply_xI_I([[1, 2, 3], [3, 2, 1]], 2)");
+    p("geo.multiply_xI_I([[-1, -6, -8], [1, 2]], 2)");
+    
+    p("multiply_xF_F([Array Float Array], Float) : Array Float Array", true);
+    p("geo.multiply_xF_F([[1.1, 2, 3], [3, 2, 1]], 2)");
+    p("geo.multiply_xF_F([[-1.1, -6, -8], [1, 2]], 2)");
+    
+    p("multiply_xI([Array Int Array]) : Int Array", true);
+    p("geo.multiply_xI([[1, 2, 3], [3, 2, 1]])");
+    p("geo.multiply_xI([[-1, -6, -8], [1, 2]])");
+    
+    p("multiply_xF([Array Float Array]) : Float Array", true);
+    p("geo.multiply_xF([[1.1, 2, 3], [3, 2, 1]])");
+    p("geo.multiply_xF([[-1.1, -6, -8], [1, 2]])");
+    
+    p("multisum_xI([Array Int Array]) : Int", true);
+    p("geo.multisum_xI([[1, 2, 3], [3, 2, 1]])");
+    p("geo.multisum_xI([[-1, -6, -8], [1, 2]])");
+    
+    p("multisum_xF([Array Float Array]) : Float", true);
+    p("geo.multisum_xF([[-1.1, -2, -3], [3, 2, 1]])");
+    p("geo.multisum_xF([[-1.1, -6, -8], [1, 2]])");
+    
+    p("sum_previous_I([Int Array]) : Int Array", true);
+    p("geo.sum_previous_I([1, 2, 3])");
+    p("geo.sum_previous_I([-1, -6, -8])");
+    
+    p("diff_previous_I([Int Array]) : Int Array", true);
+    p("geo.diff_previous_I([1, 2, 3])");
+    p("geo.diff_previous_I([-1, -6, -8])");
+    
+    p("sum_before_I([Int Array]) : Int Array", true);
+    p("geo.sum_before_I([1, 2, 3])");
+    p("geo.sum_before_I([-1, -6, -8])");
+    
+    p("diff_before_I([Int Array]) : Int Array", true);
+    p("geo.diff_before_I([1, 2, 3])");
+    p("geo.diff_before_I([-1, -6, -8])");
+    
+    
+    p("sum_previous_F([Float Array]) : Float Array", true);
+    p("geo.sum_previous_F([1.1, 2, 3])");
+    p("geo.sum_previous_F([-1.1, -6, -8])");
+    
+    p("diff_previous_F([Float Array]) : Float Array", true);
+    p("geo.diff_previous_F([1.1, 2, 3])");
+    p("geo.diff_previous_F([-1.1, -6, -8])");
+    
+    p("sum_before_F([Float Array]) : Float Array", true);
+    p("geo.sum_before_F([1.1, 2, 3])");
+    p("geo.sum_before_F([-1.1, -6, -8])");
+    
+    p("diff_before_F([Float Array]) : Float Array", true);
+    p("geo.diff_before_F([1.1, 2, 3])");
+    p("geo.diff_before_F([-1.1, -6, -8])");
+    
+    p("recounter_I_F([Int Array]) : Float Array", true);
+    p("geo.recounter_I_F([1, 2, 3])");
+    p("geo.recounter_I_F([-1, -6, -8])");
+    
+    p("recounter_F_I([Int Array]) : Float Array", true);
+    p("geo.recounter_F_I([0.5, 2, 3])");
+    p("geo.recounter_F_I([0.9, 2, 3])");
+    p("geo.recounter_F_I([1.9, 2, 3])");
+    p("geo.recounter_F_I([-0.5, -6, -8])");
+    p("geo.recounter_F_I([-0.9, -6, -8])");
+    
+    p("recounter_I_S([Int Array]) : String Array", true);
+    p("geo.recounter_I_S([1, 2, 3])");
+    p("geo.recounter_I_S([-1, -6, -8])");
+    
+    p("recounter_F_S([Float Array]) : String Array", true);
+    p("geo.recounter_F_S([1.2, 2, 3])");
+    p("geo.recounter_F_S([-1 / 4, -6, -8])");
+    
+    p("recounter_S_I([String Array]) : Int Array", true);
+    p("geo.recounter_S_I(['1.2', '2', '3'])");
+    p("geo.recounter_S_I(['-1 / 4', '-6', '-8'])");
+    p("geo.recounter_S_I(['-0.25', '-6', '-8'])");
+    
+    p("recounter_S_F([String Array]) : Float Array", true);
+    p("geo.recounter_S_F(['1.2', '2', '3'])");
+    p("geo.recounter_S_F(['-1 / 4', '-6', '-8'])");
+    p("geo.recounter_S_F(['-0.25', '-6', '-8'])");
+    
+    p("repeater_F_F(Int, [Float Array], Bool) : Float Array", true);
+    p("geo.repeater_F_F(5, [1.2, 2, 3])");
+    p("geo.repeater_F_F(6, [-1 / 4, -6, -8])");
+    p("geo.repeater_F_F(2, [-0.25, -6, -8])");
+    p("geo.repeater_F_F(5, [1.2, 2, 3], true)");
+    p("geo.repeater_F_F(6, [-1 / 4, -6, -8], true)");
+    p("geo.repeater_F_F(2, [-0.25, -6, -8], true)");
+    p("geo.repeater_F_F(-2, [-0.25, -6, -8], true)");
+    
+    p("repeater_I_I(Int, [Int Array], Bool) : Int Array", true);
+    p("geo.repeater_I_I(5, [12, 2, 3])");
+    p("geo.repeater_I_I(2, [25, -6, -8])");
+    p("geo.repeater_I_I(5, [12, 2, 3], true)");
+    p("geo.repeater_I_I(2, [25, -6, -8], true)");
+    p("geo.repeater_I_I(-2, [25, -6, -8], true)");
+    
+    p("repeater_S_S(Int, [String Array], Bool) : String Array", true);
+    p("geo.repeater_S_S(5, ['12', '2', '3'])");
+    p("geo.repeater_S_S(2, ['25', '-6', '-8'])");
+    p("geo.repeater_S_S(5, ['12', '2', '3'], true)");
+    p("geo.repeater_S_S(2, ['25', '-6', '-8'], true)");
+    p("geo.repeater_S_S(-2, ['25', '-6', '-8'], true)");
+    
+    p("repeater_F_I(Int, [Float Array], Bool) : Int Array", true);
+    p("geo.repeater_F_I(5, [1.2, 2, 3])");
+    p("geo.repeater_F_I(6, [-1 / 4, -6, -8])");
+    p("geo.repeater_F_I(2, [-0.25, -6, -8])");
+    p("geo.repeater_F_I(5, [1.2, 2, 3], true)");
+    p("geo.repeater_F_I(6, [-1 / 4, -6, -8], true)");
+    p("geo.repeater_F_I(2, [-0.25, -6, -8], true)");
+    p("geo.repeater_F_I(-2, [-0.25, -6, -8], true)");
+    
+    p("repeater_S_I(Int, [String Array], Bool) : Int Array", true);
+    p("geo.repeater_S_I(5, ['12.1', '0.2', '3'])");
+    p("geo.repeater_S_I(2, ['-0.5', '-0.9', '-1'])");
+    p("geo.repeater_S_I(5, ['12 / 5', '0.2', '3'], true)");
+    p("geo.repeater_S_I(2, ['-0.5', '-0.9', '-1'], true)");
+    p("geo.repeater_S_I(-2, ['-0.5', '-0.9', '-1'], true)");
+    
+    p("repeater_I_F(Int, [Int Array], Bool) : Float Array", true);
+    p("geo.repeater_I_F(5, [12, 2, 3])");
+    p("geo.repeater_I_F(2, [25, -6, -8])");
+    p("geo.repeater_I_F(5, [12, 2, 3], true)");
+    p("geo.repeater_I_F(2, [25, -6, -8], true)");
+    p("geo.repeater_I_F(-2, [25, -6, -8], true)");
+    
+    p("repeater_S_F(Int, [String Array], Bool) : Float Array", true);
+    p("geo.repeater_S_F(5, ['12.1', '0.2', '3'])");
+    p("geo.repeater_S_F(2, ['-0.5', '-0.9', '-1'])");
+    p("geo.repeater_S_F(5, ['12 / 5', '0.2', '3'], true)");
+    p("geo.repeater_S_F(2, ['-0.5', '-0.9', '-1'], true)");
+    p("geo.repeater_S_F(-2, ['-0.5', '-0.9', '-1'], true)");
+    
+    p("repeater_I_S(Int, [Int Array], Bool) : String Array", true);
+    p("geo.repeater_I_S(5, [12, 2, 3])");
+    p("geo.repeater_I_S(2, [25, -6, -8])");
+    p("geo.repeater_I_S(5, [12, 2, 3], true)");
+    p("geo.repeater_I_S(2, [25, -6, -8], true)");
+    p("geo.repeater_I_S(-2, [25, -6, -8], true)");
+    
+    p("repeater_F_S(Int, [Float Array], Bool) : String Array", true);
+    p("geo.repeater_F_S(5, [12.1, 2, 3])");
+    p("geo.repeater_F_S(2, [25/2, -6, -8])");
+    p("geo.repeater_F_S(5, [12.1, 2, 3], true)");
+    p("geo.repeater_F_S(2, [25/2, -6, -8], true)");
+    p("geo.repeater_F_S(-2, [25/2, -6, -8], true)");
+    
+    p("an_in_b_S([String Array], [String Array]) : Array Int Array", true);
+    p("geo.an_in_b_S(['1', '2', '3'], ['2', '3', '4'])");
+    p("geo.an_in_b_S(['1', '2'], ['2', '3', '4'])");
+    
+    p("an_in_bn_S([String Array], [Array String Array]) : Array Int Array", true);
+    p("geo.an_in_bn_S(['1', '2'], [['3', '4'], ['2', '2']])");
+    p("geo.an_in_bn_S(['1', '2', '3'], [['3', '4'], ['2', '2']])");
+    
+    p("an_in_b_I([Int Array], [Int Array]) : Array Int Array", true);
+    p("geo.an_in_b_I([1, 2, 3], [2, 3, 4])");
+    p("geo.an_in_b_I([1, 2], [2, 3, 4])");
+    
+    p("an_in_bn_I([Int Array], [Array Int Array]) : Array Int Array", true);
+    p("geo.an_in_bn_I([1, 2], [[3, 4], [2, 2]])");
+    p("geo.an_in_bn_I([1, 2, 3], [[3, 4], [2, 2]])");
+    
+    p("an_in_b_F([Float Array], [Float Array]) : Array Int Array", true);
+    p("geo.an_in_b_F([1, 2, 3.3], [2, 3.3, 4])");
+    p("geo.an_in_b_F([1, 2.2], [2.2, 3, 4])");
+    
+    p("an_in_bn_F([Float Array], [Array Float Array]) : Array Int Array", true);
+    p("geo.an_in_bn_F([1, 2.2], [[3, 4], [2.2, 2]])");
+    p("geo.an_in_bn_F([1, 2.2, 3], [[3, 4], [2, 2.2]])");
+    
+    p("chain_indexes(Int, Int, Bool) : Array Int Array", true);
+    p("geo.chain_indexes(8, 3)");
+    p("geo.chain_indexes(8, 3, true)");
+    p("geo.chain_indexes(8, -3)");
+    p("geo.chain_indexes(-8, 3, true)");
+    
+    p("chain_S([String Array], Int, Bool) : Array String Array", true);
+    p("geo.chain_S(['1', '2', '3', '4', '5'], 2)");
+    p("geo.chain_S(['1', '2', '3', '4', '5'], 2, true)");
+    p("geo.chain_S(['1', '2', '3', '4', '5'], 3)");
+    p("geo.chain_S(['1', '2', '3', '4', '5'], 3, true)");
+    p("geo.chain_S(['1', '2', '3', '4', '5', '6'], 3)");
+    p("geo.chain_S(['1', '2', '3', '4', '5', '6'], 3, true)");
+    
+    p("chain_I([Int Array], Int, Bool) : Array Int Array", true);
+    p("geo.chain_I([1, 2, 3, 4, 5], 2)");
+    p("geo.chain_I([1, 2, 3, 4, 5], 2, true)");
+    p("geo.chain_I([1, 2, 3, 4, 5], 3)");
+    p("geo.chain_I([1, 2, 3, 4, 5], 3, true)");
+    p("geo.chain_I([1, 2, 3, 4, 5, 6], 3)");
+    p("geo.chain_I([1, 2, 3, 4, 5, 6], 3, true)");
+    
+    p("chain_F([Float Array], Int, Bool) : Array Float Array", true);
+    p("geo.chain_F([1.1, 2, 3, 4, 5], 2)");
+    p("geo.chain_F([1.1, 2, 3, 4, 5], 2, true)");
+    p("geo.chain_F([1.1, 2, 3, 4, 5], 3)");
+    p("geo.chain_F([1.1, 2, 3, 4, 5], 3, true)");
+    p("geo.chain_F([1.1, 2, 3, 4, 5, 6], 3)");
+    p("geo.chain_F([1.1, 2, 3, 4, 5, 6], 3, true)");
+    
+    p("steps_internal(Float, Float, Int, Bool) : Float Array", true);
+    p("geo.steps_internal(5, 10, 2)");
+    p("geo.steps_internal(5, 10, 4)");
+    p("geo.steps_internal(5, 10, 4, true)");
+    p("geo.steps_internal(5, 10, 0)");
+    p("geo.steps_internal(5, 10, 0, true)");
+    p("geo.steps_internal(5, 10, -4)");
+    p("geo.steps_internal(5, -10, 4)");
+    p("geo.steps_internal(-5, -10, 4)");
+    p("geo.steps_internal(-15, -10, 4)");
+    
+    p("steps_external(Float, Float, Int, Int) : Float Array", true);
+    p("geo.steps_external(5, 10, 2, 1)");
+    p("geo.steps_external(5, 10, 4, 1)");
+    p("geo.steps_external(5, 10, 4, 0)");
+    p("geo.steps_external(5, 10, 4, -1)");
+    p("geo.steps_external(5, 10, 0, 1)");
+    p("geo.steps_external(5, 10, -4, 1)");
+    p("geo.steps_external(5, -10, 4, 1)");
+    p("geo.steps_external(5, -10, 4, -1)");
+    p("geo.steps_external(-5, -10, 4, 1)");
+    p("geo.steps_external(-5, -10, 4, 0)");
+    p("geo.steps_external(-5, -10, 4, -1)");
+    
+    p("sign_I(Int) : Int", true);
+    p("geo.sign_I(2)");
+    p("geo.sign_I(1)");
+    p("geo.sign_I(0)");
+    p("geo.sign_I(-1)");
+    p("geo.sign_I(-2)");
+    
+    p("sign_F(Float) : Int", true);
+    p("geo.sign_F(2.1)");
+    p("geo.sign_F(1.1)");
+    p("geo.sign_F(0)");
+    p("geo.sign_F(-1.1)");
+    p("geo.sign_F(-2.1)");
+    
+    p("sign3_I(Int) : Int", true);
+    p("geo.sign3_I(2)");
+    p("geo.sign3_I(1)");
+    p("geo.sign3_I(0)");
+    p("geo.sign3_I(-1)");
+    p("geo.sign3_I(-2)");
+    
+    p("sign3_F(Float) : Int", true);
+    p("geo.sign3_F(2.1)");
+    p("geo.sign3_F(1.1)");
+    p("geo.sign3_F(0)");
+    p("geo.sign3_F(-1.1)");
+    p("geo.sign3_F(-2.1)");
+    
+    p("sin_cos_cut(Float) : Float", true);
+    p("geo.sin_cos_cut(1.00000001)");
+    p("geo.sin_cos_cut(0.1)");
+    p("geo.sin_cos_cut(0)");
+    p("geo.sin_cos_cut(-0.1)");
+    p("geo.sin_cos_cut(-1.00000001)");
+    
+    p("degrees(Float) : Float", true);
+    p("geo.degrees(Math.PI)");
+    p("geo.degrees(1)");
+    p("geo.degrees(0)");
+    p("geo.degrees(-1)");
+    p("geo.degrees(-Math.PI)");
+    
+    p("radians(Float) : Float", true);
+    p("geo.radians(180)");
+    p("geo.radians(180 / Math.PI)");
+    p("geo.radians(0)");
+    p("geo.radians(-180 / Math.PI)");
+    p("geo.radians(-180)");
+    
+    p("angle_quadrant(angle Float, rad Bool) : Int", true);
+    p("geo.angle_quadrant(0)");
+    p("geo.angle_quadrant(45)");
+    p("geo.angle_quadrant(90)");
+    p("geo.angle_quadrant(135)");
+    p("geo.angle_quadrant(180)");
+    p("geo.angle_quadrant(225)");
+    p("geo.angle_quadrant(270)");
+    p("geo.angle_quadrant(315)");
+    p("geo.angle_quadrant(360)");
+    p("geo.angle_quadrant(Math.PI * 2 * 0 / 8, true)");
+    p("geo.angle_quadrant(Math.PI * 2 * 1 / 8, true)");
+    p("geo.angle_quadrant(Math.PI * 2 * 2 / 8, true)");
+    p("geo.angle_quadrant(Math.PI * 2 * 3 / 8, true)");
+    p("geo.angle_quadrant(Math.PI * 2 * 4 / 8, true)");
+    p("geo.angle_quadrant(Math.PI * 2 * 5 / 8, true)");
+    p("geo.angle_quadrant(Math.PI * 2 * 6 / 8, true)");
+    p("geo.angle_quadrant(Math.PI * 2 * 7 / 8, true)");
+    p("geo.angle_quadrant(Math.PI * 2 * 8 / 8, true)");
+    
+    p("geo.angle_quadrant(-0)");
+    p("geo.angle_quadrant(-45)");
+    p("geo.angle_quadrant(-90)");
+    p("geo.angle_quadrant(-135)");
+    p("geo.angle_quadrant(-180)");
+    p("geo.angle_quadrant(-225)");
+    p("geo.angle_quadrant(-270)");
+    p("geo.angle_quadrant(-315)");
+    p("geo.angle_quadrant(-360)");
+    p("geo.angle_quadrant(-Math.PI * 2 * 0 / 8, true)");
+    p("geo.angle_quadrant(-Math.PI * 2 * 1 / 8, true)");
+    p("geo.angle_quadrant(-Math.PI * 2 * 2 / 8, true)");
+    p("geo.angle_quadrant(-Math.PI * 2 * 3 / 8, true)");
+    p("geo.angle_quadrant(-Math.PI * 2 * 4 / 8, true)");
+    p("geo.angle_quadrant(-Math.PI * 2 * 5 / 8, true)");
+    p("geo.angle_quadrant(-Math.PI * 2 * 6 / 8, true)");
+    p("geo.angle_quadrant(-Math.PI * 2 * 7 / 8, true)");
+    p("geo.angle_quadrant(-Math.PI * 2 * 8 / 8, true)");
+    
+    p("vecXDnorm(Float Array) : Float", true);
+    p("geo.vecXDnorm([0])");
+    p("geo.vecXDnorm([1])");
+    p("geo.vecXDnorm([1, 1])");
+    p("geo.vecXDnorm([1, 1, 1])");
+    p("geo.vecXDnorm([-1])");
+    p("geo.vecXDnorm([-1, -1])");
+    p("geo.vecXDnorm([-1, -1, -1])");
+    p("geo.vecXDnorm([1, -1, -1])");
+    
+    p("vecXDfieldnorm(Array Float Array) : Array Float", true);
+    p("geo.vecXDfieldnorm([[0]])");
+    p("geo.vecXDfieldnorm([[1], [1]])");
+    p("geo.vecXDfieldnorm([[1, 1], [1, 1]])");
+    p("geo.vecXDfieldnorm([[1, 1, 1], [1, 1, 1]])");
+    p("geo.vecXDfieldnorm([[-1], [-1]])");
+    p("geo.vecXDfieldnorm([[-1, -1], [-1, -1]])");
+    p("geo.vecXDfieldnorm([[-1, -1, -1], [-1, -1, -1]])");
+    p("geo.vecXDfieldnorm([[1, -1, -1], [1, -1, -1]])");
+    
+    p("zero_vector_inside([Array Float Array]) : Bool", true);
+    p("geo.zero_vector_inside([[0], [1, 2]])");
+    p("geo.zero_vector_inside([[0, 0], [1, 2]])");
+    p("geo.zero_vector_inside([[1, 0], [1, 2]])");
+    
+    p("maxabs([Float Array]) : Float", true);
+    p("geo.maxabs([])");
+    p("geo.maxabs([1, 2, 3])");
+    p("geo.maxabs([1, 2, 3, -4])");
+    
+    p("vecXD([Float Array], [Float Array]) : Float Array", true);
+    p("geo.vecXD([2, 2, 2], [1, 1, 1])");
+    p("geo.vecXD([0, 0, 0], [1, 1, 1])");
+    p("geo.vecXD([0, 0], [1, 1])");
+    
+    p("vecXDone([Float Array]) : Float Array", true);
+    p("geo.vecXDone([2, 2, 2])");
+    p("geo.vecXDone([1, 1, 1])");
+    p("geo.vecXDone([1, 2, 3])");
+    p("geo.vecXDone([2, 4, 6])");
+    
+    p("vecXDfield([Array Float Array]) : Array Float Array", true);
+    p("geo.vecXDfield([[0,0,0], [2, 2, 2], [1, 1, 1]])");
+    p("geo.vecXDfield([[0,0,0], [2, 2, 2], [1, 1]])");
+    p("geo.vecXDfield([[2,2], [3,2], [2, 2], [1, 1]])");
+    
+    p("vecXDsame([Float Array], [Float Array]) : Bool", true);
+    p("geo.vecXDsame([-1.1, 0, 2], [-1.1, 0, 2])");
+    p("geo.vecXDsame([1, 0, 2], [2, 2, 2])");
+    p("geo.vecXDsame([-1, 0, 2], [0, 2])");
+    
+    p("vecXDfieldsame([Array Float Array]) : Bool", true);
+    p("geo.vecXDfieldsame([[1.1, 1, 1], [1.1, 1, 1], [1.1, 1, 1]])");
+    p("geo.vecXDfieldsame([[1, 1, 1], [2, 2, 2], [1, 1, 1]])");
+    p("geo.vecXDfieldsame([[1, 1, 1], [1, 1, 1], [1, 1]])");
+    
+    p("vecXDrandom(Int) : Float Array", true);
+    p("geo.vecXDrandom(2)");
+    p("geo.vecXDrandom(2)");
+    p("geo.vecXDrandom(3)");
+    
+    p("vecXDsum([Float Array], [Float Array]) : Float Array", true);
+    p("geo.vecXDsum([1, 2, 3], [3, 2, 1])");
+    p("geo.vecXDsum([1, 2, 3], [3, 2])");
+    
+    p("vecXDfieldsum([Array Float Array]) : Float Array", true);
+    p("geo.vecXDfieldsum([[1, 2, 3]])");
+    p("geo.vecXDfieldsum([[1, 2, 3],  [3, 2, 1], [1, 2, 3]])");
+    p("geo.vecXDfieldsum([[1, 2, 3], [3, 2]])");
+    
+    p("vecXDdiff([Float Array], [Float Array]) : Float Array", true);
+    p("geo.vecXDdiff([1, 2, 3], [3, 2, 1])");
+    p("geo.vecXDdiff([1, 2, 3], [3, 2])");
+    
+    p("vecXDfielddiff([Array Float Array]) : Float Array", true);
+    p("geo.vecXDfielddiff([[1, 2, 3]])");
+    p("geo.vecXDfielddiff([[1, 2, 3], [3, 2, 1],  [1, 2, 3]])");
+    p("geo.vecXDfielddiff([[1, 2, 3], [3, 2]])");
+    
+    p("vecXDback([Float Array]) : Float Array", true);
+    p("geo.vecXDback([1, 2, 3])");
+    p("geo.vecXDback([1, -2])");
+    p("geo.vecXDback([3])");
+    
+    p("vecXDfieldback([Array Float Array]) : Array Float Array", true);
+    p("geo.vecXDfieldback([[1, 2, 3], [-3, -2, -1]])");
+    p("geo.vecXDfieldback([[1, 2, 3], [-3, -2]])");
+    p("geo.vecXDfieldback([[1, -2]])");
+    p("geo.vecXDfieldback([[3]])");
+    
+    p("vecXDparalleled_sameside([Float Array], [Float Array]) : Bool", true);
+    p("geo.vecXDparalleled_sameside([1.1, 2, 3], [2.2, 4, 6])");
+    p("geo.vecXDparalleled_sameside([1.1, 2, 3], [-1.1, -2, -3])");
+    
+    p("vecXDparalleled_opposite([Float Array], [Float Array]) : Bool", true);
+    p("geo.vecXDparalleled_opposite([1.1, 2, 3], [2.2, 4, 6])");
+    p("geo.vecXDparalleled_opposite([1.1, 2, 3], [-1.1, -2, -3])");
+    
+    p("vecXDparalleled([Float Array], [Float Array]) : Bool", true);
+    p("geo.vecXDparalleled([1.1, 2, 3], [2.2, 4, 6])");
+    p("geo.vecXDparalleled([1.1, 2, 3], [-1.1, -2, -3])");
+    
+    p("vecXDscalar([Float Array], [Float Array]) : Float", true);
+    p("geo.vecXDscalar([1, 2, 3], [2, 4, 6])");
+    p("geo.vecXDscalar([1, 2, 3], [-1, -2, -3])");
+    
+    p("vecXDcos([Float Array], [Float Array]) : Float", true);
+    p("geo.vecXDcos([1, 2, 3], [2, 4, 6])");
+    p("geo.vecXDcos([1, 2, 3], [-1, -2, -3])");
+    
+    p("vecXDangle(vecXD [Float Array], vecXD [Float Array], rad Bool) : Float", true);
+    p("geo.vecXDangle([1, 2, 3], [2, 4, 6])");
+    p("geo.vecXDangle([1, 2, 3], [-1, -2, -3])");
+    p("geo.vecXDangle([1, 2, 3], [2, 4, 6], true)");
+    p("geo.vecXDangle([1, 2, 3], [-1, -2, -3], true)");
+    
+    p("vec3Dnormal([Float Array], [Float Array]) : Float Array", true);
+    p("geo.vec3Dnormal([1, 0, 0], [0, 1, 0])");
+    p("geo.vec3Dnormal([2, 0, 0], [0, 2, 0])");
+    
+    p("vec3Dfieldnormal([Array Float Array]) : Float Array", true);
+    p("geo.vec3Dfieldnormal([[1, 0, 0], [0, 1, 0], [0, 1, 0]])");
+    p("geo.vec3Dfieldnormal([[1, 0, 0], [0, 1, 0], [0, 0, 1]])");
+    p("geo.vec3Dfieldnormal([[1, 0, 0], [0, 1, 0], [0, 0, -1]])");
+    p("geo.vec3Dfieldnormal([[2, 0, 0], [0, 2, 0], [0, 2, 0]])");
+    p("geo.vec3Dfieldnormal([[2, 0, 0], [0, 2, 0], [0, 0, 2]])");
+    p("geo.vec3Dfieldnormal([[2, 0, 0], [0, 2, 0], [0, 0, -2]])");
+    
+    p("vecXDmiddle([Float Array], [Float Array]) : Float Array", true);
+    p("geo.vecXDmiddle([1, 0, 0], [0, 1, 0])");
+    p("geo.vecXDmiddle([1, 2, 3], [3, 2, 1])");
+    p("geo.vecXDmiddle([1, 2, 3], [3, 2])");
+    
+    p("vecXDfieldmiddle([Array Float Array]) : Float Array", true);
+    p("geo.vecXDfieldmiddle([[1, 0, 0], [0, 1, 0], [0, 0, 1]])");
+    p("geo.vecXDfieldmiddle([[1, 2, 3], [3, 2, 1], [-3, -2, -1]])");
+    p("geo.vecXDfieldmiddle([[1, 2, 3], [3, 2, 1], [-2, -1]])");
+    
+    p("vecXDsamesize([Float Array], [Float Array]) : Float Array", true);
+    p("geo.vecXDsamesize([1, 2, 3], [3, 2, 1])");
+    p("geo.vecXDsamesize([1, 2, 3], [3, 2])");
+    
+    p("vecXDfieldsamesize([Array Float Array]) : Float Array", true);
+    p("geo.vecXDfieldsamesize([[1, 2, 3], [3, 2, 1], [-3, -2, -1]])");
+    p("geo.vecXDfieldsamesize([[1, 2, 3], [3, 2, 1], [-2, -1]])");
+    
+    p("dotXDoffset(dotXD [Float Array], vecXD [Float Array], t Float) : Float Array", true);
+    p("geo.dotXDoffset([0, 0, 0], [1, 1, 1], 1)");
+    p("geo.dotXDoffset([1, 1, 1], [1, 1, 1], 1)");
+    
+    p("dot3Dline3D_x_plane3D(dot3D0 [Float Array], vec3D0 [Float Array], vec3Dplane [Float Array], dplane Float) : Float Array", true);
+    p("geo.dot3Dline3D_x_plane3D([1, 1, 1], [1, 1, 1], [1, 1, 1], 0)");
+    p("geo.dot3Dline3D_x_plane3D([1, 1, 1], [1, 1, 1], [1, 1, 1], 1)");
+    p("geo.dot3Dline3D_x_plane3D([1, 1, 1], [1, 1, 1], [3, 2, 1], 1)");
+    p("geo.dot3Dline3D_x_plane3D([1, 1, 1], [3, 2, 1], [1, 1, 1], 1)");
+    p("geo.dot3Dline3D_x_plane3D([3, 2, 1], [1, 1, 1], [1, 1, 1], 1)");
+    p("geo.dot3Dline3D_x_plane3D([0, 0, 0], [1, 1, 1], [1, 1, 1], 0)");
+    p("geo.dot3Dline3D_x_plane3D([0, 0, 0], [1, 1, 1], [1, 1, 1], 1)");
+    p("geo.dot3Dline3D_x_plane3D([0, 0, 0], [1, 1, 1], [1, 1, 1], -1)");
+    
+    p("projection_dot3D_on_plane3D(dot3D [Float Array], plane3D [Float Array]) : Float Array", true);
+    p("geo.projection_dot3D_on_plane3D([1, 1, 1], [0, 0, 1, 0])");
+    p("geo.projection_dot3D_on_plane3D([0, 0, 0], [1, 1, 1, 0])");
+    p("geo.projection_dot3D_on_plane3D([0, 0, 0], [1, 1, 1, 1])");
+    p("geo.projection_dot3D_on_plane3D([0, 0, 0], [1, 1, 1, -1])");
+    
+    p("dot3D_to_dot2Dviewplane(dot3D [Float Array], dot3Dc [Float Array], vec3Dp [Float Array], vec3Dox [Float Array]) : Float Array", true);
+    p("geo.dot3D_to_dot2Dviewplane([10, 10, 0], [0, 0, 0], [0, 0, 1], [1, 0, 0])");
+    p("geo.dot3D_to_dot2Dviewplane([0, 0, 0], [10, 10, 0], [0, 0, 1], [1, 0, 0])");
+    p("geo.dot3D_to_dot2Dviewplane([10, 10, 0], [0, 0, 0], [1, 1, 1], [1, 0, 0])");
+    
+    p("dotXDscale(dotXD [Float Array], scaleXD [Float Array], dotXDc [Float Array]) : Float Array", true);
+    p("geo.dotXDscale([10, 10, 8], [0, 0, 0], [0, 0, 0])");
+    p("geo.dotXDscale([10, 10, 8], [1, 1, 1], [0, 0, 0])");
+    p("geo.dotXDscale([10, 10, 8], [5, 5, 4], [0, 0, 0])");
+    p("geo.dotXDscale([10, 10, 8], [0.2, 0.2, 0.25], [0, 0, 0])");
+    p("geo.dotXDscale([10, 10, 8], [0.2, 0.2, 0.25], [10, 10, 8])");
+    
+    p("vec3Drotate(vec3D [Float Array], vec3Daxis [Float Array], angle Float, rad Bool) : Float Array", true);
+    p("geo.vec3Drotate([1, 1, 1], [0, 0, 1], 90)");
+    p("geo.vec3Drotate([1, 1, 1], [0, 0, 1], Math.PI / 2, true)");
+    
+    p("vec3Dfield_rotate_around_vec3Daxes(vec3Dfield [Array Float Array], vec3Daxes [Array Float Array], angles [Float Array], rad Bool) : Float Array", true);
+    p("geo.vec3Dfield_rotate_around_vec3Daxes([[1, 1, 1], [1, 2, 1], [1, 2, 3]], [[1, 0, 0], [0, 1, 0], [0, 0, 1]], [90, 90, 90])");
+    p("geo.vec3Dfield_rotate_around_vec3Daxes([[1, 1, 1], [1, 2, 1], [1, 2, 3]], [[1, 0, 0], [0, 1, 0], [0, 0, 1]], [Math.PI / 2, Math.PI / 2, Math.PI / 2], true)");
+    
+    p("dot3Drotate(dot3D [Float Array], dot3Dc [Float Array], vec3D [Float Array], angle [Array Float], rad Bool) : Float Array", true);
+    p("geo.dot3Drotate([1, 1, 1], [0, 0, 0], [1, 0, 0], 90)");
+    p("geo.dot3Drotate([1, 1, 1], [0, 0, 0], [1, 0, 0], Math.PI / 2, true)");
+    
+    p("plane3D_dot3Dnormal(dot3D [Float Array], vec3D [Float Array]) : Float Array", true);
+    p("geo.plane3D_dot3Dnormal([1, 1, 1], [1, 1, 1])");
+    p("geo.plane3D_dot3Dnormal([0, 0, 0], [1, 1, 1])");
+    p("geo.plane3D_dot3Dnormal([1, 1, 1], [0, 0, 0])");
+    
+    p("plane3D_dot_vec_vec(dot3D [Float Array], vec3Da [Float Array], vec3Db [Float Array]) : Float Array", true);
+    p("geo.plane3D_dot_vec_vec([1, 1, 1], [1, 1, 1], [1, 2, 3])");
+    p("geo.plane3D_dot_vec_vec([1, 1, 2], [1, 1, 1], [1, 2, 3])");
+    p("geo.plane3D_dot_vec_vec([1, 1, 2], [0, 0, 0], [1, 2, 3])");
+    p("geo.plane3D_dot_vec_vec([1, 1, 2], [1, 2, 3], [1, 2, 3])");
+    p("geo.plane3D_dot_vec_vec([1, 1, 2], [-1, -2, -3], [1, 2, 3])");
+    
+    p("plane3D_3dots(dot3D [Float Array], dot3Da [Float Array], dot3Db [Float Array]) : Float Array", true);
+    p("geo.plane3D_3dots([1, 1, 1], [2, 2, 2], [3, 4, 5])");
+    p("geo.plane3D_3dots([1, 1, 1], [2, 8, 10], [3, 4, 5])");
+    p("geo.plane3D_3dots([1, 1, 1], [1, 1, 1], [3, 4, 5])");
+    p("geo.plane3D_3dots([1, 1, 1], [2, 2, 2], [1, 1, 1])");
+    
+    p("plane3D_2dots(dot3D [Float Array], dot3Da [Float Array]) : Float Array", true);
+    p("geo.plane3D_2dots([1, 1, 1], [2, 2, 2])");
+    p("geo.plane3D_2dots([-1, -1, -1], [-2, -2, -2])");
+    p("geo.plane3D_2dots([-2, -2, -2], [-1, -1, -1])");
+    p("geo.plane3D_2dots([1, 1, 1], [1, 1, 1])");
+    
+    p("distance_dot3D_plane3D(dot3D [Float Array], plane3D [Float Array]) : Float Array", true);
+    p("geo.distance_dot3D_plane3D([1, 1, 1], [1, 1, 1, 0])");
+    p("geo.distance_dot3D_plane3D([1, 1, 1], [1, 1, 1, 1])");
+    p("geo.distance_dot3D_plane3D([1, 1, 1], [1, 1, 1, -1])");
+    
+    p("random_vec3D_in_plane3D(plane3D [Float Array]) : Float Array", true);
+    p("geo.random_vec3D_in_plane3D([1, 1, 1, 0])");
+    p("geo.random_vec3D_in_plane3D([1, 1, 1, 0])");
+    p("geo.random_vec3D_in_plane3D([1, 1, 1, 1])");
+    p("geo.random_vec3D_in_plane3D([1, 1, 1, 1])");
+    
+    p("random_dot3D_in_plane3D(plane3D [Float Array], dot3D [Float Array], radius Float) : Float Array", true);
+    p("geo.random_dot3D_in_plane3D([1, 1, 1, 0], [0,0,0], 10)");
+    p("geo.random_dot3D_in_plane3D([1, 1, 1, 0], [0,0,0], 10)");
+    p("geo.random_dot3D_in_plane3D([1, 1, 1, 0], [0,0,0], -10)");
+    p("geo.random_dot3D_in_plane3D([1, 1, 1, 0], [0,0,0], -100)");
+    p("geo.random_dot3D_in_plane3D([0, 0, 0, 0], [0,0,0], 10)");
+    p("geo.random_dot3D_in_plane3D([0, 0, 0, 1], [0,0,0], 10)");
+    
+    p("curve3D_4dots(dot3D1 [Float Array], vec3D1 [Float Array], distance1 Float, dot3D2 [Float Array], vec3D2 [Float Array], distance2 Float) : Array Float Array", true);
+    p("geo.curve3D_4dots([0, 0, 0], [0, 1, 0], 10, [10, 0, 0], [0, 1, 0], 10)");
+    p("geo.curve3D_4dots([0, 0, 0], [0, 1, 0], 10, [10, 0, 0], [0, 1, 0], -10)");
+    
+    p("curve3D_3dots(dot3D0 [Float Array], dot3D1 [Float Array], dot3D2 [Float Array], lever1 Float, lever2 Float, a_s Int) : Array Float Array", true);
+    p("geo.curve3D_3dots([0, 0, 0], [0, 10, 0], [10, 0, 0], 0.55, 0.55, 1)");
+    p("geo.curve3D_3dots([0, 0, 0], [0, 10, 0], [10, 0, 0], 0.55, 0.55, 0)");
+    p("geo.curve3D_3dots([0, 0, 0], [0, 10, 0], [10, 0, 0], 0.55, 0.55, -1)");
+    
+    p("line3D_2dots(dot3D0 [Float Array], dot3D1 [Float Array]) : Array Float Array", true);
+    p("geo.line3D_2dots([0, 0, 0], [0, 10, 0])");
+    
+    p("line3D_dot_offset(dot3D [Float Array], vec3D [Float Array], distance Float) : Array Float Array", true);
+    p("geo.line3D_dot_offset([0, 0, 0], [0, 1, 0], 10)");
+    p("geo.line3D_dot_offset([0, 0, 0], [0, 1, 0], -10)");
+    
+    p("curve3D_4to12(curve [Array Float Array]) : Float Array", true);
+    p("geo.curve3D_4to12([[0, 0, 0], [0, 1, 0], [1, 1, 0], [1, 0, 0]])");
+    
+    p("curve3D_12to4(curve [Float Array]) : Array Float Array", true);
+    p("geo.curve3D_12to4([0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0])");
+    
+    p("beziercubic3D_derivativeparameters(curve [Array Float Array]) : Array Float Array", true);
+    p("geo.beziercubic3D_derivativeparameters([[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]])");
+    p("geo.beziercubic3D_derivativeparameters([[0, 0, 0], [0, 1, 0], [1, 1, 0], [1, 0, 0]])");
+    
+    p("beziercubic_derivative(bcp [Float Array], p Float) : Float", true);
+    p("geo.beziercubic_derivative([0, 0, 1, 1], 0.5)");
+    p("geo.beziercubic_derivative([0, 1, 1, 0], 0.5)");
+    p("geo.beziercubic_derivative([0, 0, 0, 0], 0.5)");
+    
+    p("beziercubic3D_derivative(curve [Array Float Array], p Float) : Float Array", true);
+    p("geo.beziercubic3D_derivative([[0, 0, 0], [0, 1, 0], [1, 1, 0], [1, 0, 0]], 0.5)");
+    
+    p("beziercubic_support_dot_one(curve [Array Float Array]) : Float", true);
+    p("geo.beziercubic_support_dot_one([0, 0, 1, 1])");
+    p("geo.beziercubic_support_dot_one([0, 1, 1, 0])");
+    p("geo.beziercubic_support_dot_one([0, 0, 0, 0])");
+    
+    p("beziercubic3D_support_dot_one(curve3D_4dots [Array Float Array]) : Float Array", true);
+    p("geo.beziercubic3D_support_dot_one([[0, 0, 0], [0, 1, 0], [1, 1, 0], [1, 0, 0]])");
+    
+    p("beziercubic_support_dot_two(curve [Array Float Array]) : Float", true);
+    p("geo.beziercubic_support_dot_two([0, 0, 1, 1])");
+    p("geo.beziercubic_support_dot_two([0, 1, 1, 0])");
+    p("geo.beziercubic_support_dot_two([0, 0, 0, 0])");
+    
+    p("beziercubic3D_support_dot_two(curve3D_4dots [Array Float Array]) : Array Float", true);
+    p("geo.beziercubic3D_support_dot_two([[0, 0, 0], [0, 1, 0], [1, 1, 0], [1, 0, 0]])");
+    
+    p("beziercubic3D_follow_4dots_trajectory(dots [Array Float Array]) : Array Float Array", true);
+    p("geo.beziercubic3D_follow_4dots_trajectory([[0, 0, 0], [0, 1, 0], [1, 1, 0], [1, 0, 0]])");
+    
+    p("beziercubic_coordinate(beziercubic_one_axis_coordinates [Float Array], p Float) : Float", true);
+    p("geo.beziercubic_coordinate([0, 0, 1, 1], 0.5)");
+    p("geo.beziercubic_coordinate([0, 1, 1, 0], 0.5)");
+    p("geo.beziercubic_coordinate([0, 0, 0, 0], 0.5)");
+    
+    p("beziercubic3Ddot(beziercubic3D [Array Float Array], p Float) : Float Array", true);
+    p("geo.beziercubic3Ddot([[0, 0, 0], [0, 1, 0], [1, 1, 0], [1, 0, 0]], 0.5)");
+    
+    p("curve3D_4dots_follow_beziercubic_trajectory(beziercubic3D [Array Float Array]) : Array Float Array", true);
+    p("geo.curve3D_4dots_follow_beziercubic_trajectory([[0, 0, 0], [0, 1, 0], [1, 1, 0], [1, 0, 0]])");
+    
+    p("curve3Doffset(curve3D [Array Float Array], vec3D [Float Array], distance Float) : Array Float Array", true);
+    p("geo.curve3Doffset([[0, 0, 0], [0, 1, 0], [1, 1, 0], [1, 0, 0]], [0, 1, 0], 10)");
+    p("geo.curve3Doffset([[0, 0, 0], [0, 1, 0], [1, 1, 0], [1, 0, 0]], [0, -1, 0], 10)");
+    p("geo.curve3Doffset([[0, 0, 0], [0, 1, 0], [1, 1, 0], [1, 0, 0]], [0, 1, 0], -10)");
+    p("geo.curve3Doffset([[0, 0, 0], [0, 1, 0], [1, 1, 0], [1, 0, 0]], [0, -1, 0], -10)");
+    
+    p("curve3Drotate(curve3D [Array Float Array], dot3D [Float Array], vec3D [Float Array], angle Float, rad Bool) : Array Float Array", true);
+    p("geo.curve3Drotate([[0, 0, 0], [0, 1, 0], [1, 1, 0], [1, 0, 0]], [0, 0, 0], [0, 1, 0], 90)");
+    p("geo.curve3Drotate([[0, 0, 0], [0, 1, 0], [1, 1, 0], [1, 0, 0]], [0, 0, 0], [0, -1, 0], 90)");
+    p("geo.curve3Drotate([[0, 0, 0], [0, 1, 0], [1, 1, 0], [1, 0, 0]], [0, 0, 0], [0, 1, 0], -90)");
+    p("geo.curve3Drotate([[0, 0, 0], [0, 1, 0], [1, 1, 0], [1, 0, 0]], [0, 0, 0], [0, -1, 0], -90)");
+    
+    p("geo.curve3Drotate([[0, 0, 0], [0, 1, 0], [1, 1, 0], [1, 0, 0]], [0, 0, 0], [0, 1, 0], Math.PI / 2, true)");
+    p("geo.curve3Drotate([[0, 0, 0], [0, 1, 0], [1, 1, 0], [1, 0, 0]], [0, 0, 0], [0, -1, 0], Math.PI / 2, true)");
+    p("geo.curve3Drotate([[0, 0, 0], [0, 1, 0], [1, 1, 0], [1, 0, 0]], [0, 0, 0], [0, 1, 0], -Math.PI / 2, true)");
+    p("geo.curve3Drotate([[0, 0, 0], [0, 1, 0], [1, 1, 0], [1, 0, 0]], [0, 0, 0], [0, -1, 0], -Math.PI / 2, true)");
+    
+    p("curve3Dscale(curve3D [Array Float Array], scale_xyz [Float Array], dot3D [Float Array]) : Array Float Array", true);
+    p("geo.curve3Dscale([[0, 0, 0], [0, 1, 0], [1, 1, 0], [1, 0, 0]], [0.5, 0.5, 0.5], [0, 0, 0])");
+    p("geo.curve3Dscale([[0, 0, 0], [0, 1, 0], [1, 1, 0], [1, 0, 0]], [0.5, 0.5, 0.5], [10, 10, 10])");
+    p("geo.curve3Dscale([[0, 0, 0], [0, 1, 0], [1, 1, 0], [1, 0, 0]], [-0.5, -0.5, -0.5], [10, 10, 10])");
+    p("geo.curve3Dscale([[0, 0, 0], [0, 1, 0], [1, 1, 0], [1, 0, 0]], [1.5, 1.5, 1.5], [0, 0, 0])");
+    p("geo.curve3Dscale([[0, 0, 0], [0, 1, 0], [1, 1, 0], [1, 0, 0]], [1.5, 1.5, 1.5], [10, 10, 10])");
+    
+    p("ellipse2Dperimeter_ramanujan(a Float, b Float) : Float", true);
+    p("geo.ellipse2Dperimeter_ramanujan(1, 1)");
+    p("geo.ellipse2Dperimeter_ramanujan(3, 2)");
+    p("geo.ellipse2Dperimeter_ramanujan(Math.PI, 2)");
+    
+    p("tangent_centered_ellipse2Ddot(a Float, b Float, ellipse_dot2D [Float Array]) : Array Float Array", true);
+    p("geo.tangent_centered_ellipse2Ddot(1, 1, [1, 0])");
+    p("geo.tangent_centered_ellipse2Ddot(2, 3, [1, 0])");
+    
+    p("ellipse_e_parameter(a Float, b Float) : Float", true);
+    p("geo.ellipse_e_parameter(1, 1)");
+    p("geo.ellipse_e_parameter(3, 2)");
+    p("geo.ellipse_e_parameter(2, 3)");
+    
+    p("ellipse_c_parameter(a Float, b Float) : Float", true);
+    p("geo.ellipse_c_parameter(1, 1)");
+    p("geo.ellipse_c_parameter(3, 2)");
+    p("geo.ellipse_c_parameter(2, 3)");
+    
+    p("tangent_vec3D_in_plane_of_ellipse2D_placed_in_3Dspace(dot3D [Float Array], vec3Dnormal_ellipse_plane [Float Array], vec3Dsemiaxis_a_direction [Float Array], semiaxis_a Float, semiaxis_b Float, semiaxis_a_negative Float, semiaxis_b_negative Float, angle Float, rad Bool) : Float", true);
+    p("geo.tangent_vec3D_in_plane_of_ellipse2D_placed_in_3Dspace([0, 0, 0], [0, 0, 1], [1, 0, 0], 1, 1, 1, 1, 45)");
+    p("geo.tangent_vec3D_in_plane_of_ellipse2D_placed_in_3Dspace([0, 0, 0], [0, 0, 1], [1, 0, 0], 1, 1, 1, 1, Math.PI / 4, true)");
+    
+    p("ellipse3D_dots(dot3D [Float Array], vec3Dsemiaxes [Array Float Array], semiaxes [Float Array]) : Array Float Array", true);
+    p("geo.ellipse3D_dots([0, 0, 0], [[1, 0, 0], [0, -1, 0], [-1, 0, 0], [0, -1, 0]], [1, 1, 1, 1])");
+    
+    p("ellipse2Ddot(angle Float, semiaxis_a_ox Float, semiaxis_b_oy Float, rad Bool) : Array Float Array", true);
+    p("geo.ellipse2Ddot(45, 1, 1)");
+    p("geo.ellipse2Ddot(Math.PI / 4, 1, 1, true)");
+    
+    p("curve2D_4dots_elliptic_shape_restricted_to_quarter(angle0 Float, angle1 Float, semiaxis_a_ox Float, semiaxis_b_oy Float, rad Bool) : Array Float Array", true);
+    p("geo.curve2D_4dots_elliptic_shape_restricted_to_quarter(0, 45, 1, 1)");
+    p("geo.curve2D_4dots_elliptic_shape_restricted_to_quarter(45, 90, 1, 1)");
+    p("geo.curve2D_4dots_elliptic_shape_restricted_to_quarter(0, Math.PI / 4, 1, 1, true)");
+    p("geo.curve2D_4dots_elliptic_shape_restricted_to_quarter(Math.PI / 4, Math.PI / 2, 1, 1, true)");
+    
+    p("beziercubic3D_elliptic_shape_restricted_to_quarter(dot3Dc [Float Array], vec3D_a_ox [Float Array], vec3D_b_oy [Float Array], semiaxis_a_ox Float, semiaxis_b_oy Float, angle0 Float, angle1 Float, rad Bool) : Array Float Array", true);
+    p("geo.beziercubic3D_elliptic_shape_restricted_to_quarter([0, 0, 0], [1, 0, 0], [0, 1, 0], 1, 1, 0, 45)");
+    p("geo.beziercubic3D_elliptic_shape_restricted_to_quarter([0, 0, 0], [1, 0, 0], [0, 1, 0], 1, 1, 45, 90)");
+    p("geo.beziercubic3D_elliptic_shape_restricted_to_quarter([0, 0, 0], [1, 0, 0], [0, 1, 0], 1, 1, 0, Math.PI / 4, true)");
+    p("geo.beziercubic3D_elliptic_shape_restricted_to_quarter([0, 0, 0], [1, 0, 0], [0, 1, 0], 1, 1, Math.PI / 4, Math.PI / 2, true)");
+    
+    p("angle_required_to_place_curve_on_ellipse(curve_length Float, semiaxis_a_ox Float, semiaxis_b_oy Float, angle0 Float, rad Bool) : Float", true);
+    p("geo.angle_required_to_place_curve_on_ellipse(1, 1, 1, 0)");
+    p("geo.angle_required_to_place_curve_on_ellipse(1, 1, 1, 45)");
+    p("geo.angle_required_to_place_curve_on_ellipse(1, 2, 3, 0)");
+    p("geo.angle_required_to_place_curve_on_ellipse(1, 2, 3, 45)");
+    p("geo.angle_required_to_place_curve_on_ellipse(1, 1, 1, 0, true)");
+    p("geo.angle_required_to_place_curve_on_ellipse(1, 1, 1, Math.PI / 4, true)");
+    p("geo.angle_required_to_place_curve_on_ellipse(1, 2, 3, 0, true)");
+    p("geo.angle_required_to_place_curve_on_ellipse(1, 2, 3, Math.PI / 4, true)");
+    
+    p("polygon3D_inside_ellipse(dot3D [Float Array], vec3Dsemiaxes [Array Float Array], semiaxes [Float Array], angle_proportions [Float Array]) : Array Float Array", true);
+    p("geo.polygon3D_inside_ellipse([0, 0, 0], [[1, 0, 0], [0, 1, 0], [-1, 0, 0], [0, -1, 0]], [1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1])");
+    
+    p("polygon3D_vec3Dfield_distances(dot3D [Float Array], vec3Dfield [Array Float Array], distances [Float Array]) : Array Float Array", true);
+    p("geo.polygon3D_vec3Dfield_distances([0, 0, 0], [[1, 0, 0], [0, 1, 0], [-1, 0, 0], [0, -1, 0]], [1, 1, 1, 1])");
+    p("geo.polygon3D_vec3Dfield_distances([1, 2, 3], [[1, 0, 0], [0, 1, 0], [-1, 0, 0], [0, -1, 0]], [1, 1, 1, 1])");
+    
+    p("polygon3D_in_plane(dot3D [Float Array], vec3Dplane_normal [Float Array], vec3Dsemiaxis_a_direction [Float Array] angle_proportions [Float Array], distances [Float Array]) : Array Float Array", true);
+    p("geo.polygon3D_in_plane([0, 0, 0], [0, 0, 1], [1, 0, 0], [90, 90, 90, 90], [1, 1, 1, 1])");
+    p("geo.polygon3D_in_plane([10, 10, 10], [0, 0, 1], [1, 0, 0], [90, 90, 90, 90], [1, 1, 1, 1])");
+    
+    p("polygon3D_to_vec3Dfield(polygon3D [Array Float Array]) : Array Float Array", true);
+    p("geo.polygon3D_to_vec3Dfield([[10, 10, 10], [10, 11, 10], [9, 10, 10], [10, 9, 10], [11, 10, 10]])");
+    
+    p("projection_vec3D_on_plane3D(vec3D [Float Array], plane3D [Float Array]) : Float Array", true);
+    p("geo.projection_vec3D_on_plane3D([1, 1, 1], [0, 0, 1, 0])");
+    p("geo.projection_vec3D_on_plane3D([1, 1, 1], [-1, -1, 1, 0])");
+    p("geo.projection_vec3D_on_plane3D([1, 1, 1], [1, 1, 1, 0])");
+    p("geo.projection_vec3D_on_plane3D([1, 1, 1], [-1, -1, -1, 0])");
+    p("geo.projection_vec3D_on_plane3D([1, 1, 1], [-1, -1, -1, 1])");
+    p("geo.projection_vec3D_on_plane3D([1, 1, 1], [-1, -1, -1, -1])");
+    
+    p("angle_vec3Dvec3D_projection_on_plane3D(vec3D1 [Float Array], vec3D2 [Float Array], plane3D [Float Array], rad Bool) : Float", true);
+    p("geo.angle_vec3Dvec3D_projection_on_plane3D([1, 1, 0], [1, 1, 0], [0, 0, 1, 0])");
+    p("geo.angle_vec3Dvec3D_projection_on_plane3D([-1, 1, 0], [1, 1, 0], [0, 0, 1, 0])");
+    p("geo.angle_vec3Dvec3D_projection_on_plane3D([1, 1, 0], [-1, 1, 0], [0, 0, 1, 0])");
+    p("geo.angle_vec3Dvec3D_projection_on_plane3D([1, 1, 0], [-1, 1, 0], [0, 1, 1, 0])");
+    p("geo.angle_vec3Dvec3D_projection_on_plane3D([1, 1, 0], [-1, 1, 0], [0, 1, 0, 0])");
+    p("geo.angle_vec3Dvec3D_projection_on_plane3D([1, 1, 0], [-1, 1, 0], [0, -1, 0, 0])");
+    
+    p("geo.angle_vec3Dvec3D_projection_on_plane3D([1, 1, 1], [-1, -1, -1], [0, 0, 1, 0])");
+    p("geo.angle_vec3Dvec3D_projection_on_plane3D([1, 1, 1], [-1, -1, -1], [1, -1, 1, 0])");
+    p("geo.angle_vec3Dvec3D_projection_on_plane3D([1, 1, 1], [-1, -1, -1], [0, 0, 1, 0], true)");
+    p("geo.angle_vec3Dvec3D_projection_on_plane3D([1, 1, 1], [-1, -1, -1], [1, -1, 1, 0], true)");
+    p("geo.angle_vec3Dvec3D_projection_on_plane3D([-1, -1, -1], [1, 1, 1], [1, -1, 1, 0], true)");
+    p("geo.angle_vec3Dvec3D_projection_on_plane3D([-1, -1, 0], [1, 1, 1], [1, -1, 1, 0], true)");
+    p("geo.angle_vec3Dvec3D_projection_on_plane3D([1, 1, 0], [-1, -1, 1], [1, -1, 1, 0], true)");
+    
+    
+    // p("geo.()",geo.(),);
+    // alert(geo.vecXDback([3,2,1]));
+</script>
+</table>
+</body></html>
