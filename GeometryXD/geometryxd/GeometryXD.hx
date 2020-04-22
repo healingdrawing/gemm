@@ -2722,4 +2722,10 @@ class GeometryXD{
         return rez;
     }
     
+    //20200422 new object using trying section . Delete comment later
+    
+    public static function dotXD(dot:Array<Float>):DotXD {
+        return new DotXD(dot);
+    }
+    
 }
