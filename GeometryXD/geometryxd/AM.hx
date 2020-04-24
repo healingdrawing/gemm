@@ -4,6 +4,7 @@ package geometryxd;
  * array manipulation
  */
 class AM{
+    public  function new(){trace("array manipulation is ready for use");}
     
     /**
       return true if incoming Int Array have at least one positive element

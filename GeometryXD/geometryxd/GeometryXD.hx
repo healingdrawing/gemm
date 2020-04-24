@@ -18,1061 +18,12 @@ class GeometryXD{
       trace `GeometryXD is ready for use` message in time of initialisation
     **/
     public static function main(){trace("GeometryXD is ready for use");}
-    /**
-      return true if incoming Int Array have at least one positive element
-      @param a - incoming array
-     **/
-    public static inline function positive_inside_I(a:Array<Int>):Bool{
-        for (i in a){ if (i > 0){ return true; } }
-        return false;
-    }
-    /**
-      return true if incoming Int Array have at least one zero element
-      @param a - incoming array
-     **/
-    public static inline function zero_inside_I(a:Array<Int>):Bool{
-        for (i in a){ if (i == 0){ return true; } }
-        return false;
-    }
-    /**
-      return true if incoming Int Array have at least one negative element
-      @param a - incoming array
-     **/
-    public static inline function negative_inside_I(a:Array<Int>):Bool{
-        for (i in a){ if (i < 0){ return true; } }
-        return false;
-    }
-    /**
-      return true if incoming Float Array have at least one positive element
-      @param a - incoming array
-     **/
-    public static inline function positive_inside_F(a:Array<Float>):Bool{
-        for (i in a){ if (i > 0){ return true; } }
-        return false;
-    }
-    /**
-      return true if incoming Float Array have at least one zero element
-      @param a - incoming array
-     **/
-    public static inline function zero_inside_F(a:Array<Float>):Bool{
-        var rez:Bool = false;
-        for (i in a){ if (i == 0){ rez = true; } }
-        return rez;
-    }
-    /**
-      return true if incoming Float Array have at least one negative element
-      @param a - incoming array
-     **/
-    public static inline function negative_inside_F(a:Array<Float>):Bool{
-        var rez:Bool = false;
-        for (i in a){ if (i < 0){ rez = true; } }
-        return rez;
-    }
-    /**
-      return true if Int Arrays have same size
-      @param a - incoming arrays
-     **/
-    public static inline function same_size_I(a:Array<Array<Int>>):Null<Bool>{
-        var rez:Null<Bool> = null;
-        var al:Int = a.length;
-        if (al > 1){
-            rez = true;
-            var size:Int = a[0].length;
-            for (i in 1...al){
-                if (size != a[i].length) { rez = false; break; }
-            }
-        }else{ rez  = true; }
-        return rez;
-    }
-    /**
-      return true if Float Arrays have same size
-      @param a - incoming arrays
-     **/
-    public static inline function same_size_F(a:Array<Array<Float>>):Null<Bool>{
-        var rez:Null<Bool> = null;
-        var al:Int = a.length;
-        if (al > 1){
-            rez = true;
-            var size:Int = a[0].length;
-            for (i in 1...al){
-                if (size != a[i].length) { rez = false; }
-            }
-        }else{ rez = true; }
-        return rez;
-    }
     
-    /**
-     compare Int Arrays. Returns true if all arrays have equal data
-     @param a - incoming array field
-    **/
-    public static function same_xI(a:Array<Array<Int>>):Null<Bool>{
-        var rez:Null<Bool> = null;
-        var al:Int = a.length;
-        if ( al > 0 && same_size_I(a) ){
-            rez = true;
-            var lv:Int = a[0].length;
-            for (i in 1...al){
-                for (j in 0...lv){
-                    if(rez){ if (a[0][j] != a[i][j]) { rez = false; } }
-                    else{ break; }
-                }if (!rez){ break; }
-            }
-        }return rez;
-    }
-    /**
-     compare Float Arrays. Returns true if all arrays have equal data
-     @param a - incoming array field
-    **/
-    public static function same_xF(a:Array<Array<Float>>):Null<Bool>{
-        var rez:Null<Bool> = null;
-        var al:Int = a.length;
-        if ( al > 0 && same_size_F(a) ){
-            rez = true;
-            var lv:Int = a[0].length;
-            for (i in 1...al){
-                for (j in 0...lv){
-                    if(rez){ if (a[0][j] != a[i][j]) { rez = false; } }
-                    else{ break; }
-                }if (!rez){ break; }
-            }
-        }return rez;
-    }
-    
-    /**
-      returns sum of Int Array elements. [1,2,3] -> 6. tested
-      @param a - incoming array
-     **/
-    public static inline function sum_I(a:Array<Int>):Null<Int>{
-        var rez:Null<Int> = null;
-        var al:Int = a.length;
-        if (al > 0){ rez = 0; for (i in 0...al){ rez += a[i]; } }
-        return rez;
-    }
-    /**
-      returns sum of Float Array elements. [1.1,2,3] -> 6.1. tested
-      @param a - incoming array
-     **/
-    public static inline function sum_F(a:Array<Float>):Null<Float>{
-        var rez:Null<Float> = null;
-        var al:Int = a.length;
-        if (al > 0){ rez = 0; for (i in 0...al){ rez += a[i]; } }
-        return rez;
-    }
-    /**
-      returns diff between first and others Int Array elements. [1,2,3] -> -4. tested
-      @param a - incoming array
-     **/
-    public static function diff_I(a:Array<Int>):Null<Int>{
-        var rez:Null<Int> = null;
-        var al:Int = a.length;
-        if (al > 0){
-            if (al == 1){ rez = a[0]; }
-            else{ rez = a[0] - sum_I([for (i in 1...al) a[i]]); }
-        }return rez;
-    }
-    /**
-      returns diff between first and others Float Array elements. [1.1,2,3] -> -3.9. tested
-      @param a - incoming array
-     **/
-    public static function diff_F(a:Array<Float>):Null<Float>{
-        var rez:Null<Float> = null;
-        var al:Int = a.length;
-        if (al > 0){
-            if (al == 1){ rez = a[0]; }
-            else{ rez = a[0] - sum_F([for (i in 1...al) a[i]]); }
-        }return rez;
-    }
-    /**
-      returns middle value of Float Array
-      @param a - incoming array
-     **/
-    public static function middle_F(a:Array<Float>):Null<Float>{
-        var rez:Null<Float> = null;
-        var al:Int = a.length;
-        if (al > 0){ rez = sum_F(a) / al; }
-        return rez;
-    }
-    /**
-      multiplies each element of an Int Array by Int
-      @param a - incoming array
-      @param n - multiplier of each element
-     **/
-    public static inline function multiply_I_I(
-        a:Array<Int>,
-        n:Int
-        ):Array<Int>{
-        var rez:Array<Int> = null;
-        var al:Int = a.length;
-        if (al > 0){ rez = [for (i in 0...al) a[i] * n]; }
-        return rez;
-    }
-    /**
-      multiplies each element of an Float Array by Float
-      @param a - incoming array
-      @param n - multiplier of each element
-     **/
-    public static inline function multiply_F_F(
-        a:Array<Float>,
-        n:Float
-        ):Array<Float>{
-        var rez:Array<Float> = null;
-        var al:Int = a.length;
-        if (al > 0){ rez = [for (i in 0...al) a[i] * n]; }
-        return rez;
-    }
-    /**
-      multiplies all elements of an Int Array. [1, 2, 3] return 1 * 2 * 3
-      @param a - incoming array
-     **/
-    public static inline function multiply_I(a:Array<Int>):Null<Int>{
-        var rez:Null<Int> = null;
-        var al:Int = a.length;
-        if (al > 0){
-            rez = a[0];
-            if (al>1){for(i in 1...al){ rez *= a[i]; }}
-        }return rez;
-    }
-    /**
-      multiplies all elements of an Float Array. [1.1, 2.0, 3.0] return 1.1 * 2.0 * 3.0
-      @param a - incoming array
-     **/
-    public static inline function multiply_F(a:Array<Float>):Null<Float>{
-        var rez:Null<Float> = null;
-        var al:Int = a.length;
-        if (al > 0){
-            rez = a[0];
-            if (al>1){for(i in 1...al){ rez *= a[i]; }}
-        }return rez;
-    }
-    /**
-      multiplies each element of the Int Array by -1
-      @param a - incoming array
-     **/
-    public static inline function minus_I(a:Array<Int>):Array<Int>{
-        return [for (i in 0...a.length) -a[i]];
-    }
-    /**
-      multiplies each element of the Float Array by -1
-      @param a - incoming array
-     **/
-    public static inline function minus_F(a:Array<Float>):Array<Float>{
-        return [for (i in 0...a.length) -a[i]];
-    }
-    
-    /**
-      return Int Array which is Int Arrays sum. [[1, 2, 3], [-3, -2, -1]] return [-2, 0, 2]
-      @param a - incoming arrays
-     **/
-    public static function sum_xI(a:Array<Array<Int>>):Array<Int>{
-        var rez:Array<Int> = null;
-        if ( same_size_I(a) ){ rez = [for (i in 0...a[0].length) sum_I([for (ai in 0...a.length) a[ai][i] ]) ]; }
-        return rez;
-    }
-    /**
-      return Float Array which is Float Arrays sum. [[1.1, 2, 3], [-3, -2, -1]] return [-1.9, 0, 2]
-      @param a - incoming arrays
-     **/
-    public static function sum_xF(a:Array<Array<Float>>):Array<Float>{
-        var rez:Array<Float> = null;
-        if ( same_size_F(a) ){ rez = [for (i in 0...a[0].length) sum_F([for (ai in 0...a.length) a[ai][i] ]) ]; }
-        return rez;
-    }
-    /**
-      return Int Array which is result of diff between first Int Array and others. [[1, 2, 3], [-3, -2, -1]] return [4, 4, 4]
-      @param a - incoming arrays
-     **/
-    public static function diff_xI(a:Array<Array<Int>>):Array<Int>{
-        var rez:Array<Int> = null;
-        if ( same_size_I(a) ){ rez = [for (i in 0...a[0].length) diff_I([for (ai in 0...a.length) a[ai][i] ]) ]; }
-        return rez;
-    }
-    /**
-      return Float Array which is result of diff between first Float Array and others. [[1.1, 2, 3], [-3, -2, -1]] return [4.1, 4, 4]
-      @param a - incoming arrays
-     **/
-    public static function diff_xF(a:Array<Array<Float>>):Array<Float>{
-        var rez:Array<Float> = null;
-        if ( same_size_F(a) ){ rez = [for (i in 0...a[0].length) diff_F([for (ai in 0...a.length) a[ai][i] ]) ]; }
-        return rez;
-    }
-    /**
-      return Float Array with middle values from arrays. [[1.1, 2, 3], [-3, -2, -1]] return [(1.1 - 3) / 2, (2 - 2) / 2, (3 - 1) / 2]
-      @param a - incoming arrays
-     **/
-    public static function middle_xF(a:Array<Array<Float>>):Array<Float>{
-        var rez:Array<Float> = null;
-        if (a[0].length > 0 && same_size_F(a) ){ rez = [for (i in 0...a[0].length) middle_F([for (ai in 0...a.length) a[ai][i] ]) ]; }
-        return rez;
-    }
-    /**
-      return Int arrays which is result of multiplying each element by Int
-      @param a - incoming arrays
-      @param n - multiplier
-     **/
-    public static function multiply_xI_I(
-        a:Array<Array<Int>>,
-        n:Int
-        ):Array<Array<Int>>{
-        var rez:Array<Array<Int>> = null;
-        if ( a.length > 0 ){ rez = [for (i in 0...a.length) multiply_I_I(a[i], n) ]; }
-        return rez;
-    }
-    /**
-      return Float arrays which is result of multiplying each element by Float
-      @param a - incoming arrays
-      @param n - multiplier
-     **/
-    public static function multiply_xF_F(
-        a:Array<Array<Float>>,
-        n:Float
-        ):Array<Array<Float>>{
-        var rez:Array<Array<Float>> = null;
-        if ( a.length > 0 ){ rez = [for (i in 0...a.length) multiply_F_F(a[i], n) ]; }
-        return rez;
-    }
-    /**
-      return Int Array which is result of multiplying arrays. [[1, 2], [3, 4]] return [1 * 3, 2 * 4]
-      @param a - incoming arrays
-     **/
-    public static function multiply_xI(a:Array<Array<Int>>):Array<Int>{
-        var rez:Array<Int> = null;
-        var al:Int = a.length;
-        if(same_size_I(a)){
-            if (al > 1){
-                rez = [for (i in 0...a[0].length) multiply_I([for (ai in 0...a.length) a[ai][i] ]) ];
-            }else if (al > 0){
-                rez = a[0];
-            }
-        }return rez;
-    }
-    /**
-      return Float Array which is result of multiplying arrays. [[3.1, 2], [3, 4]] return [3.1 * 3, 2 * 4]
-      @param a - incoming arrays
-     **/
-    public static function multiply_xF(a:Array<Array<Float>>):Array<Float>{
-        var rez:Array<Float> = null;
-        var al:Int = a.length;
-        if (same_size_F(a)){
-            if (al > 1){
-                rez = [for (i in 0...a[0].length) multiply_F([for (ai in 0...a.length) a[ai][i] ]) ];
-            }else if (al > 0){
-                rez = a[0];
-            }
-        }return rez;
-    }
-    /**
-      Int Arrays bonus function. Short form of sum_I(multiply_xI(a)). [[a, b], [c, d]] return a * c + b * d
-      @param a - incoming arrays
-     **/
-    public static function multisum_xI(a:Array<Array<Int>>):Null<Int>{
-        var rez:Null<Int> = null;
-        if (
-            a.length > 1 &&
-            a[0].length > 0 &&
-            same_size_I(a)
-        ){
-            rez = sum_I(multiply_xI(a));
-        }
-        return rez;
-    }
-    /**
-      Float Arrays bonus function. Short form of sum_F(multiply_xF(a)). [[a, b], [c, d]] return a * c + b * d
-      @param a - incoming arrays
-     **/
-    public static function multisum_xF(a:Array<Array<Float>>):Null<Float>{
-        var rez:Null<Float> = null;
-        if (
-            a.length > 1 &&
-            a[0].length > 0 &&
-            same_size_F(a)
-        ){
-            rez = sum_F(multiply_xF(a));
-        }
-        return rez;
-    }
-    /**
-      return Int Array which is result of sum with previous element. [1, 2, 3] return [1, 3, 5]
-      @param a - incoming array
-     **/
-    public static inline function sum_previous_I(a:Array<Int>):Array<Int>{
-        var rez:Array<Int> = null;
-        var al:Int = a.length;
-        if (al > 0){ rez = [for (i in 0...al) (i == 0) ? a[i] : a[i] + a[i - 1]]; }
-        return rez;
-    }
-    /**
-      return Int Array which is result of diff with previous element. [1, 2, 3] return [1, 1, 1]
-      @param a - incoming array
-     **/
-    public static inline function diff_previous_I(a:Array<Int>):Array<Int>{
-        var rez:Array<Int> = null;
-        var al:Int = a.length;
-        if (al > 0){ rez = [for (i in 0...al) (i == 0) ? a[i] : a[i] - a[i - 1]]; }
-        return rez;
-    }
-    /**
-      return Int Array which is result of sum each element with before elements sum. [1, 2, 3] return [1, 3, 6]
-      @param a - incoming array
-     **/
-    public static inline function sum_before_I(a:Array<Int>):Array<Int>{
-        var rez:Array<Int> = null;
-        var al:Int = a.length;
-        if (al > 0){
-            rez = [0];
-            for (i in 0...al){
-                rez.push( rez[rez.length - 1] + a[i] );
-            }rez.shift();
-        }return rez;
-    }
-    /**
-      return Int Array which is result of diff each element with before elements diff. [1, 2, 3] return [1, 1, 2]
-      @param a - incoming array
-     **/
-    public static inline function diff_before_I(a:Array<Int>):Array<Int>{
-        var rez:Array<Int> = null;
-        var al:Int = a.length;
-        if (al > 0){
-            rez = [0];
-            for (i in 0...al){
-                rez.push( a[i] - rez[rez.length - 1] );
-            }rez.shift();
-        }return rez;
-    }
-    /**
-      return Float Array which is result of sum with previous element. [1.1, 2, 3] return [1.1, 3.1, 5]
-      @param a - incoming array
-     **/
-    public static inline function sum_previous_F(a:Array<Float>):Array<Float>{
-        var rez:Array<Float> = null;
-        var al:Int = a.length;
-        if (al > 0){ rez = [for (i in 0...al) (i == 0) ? a[i] : a[i] + a[i - 1]]; }
-        return rez;
-    }
-    /**
-      return Float Array which is result of diff with previous element. [1.1, 2, 3] return [1.1, 0.9, 1]
-      @param a - incoming array
-     **/
-    public static inline function diff_previous_F(a:Array<Float>):Array<Float>{
-        var rez:Array<Float> = null;
-        var al:Int = a.length;
-        if (al > 0){ rez = [for (i in 0...al) (i == 0) ? a[i] : a[i] - a[i - 1]]; }
-        return rez;
-    }
-    /**
-      return Float Array which is result of sum each element with before elements sum. [1.1, 2, 3] return [1.1, 3.1, 6.1]
-      @param a - incoming array
-     **/
-    public static inline function sum_before_F(a:Array<Float>):Array<Float>{
-        var rez:Array<Float> = null;
-        var al:Int = a.length;
-        if (al > 0){
-            rez = [0];
-            for (i in 0...al){
-                rez.push( rez[rez.length - 1] + a[i] );
-            }rez.shift();
-        }return rez;
-    }
-    /**
-      return Float Array which is result of diff each element with before elements diff. [1.1, 2, 3] return [1.1, 0.9, 2.1]
-      @param a - incoming array
-     **/
-    public static inline function diff_before_F(a:Array<Float>):Array<Float>{
-        var rez:Array<Float> = null;
-        var al:Int = a.length;
-        if (al > 0){
-            rez = [0];
-            for (i in 0...al){
-                rez.push( a[i] - rez[rez.length - 1] );
-            }rez.shift();
-        }return rez;
-    }
-    
-    /**
-     recount Int Array to Float Array
-     @param what - incoming array
-    **/
-    public static inline function recounter_I_F(what:Array<Int>):Array<Float>{
-        var rez:Array<Float> = [];
-        for (i in 0...what.length){ rez.push(what[i]); }
-        return rez;
-    }
-    /**
-     recount Float Array to Int Array
-     @param what - incoming array
-    **/
-    public static inline function recounter_F_I(what:Array<Float>):Array<Int>{
-        var rez:Array<Int> = [];
-        for (i in 0...what.length){ rez.push(Std.int(what[i])); }
-        return rez;
-    }
-    /**
-     recount Int Array to String Array
-     @param what - incoming array
-    **/
-    public static inline function recounter_I_S(what:Array<Int>):Array<String>{
-        var rez:Array<String> = [];
-        for (i in 0...what.length){ rez.push(Std.string(what[i])); }
-        return rez;
-    }
-    /**
-     recount Float Array to String Array
-     @param what - incoming array
-    **/
-    public static inline function recounter_F_S(what:Array<Float>):Array<String>{
-        var rez:Array<String> = [];
-        for (i in 0...what.length){ rez.push(Std.string(what[i])); }
-        return rez;
-    }
-    /**
-     recount String Array to Int Array
-     @param what - incoming array
-    **/
-    public static inline function recounter_S_I(what:Array<String>):Array<Int>{
-        var rez:Array<Int> = [];
-        for (i in 0...what.length){ rez.push(Std.parseInt(what[i])); }
-        return rez;
-    }
-    /**
-     recount String Array to Float Array
-     @param what - incoming array
-    **/
-    public static inline function recounter_S_F(what:Array<String>):Array<Float>{
-        var rez:Array<Float> = [];
-        for (i in 0...what.length){ rez.push(Std.parseFloat(what[i])); }
-        return rez;
-    }
-    
-    /**
-     repeat Float Array to specified length
-     @param n - result array length
-     @param what - incoming array
-     @param full - if true then result array will be not cutted to result array length parameter
-    **/
-    public static inline function repeater_F_F(
-        n:Int,
-        what:Array<Float>,
-        full:Bool = false
-        ):Array<Float>{
-        var rez:Array<Float> = null;
-        if (n == 0){ return rez; }
-        var wl:Int = what.length;
-        rez = [];
-        if (wl == 0){ return rez; }
-        if (n < 0){ what.reverse(); n = Std.int(Math.abs(n));}
-        var ind:Int =(full) ? n : Math.ceil(n / wl);
-        rez = [for (_ in 0...ind) for (i in 0...wl) what[i]];
-        if(!full){rez = [for (i in 0...n) rez[i]]; }
-        return rez;
-    }
-    /**
-     repeat Int Array to specified length
-     @param n - result array length
-     @param what - incoming array
-     @param full - if true then result array will be not cutted to result array length parameter
-    **/
-    public static inline function repeater_I_I(
-        n:Int,
-        what:Array<Int>,
-        full:Bool = false
-        ):Array<Int>{
-        var rez:Array<Int> = null;
-        if (n == 0){ return rez; }
-        var wl:Int = what.length;
-        rez = [];
-        if (wl == 0){ return rez; }
-        if (n < 0){ what.reverse(); n = Std.int(Math.abs(n));}
-        var ind:Int =(full) ? n : Math.ceil(n / wl);
-        rez = [for (_ in 0...ind) for (i in 0...wl) what[i]];
-        if(!full){rez = [for (i in 0...n) rez[i]]; }
-        return rez;
-    }
-    /**
-     repeat String Array to specified length
-     @param n - result array length
-     @param what - incoming array
-     @param full - if true then result array will be not cutted to result array length parameter
-    **/
-    public static inline function repeater_S_S(
-        n:Int,
-        what:Array<String>,
-        full:Bool = false
-        ):Array<String>{
-        var rez:Array<String> = null;
-        if (n == 0){ return rez; }
-        var wl:Int = what.length;
-        rez = [];
-        if (wl == 0){ return rez; }
-        if (n < 0){ what.reverse(); n = Std.int(Math.abs(n));}
-        var ind:Int =(full) ? n : Math.ceil(n / wl);
-        rez = [for (_ in 0...ind) for (i in 0...wl) what[i]];
-        if(!full){rez = [for (i in 0...n) rez[i]]; }
-        return rez;
-    }
-    /**
-     repeat Float Array to specified length Int Array
-     @param n - result array length
-     @param what - incoming array
-     @param full - if true then result array will be not cutted to result array length parameter
-    **/
-    public static function repeater_F_I(
-        n:Int,
-        what_:Array<Float>,
-        full:Bool = false
-        ):Array<Int>{
-        var rez:Array<Int> = null;
-        var what:Array<Int> = recounter_F_I(what_);
-        if (n == 0){ return rez; }
-        var wl:Int = what.length;
-        rez = [];
-        if (wl == 0){ return rez; }
-        if (n < 0){ what.reverse(); n = Std.int(Math.abs(n));}
-        var ind:Int =(full) ? n : Math.ceil(n / wl);
-        rez = [for (_ in 0...ind) for (i in 0...wl) what[i]];
-        if(!full){rez = [for (i in 0...n) rez[i]]; }
-        return rez;
-    }
-    /**
-     repeat String Array to specified length Int Array
-     @param n - result array length
-     @param what - incoming array
-     @param full - if true then result array will be not cutted to result array length parameter
-    **/
-    public static function repeater_S_I(
-        n:Int,
-        what_:Array<String>,
-        full:Bool = false
-        ):Array<Int>{
-        var rez:Array<Int> = null;
-        var what:Array<Int> = recounter_S_I(what_);
-        if (n == 0){ return rez; }
-        var wl:Int = what.length;
-        rez = [];
-        if (wl == 0){ return rez; }
-        if (n < 0){ what.reverse(); n = Std.int(Math.abs(n));}
-        var ind:Int =(full) ? n : Math.ceil(n / wl);
-        rez = [for (_ in 0...ind) for (i in 0...wl) what[i]];
-        if(!full){rez = [for (i in 0...n) rez[i]]; }
-        return rez;
-    }
-    /**
-     repeat Int Array to specified length Float Array
-     @param n - result array length
-     @param what - incoming array
-     @param full - if true then result array will be not cutted to result array length parameter
-    **/
-    public static function repeater_I_F(
-        n:Int,
-        what_:Array<Int>,
-        full:Bool = false
-        ):Array<Float>{
-        var rez:Array<Float> = null;
-        var what:Array<Float> = recounter_I_F(what_);
-        if (n == 0){ return rez; }
-        var wl:Int = what.length;
-        rez = [];
-        if (wl == 0){ return rez; }
-        if (n < 0){ what.reverse(); n = Std.int(Math.abs(n));}
-        var ind:Int =(full) ? n : Math.ceil(n / wl);
-        rez = [for (_ in 0...ind) for (i in 0...wl) what[i]];
-        if(!full){rez = [for (i in 0...n) rez[i]]; }
-        return rez;
-    }
-    /**
-     repeat String Array to specified length Float Array
-     @param n - result array length
-     @param what - incoming array
-     @param full - if true then result array will be not cutted to result array length parameter
-    **/
-    public static function repeater_S_F(
-        n:Int,
-        what_:Array<String>,
-        full:Bool = false
-        ):Array<Float>{
-        var rez:Array<Float> = null;
-        var what:Array<Float> = recounter_S_F(what_);
-        if (n == 0){ return rez; }
-        var wl:Int = what.length;
-        rez = [];
-        if (wl == 0){ return rez; }
-        if (n < 0){ what.reverse(); n = Std.int(Math.abs(n));}
-        var ind:Int =(full) ? n : Math.ceil(n / wl);
-        rez = [for (_ in 0...ind) for (i in 0...wl) what[i]];
-        if(!full){rez = [for (i in 0...n) rez[i]]; }
-        return rez;
-    }
-    /**
-     repeat Int Array to specified length String Array
-     @param n - result array length
-     @param what - incoming array
-     @param full - if true then result array will be not cutted to result array length parameter
-    **/
-    public static function repeater_I_S(
-        n:Int,
-        what_:Array<Int>,
-        full:Bool = false
-        ):Array<String>{
-        var rez:Array<String> = null;
-        var what:Array<String> = recounter_I_S(what_);
-        if (n == 0){ return rez; }
-        var wl:Int = what.length;
-        rez = [];
-        if (wl == 0){ return rez; }
-        if (n < 0){ what.reverse(); n = Std.int(Math.abs(n));}
-        var ind:Int =(full) ? n : Math.ceil(n / wl);
-        rez = [for (_ in 0...ind) for (i in 0...wl) what[i]];
-        if(!full){rez = [for (i in 0...n) rez[i]]; }
-        return rez;
-    }
-    /**
-     repeat Float Array to specified length String Array
-     @param n - result array length
-     @param what - incoming array
-     @param full - if true then result array will be not cutted to result array length parameter
-    **/
-    public static function repeater_F_S(
-        n:Int,
-        what_:Array<Float>,
-        full:Bool = false
-        ):Array<String>{
-        var rez:Array<String> = null;
-        var what:Array<String> = recounter_F_S(what_);
-        if (n == 0){ return rez; }
-        var wl:Int = what.length;
-        rez = [];
-        if (wl == 0){ return rez; }
-        if (n < 0){ what.reverse(); n = Std.int(Math.abs(n));}
-        var ind:Int =(full) ? n : Math.ceil(n / wl);
-        rez = [for (_ in 0...ind) for (i in 0...wl) what[i]];
-        if(!full){rez = [for (i in 0...n) rez[i]]; }
-        return rez;
-    }
-    
-    /**
-     return array of arrays with pair indexes which is indexes equivalent elements of a and b arrays.
-     a=["1", "2"] b=["1", "2", "1"] return [[0, 0], [0, 2], [1, 1]]
-     @param a - array what find
-     @param b - array where find
-    **/
-    public static inline function an_in_b_S(
-        a:Array<String>,
-        b:Array<String>
-        ):Array<Array<Int>>{
-        var rez:Array<Array<Int>> = [];
-        var al:Int = a.length;
-        var bl:Int = b.length;
-        if (al == 0 || bl == 0){ return null; }
-        for (ia in 0...al){
-            for (ib in 0...bl){
-                if (a[ia] == b[ib]) { rez.push([ia, ib]); }
-            }
-        }return rez;
-    }
-    /**
-     return array of arrays with pair indexes which is indexes equivalent elements of a and b arrays.
-     a=["1", "2"] b=[["1", "2", "1"],["0", "2"]] return [[0, 0, 0], [0, 0, 2], [1, 0, 1], [1, 1, 1]]. where indexes [1, 0, 1] = [1(a), 0(b), 1(b[0])]
-     @param a - array what find
-     @param b - array where find
-    **/
-    public static inline function an_in_bn_S(
-        a:Array<String>,
-        b:Array<Array<String>>
-        ):Array<Array<Int>>{
-        var rez:Array<Array<Int>> = [];
-        var al:Int = a.length;
-        var bl:Int = b.length;
-        if (al == 0 || bl == 0){ return null; }
-        for (ia in 0...al){
-            for (ib in 0...bl){
-                for (ibn in 0...b[ib].length){
-                    if (a[ia] == b[ib][ibn]) { rez.push([ia, ib, ibn]); }
-                }
-            }
-        }return rez;
-    }
-    /**
-     return array of arrays with pair indexes which is indexes equivalent elements of a and b arrays.
-     a=[1, 2] b=[1, 2, 1] return [[0, 0], [0, 2], [1, 1]]
-     @param a - array what find
-     @param b - array where find
-    **/
-    public static inline function an_in_b_I(
-        a:Array<Int>,
-        b:Array<Int>
-        ):Array<Array<Int>>{
-        var rez:Array<Array<Int>> = [];
-        var al:Int = a.length;
-        var bl:Int = b.length;
-        if (al == 0 || bl == 0){ return null; }
-        for (ia in 0...al){
-            for (ib in 0...bl){
-                if (a[ia] == b[ib]) { rez.push([ia, ib]); }
-            }
-        }return rez;
-    }
-    /**
-     return array of arrays with pair indexes which is indexes equivalent elements of a and b arrays.
-     a=[1, 2] b=[[1, 2, 1],[0, 2]] return [[0, 0, 0], [0, 0, 2], [1, 0, 1], [1, 1, 1]]. where indexes [1, 0, 1] = [1(a), 0(b), 1(b[0])]
-     @param a - array what find
-     @param b - array where find
-    **/
-    public static inline function an_in_bn_I(
-        a:Array<Int>,
-        b:Array<Array<Int>>
-        ):Array<Array<Int>>{
-        var rez:Array<Array<Int>> = [];
-        var al:Int = a.length;
-        var bl:Int = b.length;
-        if (al == 0 || bl == 0){ return null; }
-        for (ia in 0...al){
-            for (ib in 0...bl){
-                for (ibn in 0...b[ib].length){
-                    if (a[ia] == b[ib][ibn]) { rez.push([ia, ib, ibn]); }
-                }
-            }
-        }return rez;
-    }
-    /**
-     return array of arrays with pair indexes which is indexes equivalent elements of a and b arrays.
-     a=[1.0, 2.0] b=[1.0, 2.0, 1.0] return [[0, 0], [0, 2], [1, 1]]
-     @param a - array what find
-     @param b - array where find
-    **/
-    public static inline function an_in_b_F(
-        a:Array<Float>,
-        b:Array<Float>
-        ):Array<Array<Int>>{
-        var rez:Array<Array<Int>> = [];
-        var al:Int = a.length;
-        var bl:Int = b.length;
-        if (al == 0 || bl == 0){ return null; }
-        for (ia in 0...al){
-            for (ib in 0...bl){
-                if (a[ia] == b[ib]) { rez.push([ia, ib]); }
-            }
-        }return rez;
-    }
-    /**
-     return array of arrays with pair indexes which is indexes equivalent elements of a and b arrays.
-     a=[1.0, 2.0] b=[[1.0, 2.0, 1.0],[0, 2.0]] return [[0, 0, 0], [0, 0, 2], [1, 0, 1], [1, 1, 1]]. where indexes [1, 0, 1] = [1(a), 0(b), 1(b[0])]
-     @param a - array what find
-     @param b - array where find
-    **/
-    public static inline function an_in_bn_F(
-        a:Array<Float>,
-        b:Array<Array<Float>>
-        ):Array<Array<Int>>{
-        var rez:Array<Array<Int>> = [];
-        var al:Int = a.length;
-        var bl:Int = b.length;
-        if (al == 0 || bl == 0){ return null; }
-        for (ia in 0...al){
-            for (ib in 0...bl){
-                for (ibn in 0...b[ib].length){
-                    if (a[ia] == b[ib][ibn]) { rez.push([ia, ib, ibn]); }
-                }
-            }
-        }return rez;
-    }
-    
-    /**
-     chain bonus function. split range to sequences specified length n with same border values.
-     f(6, 3, false) return [[0, 1, 2], [2, 3, 4]]. But f(6, 3, true) return [[0, 1, 2], [2, 3, 4], [4, 5, 0]].
-     Can be used to split dotsXDfield (array of 3D dots) to array of separated 4dots curves trajectories which have same border dots.
-     Just split array of dots length a_l to n = 4. Then recount to beziercurves or create multidot curve use each last three dots.
-     @param a_l - range of indexes (length of array which will be used later as splitted)
-     @param n - length of each sequence (chain link)
-     @param ring - if true then 0 will be added at the end of range of indexes, for the case of strict coincidence
-    **/
-    public static function chain_indexes(
-        a_l:Int,
-        n:Int,
-        ring:Bool
-        ):Array<Array<Int>>{
-        var rez:Array<Array<Int>> = null;
-        if (n > a_l || n < 1){ return rez; }
-        var ind:Array<Int> = [];
-        var indring:Array<Int> = [for (i in 0...a_l) i];
-        if(ring){
-            indring.push(0);
-            ind = [for (i in 0...Std.int((a_l + 1) / (n - 1)) * (n - 1) ) (i%(n-1) == 0 && i+n-1 < a_l + 1)? i : continue ]; // close to for loop(0 to a_l+1 with step=n)
-        }else{
-            ind = [for (i in 0...Std.int(a_l / (n - 1)) * (n - 1) ) (i%(n-1) == 0 && i+n-1 < a_l)? i : continue ]; // close to for loop(0 to a_l with step=n)
-        }rez = [for (i in 0...ind.length) [for (j in 0...n) indring[ind[i]+j]] ];
-        return rez;
-    }
-    /**
-     create chain from String Array. Sequences with same border values
-     @param a - incoming array
-     @param n - chain link length
-     @param ring - if true then first incoming element will be added at the end of range, for the case of strict coincidence
-    **/
-    public static inline function chain_S(
-        a:Array<String>,
-        n:Int,
-        ring:Bool = false
-        ):Array<Array<String>>{
-        var rez:Array<Array<String>> = null;
-        var a_l:Int = a.length;
-        if (n > a_l || n < 1){ return rez; }
-        var ind:Array<Array<Int>> = chain_indexes(a_l, n, ring);
-        rez = [for (i in 0...ind.length) [for (j in 0...n) a[ind[i][j]]]];
-        return rez;
-    }
-    /**
-     create chain from Int Array. Sequences with same border values
-     @param a - incoming array
-     @param n - chain link length
-     @param ring - if true then first incoming element will be added at the end of range, for the case of strict coincidence
-    **/
-    public static inline function chain_I(
-        a:Array<Int>,
-        n:Int,
-        ring:Bool = false
-        ):Array<Array<Int>>{
-        var rez:Array<Array<Int>> = null;
-        var a_l:Int = a.length;
-        if (n > a_l || n < 1){ return rez; }
-        var ind:Array<Array<Int>> = chain_indexes(a_l, n, ring);
-        rez = [for (i in 0...ind.length) [for (j in 0...n) a[ind[i][j]]]];
-        return rez;
-    }
-    /**
-     create chain from Float Array. Sequences with same border values
-     @param a - incoming array
-     @param n - chain link length
-     @param ring - if true then first incoming element will be added at the end of range, for the case of strict coincidence
-    **/
-    public static inline function chain_F(
-        a:Array<Float>,
-        n:Int,
-        ring:Bool = false
-        ):Array<Array<Float>>{
-        var rez:Array<Array<Float>> = null;
-        var a_l:Int = a.length;
-        if (n > a_l || n < 1){ return rez; }
-        var ind:Array<Array<Int>> = chain_indexes(a_l, n, ring);
-        rez = [for (i in 0...ind.length) [for (j in 0...n) a[ind[i][j]]]];
-        return rez;
-    }
-    
-    /**
-     split interval to equal steps
-     @param xmin - minimum border
-     @param xmax - maximum border
-     @param n - steps number
-     @param borders - if true then add borders into result
-    **/
-    public static inline function steps_internal(
-        xmin:Float,
-        xmax:Float,
-        n:Int,
-        borders:Bool = false
-        ):Array<Float>{
-        var rez:Array<Float> = null;
-        if (n < 0){ return rez; }
-        var st:Float = (xmax - xmin) / (n + 1);
-        if (borders){
-            rez = [for (i in 0...n + 2) (i > 0 && i < n + 1) ? xmin + st * i : (i == 0) ? xmin : xmax ];
-        }else{
-            rez = [for (i in 1...n + 1) xmin + st * i];
-        }return rez;
-    }
-    /**
-     repeat step multiple times.
-     f(1, 5, 3, -1) return [-11, -7, -3, 1, 5]
-     f(1, 5, 3, 0) return [-11, -7, -3, 1, 5, 9, 13, 17]
-     f(1, 5, 3, 1) return [1, 5, 9, 13, 17]
-     @param smin - step minimum border
-     @param smax - step maximum border
-     @param n - repeat number
-     @param direction - if < 0 then from negative to minimum border direction. if > 0 then from maximum border to positive direction. if == 0 then both
-    **/
-    public static function steps_external(
-        smin:Float,
-        smax:Float,
-        n:Int,
-        direction:Int
-        ):Array<Float>{
-        var rez:Array<Float> = null;
-        if (n < 1 || direction < -1 || direction > 1){ return rez; }
-        var st:Float = smax - smin;
-        if (direction > 0){
-            rez = [for (i in 0...n + 2) smin + st * i ];
-        }else if (direction < 0){
-            var full:Float = smin - st * n;
-            rez = [for (i in 0...n + 2) full + st * i ];
-        }else{
-            var full:Float = smin - st * n;
-            rez = [for (b in 0...2) for (i in 0...n + 2) (b == 0) ? full + st * i : (i > 1) ? smin + st * i : continue];
-        }return rez;
-    }
-    
-    /**
-     return sign of Int. if x < 0 return -1, else return 1.
-     @param x - number, sign of which should be calculated
-    **/
-    public static inline function sign_I(x:Int):Int{ return (x < 0) ? -1 : 1; }
-    /**
-     return sign of Float. if x < 0 return -1, else return 1.
-     @param x - number, sign of which should be calculated
-    **/
-    public static inline function sign_F(x:Float):Int{ return (x < 0) ? -1 : 1; }
-    /**
-     return sign of Int or 0. if x < 0 return -1, if x > 0 return 1, if x == 0 return 0.
-     @param x - number, sign of which should be calculated
-    **/
-    public static inline function sign3_I(x:Int):Int{ return (x < 0) ? -1 : (x > 0) ? 1 : 0; }
-    /**
-     return sign of Float or 0. if x < 0 return -1, if x > 0 return 1, if x == 0 return 0.
-     @param x - number, sign of which should be calculated
-    **/
-    public static inline function sign3_F(x:Float):Int{ return (x < 0) ? -1 : (x > 0) ? 1 : 0; }
-    /**
-     sin cos bonus function. Normalise sin cos, counted use vectors to -1...1 include boders.
-     Need because sometimes (detected on python3 in the past) result of calculating sin cos
-     uses vectors can be more then 1, or less then -1.
-     For example 1.00000000001 etc. Just tiny correction, just for case.
-     @param x - incoming sin cos value for check
-    **/
-    public static inline function sin_cos_cut(x:Float):Float { return (x>1)?1:(x<-1)?-1:x; }
-    /**
-     convert radians angle to degrees angle value
-     @param angle - radians angle for recounting
-    **/
-    public static inline function degrees(angle:Float):Float { return angle * 180 / Math.PI; }
-    /**
-     convert degrees angle to radians angle value
-     @param angle - degrees angle for recounting
-    **/
-    public static inline function radians(angle:Float):Float { return angle / 180 * Math.PI; }
-    /**
-     return the quadrant of any angle. 0 angle return 4 quadrant.
-     For example use degrees:
-     ... 0 < angle <= 90 return 1 quadrant 
-     ... 90 < angle <= 180 return 2 quadrant 
-     ... 180 < angle <= 270 return 3 quadrant 
-     ... 270 < angle <= 360 return 4 quadrant 
-     @param angle - angle for quadrant calculating
-     @param rad - if true then radians angle, default false (degrees angle)
-    **/
-    public static function angle_quadrant(angle:Float, rad:Bool = false):Int {
-        var k:Int=4; // 0 case
-        if (rad){angle=degrees(angle);}
-        var x:Float=angle%360;
-        if (x > 270){ k = 4; }
-        else if (x > 180){ k = 3; }
-        else if (x > 90){ k = 2; }
-        else if (x > 0){ k = 1; }
-        else if (x <= -270){ k = 1; }
-        else if (x <= -180){ k = 2; }
-        else if (x <= -90){ k = 3; }
-        else if (x <= 0){ k = 4; }
-        return k;
-    }
+    public function new(){trace("GeometryXD is ready for use");}
     
     /**
      return vector length (other names "norm" or "magnitude").
-     For [2,3] return Math.sqrt((2 * 2) + (3 * 3))
+     For `[2,3]` return Math.sqrt((2 * 2) + (3 * 3))
      @param vecXD - incoming vector
     **/
     public static function vecXDnorm(vecXD:Array<Float>):Float{
@@ -1102,16 +53,7 @@ class GeometryXD{
             for (i in 0...lv){ if (vecXDnorm(vecXDfield[i]) == 0 ) { rez = true; break; } }
         }return rez;
     }
-    /**
-     return Float Array element with maximum absolute value with sign.
-     Each element compared as abs(element). [1, 2, -4] return -4.
-     @param a - incoming array
-    **/
-    public static function maxabs(a:Array<Float>):Float{
-        var rez:Float = 0;
-        for (i in a){if (Math.abs(i) > Math.abs(rez)){rez = i;}}
-        return rez;
-    }
+    
     /**
      return vector builded uses two dots
      @param dotXDa - start dot
@@ -1162,14 +104,14 @@ class GeometryXD{
         ):Null<Bool>{
         var rez:Null<Bool> = null;
         if (vecXDa.length == vecXDb.length){
-            rez = same_xF([vecXDa, vecXDb]);
+            rez = AM.same_xF([vecXDa, vecXDb]);
         }return rez;
     }
     /**
      compare vectors from vector field. Returns true if all vectors have same data
      @param vecXDfield - vector field(array of vectors)
     **/
-    public static inline function vecXDfieldsame(vecXDfield:Array<Array<Float>>):Null<Bool>{ return same_xF(vecXDfield); }
+    public static inline function vecXDfieldsame(vecXDfield:Array<Array<Float>>):Null<Bool>{ return AM.same_xF(vecXDfield); }
     /**
      return random vector with length equal 1
      @param x - number of vector dimension. For example x = 3 -> 3D vector, x = 4 -> 4D vector
@@ -1192,14 +134,14 @@ class GeometryXD{
         vecXDa:Array<Float>,
         vecXDb:Array<Float>
         ):Array<Float>{
-        return sum_xF([vecXDa, vecXDb]);
+        return AM.sum_xF([vecXDa, vecXDb]);
     }
     /**
      return vector, which is sum of vector field
      @param vecXDfield - vector field (array of vectors)
     **/
     public static function vecXDfieldsum(vecXDfield:Array<Array<Float>>):Array<Float>{
-        return sum_xF(vecXDfield);
+        return AM.sum_xF(vecXDfield);
     }
     /**
      return vector, which is diff of vectors. vecXDa - vecXDb
@@ -1210,21 +152,21 @@ class GeometryXD{
         vecXDa:Array<Float>,
         vecXDb:Array<Float>
         ):Array<Float>{
-        return diff_xF([vecXDa, vecXDb]);
+        return AM.diff_xF([vecXDa, vecXDb]);
     }
     /**
      return vector, which is diff of vector field. v0-v1...-vn
      @param vecXDfield - vector field(array of vectors)
     **/
     public static function vecXDfielddiff(vecXDfield:Array<Array<Float>>):Array<Float>{
-        return diff_xF(vecXDfield);
+        return AM.diff_xF(vecXDfield);
     }
     /**
      return opposite vector. [1, 2, -4] return [-1, -2, 4]
      @param vecXD - vector
     **/
     public static function vecXDback(vecXD:Array<Float>):Array<Float>{
-        return minus_F(vecXD);
+        return AM.minus_F(vecXD);
     }
     /**
      return opposite vector field. [[1, 2], [3, -4]] return [[-1, -2], [-3, 4]]
@@ -1302,7 +244,7 @@ class GeometryXD{
         var la:Float = vecXDnorm(vecXDa);
         var lb:Float = vecXDnorm(vecXDb);
         if (la > 0 && lb > 0){
-            rez = sin_cos_cut( vecXDscalar(vecXDa,vecXDb) / (la * lb) );
+            rez = NM.sin_cos_cut( vecXDscalar(vecXDa,vecXDb) / (la * lb) );
         }return rez;
     }
     /**
@@ -1320,7 +262,7 @@ class GeometryXD{
         var la:Float = vecXDnorm(vecXDa);
         var lb:Float = vecXDnorm(vecXDb);
         if (la > 0 && lb > 0){
-            rez = (rad) ? Math.acos(vecXDcos(vecXDa,vecXDb)):degrees(Math.acos(vecXDcos(vecXDa,vecXDb)));
+            rez = (rad) ? Math.acos(vecXDcos(vecXDa,vecXDb)):NM.degrees(Math.acos(vecXDcos(vecXDa,vecXDb)));
         }return rez;
     }
     /**
@@ -1349,7 +291,7 @@ class GeometryXD{
     **/
     public static function vec3Dfieldnormal(vec3Dfield:Array<Array<Float>>):Array<Float>{
         var rez:Array<Float> = null;
-        if (vec3Dfield[0].length == 3 && same_size_F(vec3Dfield)){
+        if (vec3Dfield[0].length == 3 && AM.same_size_F(vec3Dfield)){
             rez = vec3Dfield[0];
             for (i in 1...vec3Dfield.length){
                 rez = vec3Dnormal(rez,vec3Dfield[i]);
@@ -1366,14 +308,14 @@ class GeometryXD{
         vecXDa:Array<Float>,
         vecXDb:Array<Float>
         ):Array<Float>{
-        return middle_xF([vecXDa, vecXDb]);
+        return AM.middle_xF([vecXDa, vecXDb]);
     }
     /**
      return vector with middle value. Just call middle_xF(vecXDfield)
      @param vecXDfield - vector field(array of vectors)
     **/
     public static function vecXDfieldmiddle(vecXDfield:Array<Array<Float>>):Array<Float>{
-        return middle_xF(vecXDfield);
+        return AM.middle_xF(vecXDfield);
     }
     /**
      return true if vectors have same size. Bonus function. Just call same_size_F([vecXDa, vecXDb])
@@ -1384,14 +326,14 @@ class GeometryXD{
         vecXDa:Array<Float>,
         vecXDb:Array<Float>
         ):Null<Bool>{
-        return same_size_F([vecXDa, vecXDb]);
+        return AM.same_size_F([vecXDa, vecXDb]);
     }
     /**
      return true if vector from vector field have same size. Bonus function. Just call same_size_F(vecXDfield)
      @param vecXDfield - vector field(array of vectors)
     **/
     public static function vecXDfieldsamesize(vecXDfield:Array<Array<Float>>):Null<Bool>{
-        return same_size_F(vecXDfield);
+        return AM.same_size_F(vecXDfield);
     }
     
     /**
@@ -1475,8 +417,8 @@ class GeometryXD{
             ldot != 3 ||
             lplane != 4
             ){ return rez; }
-        var checkup:Float = - (multisum_xF([[for (i in 0...3) plane3D[i]], dot3D]) + plane3D[3]);
-        var checkdn:Float = multisum_xF([[for (i in 0...3) plane3D[i]], [for (i in 0...3) plane3D[i]]]);
+        var checkup:Float = - (AM.multisum_xF([[for (i in 0...3) plane3D[i]], dot3D]) + plane3D[3]);
+        var checkdn:Float = AM.multisum_xF([[for (i in 0...3) plane3D[i]], [for (i in 0...3) plane3D[i]]]);
         if (checkdn == 0){return rez;}
         else if (checkup == 0){return dot3D;}
         else {
@@ -1510,7 +452,7 @@ class GeometryXD{
         var vox:Array<Float> = vec3Dviewplane_ox;
         if(
             dot.length != 3 ||
-            !same_size_F([dot, dotc, vp, vox]) ||
+            !AM.same_size_F([dot, dotc, vp, vox]) ||
             vecXDnorm(vp) == 0 ||
             vecXDnorm(vox) == 0 ||
             vecXDparalleled(vp, vox)
@@ -1562,7 +504,7 @@ class GeometryXD{
             vecXDparalleled(vec3D, vec3Daxis) ||
             angle == 0
             ){ return rez;}
-        angle = (rad) ? angle : radians(angle);
+        angle = (rad) ? angle : NM.radians(angle);
         var t:Array<Float> = [0,0,0];
         var vb:Array<Float> = vec3Dnormal(vec3Daxis, vec3D);
         var vc:Array<Float> = vec3Dnormal(vb, vec3Daxis);
@@ -1590,12 +532,12 @@ class GeometryXD{
     ):Array<Array<Float>>{
         var rez:Array<Array<Float>> = null;
         if (
-            !same_size_F(vec3Dfield) ||
-            !same_size_F(vec3Daxes) ||
+            !AM.same_size_F(vec3Dfield) ||
+            !AM.same_size_F(vec3Daxes) ||
             vec3Dfield[0].length != 3 ||
             vec3Daxes[0].length != 3 ||
-            zero_inside_F(vecXDfieldnorm(vec3Dfield)) ||
-            zero_inside_F(vecXDfieldnorm(vec3Daxes)) ||
+            AM.zero_inside_F(vecXDfieldnorm(vec3Dfield)) ||
+            AM.zero_inside_F(vecXDfieldnorm(vec3Daxes)) ||
             angles.length != vec3Dfield.length ||
             angles.length != vec3Daxes.length
         ){ return rez; }
@@ -1648,7 +590,7 @@ class GeometryXD{
         if (dot3D.length != 3 ||
             vec3D.length != 3 ||
             vecXDnorm(vec3D) == 0){ return rez; }
-        var d:Float = - multisum_xF([vec3D, dot3D]);
+        var d:Float = - AM.multisum_xF([vec3D, dot3D]);
         rez = [vec3D[0], vec3D[1], vec3D[2], d];
         return rez;
     }
@@ -1691,7 +633,7 @@ class GeometryXD{
         var rez:Array<Float> = null;
         if (
             dot3D.length != 3 ||
-            !same_size_F([dot3D, dot3Da, dot3Db]) ||
+            !AM.same_size_F([dot3D, dot3Da, dot3Db]) ||
             vecXDsame(dot3D, dot3Da) ||
             vecXDsame(dot3D, dot3Db) ||
             vecXDsame(dot3Da, dot3Db)
@@ -1738,7 +680,7 @@ class GeometryXD{
             vecXDnorm([plane3D[0], plane3D[1], plane3D[2]]) == 0
             ) { return rez; }
         rez = Math.abs(
-            multisum_xF([[plane3D[0], plane3D[1], plane3D[2]], dot3D]) + plane3D[3]
+            AM.multisum_xF([[plane3D[0], plane3D[1], plane3D[2]], dot3D]) + plane3D[3]
         ) / vecXDnorm([plane3D[0], plane3D[1], plane3D[2]]);
         return rez;
     }
@@ -1810,7 +752,7 @@ class GeometryXD{
         ):Array<Array<Float>>{
         var rez:Array<Array<Float>> = null;
         if (
-            !same_size_F([dot3D1, vec3D1, dot3D2, vec3D2]) ||
+            !AM.same_size_F([dot3D1, vec3D1, dot3D2, vec3D2]) ||
             dot3D1.length != 3
         ){ return rez; }
         var r1:Array<Float> = dotXDoffset(dot3D1, vec3D1, distance1);
@@ -1845,7 +787,7 @@ class GeometryXD{
         ):Array<Array<Float>>{
         var rez:Array<Array<Float>> = null;
         if (
-            !same_size_F([dot3D0, dot3D1, dot3D2]) ||
+            !AM.same_size_F([dot3D0, dot3D1, dot3D2]) ||
             dot3D0.length != 3
             ){ return rez; }
         var v1:Array<Float> = vecXD(dot3D0, dot3D1);
@@ -1931,7 +873,7 @@ class GeometryXD{
         if (
             curve.length == 4 &&
             curve[0].length == 3 &&
-            same_size_F(curve)
+            AM.same_size_F(curve)
         ){
             rez = [for (i in 0...4) for (ai in 0...3) curve[i][ai]];
         }return rez;
@@ -1955,7 +897,7 @@ class GeometryXD{
     public static inline function beziercubic3D_derivativeparameters(curve:Array<Array<Float>>):Array<Array<Float>>{
         var rez:Array<Array<Float>> = null;
         var cl:Int = curve.length;
-        if ( cl == 4 && curve[0].length == 3 && same_size_F(curve)){
+        if ( cl == 4 && curve[0].length == 3 && AM.same_size_F(curve)){
             rez = [for (i in 0...3) [for (p in 0...4) curve[p][i]]];
         }return rez;
     }
@@ -1988,7 +930,7 @@ class GeometryXD{
         if (
             curve.length == 4 &&
             curve[0].length == 3 &&
-            same_size_F(curve)
+            AM.same_size_F(curve)
         ){
             rez = [for (i in beziercubic3D_derivativeparameters(curve)) beziercubic_derivative(i, p)];
         }return rez;
@@ -2011,7 +953,7 @@ class GeometryXD{
     public static function beziercubic3D_support_dot_one(curve3D_4dots:Array<Array<Float>>):Array<Float>{
         var rez:Array<Float> = null;
         var c:Array<Array<Float>> = curve3D_4dots;
-        if (c.length == 4 && same_size_F(c)){ rez = [for (i in beziercubic3D_derivativeparameters(c)) beziercubic_support_dot_one(i)]; }
+        if (c.length == 4 && AM.same_size_F(c)){ rez = [for (i in beziercubic3D_derivativeparameters(c)) beziercubic_support_dot_one(i)]; }
         return rez;
     }
     /**
@@ -2031,7 +973,7 @@ class GeometryXD{
     public static function beziercubic3D_support_dot_two(curve3D_4dots:Array<Array<Float>>):Array<Float>{
         var rez:Array<Float> = null;
         var c:Array<Array<Float>> = curve3D_4dots;
-        if (c.length == 4 && same_size_F(c)){ rez = [for (i in beziercubic3D_derivativeparameters(c)) beziercubic_support_dot_two(i)]; }
+        if (c.length == 4 && AM.same_size_F(c)){ rez = [for (i in beziercubic3D_derivativeparameters(c)) beziercubic_support_dot_two(i)]; }
         return rez;
     }
     /**
@@ -2040,7 +982,7 @@ class GeometryXD{
     **/
     public static inline function beziercubic3D_follow_4dots_trajectory(dots:Array<Array<Float>>):Array<Array<Float>>{
         var rez:Array<Array<Float>> = null;
-        if (dots.length == 4 && dots[0].length == 3 && same_size_F(dots)){
+        if (dots.length == 4 && dots[0].length == 3 && AM.same_size_F(dots)){
             var dot_one:Array<Float> = beziercubic3D_support_dot_one(dots);
             var dot_two:Array<Float> = beziercubic3D_support_dot_two(dots);
             rez = [dots[0], dot_one, dot_two, dots[3]];
@@ -2079,7 +1021,7 @@ class GeometryXD{
         var rez:Array<Float> = null;
         var c:Array<Array<Float>> = beziercubic3D;
         var p:Float = parameter;
-        if (c.length == 4 && c[0].length == 3 && same_size_F(c)){
+        if (c.length == 4 && c[0].length == 3 && AM.same_size_F(c)){
             rez = [for (i in beziercubic3D_derivativeparameters(c)) beziercubic_coordinate(i, p)];
         }return rez;
     }
@@ -2094,7 +1036,7 @@ class GeometryXD{
         if (
             c.length == 4 &&
             c[0].length == 3 &&
-            same_size_F(c)
+            AM.same_size_F(c)
         ){
             c[1] = beziercubic3Ddot(c, 1 / 3);
             c[2] = beziercubic3Ddot(c, 2 / 3);
@@ -2115,7 +1057,7 @@ class GeometryXD{
         if (
             curve3D.length == 4 &&
             curve3D[0].length == 3 &&
-            same_size_F(curve3D) &&
+            AM.same_size_F(curve3D) &&
             vec3D.length == 3
         ){
             rez = [for (i in curve3D) dotXDoffset(i, vec3D, distance)];
@@ -2140,7 +1082,7 @@ class GeometryXD{
         if (
             curve3D.length == 4 &&
             curve3D[0].length == 3 &&
-            same_size_F(curve3D) &&
+            AM.same_size_F(curve3D) &&
             dot3D.length == 3 &&
             vec3D.length == 3 &&
             vecXDnorm(vec3D) > 0
@@ -2164,7 +1106,7 @@ class GeometryXD{
         if (
             curve3D.length == 4 &&
             curve3D[0].length == 3 &&
-            same_size_F(curve3D) &&
+            AM.same_size_F(curve3D) &&
             dot3D.length == 3 &&
             scale_xyz.length == 3
         ){
@@ -2339,7 +1281,7 @@ class GeometryXD{
             a > 0 && b > 0 && an > 0 && bn > 0
         ){
             var ea:Null<Float> = null; var eb:Null<Float> = null;
-            switch(angle_quadrant(angle, rad)){
+            switch(NM.angle_quadrant(angle, rad)){
                 case 1 : ea = a; eb = b;
                 case 2 : ea = an; eb = b;
                 case 3 : ea = an; eb = bn;
@@ -2376,9 +1318,9 @@ class GeometryXD{
         if(
             dot3D.length != 3 ||
             vec3Dsemiaxes.length != 4 ||
-            !same_size_F(vec3Dsemiaxes) ||
+            !AM.same_size_F(vec3Dsemiaxes) ||
             semiaxes.length != 4 ||
-            zero_inside_F(semiaxes) ||
+            AM.zero_inside_F(semiaxes) ||
             zero_vector_inside(vec3Dsemiaxes)
         ){ return rez; }
         var t0:Array<Float> = dot3D;
@@ -2390,7 +1332,7 @@ class GeometryXD{
         var b:Float = semiaxes[1];
         var ad:Float = semiaxes[2];
         var bd:Float = semiaxes[3];
-        var cos45:Float = Math.cos(radians(45));
+        var cos45:Float = Math.cos(NM.radians(45));
         var v:Array<Array<Float>> = [va,vb,vad,vbd];
         var d:Array<Float> = [a*cos45,b*cos45,ad*cos45,bd*cos45];
         var vv:Array<Array<Float>> = [vb,vad,vbd,va];
@@ -2418,7 +1360,7 @@ class GeometryXD{
         var u:Float = angle;
         var a:Float = semiaxis_a_ox;
         var b:Float = semiaxis_b_oy;
-        if (!rad){ u = radians(u); }
+        if (!rad){ u = NM.radians(u); }
         return [a * Math.cos(u), b * Math.sin(u)];
     }
     /**
@@ -2437,8 +1379,8 @@ class GeometryXD{
         rad:Bool = false
     ):Array<Array<Float>>{
         var rez:Array<Array<Float>> = null;
-        var a0:Float = (rad) ? degrees(angle0) : angle0;
-        var a1:Float = (rad) ? degrees(angle1) : angle1;
+        var a0:Float = (rad) ? NM.degrees(angle0) : angle0;
+        var a1:Float = (rad) ? NM.degrees(angle1) : angle1;
         a0 = (a0 > 90) ? 90 : (a0 < 0) ? 0 : a0;
         a1 = (a1 > 90) ? 90 : (a1 < 0) ? 0 : a1;
         a0 = (a0 >= a1) ? 0 : a0;
@@ -2514,13 +1456,13 @@ class GeometryXD{
         var xy:Array<Float> = null;
         if (cl > 0 && a > 0 && b > 0){
             var xy0:Array<Float> = ellipse2Ddot(u, a, b, rad);
-            if (rad){ u = degrees(u);}
+            if (rad){ u = NM.degrees(u);}
             for (ue in 1...361){
                 xy = ellipse2Ddot(u + ue, a, b);
                 le += vecXDnorm(vecXD(xy0, xy));
-                if (le >= cl){ return (rad) ? radians(ue) : ue; }
+                if (le >= cl){ return (rad) ? NM.radians(ue) : ue; }
                 xy0 = xy;
-            }rez = (rad) ? radians(360) : 360;
+            }rez = (rad) ? NM.radians(360) : 360;
         }return rez;
     }
     /**
@@ -2544,11 +1486,11 @@ class GeometryXD{
         if(
             dot3D.length != 3 ||
             vec3Dsemiaxes.length != 4 ||
-            !same_size_F(vec3Dsemiaxes) ||
+            !AM.same_size_F(vec3Dsemiaxes) ||
             semiaxes.length != 4 ||
             angle_proportions.length < 1 ||
-            negative_inside_F(angle_proportions) ||
-            sum_F(angle_proportions) == 0
+            AM.negative_inside_F(angle_proportions) ||
+            AM.sum_F(angle_proportions) == 0
         ){ return rez; }
         var t0:Array<Float> = dot3D;
         var va:Array<Float> = vec3Dsemiaxes[0];
@@ -2560,7 +1502,7 @@ class GeometryXD{
         var ad:Float = semiaxes[2];
         var bd:Float = semiaxes[3];
         var doli:Array<Float> = angle_proportions;
-        var x:Float = 360 / sum_F(doli);
+        var x:Float = 360 / AM.sum_F(doli);
         var axis_a:Array<Float>;
         var axis_b:Array<Float>;
         var dlina_a:Float;
@@ -2575,8 +1517,8 @@ class GeometryXD{
             axis_a = va; dlina_a = a; axis_b = vb; dlina_b = b;
             if (u > 90 && u <= 270){ axis_a = vad; dlina_a = ad; }
             if (u > 180){ axis_b = vbd; dlina_b = bd;}
-            v = axis_a; d = dlina_a * Math.abs(Math.cos(radians(u)));
-            vv = axis_b; dd = dlina_b * Math.abs(Math.sin(radians(u)));
+            v = axis_a; d = dlina_a * Math.abs(Math.cos(NM.radians(u)));
+            vv = axis_b; dd = dlina_b * Math.abs(Math.sin(NM.radians(u)));
             rez.push(dotXDoffset(dotXDoffset(t0, v, d), vv, dd));
             u += i * x;
         }return rez;
@@ -2598,7 +1540,7 @@ class GeometryXD{
         var rez:Array<Array<Float>> = null;
         if (
             dot3D.length != 3 ||
-            !same_size_F(vec3Dfield) ||
+            !AM.same_size_F(vec3Dfield) ||
             vec3Dfield.length != distances.length ||
             vec3Dfield[0].length != 3
         ){ return rez; }
@@ -2642,7 +1584,7 @@ class GeometryXD{
             vecXDnorm(vn) == 0 ||
             vecXDparalleled(va, vn)
         ){ return rez; }
-        var x:Float = 360 / sum_F(ap);
+        var x:Float = 360 / AM.sum_F(ap);
         va = projection_vec3D_on_plane3D(va, [vn[0], vn[1], vn[2], 0]);
         rez = [t];
         var u:Float = 0;
@@ -2722,15 +1664,31 @@ class GeometryXD{
         var uvv:Float = vecXDangle(pv1, pv2, rad);
         var pvn:Array<Float> = (vecXDparalleled(pv1, pv2)) ? vn : vec3Dnormal(pv1, pv2);
         var uvnpvn:Float = vecXDangle(vn, pvn, rad);
-        var uznak:Float = (rad) ? radians(90) : 90;
+        var uznak:Float = (rad) ? NM.radians(90) : 90;
         rez = (uvnpvn > uznak) ? -uvv : uvv;
         return rez;
     }
     
     //20200422 new object using trying section . Delete comment later
     
+    /**
+     * multidimensional dot object
+     * @param dot coordinates
+     * @return DotXD
+     */
     public static function dotXD(dot:Array<Float>):DotXD {
         return new DotXD(dot);
+    }
+    
+    /**
+     * 3D dot object
+     * @param x coordinate
+     * @param y coordinate
+     * @param z coordinate
+     * @return Dot3D
+     */
+    public static function dot3D(x:Float,y:Float,z:Float):Dot3D {
+        return new Dot3D(x,y,z);
     }
     
 }

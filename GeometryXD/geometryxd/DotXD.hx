@@ -30,7 +30,7 @@ class DotXD{
      */
     public var valueM(get,never):Array<Float>;
     function get_valueM(){
-        return GeometryXD.minus_F(value);
+        return AM.minus_F(value);
     }
     
 }
