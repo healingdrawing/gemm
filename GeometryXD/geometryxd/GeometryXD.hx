@@ -1089,6 +1089,11 @@ class GeometryXD{
         rez = [for (i in vecXDfield) vecXDnorm(i)];
         return rez;
     }
+    /**
+     * return true if vector field include zero vector
+     * @param vecXDfield multidimensional vector field
+     * @return Null<Bool>
+     */
     public static inline function zero_vector_inside(vecXDfield:Array<Array<Float>>):Null<Bool>{
         var rez:Null<Bool> = null;
         var lv:Int = vecXDfield.length;

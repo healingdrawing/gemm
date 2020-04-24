@@ -1793,9 +1793,21 @@
 	@see https://haxe.org/manual/std-reflection.html</haxe_doc>
 	</class>
 	<class path="geometryxd.DotXD" params="" file="./geometryxd/DotXD.hx">
-		<value><c path="Array"><x path="Float"/></c></value>
-		<oposite set="method" line="16"><f a=""><c path="Array"><x path="Float"/></c></f></oposite>
-		<new public="1" set="method" line="10">
+		<value>
+			<c path="Array"><x path="Float"/></c>
+			<haxe_doc>* array of dot coordinates</haxe_doc>
+		</value>
+		<dn public="1" get="accessor" set="null">
+			<x path="Int"/>
+			<haxe_doc>* number or dot dimensions</haxe_doc>
+		</dn>
+		<get_dn set="method" line="24"><f a=""><x path="Int"/></f></get_dn>
+		<valueM public="1" get="accessor" set="null">
+			<c path="Array"><x path="Float"/></c>
+			<haxe_doc>* array of mirrored values of dot coordinates. If `value` = `[1,2,3,-4]` then `valueM` = `[-1,-2,-3,4]`</haxe_doc>
+		</valueM>
+		<get_valueM set="method" line="32"><f a=""><c path="Array"><x path="Float"/></c></f></get_valueM>
+		<new public="1" set="method" line="16">
 			<f a="dotXD">
 				<c path="Array"><x path="Float"/></c>
 				<x path="Void"/>
@@ -1803,21 +1815,48 @@
 			<haxe_doc>* new multidimentional dot object.
      * @param dotXD - array of dot coordinates</haxe_doc>
 		</new>
+		<haxe_doc>* multidimensional dot object</haxe_doc>
 		<meta><m n=":directlyUsed"/></meta>
 	</class>
 	<class path="geometryxd.Dot3D" params="" file="./geometryxd/DotXD.hx" module="geometryxd.DotXD">
-		<x><x path="Float"/></x>
-		<y><x path="Float"/></y>
-		<z><x path="Float"/></z>
-		<value><c path="Array"><x path="Float"/></c></value>
-		<oposite set="method" line="34"><f a=""><c path="Array"><x path="Float"/></c></f></oposite>
-		<new public="1" set="method" line="29">
-			<f a="dot3D">
-				<c path="Array"><x path="Float"/></c>
+		<x>
+			<x path="Float"/>
+			<haxe_doc>* x coordinate of dot</haxe_doc>
+		</x>
+		<y>
+			<x path="Float"/>
+			<haxe_doc>* y coordinate of dot</haxe_doc>
+		</y>
+		<z>
+			<x path="Float"/>
+			<haxe_doc>* z coordinate of dot</haxe_doc>
+		</z>
+		<value get="accessor" set="null">
+			<c path="Array"><x path="Float"/></c>
+			<haxe_doc>* array of dot coordinates `[x,y,z]`</haxe_doc>
+		</value>
+		<get_value set="method" line="67"><f a=""><c path="Array"><x path="Float"/></c></f></get_value>
+		<dn public="1" get="accessor" set="null">
+			<x path="Int"/>
+			<haxe_doc>* number or dot dimensions</haxe_doc>
+		</dn>
+		<get_dn set="method" line="74"><f a=""><x path="Int"/></f></get_dn>
+		<valueM public="1" get="accessor" set="null">
+			<c path="Array"><x path="Float"/></c>
+			<haxe_doc>* array of mirrored values of dot coordinates. If `value` = `[1,2,3,-4]` then `valueM` = `[-1,-2,-3,4]`</haxe_doc>
+		</valueM>
+		<get_valueM set="method" line="82"><f a=""><c path="Array"><x path="Float"/></c></f></get_valueM>
+		<new public="1" set="method" line="57">
+			<f a="x:y:z">
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
 				<x path="Void"/>
 			</f>
 			<haxe_doc>* new 3D dot object.
-     * @param dot3D - array of dot coordinates `[x,y,z]`</haxe_doc>
+     * @param x coordinate of dot
+     * @param y coordinate of dot
+     * @param z coordinate of dot</haxe_doc>
 		</new>
 	</class>
 	<class path="geometryxd.GeometryXD" params="" file="./geometryxd/GeometryXD.hx">
