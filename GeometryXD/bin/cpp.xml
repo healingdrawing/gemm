@@ -2417,7 +2417,7 @@
 			<x path="Float"/>
 			<haxe_doc>* z coordinate of dot</haxe_doc>
 		</z>
-		<value get="accessor" set="null">
+		<value public="1" get="accessor" set="null">
 			<c path="Array"><x path="Float"/></c>
 			<haxe_doc>* array of dot coordinates `[x,y,z]`</haxe_doc>
 		</value>
@@ -2483,7 +2483,7 @@
 		<meta><m n=":directlyUsed"/></meta>
 	</class>
 	<class path="geometryxd.DotXD" params="" file="./geometryxd/DotXD.hx">
-		<value>
+		<value public="1">
 			<c path="Array"><x path="Float"/></c>
 			<haxe_doc>* array of dot coordinates</haxe_doc>
 		</value>

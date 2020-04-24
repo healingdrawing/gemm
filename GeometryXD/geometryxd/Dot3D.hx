@@ -32,7 +32,7 @@ class Dot3D{
     /**
      * array of dot coordinates `[x,y,z]`
      */
-    var value(get,never):Array<Float>;
+    public var value(get,never):Array<Float>;
     function get_value() {
         return [this.x,this.y,this.z];
     }

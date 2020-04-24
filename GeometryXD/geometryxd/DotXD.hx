@@ -7,7 +7,7 @@ class DotXD{
     /**
      * array of dot coordinates
      */
-    var value:Array<Float>;
+    public var value:Array<Float>;
     
     /**
      * new multidimentional dot object.
