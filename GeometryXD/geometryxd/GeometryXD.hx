@@ -26,7 +26,7 @@ class GeometryXD{
      For `[2,3]` return Math.sqrt((2 * 2) + (3 * 3))
      @param vecXD - incoming vector
     **/
-    public static function vecXDnorm(vecXD:Array<Float>):Float{
+    public function vecXDnorm(vecXD:Array<Float>):Float{
         var sum:Float = 0;
         for (i in vecXD){sum += i*i;}
         return Math.sqrt(sum);
@@ -35,7 +35,7 @@ class GeometryXD{
      return array of lengths of vectors
      @param vecXDfield - incoming vectors array(vector field)
     **/
-    public static inline function vecXDfieldnorm(vecXDfield:Array<Array<Float>>):Array<Float>{
+    public inline function vecXDfieldnorm(vecXDfield:Array<Array<Float>>):Array<Float>{
         var rez:Array<Float> = null;
         rez = [for (i in vecXDfield) vecXDnorm(i)];
         return rez;
@@ -45,7 +45,7 @@ class GeometryXD{
      * @param vecXDfield multidimensional vector field
      * @return Null<Bool>
      */
-    public static inline function zero_vector_inside(vecXDfield:Array<Array<Float>>):Null<Bool>{
+    public inline function zero_vector_inside(vecXDfield:Array<Array<Float>>):Null<Bool>{
         var rez:Null<Bool> = null;
         var lv:Int = vecXDfield.length;
         if (lv > 0){
@@ -59,7 +59,7 @@ class GeometryXD{
      @param dotXDa - start dot
      @param dotXDb - end dot
     **/
-    public static function vecXD(
+    public function vecXD(
         dotXDa:Array<Float>,
         dotXDb:Array<Float>
         ):Array<Float>{
@@ -75,7 +75,7 @@ class GeometryXD{
      recount vector to length equal 1
      @param vecXD - incoming vector
     **/
-    public static function vecXDone(vecXD:Array<Float>):Array<Float>{
+    public function vecXDone(vecXD:Array<Float>):Array<Float>{
         var rez:Array<Float> = [];
         var lv:Float = vecXDnorm(vecXD);
         if (lv > 0){
@@ -88,7 +88,7 @@ class GeometryXD{
      return vector field from first dot to each other
      @param dots - dots field for vector field. dots[0] used as first dot
     **/
-    public static function vecXDfield(dots:Array<Array<Float>>):Array<Array<Float>>{
+    public function vecXDfield(dots:Array<Array<Float>>):Array<Array<Float>>{
         var rez:Array<Array<Float>> = [];
         for (i in 1...dots.length){ rez.push(vecXD(dots[0], dots[i])); }
         return rez;
@@ -98,7 +98,7 @@ class GeometryXD{
      @param vecXDa - incoming vector
      @param vecXDb - incoming vector
     **/
-    public static inline function vecXDsame(
+    public inline function vecXDsame(
         vecXDa:Array<Float>,
         vecXDb:Array<Float>
         ):Null<Bool>{
@@ -111,12 +111,12 @@ class GeometryXD{
      compare vectors from vector field. Returns true if all vectors have same data
      @param vecXDfield - vector field(array of vectors)
     **/
-    public static inline function vecXDfieldsame(vecXDfield:Array<Array<Float>>):Null<Bool>{ return AM.same_xF(vecXDfield); }
+    public inline function vecXDfieldsame(vecXDfield:Array<Array<Float>>):Null<Bool>{ return AM.same_xF(vecXDfield); }
     /**
      return random vector with length equal 1
      @param x - number of vector dimension. For example x = 3 -> 3D vector, x = 4 -> 4D vector
     **/
-    public static function vecXDrandom(x:Int = 3):Array<Float>{
+    public function vecXDrandom(x:Int = 3):Array<Float>{
         var v0:Array<Float> = [for (i in 0...x) 0];
         var v1:Array<Float> = [for (i in 0...x) 0];
         while(vecXDsame(v0,v1)){
@@ -130,7 +130,7 @@ class GeometryXD{
      @param vecXDa - vector
      @param vecXDb - vector
     **/
-    public static function vecXDsum(
+    public function vecXDsum(
         vecXDa:Array<Float>,
         vecXDb:Array<Float>
         ):Array<Float>{
@@ -140,7 +140,7 @@ class GeometryXD{
      return vector, which is sum of vector field
      @param vecXDfield - vector field (array of vectors)
     **/
-    public static function vecXDfieldsum(vecXDfield:Array<Array<Float>>):Array<Float>{
+    public function vecXDfieldsum(vecXDfield:Array<Array<Float>>):Array<Float>{
         return AM.sum_xF(vecXDfield);
     }
     /**
@@ -148,7 +148,7 @@ class GeometryXD{
      @param vecXDa - vector
      @param vecXDb - vector
     **/
-    public static function vecXDdiff(
+    public function vecXDdiff(
         vecXDa:Array<Float>,
         vecXDb:Array<Float>
         ):Array<Float>{
@@ -158,21 +158,21 @@ class GeometryXD{
      return vector, which is diff of vector field. v0-v1...-vn
      @param vecXDfield - vector field(array of vectors)
     **/
-    public static function vecXDfielddiff(vecXDfield:Array<Array<Float>>):Array<Float>{
+    public function vecXDfielddiff(vecXDfield:Array<Array<Float>>):Array<Float>{
         return AM.diff_xF(vecXDfield);
     }
     /**
      return opposite vector. [1, 2, -4] return [-1, -2, 4]
      @param vecXD - vector
     **/
-    public static function vecXDback(vecXD:Array<Float>):Array<Float>{
+    public function vecXDback(vecXD:Array<Float>):Array<Float>{
         return AM.minus_F(vecXD);
     }
     /**
      return opposite vector field. [[1, 2], [3, -4]] return [[-1, -2], [-3, 4]]
      @param vecXDfield - vector field(array of vectors)
     **/
-    public static function vecXDfieldback(vecXDfield:Array<Array<Float>>):Array<Array<Float>>{
+    public function vecXDfieldback(vecXDfield:Array<Array<Float>>):Array<Array<Float>>{
         return [for (i in 0...vecXDfield.length) vecXDback(vecXDfield[i])];
     }
     
@@ -181,7 +181,7 @@ class GeometryXD{
      @param vecXDa - vector
      @param vecXDb - vector
     **/
-    public static function vecXDparalleled_sameside(
+    public function vecXDparalleled_sameside(
         vecXDa:Array<Float>,
         vecXDb:Array<Float>
         ):Null<Bool>{
@@ -196,7 +196,7 @@ class GeometryXD{
      @param vecXDa - vector
      @param vecXDb - vector
     **/
-    public static function vecXDparalleled_opposite(
+    public function vecXDparalleled_opposite(
         vecXDa:Array<Float>,
         vecXDb:Array<Float>
         ):Null<Bool>{
@@ -209,7 +209,7 @@ class GeometryXD{
      @param vecXDa - vector
      @param vecXDb - vector
     **/
-    public static function vecXDparalleled(
+    public function vecXDparalleled(
         vecXDa:Array<Float>,
         vecXDb:Array<Float>
         ):Bool{
@@ -221,7 +221,7 @@ class GeometryXD{
      @param vecXDa - vector
      @param vecXDb - vector
     **/
-    public static function vecXDscalar(
+    public function vecXDscalar(
         vecXDa:Array<Float>,
         vecXDb:Array<Float>
         ):Null<Float>{
@@ -236,7 +236,7 @@ class GeometryXD{
      @param vecXDa - vector
      @param vecXDb - vector
     **/
-    public static function vecXDcos(
+    public function vecXDcos(
         vecXDa:Array<Float>,
         vecXDb:Array<Float>
         ):Null<Float>{
@@ -253,7 +253,7 @@ class GeometryXD{
      @param vecXDb - vector
      @param rad - if true then return radians angle, default false(degrees angle)
     **/
-    public static function vecXDangle(
+    public function vecXDangle(
         vecXDa:Array<Float>,
         vecXDb:Array<Float>,
         rad:Bool = false
@@ -272,7 +272,7 @@ class GeometryXD{
      @param vec3Da - vector
      @param vec3Db - vector
     **/
-    public static function vec3Dnormal(
+    public function vec3Dnormal(
         vec3Da:Array<Float>,
         vec3Db:Array<Float>
         ):Array<Float>{
@@ -289,7 +289,7 @@ class GeometryXD{
      from vector field with previous cross product result vector 3D
      @param vec3Dfield - vector field 3D(array of vectors 3D)
     **/
-    public static function vec3Dfieldnormal(vec3Dfield:Array<Array<Float>>):Array<Float>{
+    public function vec3Dfieldnormal(vec3Dfield:Array<Array<Float>>):Array<Float>{
         var rez:Array<Float> = null;
         if (vec3Dfield[0].length == 3 && AM.same_size_F(vec3Dfield)){
             rez = vec3Dfield[0];
@@ -304,7 +304,7 @@ class GeometryXD{
      @param vecXDa - vector
      @param vecXDb - vector
     **/
-    public static function vecXDmiddle(
+    public function vecXDmiddle(
         vecXDa:Array<Float>,
         vecXDb:Array<Float>
         ):Array<Float>{
@@ -314,7 +314,7 @@ class GeometryXD{
      return vector with middle value. Just call middle_xF(vecXDfield)
      @param vecXDfield - vector field(array of vectors)
     **/
-    public static function vecXDfieldmiddle(vecXDfield:Array<Array<Float>>):Array<Float>{
+    public function vecXDfieldmiddle(vecXDfield:Array<Array<Float>>):Array<Float>{
         return AM.middle_xF(vecXDfield);
     }
     /**
@@ -322,7 +322,7 @@ class GeometryXD{
      @param vecXDa - vector
      @param vecXDb - vector
     **/
-    public static function vecXDsamesize(
+    public function vecXDsamesize(
         vecXDa:Array<Float>,
         vecXDb:Array<Float>
         ):Null<Bool>{
@@ -332,7 +332,7 @@ class GeometryXD{
      return true if vector from vector field have same size. Bonus function. Just call same_size_F(vecXDfield)
      @param vecXDfield - vector field(array of vectors)
     **/
-    public static function vecXDfieldsamesize(vecXDfield:Array<Array<Float>>):Null<Bool>{
+    public function vecXDfieldsamesize(vecXDfield:Array<Array<Float>>):Null<Bool>{
         return AM.same_size_F(vecXDfield);
     }
     
@@ -342,7 +342,7 @@ class GeometryXD{
      @param vecXD - vector
      @param t - distance
     **/
-    public static function dotXDoffset(
+    public function dotXDoffset(
         dotXD:Array<Float>,
         vecXD:Array<Float>,
         t:Float
@@ -368,7 +368,7 @@ class GeometryXD{
      @param vec3Dplane - vector 3D, which is plane 3D normal vector
      @param dplane - displacement of plane 3D from [0,0,0]. default 0 ([0,0,0] dot belongs to the plane)
     **/
-    public static function dot3Dline3D_x_plane3D(
+    public function dot3Dline3D_x_plane3D(
         dot3D0:Array<Float>,
         vec3D0:Array<Float>,
         vec3Dplane:Array<Float>,
@@ -405,7 +405,7 @@ class GeometryXD{
      Where (a, b, c) - normal vector of plane 3D. (d) - distance from (0, 0, 0). 
      if d = 0, then the plane passes through the center of coordinates
     **/
-    public static function projection_dot3D_on_plane3D(
+    public function projection_dot3D_on_plane3D(
         dot3D:Array<Float>,
         plane3D:Array<Float>
         ):Array<Float>{
@@ -440,7 +440,7 @@ class GeometryXD{
      Second axis will be calculated automatically, 
      uses rotate projected ox around view plane normal vector
     **/
-    public static function dot3D_to_dot2Dviewplane(
+    public function dot3D_to_dot2Dviewplane(
         dot3D:Array<Float>,
         dot3Dviewplanecenter:Array<Float>, vec3Dviewplane:Array<Float>,
         vec3Dviewplane_ox:Array<Float>
@@ -474,7 +474,7 @@ class GeometryXD{
      @param scaleXD - scales array . For 3D case [sx, sy, sz]
      @param dotXDc - scaling center dot . For 3D case [xc, yc, zc]
     **/
-    public static function dotXDscale(
+    public function dotXDscale(
         dotXD:Array<Float>,
         scaleXD:Array<Float>,
         dotXDc:Array<Float>
@@ -493,7 +493,7 @@ class GeometryXD{
      @param angle - angle of rotation
      @param rad - it true then radians angle, default false (degrees angle)
     **/
-    public static function vec3Drotate(
+    public function vec3Drotate(
         vec3D:Array<Float>,
         vec3Daxis:Array<Float>,
         angle:Float,
@@ -524,7 +524,7 @@ class GeometryXD{
      @param angles - angles of rotating for each vector
      @param rad - if true then radians angles, default false (degrees angles)
     **/
-    public static function vec3Dfield_rotate_around_vec3Daxes(
+    public function vec3Dfield_rotate_around_vec3Daxes(
         vec3Dfield:Array<Array<Float>>,
         vec3Daxes:Array<Array<Float>>,
         angles:Array<Float>,
@@ -556,7 +556,7 @@ class GeometryXD{
      @param angle - rotation angle
      @param rad - if true then radians angle, default false (degrees angle)
     **/
-    public static function dot3Drotate(
+    public function dot3Drotate(
         dot3D:Array<Float>,
         dot3Dc:Array<Float>,
         vec3D:Array<Float>,
@@ -582,7 +582,7 @@ class GeometryXD{
      @param dot3D - dot 3D
      @param vec3D - plane 3D normal vector 3D
     **/
-    public static function plane3D_dot3Dnormal(
+    public function plane3D_dot3Dnormal(
         dot3D:Array<Float>,
         vec3D:Array<Float>
         ):Array<Float>{
@@ -601,7 +601,7 @@ class GeometryXD{
      @param vec3Da - vector 3D
      @param vec3Db - vector 3D
     **/
-    public static function plane3D_dot_vec_vec(
+    public function plane3D_dot_vec_vec(
         dot3D:Array<Float>,
         vec3Da:Array<Float>,
         vec3Db:Array<Float>
@@ -625,7 +625,7 @@ class GeometryXD{
      @param dot3Da - dot 3D
      @param dot3Db - dot 3D
     **/
-    public static function plane3D_3dots(
+    public function plane3D_3dots(
         dot3D:Array<Float>,
         dot3Da:Array<Float>,
         dot3Db:Array<Float>
@@ -651,7 +651,7 @@ class GeometryXD{
      @param dot3D - dot 3D
      @param dot3Da - dot 3D
     **/
-    public static function plane3D_2dots(
+    public function plane3D_2dots(
         dot3D:Array<Float>,
         dot3Da:Array<Float>
         ):Array<Float>{
@@ -669,7 +669,7 @@ class GeometryXD{
      @param plane3D - plane 3D (a, b, c, d). 
      Where (a, b, c) is plane 3D normal vector, and (d) is displacement plane from (0, 0, 0)
     **/
-    public static function distance_dot3D_plane3D(
+    public function distance_dot3D_plane3D(
         dot3D:Array<Float>,
         plane3D:Array<Float>
         ):Null<Float>{
@@ -689,7 +689,7 @@ class GeometryXD{
      @param plane3D - plane 3D (a, b, c, d). 
      Where (a, b, c) is plane 3D normal vector, and (d) is displacement plane from (0, 0, 0)
     **/
-    public static function random_vec3D_in_plane3D(plane3D:Array<Float>):Array<Float>{
+    public function random_vec3D_in_plane3D(plane3D:Array<Float>):Array<Float>{
         var rez:Array<Float> = null;
         if (
             plane3D.length != 4 ||
@@ -713,7 +713,7 @@ class GeometryXD{
      If dot not in plane , then will be uesd projection this dot on plane
      @param radius - radius of round area on plane 3D. Result will be calculated inside area
     **/
-    public static function random_dot3D_in_plane3D(
+    public function random_dot3D_in_plane3D(
         plane3D:Array<Float>,
         dot3D:Array<Float>,
         radius:Float
@@ -742,7 +742,7 @@ class GeometryXD{
      @param vec3D2 - vector 3D (a, b, c) for offset end internal dot
      @param distance2 - distance for offset end internal dot along offset vector
     **/
-    public static function curve3D_4dots(
+    public function curve3D_4dots(
         dot3D1:Array<Float>,
         vec3D1:Array<Float>,
         distance1:Float,
@@ -777,7 +777,7 @@ class GeometryXD{
      if a_s = 0 then lever1 vector will be paralleled lever2 vector and both will be directed 
      from dot3D0 to dot between dot3D1 and dot3D2 center dot
     **/
-    public static function curve3D_3dots(
+    public function curve3D_3dots(
         dot3D0:Array<Float>,
         dot3D1:Array<Float>,
         dot3D2:Array<Float>,
@@ -825,7 +825,7 @@ class GeometryXD{
      @param dot3D0 - start line dot 3D
      @param dot3D1 - end line dot 3D
     **/
-    public static function line3D_2dots(
+    public function line3D_2dots(
         dot3D0:Array<Float>,
         dot3D1:Array<Float>
         ):Array<Array<Float>>{
@@ -848,7 +848,7 @@ class GeometryXD{
      @param vec3D - offset start line dot vector 3D
      @param distance - offset distance for end line dot
     **/
-    public static function line3D_dot_offset(
+    public function line3D_dot_offset(
         dot3D:Array<Float>,
         vec3D:Array<Float>,
         distance:Float
@@ -868,7 +868,7 @@ class GeometryXD{
      [[x, y, z], [x, y, z], [x, y, z], [x, y, z]] return [x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4]
      @param curve - curve 3D ((x, y, z), (x, y, z), (x, y, z), (x, y, z))
     **/
-    public static inline function curve3D_4to12(curve:Array<Array<Float>>):Array<Float>{
+    public inline function curve3D_4to12(curve:Array<Array<Float>>):Array<Float>{
         var rez:Array<Float> = null;
         if (
             curve.length == 4 &&
@@ -883,7 +883,7 @@ class GeometryXD{
      [x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4] return [[x, y, z], [x, y, z], [x, y, z], [x, y, z]]
      @param curve - curve 3D data (x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4)
     **/
-    public static inline function curve3D_12to4(curve:Array<Float>):Array<Array<Float>>{
+    public inline function curve3D_12to4(curve:Array<Float>):Array<Array<Float>>{
         var rez:Array<Array<Float>> = null;
         if (curve.length == 12){
             rez = [for (i in [0,3,6,9]) [ for (ai in 0...3) curve[ai+i]]];
@@ -894,7 +894,7 @@ class GeometryXD{
      [[x1, y1, z1], [x2, y2, z2], [x3, y3, z3], [x4, y4, z4]] return [[x1,x2,x3,x4],[y1,y2,y3,y4],[z1,z2,z3,z4]]
      @param curve - bezier cubic curve 3D ((x1, y1, z1), (x2, y2, z2), (x3, y3, z3), (x4, y4, z4))
     **/
-    public static inline function beziercubic3D_derivativeparameters(curve:Array<Array<Float>>):Array<Array<Float>>{
+    public inline function beziercubic3D_derivativeparameters(curve:Array<Array<Float>>):Array<Array<Float>>{
         var rez:Array<Array<Float>> = null;
         var cl:Int = curve.length;
         if ( cl == 4 && curve[0].length == 3 && AM.same_size_F(curve)){
@@ -906,7 +906,7 @@ class GeometryXD{
      @param bcp - bezier curve derivative parameters, precalculated uses `beziercubic3D_derivativeparameters(...)`
      @param p - bezier cubic curve parameter. Standart values equal range 0...1 include borders
     **/
-    public static inline function beziercubic_derivative(
+    public inline function beziercubic_derivative(
         bcp:Array<Float>,
         p:Float
         ):Null<Float>{
@@ -922,7 +922,7 @@ class GeometryXD{
      @param curve - bezier cubic curve 3D ((x, y, z), (x, y, z), (x, y, z), (x, y, z))
      @param p - bezier cubic curve parameter. Standart values equal range 0...1 include borders
     **/
-    public static function beziercubic3D_derivative(
+    public function beziercubic3D_derivative(
         curve:Array<Array<Float>>,
         p:Float
         ):Array<Float>{
@@ -940,7 +940,7 @@ class GeometryXD{
      returns cubic bezier curve support dot one(first lever) paramater for each coordinate. Usual case `x` or `y` or `z`
      @param beziercubic_one_axis_coordinates - [c1,c2,c3,c4]. Where c is cubic bezier curve trajectory dots values for one of `x` or `y` or `z`
     **/
-    public static inline function beziercubic_support_dot_one(beziercubic_one_axis_coordinates:Array<Float>):Null<Float>{
+    public inline function beziercubic_support_dot_one(beziercubic_one_axis_coordinates:Array<Float>):Null<Float>{
         var rez:Null<Float> = null;
         var c:Array<Float> = beziercubic_one_axis_coordinates;
         if (c.length == 4){ rez = (-5 * c[0] + 18 * c[1] - 9 * c[2] + 2 * c[3]) / 6; }
@@ -950,7 +950,7 @@ class GeometryXD{
      returns dot 3D, which is bezier cubic curve 3D support dot one(first lever)
      @param curve3D_4dots - curve 3D trajectory, which is [[x1, y1, z1], [x2, y2, z2], [x3, y3, z3], [x4, y4, z4]]
     **/
-    public static function beziercubic3D_support_dot_one(curve3D_4dots:Array<Array<Float>>):Array<Float>{
+    public function beziercubic3D_support_dot_one(curve3D_4dots:Array<Array<Float>>):Array<Float>{
         var rez:Array<Float> = null;
         var c:Array<Array<Float>> = curve3D_4dots;
         if (c.length == 4 && AM.same_size_F(c)){ rez = [for (i in beziercubic3D_derivativeparameters(c)) beziercubic_support_dot_one(i)]; }
@@ -960,7 +960,7 @@ class GeometryXD{
      returns cubic bezier curve support dot two(second lever) paramater for each coordinate. Usual case `x` or `y` or `z`
      @param beziercubic_one_axis_coordinates - [c1,c2,c3,c4]. Where c is cubic bezier curve trajectory dots values for one of `x` or `y` or `z`
     **/
-    public static inline function beziercubic_support_dot_two(beziercubic_one_axis_coordinates:Array<Float>):Null<Float>{
+    public inline function beziercubic_support_dot_two(beziercubic_one_axis_coordinates:Array<Float>):Null<Float>{
         var rez:Null<Float> = null;
         var c:Array<Float> = beziercubic_one_axis_coordinates;
         if (c.length == 4){ rez = (2 * c[0] - 9 * c[1] + 18 * c[2] - 5 * c[3]) / 6; }
@@ -970,7 +970,7 @@ class GeometryXD{
      returns dot 3D, which is bezier cubic curve 3D support dot two(second lever)
      @param curve3D_4dots - curve 3D trajectory, which is [[x1, y1, z1], [x2, y2, z2], [x3, y3, z3], [x4, y4, z4]]
     **/
-    public static function beziercubic3D_support_dot_two(curve3D_4dots:Array<Array<Float>>):Array<Float>{
+    public function beziercubic3D_support_dot_two(curve3D_4dots:Array<Array<Float>>):Array<Float>{
         var rez:Array<Float> = null;
         var c:Array<Array<Float>> = curve3D_4dots;
         if (c.length == 4 && AM.same_size_F(c)){ rez = [for (i in beziercubic3D_derivativeparameters(c)) beziercubic_support_dot_two(i)]; }
@@ -980,7 +980,7 @@ class GeometryXD{
      returns bezier cubic curve 3D, calculated from 4dots 3D(curve 3D trajectory)
      @param dots - curve 3D trajectory. Must be of the form [[x1, y1, z1], [x2, y2, z2], [x3, y3, z3], [x4, y4, z4]]
     **/
-    public static inline function beziercubic3D_follow_4dots_trajectory(dots:Array<Array<Float>>):Array<Array<Float>>{
+    public inline function beziercubic3D_follow_4dots_trajectory(dots:Array<Array<Float>>):Array<Array<Float>>{
         var rez:Array<Array<Float>> = null;
         if (dots.length == 4 && dots[0].length == 3 && AM.same_size_F(dots)){
             var dot_one:Array<Float> = beziercubic3D_support_dot_one(dots);
@@ -994,7 +994,7 @@ class GeometryXD{
      For case [[x1, y1, z1], [x2, y2, z2], [x3, y3, z3], [x4, y4, z4]] curve and x axis must be [x1, x2, x3, x4]
      @param parameter - parameter of bezier curve equation. Usual case range 0...1 include borders
     **/
-    public static inline function beziercubic_coordinate(
+    public inline function beziercubic_coordinate(
         beziercubic_one_axis_coordinates:Array<Float>,
         parameter:Float
         ):Null<Float>{
@@ -1014,7 +1014,7 @@ class GeometryXD{
      Which is [dot3Dstart, lever3Dstart, lever3Dend, dot3Dend]
      @param parameter - parameter of bezier curve equation. Usual case range 0...1 include borders
     **/
-    public static function beziercubic3Ddot(
+    public function beziercubic3Ddot(
         beziercubic3D:Array<Array<Float>>,
         parameter:Float
         ):Array<Float>{
@@ -1030,7 +1030,7 @@ class GeometryXD{
      Two internal dots belongs on bezier cubic curve trajectory, with parameter 1/3 and 2/3
      @param beziercubic3D - curve 3D, which must be of the form [[x1, y1, z1], [x2, y2, z2], [x3, y3, z3], [x4, y4, z4]]
     **/
-    public static inline function curve3D_4dots_follow_beziercubic_trajectory(beziercubic3D:Array<Array<Float>>):Array<Array<Float>>{
+    public inline function curve3D_4dots_follow_beziercubic_trajectory(beziercubic3D:Array<Array<Float>>):Array<Array<Float>>{
         var rez:Array<Array<Float>> = null;
         var c:Array<Array<Float>> = beziercubic3D;
         if (
@@ -1048,7 +1048,7 @@ class GeometryXD{
      @param vec3D - vector 3D (a, b, c)
      @param distance - displacement distance
     **/
-    public static inline function curve3Doffset(
+    public inline function curve3Doffset(
         curve3D:Array<Array<Float>>,
         vec3D:Array<Float>,
         distance:Float
@@ -1071,7 +1071,7 @@ class GeometryXD{
      @param angle - rotation angle
      @param rad - if true then radians angle, default false (degrees angle)
     **/
-    public static inline function curve3Drotate(
+    public inline function curve3Drotate(
         curve3D:Array<Array<Float>>,
         dot3D:Array<Float>,
         vec3D:Array<Float>,
@@ -1097,7 +1097,7 @@ class GeometryXD{
      @param scale_xyz - scale for each axis. Must be of the form [sx, sy, sz]
      @param dot3D - scaling center(base) dot 3D
     **/
-    public static inline function curve3Dscale(
+    public inline function curve3Dscale(
         curve3D:Array<Array<Float>>,
         scale_xyz:Array<Float>,
         dot3D:Array<Float>
@@ -1122,7 +1122,7 @@ class GeometryXD{
      @param semiaxis_a - ellipse a semiaxes. Usual paralleled x axis
      @param semiaxis_b - ellipse b semiaxes. Usual paralleled y axis
     **/
-    public static inline function ellipse2Dperimeter_ramanujan(
+    public inline function ellipse2Dperimeter_ramanujan(
         semiaxis_a:Float,
         semiaxis_b:Float
     ):Null<Float>{
@@ -1154,7 +1154,7 @@ class GeometryXD{
      @param semiaxis_b - ellipse b semiaxes. Usual paralleled y axis
      @param ellipse_dot2D - dot 2D belongs to the ellipse perimeter
     **/
-    public static function tangent_centered_ellipse2Ddot(
+    public function tangent_centered_ellipse2Ddot(
         semiaxis_a:Float,
         semiaxis_b:Float,
         ellipse_dot2D:Array<Float>
@@ -1211,7 +1211,7 @@ class GeometryXD{
      @param semiaxis_a - ellipse a semiaxes. Usual paralleled x axis
      @param semiaxis_b - ellipse b semiaxes. Usual paralleled y axis
     **/
-    public static inline function ellipse_e_parameter(
+    public inline function ellipse_e_parameter(
         semiaxis_a:Float,
         semiaxis_b:Float
     ):Null<Float>{
@@ -1227,7 +1227,7 @@ class GeometryXD{
      @param semiaxis_a - ellipse a semiaxes. Usual paralleled x axis
      @param semiaxis_b - ellipse b semiaxes. Usual paralleled y axis
     **/
-    public static function ellipse_c_parameter(
+    public function ellipse_c_parameter(
         semiaxis_a:Float,
         semiaxis_b:Float
     ):Null<Float>{
@@ -1256,7 +1256,7 @@ class GeometryXD{
      Calculating will be directed from positive semiaxis a to positive semiaxis b, for positive angle
      @param rad - if true then radians angle, default false(degrees angle)
     **/
-    public static function tangent_vec3D_in_plane_of_ellipse2D_placed_in_3Dspace(
+    public function tangent_vec3D_in_plane_of_ellipse2D_placed_in_3Dspace(
         dot3D:Array<Float>,
         vec3Dnormal_ellipse_plane:Array<Float>,
         vec3Dsemiaxis_a_direction:Array<Float>,
@@ -1309,7 +1309,7 @@ class GeometryXD{
      Which is [a, b, an, bn], where an and bn is negative semiaxes direction vectors 
      @param semiaxes - array of semiaxes lengths. Must be of the form [a, b, an, bn]
     **/
-    public static function ellipse3D_dots(
+    public function ellipse3D_dots(
         dot3D:Array<Float>,
         vec3Dsemiaxes:Array<Array<Float>>,
         semiaxes:Array<Float>
@@ -1351,7 +1351,7 @@ class GeometryXD{
      @param semiaxis_b_oy - semiaxis b length
      @param rad - if true then radians angle, default false(degrees angle)
     **/
-    public static inline function ellipse2Ddot(
+    public inline function ellipse2Ddot(
         angle:Float,
         semiaxis_a_ox:Float,
         semiaxis_b_oy:Float,
@@ -1371,7 +1371,7 @@ class GeometryXD{
      @param semiaxis_b_oy - length of semiaxis b (oy)
      @param rad - if true then radians angle, default false(degrees angle)
     **/
-    public static function curve2D_4dots_elliptic_shape_restricted_to_quarter(
+    public function curve2D_4dots_elliptic_shape_restricted_to_quarter(
         angle0:Float,
         angle1:Float,
         semiaxis_a_ox:Float,
@@ -1402,7 +1402,7 @@ class GeometryXD{
      @param angle1 - angle from semiaxis a to semiaxis b direction started from end of `angle0`
      @param rad - if true then radians angle, default false(degrees angle)
     **/
-    public static function beziercubic3D_elliptic_shape_restricted_to_quarter(
+    public function beziercubic3D_elliptic_shape_restricted_to_quarter(
         dot3Dc:Array<Float>,
         vec3D_a_ox:Array<Float>,
         vec3D_b_oy:Array<Float>,
@@ -1440,7 +1440,7 @@ class GeometryXD{
      Curve placing started from end of `angle0`
      @param rad - if true then radians angle, default false(degrees angle)
     **/
-    public static function angle_required_to_place_curve_on_ellipse(
+    public function angle_required_to_place_curve_on_ellipse(
         curve_length:Float,
         semiaxis_a_ox:Float,
         semiaxis_b_oy:Float,
@@ -1476,7 +1476,7 @@ class GeometryXD{
      @param angle_proportions - proportions array for splitting 360 degrees angle(without units, not matter). 
      `[90, 90, 90, 90]` returns result same as `[1, 1, 1, 1]`, in both cases will be created quadrangle inside ellipse
     **/
-    public static function polygon3D_inside_ellipse(
+    public function polygon3D_inside_ellipse(
         dot3D:Array<Float>,
         vec3Dsemiaxes:Array<Array<Float>>,
         semiaxes:Array<Float>,
@@ -1532,7 +1532,7 @@ class GeometryXD{
      Each Vertex will be offsetted along own vector
      @param distances - polygon vertexes radial distances array(offset length)
     **/
-    public static function polygon3D_vec3Dfield_distances(
+    public function polygon3D_vec3Dfield_distances(
         dot3D:Array<Float>,
         vec3Dfield:Array<Array<Float>>,
         distances:Array<Float>
@@ -1562,7 +1562,7 @@ class GeometryXD{
      `[90, 90, 90, 90]` returns result same as `[1, 1, 1, 1]`, in both cases will be created quadrangle belongs to plane
      @param distances - polygon vertexes radial distances array(offset length)
     **/
-    public static function polygon3D_in_plane(
+    public function polygon3D_in_plane(
         dot3D:Array<Float>,
         vec3Dplane_normal:Array<Float>,
         vec3Dsemiaxis_a_direction:Array<Float>,
@@ -1599,7 +1599,7 @@ class GeometryXD{
      @param polygon3D - must be of the form 
      [ polygon center dot 3D, polygon vertex first dot 3D , ... ,polygon vertex last dot 3D ]
     **/
-    public static function polygon3D_to_vec3Dfield(
+    public function polygon3D_to_vec3Dfield(
         polygon3D:Array<Array<Float>>
     ):Array<Array<Float>>{
         return [for (i in 1...polygon3D.length) vecXD(polygon3D[0], polygon3D[i])];
@@ -1609,7 +1609,7 @@ class GeometryXD{
      @param vec3D - vector 3D (a, b, c)
      @param plane3D - plane 3D (a, b, c, d), where (a, b, c) normal vector of plane, and (d) displacement from (0, 0, 0)
     **/
-    public static function projection_vec3D_on_plane3D(
+    public function projection_vec3D_on_plane3D(
         vec3D:Array<Float>,
         plane3D:Array<Float>
         ):Array<Float>{
@@ -1640,7 +1640,7 @@ class GeometryXD{
      @param plane3D - plane 3D (a, b, c, d), where (a, b, c) normal vector of plane, and (d) displacement from (0, 0, 0)
      @param rad - if true then radians angle, default false(degrees angle)
     **/
-    public static function angle_vec3Dvec3D_projection_on_plane3D(
+    public function angle_vec3Dvec3D_projection_on_plane3D(
         vec3D1:Array<Float>,
         vec3D2:Array<Float>,
         plane3D:Array<Float>,
@@ -1676,7 +1676,7 @@ class GeometryXD{
      * @param dot coordinates
      * @return DotXD
      */
-    public static function dotXD(dot:Array<Float>):DotXD {
+    public function dotXD(dot:Array<Float>):DotXD {
         return new DotXD(dot);
     }
     
@@ -1687,7 +1687,7 @@ class GeometryXD{
      * @param z coordinate
      * @return Dot3D
      */
-    public static function dot3D(x:Float,y:Float,z:Float):Dot3D {
+    public function dot3D(x:Float,y:Float,z:Float):Dot3D {
         return new Dot3D(x,y,z);
     }
     

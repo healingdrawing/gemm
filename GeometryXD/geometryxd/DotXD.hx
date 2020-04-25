@@ -14,23 +14,37 @@ class DotXD{
      * @param dotXD - array of dot coordinates
      */
      public function new(dotXD:Array<Float>) {
-        value = dotXD;
+        this.value = dotXD;
     }
+    
+    var am = new AM();
     
     /**
      * number or dot dimensions
      */
-    public var dn(get,never):Int;
-    function get_dn() {
+    public function dn() {
         return this.value.length;
     }
     
     /**
-     * array of mirrored values of dot coordinates. If `value` = `[1,2,3,-4]` then `valueM` = `[-1,-2,-3,4]`
+     * array of mirrored values of dot coordinates. If `value` = `[1,2,3,-4]` return `[-1,-2,-3,4]`
      */
-    public var valueM(get,never):Array<Float>;
-    function get_valueM(){
-        return AM.minus_F(value);
+    public function valueM(){
+        return am.minus_F(this.value);
+    }
+    
+    /**
+     * new multidimensional dot object with mirrored coordinates. If `value` = `[1,2,3,-4]` return dotXD().value = `[-1,-2,-3,4]`
+     */
+     public function dotXDM(){
+        return new DotXD(am.minus_F(this.value));
+    }
+    
+    /**
+     * new multidimensional dot object with same coordinates. if `value` = `[1,2,3,-4]` return dotXD().value = `[1,2,3,-4]`
+     */
+     public function dotXDcopy(){
+        return new DotXD(this.value);
     }
     
 }

@@ -7,15 +7,15 @@ class Dot3D{
     /**
      * x coordinate of dot
      */
-    var x:Float;
+    public var x:Float;
     /**
      * y coordinate of dot
      */
-    var y:Float;
+    public var y:Float;
     /**
      * z coordinate of dot
      */
-    var z:Float;
+    public var z:Float;
     
     /**
      * new 3D dot object.
@@ -29,83 +29,82 @@ class Dot3D{
         this.z = z;
     }
     
+    var am = new AM();
+    
     /**
      * array of dot coordinates `[x,y,z]`
      */
-    public var value(get,never):Array<Float>;
-    function get_value() {
+    public function value() {
         return [this.x,this.y,this.z];
     }
     /**
      * number or dot dimensions
      */
-    public var dn(get,never):Int;
-    function get_dn() {
-        return this.value.length;
+    public function dn() {
+        return this.value().length;
     }
     
     /**
-     * array of mirrored values of dot coordinates. If `value` = `[1,2,3]` then `valueM` = `[-1,-2,-3]`
+     * array of mirrored values of dot coordinates. If `value()` = `[1,2,3]` return `[-1,-2,-3]`
      */
-    public var valueM(get,never):Array<Float>;
-    function get_valueM(){
-        return AM.minus_F(value);
+    public function valueM(){
+        return am.minus_F(this.value());
     }
     
     /**
-     * array of values of dot coordinates with mirrored x coordinate. If `value` = `[1,2,3]` then `valueMx` = `[-1,2,3]`
+     * array of values of dot coordinates with mirrored x coordinate. If `value()` = `[1,2,3]` return `[-1,2,3]`
      */
-    public var valueMx(get,never):Array<Float>;
-    function get_valueMx() {
+    public function valueMx() {
         return [-this.x,this.y,this.z];
     }
     
     /**
-     * array of values of dot coordinates with mirrored y coordinate. If `value` = `[1,2,3]` then `valueMx` = `[1,-2,3]`
+     * array of values of dot coordinates with mirrored y coordinate. If `value()` = `[1,2,3]` return `[1,-2,3]`
      */
-    public var valueMy(get,never):Array<Float>;
-    function get_valueMy() {
+    public function valueMy() {
         return [this.x,-this.y,this.z];
     }
     
     /**
-     * array of values of dot coordinates with mirrored z coordinate. If `value` = `[1,2,3]` then `valueMx` = `[1,2,-3]`
+     * array of values of dot coordinates with mirrored z coordinate. If `value()` = `[1,2,3]` return `[1,2,-3]`
      */
-    public var valueMz(get,never):Array<Float>;
-    function get_valueMz() {
+    public function valueMz() {
         return [this.x,this.y,-this.z];
     }
     
     /**
-     * new 3D dot object with mirrored coordinates. if this.value = `[1,2,3]` then dot3DM().value = `[-1,-2,-3]`
+     * new 3D dot object with mirrored coordinates. if `value()` = `[1,2,3]` return dot3DM().value() = `[-1,-2,-3]`
      */
-    public var dot3DM(get,never):Dot3D;
-    function get_dot3DM() {
-        return new Dot3D(this.x,this.y,this.z);
+    public function dot3DM() {
+        return new Dot3D(-this.x,-this.y,-this.z);
     }
     
     /**
-     * new 3D dot object with mirrored x coordinate. if this.value = `[1,2,3]` then dot3DM().value = `[-1,2,3]`
+     * new 3D dot object with mirrored x coordinate. if `value()` = `[1,2,3]` return dot3DM().value() = `[-1,2,3]`
      */
-    public var dot3DMx(get,never):Dot3D;
-    function get_dot3DMx() {
+    public function dot3DMx() {
         return new Dot3D(-this.x,this.y,this.z);
     }
     
     /**
-     * new 3D dot object with mirrored y coordinate. if this.value = `[1,2,3]` then dot3DM().value = `[1,-2,3]`
+     * new 3D dot object with mirrored y coordinate. if `value()` = `[1,2,3]` return dot3DM().value() = `[1,-2,3]`
      */
-    public var dot3DMy(get,never):Dot3D;
-    function get_dot3DMy() {
+    public function dot3DMy() {
         return new Dot3D(this.x,-this.y,this.z);
     }
     
     /**
-     * new 3D dot object with mirrored z coordinate. if this.value = `[1,2,3]` then dot3DM().value = `[1,2,-3]`
+     * new 3D dot object with mirrored z coordinate. if `value()` = `[1,2,3]` return dot3DM().value() = `[1,2,-3]`
      */
-    public var dot3DMz(get,never):Dot3D;
-    function get_dot3DMz() {
+    public function dot3DMz() {
         return new Dot3D(this.x,this.y,-this.z);
+    }
+    
+    /**
+     * new 3D dot object with same coordinates. if `value()` = `[1,2,3]` return dot3DM().value() = `[1,2,3]`
+     */
+    public function dot3Dcopy(){
+        return new Dot3D(this.x,this.y,this.z);
     }
     
 }

@@ -6,11 +6,13 @@ package geometryxd;
 class AM{
     public  function new(){trace("array manipulation is ready for use");}
     
+    var nm = new NM();
+    
     /**
       return true if incoming Int Array have at least one positive element
       @param a - incoming array
      **/
-     public static inline function positive_inside_I(a:Array<Int>):Bool{
+     public inline function positive_inside_I(a:Array<Int>):Bool{
         for (i in a){ if (i > 0){ return true; } }
         return false;
     }
@@ -18,7 +20,7 @@ class AM{
       return true if incoming Int Array have at least one zero element
       @param a - incoming array
      **/
-    public static inline function zero_inside_I(a:Array<Int>):Bool{
+    public inline function zero_inside_I(a:Array<Int>):Bool{
         for (i in a){ if (i == 0){ return true; } }
         return false;
     }
@@ -26,7 +28,7 @@ class AM{
       return true if incoming Int Array have at least one negative element
       @param a - incoming array
      **/
-    public static inline function negative_inside_I(a:Array<Int>):Bool{
+    public inline function negative_inside_I(a:Array<Int>):Bool{
         for (i in a){ if (i < 0){ return true; } }
         return false;
     }
@@ -34,7 +36,7 @@ class AM{
       return true if incoming Float Array have at least one positive element
       @param a - incoming array
      **/
-    public static inline function positive_inside_F(a:Array<Float>):Bool{
+    public inline function positive_inside_F(a:Array<Float>):Bool{
         for (i in a){ if (i > 0){ return true; } }
         return false;
     }
@@ -42,7 +44,7 @@ class AM{
       return true if incoming Float Array have at least one zero element
       @param a - incoming array
      **/
-    public static inline function zero_inside_F(a:Array<Float>):Bool{
+    public inline function zero_inside_F(a:Array<Float>):Bool{
         var rez:Bool = false;
         for (i in a){ if (i == 0){ rez = true; } }
         return rez;
@@ -51,7 +53,7 @@ class AM{
       return true if incoming Float Array have at least one negative element
       @param a - incoming array
      **/
-    public static inline function negative_inside_F(a:Array<Float>):Bool{
+    public inline function negative_inside_F(a:Array<Float>):Bool{
         var rez:Bool = false;
         for (i in a){ if (i < 0){ rez = true; } }
         return rez;
@@ -60,7 +62,7 @@ class AM{
       return true if Int Arrays have same size
       @param a - incoming arrays
      **/
-    public static inline function same_size_I(a:Array<Array<Int>>):Null<Bool>{
+    public inline function same_size_I(a:Array<Array<Int>>):Null<Bool>{
         var rez:Null<Bool> = null;
         var al:Int = a.length;
         if (al > 1){
@@ -76,7 +78,7 @@ class AM{
       return true if Float Arrays have same size
       @param a - incoming arrays
      **/
-    public static inline function same_size_F(a:Array<Array<Float>>):Null<Bool>{
+    public inline function same_size_F(a:Array<Array<Float>>):Null<Bool>{
         var rez:Null<Bool> = null;
         var al:Int = a.length;
         if (al > 1){
@@ -93,7 +95,7 @@ class AM{
      compare Int Arrays. Returns true if all arrays have equal data
      @param a - incoming array field
     **/
-    public static function same_xI(a:Array<Array<Int>>):Null<Bool>{
+    public function same_xI(a:Array<Array<Int>>):Null<Bool>{
         var rez:Null<Bool> = null;
         var al:Int = a.length;
         if ( al > 0 && same_size_I(a) ){
@@ -111,7 +113,7 @@ class AM{
      compare Float Arrays. Returns true if all arrays have equal data
      @param a - incoming array field
     **/
-    public static function same_xF(a:Array<Array<Float>>):Null<Bool>{
+    public function same_xF(a:Array<Array<Float>>):Null<Bool>{
         var rez:Null<Bool> = null;
         var al:Int = a.length;
         if ( al > 0 && same_size_F(a) ){
@@ -130,7 +132,7 @@ class AM{
       returns sum of Int Array elements. [1,2,3] -> 6. tested
       @param a - incoming array
      **/
-    public static inline function sum_I(a:Array<Int>):Null<Int>{
+    public inline function sum_I(a:Array<Int>):Null<Int>{
         var rez:Null<Int> = null;
         var al:Int = a.length;
         if (al > 0){ rez = 0; for (i in 0...al){ rez += a[i]; } }
@@ -140,7 +142,7 @@ class AM{
       returns sum of Float Array elements. [1.1,2,3] -> 6.1. tested
       @param a - incoming array
      **/
-    public static inline function sum_F(a:Array<Float>):Null<Float>{
+    public inline function sum_F(a:Array<Float>):Null<Float>{
         var rez:Null<Float> = null;
         var al:Int = a.length;
         if (al > 0){ rez = 0; for (i in 0...al){ rez += a[i]; } }
@@ -150,7 +152,7 @@ class AM{
       returns diff between first and others Int Array elements. [1,2,3] -> -4. tested
       @param a - incoming array
      **/
-    public static function diff_I(a:Array<Int>):Null<Int>{
+    public function diff_I(a:Array<Int>):Null<Int>{
         var rez:Null<Int> = null;
         var al:Int = a.length;
         if (al > 0){
@@ -162,7 +164,7 @@ class AM{
       returns diff between first and others Float Array elements. [1.1,2,3] -> -3.9. tested
       @param a - incoming array
      **/
-    public static function diff_F(a:Array<Float>):Null<Float>{
+    public function diff_F(a:Array<Float>):Null<Float>{
         var rez:Null<Float> = null;
         var al:Int = a.length;
         if (al > 0){
@@ -174,7 +176,7 @@ class AM{
       returns middle value of Float Array
       @param a - incoming array
      **/
-    public static function middle_F(a:Array<Float>):Null<Float>{
+    public function middle_F(a:Array<Float>):Null<Float>{
         var rez:Null<Float> = null;
         var al:Int = a.length;
         if (al > 0){ rez = sum_F(a) / al; }
@@ -185,7 +187,7 @@ class AM{
       @param a - incoming array
       @param n - multiplier of each element
      **/
-    public static inline function multiply_I_I(
+    public inline function multiply_I_I(
         a:Array<Int>,
         n:Int
         ):Array<Int>{
@@ -199,7 +201,7 @@ class AM{
       @param a - incoming array
       @param n - multiplier of each element
      **/
-    public static inline function multiply_F_F(
+    public inline function multiply_F_F(
         a:Array<Float>,
         n:Float
         ):Array<Float>{
@@ -212,7 +214,7 @@ class AM{
       multiplies all elements of an Int Array. [1, 2, 3] return 1 * 2 * 3
       @param a - incoming array
      **/
-    public static inline function multiply_I(a:Array<Int>):Null<Int>{
+    public inline function multiply_I(a:Array<Int>):Null<Int>{
         var rez:Null<Int> = null;
         var al:Int = a.length;
         if (al > 0){
@@ -224,7 +226,7 @@ class AM{
       multiplies all elements of an Float Array. [1.1, 2.0, 3.0] return 1.1 * 2.0 * 3.0
       @param a - incoming array
      **/
-    public static inline function multiply_F(a:Array<Float>):Null<Float>{
+    public inline function multiply_F(a:Array<Float>):Null<Float>{
         var rez:Null<Float> = null;
         var al:Int = a.length;
         if (al > 0){
@@ -236,14 +238,14 @@ class AM{
       multiplies each element of the Int Array by -1
       @param a - incoming array
      **/
-    public static inline function minus_I(a:Array<Int>):Array<Int>{
+    public inline function minus_I(a:Array<Int>):Array<Int>{
         return [for (i in 0...a.length) -a[i]];
     }
     /**
       multiplies each element of the Float Array by -1
       @param a - incoming array
      **/
-    public static inline function minus_F(a:Array<Float>):Array<Float>{
+    public inline function minus_F(a:Array<Float>):Array<Float>{
         return [for (i in 0...a.length) -a[i]];
     }
     
@@ -251,7 +253,7 @@ class AM{
       return Int Array which is Int Arrays sum. [[1, 2, 3], [-3, -2, -1]] return [-2, 0, 2]
       @param a - incoming arrays
      **/
-    public static function sum_xI(a:Array<Array<Int>>):Array<Int>{
+    public function sum_xI(a:Array<Array<Int>>):Array<Int>{
         var rez:Array<Int> = null;
         if ( same_size_I(a) ){ rez = [for (i in 0...a[0].length) sum_I([for (ai in 0...a.length) a[ai][i] ]) ]; }
         return rez;
@@ -260,7 +262,7 @@ class AM{
       return Float Array which is Float Arrays sum. [[1.1, 2, 3], [-3, -2, -1]] return [-1.9, 0, 2]
       @param a - incoming arrays
      **/
-    public static function sum_xF(a:Array<Array<Float>>):Array<Float>{
+    public function sum_xF(a:Array<Array<Float>>):Array<Float>{
         var rez:Array<Float> = null;
         if ( same_size_F(a) ){ rez = [for (i in 0...a[0].length) sum_F([for (ai in 0...a.length) a[ai][i] ]) ]; }
         return rez;
@@ -269,7 +271,7 @@ class AM{
       return Int Array which is result of diff between first Int Array and others. [[1, 2, 3], [-3, -2, -1]] return [4, 4, 4]
       @param a - incoming arrays
      **/
-    public static function diff_xI(a:Array<Array<Int>>):Array<Int>{
+    public function diff_xI(a:Array<Array<Int>>):Array<Int>{
         var rez:Array<Int> = null;
         if ( same_size_I(a) ){ rez = [for (i in 0...a[0].length) diff_I([for (ai in 0...a.length) a[ai][i] ]) ]; }
         return rez;
@@ -278,7 +280,7 @@ class AM{
       return Float Array which is result of diff between first Float Array and others. [[1.1, 2, 3], [-3, -2, -1]] return [4.1, 4, 4]
       @param a - incoming arrays
      **/
-    public static function diff_xF(a:Array<Array<Float>>):Array<Float>{
+    public function diff_xF(a:Array<Array<Float>>):Array<Float>{
         var rez:Array<Float> = null;
         if ( same_size_F(a) ){ rez = [for (i in 0...a[0].length) diff_F([for (ai in 0...a.length) a[ai][i] ]) ]; }
         return rez;
@@ -287,7 +289,7 @@ class AM{
       return Float Array with middle values from arrays. [[1.1, 2, 3], [-3, -2, -1]] return [(1.1 - 3) / 2, (2 - 2) / 2, (3 - 1) / 2]
       @param a - incoming arrays
      **/
-    public static function middle_xF(a:Array<Array<Float>>):Array<Float>{
+    public function middle_xF(a:Array<Array<Float>>):Array<Float>{
         var rez:Array<Float> = null;
         if (a[0].length > 0 && same_size_F(a) ){ rez = [for (i in 0...a[0].length) middle_F([for (ai in 0...a.length) a[ai][i] ]) ]; }
         return rez;
@@ -297,7 +299,7 @@ class AM{
       @param a - incoming arrays
       @param n - multiplier
      **/
-    public static function multiply_xI_I(
+    public function multiply_xI_I(
         a:Array<Array<Int>>,
         n:Int
         ):Array<Array<Int>>{
@@ -310,7 +312,7 @@ class AM{
       @param a - incoming arrays
       @param n - multiplier
      **/
-    public static function multiply_xF_F(
+    public function multiply_xF_F(
         a:Array<Array<Float>>,
         n:Float
         ):Array<Array<Float>>{
@@ -322,7 +324,7 @@ class AM{
       return Int Array which is result of multiplying arrays. [[1, 2], [3, 4]] return [1 * 3, 2 * 4]
       @param a - incoming arrays
      **/
-    public static function multiply_xI(a:Array<Array<Int>>):Array<Int>{
+    public function multiply_xI(a:Array<Array<Int>>):Array<Int>{
         var rez:Array<Int> = null;
         var al:Int = a.length;
         if(same_size_I(a)){
@@ -337,7 +339,7 @@ class AM{
       return Float Array which is result of multiplying arrays. [[3.1, 2], [3, 4]] return [3.1 * 3, 2 * 4]
       @param a - incoming arrays
      **/
-    public static function multiply_xF(a:Array<Array<Float>>):Array<Float>{
+    public function multiply_xF(a:Array<Array<Float>>):Array<Float>{
         var rez:Array<Float> = null;
         var al:Int = a.length;
         if (same_size_F(a)){
@@ -352,7 +354,7 @@ class AM{
       Int Arrays bonus function. Short form of sum_I(multiply_xI(a)). [[a, b], [c, d]] return a * c + b * d
       @param a - incoming arrays
      **/
-    public static function multisum_xI(a:Array<Array<Int>>):Null<Int>{
+    public function multisum_xI(a:Array<Array<Int>>):Null<Int>{
         var rez:Null<Int> = null;
         if (
             a.length > 1 &&
@@ -367,7 +369,7 @@ class AM{
       Float Arrays bonus function. Short form of sum_F(multiply_xF(a)). [[a, b], [c, d]] return a * c + b * d
       @param a - incoming arrays
      **/
-    public static function multisum_xF(a:Array<Array<Float>>):Null<Float>{
+    public function multisum_xF(a:Array<Array<Float>>):Null<Float>{
         var rez:Null<Float> = null;
         if (
             a.length > 1 &&
@@ -382,7 +384,7 @@ class AM{
       return Int Array which is result of sum with previous element. [1, 2, 3] return [1, 3, 5]
       @param a - incoming array
      **/
-    public static inline function sum_previous_I(a:Array<Int>):Array<Int>{
+    public inline function sum_previous_I(a:Array<Int>):Array<Int>{
         var rez:Array<Int> = null;
         var al:Int = a.length;
         if (al > 0){ rez = [for (i in 0...al) (i == 0) ? a[i] : a[i] + a[i - 1]]; }
@@ -392,7 +394,7 @@ class AM{
       return Int Array which is result of diff with previous element. [1, 2, 3] return [1, 1, 1]
       @param a - incoming array
      **/
-    public static inline function diff_previous_I(a:Array<Int>):Array<Int>{
+    public inline function diff_previous_I(a:Array<Int>):Array<Int>{
         var rez:Array<Int> = null;
         var al:Int = a.length;
         if (al > 0){ rez = [for (i in 0...al) (i == 0) ? a[i] : a[i] - a[i - 1]]; }
@@ -402,7 +404,7 @@ class AM{
       return Int Array which is result of sum each element with before elements sum. [1, 2, 3] return [1, 3, 6]
       @param a - incoming array
      **/
-    public static inline function sum_before_I(a:Array<Int>):Array<Int>{
+    public inline function sum_before_I(a:Array<Int>):Array<Int>{
         var rez:Array<Int> = null;
         var al:Int = a.length;
         if (al > 0){
@@ -416,7 +418,7 @@ class AM{
       return Int Array which is result of diff each element with before elements diff. [1, 2, 3] return [1, 1, 2]
       @param a - incoming array
      **/
-    public static inline function diff_before_I(a:Array<Int>):Array<Int>{
+    public inline function diff_before_I(a:Array<Int>):Array<Int>{
         var rez:Array<Int> = null;
         var al:Int = a.length;
         if (al > 0){
@@ -430,7 +432,7 @@ class AM{
       return Float Array which is result of sum with previous element. [1.1, 2, 3] return [1.1, 3.1, 5]
       @param a - incoming array
      **/
-    public static inline function sum_previous_F(a:Array<Float>):Array<Float>{
+    public inline function sum_previous_F(a:Array<Float>):Array<Float>{
         var rez:Array<Float> = null;
         var al:Int = a.length;
         if (al > 0){ rez = [for (i in 0...al) (i == 0) ? a[i] : a[i] + a[i - 1]]; }
@@ -440,7 +442,7 @@ class AM{
       return Float Array which is result of diff with previous element. [1.1, 2, 3] return [1.1, 0.9, 1]
       @param a - incoming array
      **/
-    public static inline function diff_previous_F(a:Array<Float>):Array<Float>{
+    public inline function diff_previous_F(a:Array<Float>):Array<Float>{
         var rez:Array<Float> = null;
         var al:Int = a.length;
         if (al > 0){ rez = [for (i in 0...al) (i == 0) ? a[i] : a[i] - a[i - 1]]; }
@@ -450,7 +452,7 @@ class AM{
       return Float Array which is result of sum each element with before elements sum. [1.1, 2, 3] return [1.1, 3.1, 6.1]
       @param a - incoming array
      **/
-    public static inline function sum_before_F(a:Array<Float>):Array<Float>{
+    public inline function sum_before_F(a:Array<Float>):Array<Float>{
         var rez:Array<Float> = null;
         var al:Int = a.length;
         if (al > 0){
@@ -464,7 +466,7 @@ class AM{
       return Float Array which is result of diff each element with before elements diff. [1.1, 2, 3] return [1.1, 0.9, 2.1]
       @param a - incoming array
      **/
-    public static inline function diff_before_F(a:Array<Float>):Array<Float>{
+    public inline function diff_before_F(a:Array<Float>):Array<Float>{
         var rez:Array<Float> = null;
         var al:Int = a.length;
         if (al > 0){
@@ -479,7 +481,7 @@ class AM{
      recount Int Array to Float Array
      @param what - incoming array
     **/
-    public static inline function recounter_I_F(what:Array<Int>):Array<Float>{
+    public inline function recounter_I_F(what:Array<Int>):Array<Float>{
         var rez:Array<Float> = [];
         for (i in 0...what.length){ rez.push(what[i]); }
         return rez;
@@ -488,7 +490,7 @@ class AM{
      recount Float Array to Int Array
      @param what - incoming array
     **/
-    public static inline function recounter_F_I(what:Array<Float>):Array<Int>{
+    public inline function recounter_F_I(what:Array<Float>):Array<Int>{
         var rez:Array<Int> = [];
         for (i in 0...what.length){ rez.push(Std.int(what[i])); }
         return rez;
@@ -497,7 +499,7 @@ class AM{
      recount Int Array to String Array
      @param what - incoming array
     **/
-    public static inline function recounter_I_S(what:Array<Int>):Array<String>{
+    public inline function recounter_I_S(what:Array<Int>):Array<String>{
         var rez:Array<String> = [];
         for (i in 0...what.length){ rez.push(Std.string(what[i])); }
         return rez;
@@ -506,7 +508,7 @@ class AM{
      recount Float Array to String Array
      @param what - incoming array
     **/
-    public static inline function recounter_F_S(what:Array<Float>):Array<String>{
+    public inline function recounter_F_S(what:Array<Float>):Array<String>{
         var rez:Array<String> = [];
         for (i in 0...what.length){ rez.push(Std.string(what[i])); }
         return rez;
@@ -515,7 +517,7 @@ class AM{
      recount String Array to Int Array
      @param what - incoming array
     **/
-    public static inline function recounter_S_I(what:Array<String>):Array<Int>{
+    public inline function recounter_S_I(what:Array<String>):Array<Int>{
         var rez:Array<Int> = [];
         for (i in 0...what.length){ rez.push(Std.parseInt(what[i])); }
         return rez;
@@ -524,7 +526,7 @@ class AM{
      recount String Array to Float Array
      @param what - incoming array
     **/
-    public static inline function recounter_S_F(what:Array<String>):Array<Float>{
+    public inline function recounter_S_F(what:Array<String>):Array<Float>{
         var rez:Array<Float> = [];
         for (i in 0...what.length){ rez.push(Std.parseFloat(what[i])); }
         return rez;
@@ -536,7 +538,7 @@ class AM{
      @param what - incoming array
      @param full - if true then result array will be not cutted to result array length parameter
     **/
-    public static inline function repeater_F_F(
+    public inline function repeater_F_F(
         n:Int,
         what:Array<Float>,
         full:Bool = false
@@ -558,7 +560,7 @@ class AM{
      @param what - incoming array
      @param full - if true then result array will be not cutted to result array length parameter
     **/
-    public static inline function repeater_I_I(
+    public inline function repeater_I_I(
         n:Int,
         what:Array<Int>,
         full:Bool = false
@@ -580,7 +582,7 @@ class AM{
      @param what - incoming array
      @param full - if true then result array will be not cutted to result array length parameter
     **/
-    public static inline function repeater_S_S(
+    public inline function repeater_S_S(
         n:Int,
         what:Array<String>,
         full:Bool = false
@@ -602,7 +604,7 @@ class AM{
      @param what - incoming array
      @param full - if true then result array will be not cutted to result array length parameter
     **/
-    public static function repeater_F_I(
+    public function repeater_F_I(
         n:Int,
         what_:Array<Float>,
         full:Bool = false
@@ -625,7 +627,7 @@ class AM{
      @param what - incoming array
      @param full - if true then result array will be not cutted to result array length parameter
     **/
-    public static function repeater_S_I(
+    public function repeater_S_I(
         n:Int,
         what_:Array<String>,
         full:Bool = false
@@ -648,7 +650,7 @@ class AM{
      @param what - incoming array
      @param full - if true then result array will be not cutted to result array length parameter
     **/
-    public static function repeater_I_F(
+    public function repeater_I_F(
         n:Int,
         what_:Array<Int>,
         full:Bool = false
@@ -671,7 +673,7 @@ class AM{
      @param what - incoming array
      @param full - if true then result array will be not cutted to result array length parameter
     **/
-    public static function repeater_S_F(
+    public function repeater_S_F(
         n:Int,
         what_:Array<String>,
         full:Bool = false
@@ -694,7 +696,7 @@ class AM{
      @param what - incoming array
      @param full - if true then result array will be not cutted to result array length parameter
     **/
-    public static function repeater_I_S(
+    public function repeater_I_S(
         n:Int,
         what_:Array<Int>,
         full:Bool = false
@@ -717,7 +719,7 @@ class AM{
      @param what - incoming array
      @param full - if true then result array will be not cutted to result array length parameter
     **/
-    public static function repeater_F_S(
+    public function repeater_F_S(
         n:Int,
         what_:Array<Float>,
         full:Bool = false
@@ -741,7 +743,7 @@ class AM{
      @param a - array what find
      @param b - array where find
     **/
-    public static inline function an_in_b_S(
+    public inline function an_in_b_S(
         a:Array<String>,
         b:Array<String>
         ):Array<Array<Int>>{
@@ -761,7 +763,7 @@ class AM{
      @param a - array what find
      @param b - array where find
     **/
-    public static inline function an_in_bn_S(
+    public inline function an_in_bn_S(
         a:Array<String>,
         b:Array<Array<String>>
         ):Array<Array<Int>>{
@@ -783,7 +785,7 @@ class AM{
      @param a - array what find
      @param b - array where find
     **/
-    public static inline function an_in_b_I(
+    public inline function an_in_b_I(
         a:Array<Int>,
         b:Array<Int>
         ):Array<Array<Int>>{
@@ -803,7 +805,7 @@ class AM{
      @param a - array what find
      @param b - array where find
     **/
-    public static inline function an_in_bn_I(
+    public inline function an_in_bn_I(
         a:Array<Int>,
         b:Array<Array<Int>>
         ):Array<Array<Int>>{
@@ -825,7 +827,7 @@ class AM{
      @param a - array what find
      @param b - array where find
     **/
-    public static inline function an_in_b_F(
+    public inline function an_in_b_F(
         a:Array<Float>,
         b:Array<Float>
         ):Array<Array<Int>>{
@@ -845,7 +847,7 @@ class AM{
      @param a - array what find
      @param b - array where find
     **/
-    public static inline function an_in_bn_F(
+    public inline function an_in_bn_F(
         a:Array<Float>,
         b:Array<Array<Float>>
         ):Array<Array<Int>>{
@@ -868,7 +870,7 @@ class AM{
      @param n - chain link length
      @param ring - if true then first incoming element will be added at the end of range, for the case of strict coincidence
     **/
-    public static inline function chain_S(
+    public inline function chain_S(
         a:Array<String>,
         n:Int,
         ring:Bool = false
@@ -876,7 +878,7 @@ class AM{
         var rez:Array<Array<String>> = null;
         var a_l:Int = a.length;
         if (n > a_l || n < 1){ return rez; }
-        var ind:Array<Array<Int>> = NM.chain_indexes(a_l, n, ring);
+        var ind:Array<Array<Int>> = nm.chain_indexes(a_l, n, ring);
         rez = [for (i in 0...ind.length) [for (j in 0...n) a[ind[i][j]]]];
         return rez;
     }
@@ -886,7 +888,7 @@ class AM{
      @param n - chain link length
      @param ring - if true then first incoming element will be added at the end of range, for the case of strict coincidence
     **/
-    public static inline function chain_I(
+    public inline function chain_I(
         a:Array<Int>,
         n:Int,
         ring:Bool = false
@@ -894,7 +896,7 @@ class AM{
         var rez:Array<Array<Int>> = null;
         var a_l:Int = a.length;
         if (n > a_l || n < 1){ return rez; }
-        var ind:Array<Array<Int>> = NM.chain_indexes(a_l, n, ring);
+        var ind:Array<Array<Int>> = nm.chain_indexes(a_l, n, ring);
         rez = [for (i in 0...ind.length) [for (j in 0...n) a[ind[i][j]]]];
         return rez;
     }
@@ -904,7 +906,7 @@ class AM{
      @param n - chain link length
      @param ring - if true then first incoming element will be added at the end of range, for the case of strict coincidence
     **/
-    public static inline function chain_F(
+    public inline function chain_F(
         a:Array<Float>,
         n:Int,
         ring:Bool = false
@@ -912,7 +914,7 @@ class AM{
         var rez:Array<Array<Float>> = null;
         var a_l:Int = a.length;
         if (n > a_l || n < 1){ return rez; }
-        var ind:Array<Array<Int>> = NM.chain_indexes(a_l, n, ring);
+        var ind:Array<Array<Int>> = nm.chain_indexes(a_l, n, ring);
         rez = [for (i in 0...ind.length) [for (j in 0...n) a[ind[i][j]]]];
         return rez;
     }
@@ -922,7 +924,7 @@ class AM{
      Each element compared as abs(element). [1, 2, -4] return -4.
      @param a - incoming array
     **/
-    public static function maxabs(a:Array<Float>):Float{
+    public function maxabs(a:Array<Float>):Float{
         var rez:Float = 0;
         for (i in a){if (Math.abs(i) > Math.abs(rez)){rez = i;}}
         return rez;

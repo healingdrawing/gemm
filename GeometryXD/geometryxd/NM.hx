@@ -10,23 +10,23 @@ class NM{
      return sign of Int. if x < 0 return -1, else return 1.
      @param x - number, sign of which should be calculated
     **/
-    public static inline function sign_I(x:Int):Int{ return (x < 0) ? -1 : 1; }
+    public inline function sign_I(x:Int):Int{ return (x < 0) ? -1 : 1; }
     /**
      return sign of Float. if x < 0 return -1, else return 1.
      @param x - number, sign of which should be calculated
     **/
-    public static inline function sign_F(x:Float):Int{ return (x < 0) ? -1 : 1; }
+    public inline function sign_F(x:Float):Int{ return (x < 0) ? -1 : 1; }
     
     /**
      return sign of Int or 0. if x < 0 return -1, if x > 0 return 1, if x == 0 return 0.
      @param x - number, sign of which should be calculated
     **/
-    public static inline function sign3_I(x:Int):Int{ return (x < 0) ? -1 : (x > 0) ? 1 : 0; }
+    public inline function sign3_I(x:Int):Int{ return (x < 0) ? -1 : (x > 0) ? 1 : 0; }
     /**
      return sign of Float or 0. if x < 0 return -1, if x > 0 return 1, if x == 0 return 0.
      @param x - number, sign of which should be calculated
     **/
-    public static inline function sign3_F(x:Float):Int{ return (x < 0) ? -1 : (x > 0) ? 1 : 0; }
+    public inline function sign3_F(x:Float):Int{ return (x < 0) ? -1 : (x > 0) ? 1 : 0; }
     
     /**
      sin cos bonus function. Normalise sin cos, counted use vectors to -1...1 include boders.
@@ -35,17 +35,17 @@ class NM{
      For example 1.00000000001 etc. Just tiny correction, just for case.
      @param x - incoming sin cos value for check
     **/
-    public static inline function sin_cos_cut(x:Float):Float { return (x>1)?1:(x<-1)?-1:x; }
+    public inline function sin_cos_cut(x:Float):Float { return (x>1)?1:(x<-1)?-1:x; }
     /**
      convert radians angle to degrees angle value
      @param angle - radians angle for recounting
     **/
-    public static inline function degrees(angle:Float):Float { return angle * 180 / Math.PI; }
+    public inline function degrees(angle:Float):Float { return angle * 180 / Math.PI; }
     /**
      convert degrees angle to radians angle value
      @param angle - degrees angle for recounting
     **/
-    public static inline function radians(angle:Float):Float { return angle / 180 * Math.PI; }
+    public inline function radians(angle:Float):Float { return angle / 180 * Math.PI; }
     /**
      return the quadrant of any angle. 0 angle return 4 quadrant.
      For example use degrees:
@@ -56,7 +56,7 @@ class NM{
      @param angle - angle for quadrant calculating
      @param rad - if true then radians angle, default false (degrees angle)
     **/
-    public static function angle_quadrant(angle:Float, rad:Bool = false):Int {
+    public function angle_quadrant(angle:Float, rad:Bool = false):Int {
         var k:Int=4; // 0 case
         if (rad){angle=degrees(angle);}
         var x:Float=angle%360;
@@ -79,7 +79,7 @@ class NM{
      @param n - steps number
      @param borders - if true then add borders into result
     **/
-    public static inline function steps_internal(
+    public inline function steps_internal(
         xmin:Float,
         xmax:Float,
         n:Int,
@@ -104,7 +104,7 @@ class NM{
      @param n - repeat number
      @param direction - if < 0 then from negative to minimum border direction. if > 0 then from maximum border to positive direction. if == 0 then both
     **/
-    public static function steps_external(
+    public function steps_external(
         smin:Float,
         smax:Float,
         n:Int,
@@ -133,7 +133,7 @@ class NM{
      @param n - length of each sequence (chain link)
      @param ring - if true then 0 will be added at the end of range of indexes, for the case of strict coincidence
     **/
-    public static function chain_indexes(
+    public function chain_indexes(
         a_l:Int,
         n:Int,
         ring:Bool
