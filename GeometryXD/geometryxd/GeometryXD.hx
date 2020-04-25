@@ -21,6 +21,8 @@ class GeometryXD{
     
     public function new(){trace("GeometryXD is ready for use");}
     
+    var nm = new NM();
+    var am = new AM();
     /**
      return vector length (other names "norm" or "magnitude").
      For `[2,3]` return Math.sqrt((2 * 2) + (3 * 3))
@@ -104,14 +106,14 @@ class GeometryXD{
         ):Null<Bool>{
         var rez:Null<Bool> = null;
         if (vecXDa.length == vecXDb.length){
-            rez = AM.same_xF([vecXDa, vecXDb]);
+            rez = am.same_xF([vecXDa, vecXDb]);
         }return rez;
     }
     /**
      compare vectors from vector field. Returns true if all vectors have same data
      @param vecXDfield - vector field(array of vectors)
     **/
-    public inline function vecXDfieldsame(vecXDfield:Array<Array<Float>>):Null<Bool>{ return AM.same_xF(vecXDfield); }
+    public inline function vecXDfieldsame(vecXDfield:Array<Array<Float>>):Null<Bool>{ return am.same_xF(vecXDfield); }
     /**
      return random vector with length equal 1
      @param x - number of vector dimension. For example x = 3 -> 3D vector, x = 4 -> 4D vector
@@ -134,14 +136,14 @@ class GeometryXD{
         vecXDa:Array<Float>,
         vecXDb:Array<Float>
         ):Array<Float>{
-        return AM.sum_xF([vecXDa, vecXDb]);
+        return am.sum_xF([vecXDa, vecXDb]);
     }
     /**
      return vector, which is sum of vector field
      @param vecXDfield - vector field (array of vectors)
     **/
     public function vecXDfieldsum(vecXDfield:Array<Array<Float>>):Array<Float>{
-        return AM.sum_xF(vecXDfield);
+        return am.sum_xF(vecXDfield);
     }
     /**
      return vector, which is diff of vectors. vecXDa - vecXDb
@@ -152,21 +154,21 @@ class GeometryXD{
         vecXDa:Array<Float>,
         vecXDb:Array<Float>
         ):Array<Float>{
-        return AM.diff_xF([vecXDa, vecXDb]);
+        return am.diff_xF([vecXDa, vecXDb]);
     }
     /**
      return vector, which is diff of vector field. v0-v1...-vn
      @param vecXDfield - vector field(array of vectors)
     **/
     public function vecXDfielddiff(vecXDfield:Array<Array<Float>>):Array<Float>{
-        return AM.diff_xF(vecXDfield);
+        return am.diff_xF(vecXDfield);
     }
     /**
      return opposite vector. [1, 2, -4] return [-1, -2, 4]
      @param vecXD - vector
     **/
     public function vecXDback(vecXD:Array<Float>):Array<Float>{
-        return AM.minus_F(vecXD);
+        return am.minus_F(vecXD);
     }
     /**
      return opposite vector field. [[1, 2], [3, -4]] return [[-1, -2], [-3, 4]]
@@ -244,7 +246,7 @@ class GeometryXD{
         var la:Float = vecXDnorm(vecXDa);
         var lb:Float = vecXDnorm(vecXDb);
         if (la > 0 && lb > 0){
-            rez = NM.sin_cos_cut( vecXDscalar(vecXDa,vecXDb) / (la * lb) );
+            rez = nm.sin_cos_cut( vecXDscalar(vecXDa,vecXDb) / (la * lb) );
         }return rez;
     }
     /**
@@ -262,7 +264,7 @@ class GeometryXD{
         var la:Float = vecXDnorm(vecXDa);
         var lb:Float = vecXDnorm(vecXDb);
         if (la > 0 && lb > 0){
-            rez = (rad) ? Math.acos(vecXDcos(vecXDa,vecXDb)):NM.degrees(Math.acos(vecXDcos(vecXDa,vecXDb)));
+            rez = (rad) ? Math.acos(vecXDcos(vecXDa,vecXDb)):nm.degrees(Math.acos(vecXDcos(vecXDa,vecXDb)));
         }return rez;
     }
     /**
@@ -291,7 +293,7 @@ class GeometryXD{
     **/
     public function vec3Dfieldnormal(vec3Dfield:Array<Array<Float>>):Array<Float>{
         var rez:Array<Float> = null;
-        if (vec3Dfield[0].length == 3 && AM.same_size_F(vec3Dfield)){
+        if (vec3Dfield[0].length == 3 && am.same_size_F(vec3Dfield)){
             rez = vec3Dfield[0];
             for (i in 1...vec3Dfield.length){
                 rez = vec3Dnormal(rez,vec3Dfield[i]);
@@ -308,14 +310,14 @@ class GeometryXD{
         vecXDa:Array<Float>,
         vecXDb:Array<Float>
         ):Array<Float>{
-        return AM.middle_xF([vecXDa, vecXDb]);
+        return am.middle_xF([vecXDa, vecXDb]);
     }
     /**
      return vector with middle value. Just call middle_xF(vecXDfield)
      @param vecXDfield - vector field(array of vectors)
     **/
     public function vecXDfieldmiddle(vecXDfield:Array<Array<Float>>):Array<Float>{
-        return AM.middle_xF(vecXDfield);
+        return am.middle_xF(vecXDfield);
     }
     /**
      return true if vectors have same size. Bonus function. Just call same_size_F([vecXDa, vecXDb])
@@ -326,14 +328,14 @@ class GeometryXD{
         vecXDa:Array<Float>,
         vecXDb:Array<Float>
         ):Null<Bool>{
-        return AM.same_size_F([vecXDa, vecXDb]);
+        return am.same_size_F([vecXDa, vecXDb]);
     }
     /**
      return true if vector from vector field have same size. Bonus function. Just call same_size_F(vecXDfield)
      @param vecXDfield - vector field(array of vectors)
     **/
     public function vecXDfieldsamesize(vecXDfield:Array<Array<Float>>):Null<Bool>{
-        return AM.same_size_F(vecXDfield);
+        return am.same_size_F(vecXDfield);
     }
     
     /**
@@ -417,8 +419,8 @@ class GeometryXD{
             ldot != 3 ||
             lplane != 4
             ){ return rez; }
-        var checkup:Float = - (AM.multisum_xF([[for (i in 0...3) plane3D[i]], dot3D]) + plane3D[3]);
-        var checkdn:Float = AM.multisum_xF([[for (i in 0...3) plane3D[i]], [for (i in 0...3) plane3D[i]]]);
+        var checkup:Float = - (am.multisum_xF([[for (i in 0...3) plane3D[i]], dot3D]) + plane3D[3]);
+        var checkdn:Float = am.multisum_xF([[for (i in 0...3) plane3D[i]], [for (i in 0...3) plane3D[i]]]);
         if (checkdn == 0){return rez;}
         else if (checkup == 0){return dot3D;}
         else {
@@ -452,7 +454,7 @@ class GeometryXD{
         var vox:Array<Float> = vec3Dviewplane_ox;
         if(
             dot.length != 3 ||
-            !AM.same_size_F([dot, dotc, vp, vox]) ||
+            !am.same_size_F([dot, dotc, vp, vox]) ||
             vecXDnorm(vp) == 0 ||
             vecXDnorm(vox) == 0 ||
             vecXDparalleled(vp, vox)
@@ -504,7 +506,7 @@ class GeometryXD{
             vecXDparalleled(vec3D, vec3Daxis) ||
             angle == 0
             ){ return rez;}
-        angle = (rad) ? angle : NM.radians(angle);
+        angle = (rad) ? angle : nm.radians(angle);
         var t:Array<Float> = [0,0,0];
         var vb:Array<Float> = vec3Dnormal(vec3Daxis, vec3D);
         var vc:Array<Float> = vec3Dnormal(vb, vec3Daxis);
@@ -532,12 +534,12 @@ class GeometryXD{
     ):Array<Array<Float>>{
         var rez:Array<Array<Float>> = null;
         if (
-            !AM.same_size_F(vec3Dfield) ||
-            !AM.same_size_F(vec3Daxes) ||
+            !am.same_size_F(vec3Dfield) ||
+            !am.same_size_F(vec3Daxes) ||
             vec3Dfield[0].length != 3 ||
             vec3Daxes[0].length != 3 ||
-            AM.zero_inside_F(vecXDfieldnorm(vec3Dfield)) ||
-            AM.zero_inside_F(vecXDfieldnorm(vec3Daxes)) ||
+            am.zero_inside_F(vecXDfieldnorm(vec3Dfield)) ||
+            am.zero_inside_F(vecXDfieldnorm(vec3Daxes)) ||
             angles.length != vec3Dfield.length ||
             angles.length != vec3Daxes.length
         ){ return rez; }
@@ -590,7 +592,7 @@ class GeometryXD{
         if (dot3D.length != 3 ||
             vec3D.length != 3 ||
             vecXDnorm(vec3D) == 0){ return rez; }
-        var d:Float = - AM.multisum_xF([vec3D, dot3D]);
+        var d:Float = - am.multisum_xF([vec3D, dot3D]);
         rez = [vec3D[0], vec3D[1], vec3D[2], d];
         return rez;
     }
@@ -633,7 +635,7 @@ class GeometryXD{
         var rez:Array<Float> = null;
         if (
             dot3D.length != 3 ||
-            !AM.same_size_F([dot3D, dot3Da, dot3Db]) ||
+            !am.same_size_F([dot3D, dot3Da, dot3Db]) ||
             vecXDsame(dot3D, dot3Da) ||
             vecXDsame(dot3D, dot3Db) ||
             vecXDsame(dot3Da, dot3Db)
@@ -680,7 +682,7 @@ class GeometryXD{
             vecXDnorm([plane3D[0], plane3D[1], plane3D[2]]) == 0
             ) { return rez; }
         rez = Math.abs(
-            AM.multisum_xF([[plane3D[0], plane3D[1], plane3D[2]], dot3D]) + plane3D[3]
+            am.multisum_xF([[plane3D[0], plane3D[1], plane3D[2]], dot3D]) + plane3D[3]
         ) / vecXDnorm([plane3D[0], plane3D[1], plane3D[2]]);
         return rez;
     }
@@ -752,7 +754,7 @@ class GeometryXD{
         ):Array<Array<Float>>{
         var rez:Array<Array<Float>> = null;
         if (
-            !AM.same_size_F([dot3D1, vec3D1, dot3D2, vec3D2]) ||
+            !am.same_size_F([dot3D1, vec3D1, dot3D2, vec3D2]) ||
             dot3D1.length != 3
         ){ return rez; }
         var r1:Array<Float> = dotXDoffset(dot3D1, vec3D1, distance1);
@@ -787,7 +789,7 @@ class GeometryXD{
         ):Array<Array<Float>>{
         var rez:Array<Array<Float>> = null;
         if (
-            !AM.same_size_F([dot3D0, dot3D1, dot3D2]) ||
+            !am.same_size_F([dot3D0, dot3D1, dot3D2]) ||
             dot3D0.length != 3
             ){ return rez; }
         var v1:Array<Float> = vecXD(dot3D0, dot3D1);
@@ -873,7 +875,7 @@ class GeometryXD{
         if (
             curve.length == 4 &&
             curve[0].length == 3 &&
-            AM.same_size_F(curve)
+            am.same_size_F(curve)
         ){
             rez = [for (i in 0...4) for (ai in 0...3) curve[i][ai]];
         }return rez;
@@ -897,7 +899,7 @@ class GeometryXD{
     public inline function beziercubic3D_derivativeparameters(curve:Array<Array<Float>>):Array<Array<Float>>{
         var rez:Array<Array<Float>> = null;
         var cl:Int = curve.length;
-        if ( cl == 4 && curve[0].length == 3 && AM.same_size_F(curve)){
+        if ( cl == 4 && curve[0].length == 3 && am.same_size_F(curve)){
             rez = [for (i in 0...3) [for (p in 0...4) curve[p][i]]];
         }return rez;
     }
@@ -930,7 +932,7 @@ class GeometryXD{
         if (
             curve.length == 4 &&
             curve[0].length == 3 &&
-            AM.same_size_F(curve)
+            am.same_size_F(curve)
         ){
             rez = [for (i in beziercubic3D_derivativeparameters(curve)) beziercubic_derivative(i, p)];
         }return rez;
@@ -953,7 +955,7 @@ class GeometryXD{
     public function beziercubic3D_support_dot_one(curve3D_4dots:Array<Array<Float>>):Array<Float>{
         var rez:Array<Float> = null;
         var c:Array<Array<Float>> = curve3D_4dots;
-        if (c.length == 4 && AM.same_size_F(c)){ rez = [for (i in beziercubic3D_derivativeparameters(c)) beziercubic_support_dot_one(i)]; }
+        if (c.length == 4 && am.same_size_F(c)){ rez = [for (i in beziercubic3D_derivativeparameters(c)) beziercubic_support_dot_one(i)]; }
         return rez;
     }
     /**
@@ -973,7 +975,7 @@ class GeometryXD{
     public function beziercubic3D_support_dot_two(curve3D_4dots:Array<Array<Float>>):Array<Float>{
         var rez:Array<Float> = null;
         var c:Array<Array<Float>> = curve3D_4dots;
-        if (c.length == 4 && AM.same_size_F(c)){ rez = [for (i in beziercubic3D_derivativeparameters(c)) beziercubic_support_dot_two(i)]; }
+        if (c.length == 4 && am.same_size_F(c)){ rez = [for (i in beziercubic3D_derivativeparameters(c)) beziercubic_support_dot_two(i)]; }
         return rez;
     }
     /**
@@ -982,7 +984,7 @@ class GeometryXD{
     **/
     public inline function beziercubic3D_follow_4dots_trajectory(dots:Array<Array<Float>>):Array<Array<Float>>{
         var rez:Array<Array<Float>> = null;
-        if (dots.length == 4 && dots[0].length == 3 && AM.same_size_F(dots)){
+        if (dots.length == 4 && dots[0].length == 3 && am.same_size_F(dots)){
             var dot_one:Array<Float> = beziercubic3D_support_dot_one(dots);
             var dot_two:Array<Float> = beziercubic3D_support_dot_two(dots);
             rez = [dots[0], dot_one, dot_two, dots[3]];
@@ -1021,7 +1023,7 @@ class GeometryXD{
         var rez:Array<Float> = null;
         var c:Array<Array<Float>> = beziercubic3D;
         var p:Float = parameter;
-        if (c.length == 4 && c[0].length == 3 && AM.same_size_F(c)){
+        if (c.length == 4 && c[0].length == 3 && am.same_size_F(c)){
             rez = [for (i in beziercubic3D_derivativeparameters(c)) beziercubic_coordinate(i, p)];
         }return rez;
     }
@@ -1036,7 +1038,7 @@ class GeometryXD{
         if (
             c.length == 4 &&
             c[0].length == 3 &&
-            AM.same_size_F(c)
+            am.same_size_F(c)
         ){
             c[1] = beziercubic3Ddot(c, 1 / 3);
             c[2] = beziercubic3Ddot(c, 2 / 3);
@@ -1057,7 +1059,7 @@ class GeometryXD{
         if (
             curve3D.length == 4 &&
             curve3D[0].length == 3 &&
-            AM.same_size_F(curve3D) &&
+            am.same_size_F(curve3D) &&
             vec3D.length == 3
         ){
             rez = [for (i in curve3D) dotXDoffset(i, vec3D, distance)];
@@ -1082,7 +1084,7 @@ class GeometryXD{
         if (
             curve3D.length == 4 &&
             curve3D[0].length == 3 &&
-            AM.same_size_F(curve3D) &&
+            am.same_size_F(curve3D) &&
             dot3D.length == 3 &&
             vec3D.length == 3 &&
             vecXDnorm(vec3D) > 0
@@ -1106,7 +1108,7 @@ class GeometryXD{
         if (
             curve3D.length == 4 &&
             curve3D[0].length == 3 &&
-            AM.same_size_F(curve3D) &&
+            am.same_size_F(curve3D) &&
             dot3D.length == 3 &&
             scale_xyz.length == 3
         ){
@@ -1281,7 +1283,7 @@ class GeometryXD{
             a > 0 && b > 0 && an > 0 && bn > 0
         ){
             var ea:Null<Float> = null; var eb:Null<Float> = null;
-            switch(NM.angle_quadrant(angle, rad)){
+            switch(nm.angle_quadrant(angle, rad)){
                 case 1 : ea = a; eb = b;
                 case 2 : ea = an; eb = b;
                 case 3 : ea = an; eb = bn;
@@ -1318,9 +1320,9 @@ class GeometryXD{
         if(
             dot3D.length != 3 ||
             vec3Dsemiaxes.length != 4 ||
-            !AM.same_size_F(vec3Dsemiaxes) ||
+            !am.same_size_F(vec3Dsemiaxes) ||
             semiaxes.length != 4 ||
-            AM.zero_inside_F(semiaxes) ||
+            am.zero_inside_F(semiaxes) ||
             zero_vector_inside(vec3Dsemiaxes)
         ){ return rez; }
         var t0:Array<Float> = dot3D;
@@ -1332,7 +1334,7 @@ class GeometryXD{
         var b:Float = semiaxes[1];
         var ad:Float = semiaxes[2];
         var bd:Float = semiaxes[3];
-        var cos45:Float = Math.cos(NM.radians(45));
+        var cos45:Float = Math.cos(nm.radians(45));
         var v:Array<Array<Float>> = [va,vb,vad,vbd];
         var d:Array<Float> = [a*cos45,b*cos45,ad*cos45,bd*cos45];
         var vv:Array<Array<Float>> = [vb,vad,vbd,va];
@@ -1360,7 +1362,7 @@ class GeometryXD{
         var u:Float = angle;
         var a:Float = semiaxis_a_ox;
         var b:Float = semiaxis_b_oy;
-        if (!rad){ u = NM.radians(u); }
+        if (!rad){ u = nm.radians(u); }
         return [a * Math.cos(u), b * Math.sin(u)];
     }
     /**
@@ -1379,8 +1381,8 @@ class GeometryXD{
         rad:Bool = false
     ):Array<Array<Float>>{
         var rez:Array<Array<Float>> = null;
-        var a0:Float = (rad) ? NM.degrees(angle0) : angle0;
-        var a1:Float = (rad) ? NM.degrees(angle1) : angle1;
+        var a0:Float = (rad) ? nm.degrees(angle0) : angle0;
+        var a1:Float = (rad) ? nm.degrees(angle1) : angle1;
         a0 = (a0 > 90) ? 90 : (a0 < 0) ? 0 : a0;
         a1 = (a1 > 90) ? 90 : (a1 < 0) ? 0 : a1;
         a0 = (a0 >= a1) ? 0 : a0;
@@ -1456,13 +1458,13 @@ class GeometryXD{
         var xy:Array<Float> = null;
         if (cl > 0 && a > 0 && b > 0){
             var xy0:Array<Float> = ellipse2Ddot(u, a, b, rad);
-            if (rad){ u = NM.degrees(u);}
+            if (rad){ u = nm.degrees(u);}
             for (ue in 1...361){
                 xy = ellipse2Ddot(u + ue, a, b);
                 le += vecXDnorm(vecXD(xy0, xy));
-                if (le >= cl){ return (rad) ? NM.radians(ue) : ue; }
+                if (le >= cl){ return (rad) ? nm.radians(ue) : ue; }
                 xy0 = xy;
-            }rez = (rad) ? NM.radians(360) : 360;
+            }rez = (rad) ? nm.radians(360) : 360;
         }return rez;
     }
     /**
@@ -1486,11 +1488,11 @@ class GeometryXD{
         if(
             dot3D.length != 3 ||
             vec3Dsemiaxes.length != 4 ||
-            !AM.same_size_F(vec3Dsemiaxes) ||
+            !am.same_size_F(vec3Dsemiaxes) ||
             semiaxes.length != 4 ||
             angle_proportions.length < 1 ||
-            AM.negative_inside_F(angle_proportions) ||
-            AM.sum_F(angle_proportions) == 0
+            am.negative_inside_F(angle_proportions) ||
+            am.sum_F(angle_proportions) == 0
         ){ return rez; }
         var t0:Array<Float> = dot3D;
         var va:Array<Float> = vec3Dsemiaxes[0];
@@ -1502,7 +1504,7 @@ class GeometryXD{
         var ad:Float = semiaxes[2];
         var bd:Float = semiaxes[3];
         var doli:Array<Float> = angle_proportions;
-        var x:Float = 360 / AM.sum_F(doli);
+        var x:Float = 360 / am.sum_F(doli);
         var axis_a:Array<Float>;
         var axis_b:Array<Float>;
         var dlina_a:Float;
@@ -1517,8 +1519,8 @@ class GeometryXD{
             axis_a = va; dlina_a = a; axis_b = vb; dlina_b = b;
             if (u > 90 && u <= 270){ axis_a = vad; dlina_a = ad; }
             if (u > 180){ axis_b = vbd; dlina_b = bd;}
-            v = axis_a; d = dlina_a * Math.abs(Math.cos(NM.radians(u)));
-            vv = axis_b; dd = dlina_b * Math.abs(Math.sin(NM.radians(u)));
+            v = axis_a; d = dlina_a * Math.abs(Math.cos(nm.radians(u)));
+            vv = axis_b; dd = dlina_b * Math.abs(Math.sin(nm.radians(u)));
             rez.push(dotXDoffset(dotXDoffset(t0, v, d), vv, dd));
             u += i * x;
         }return rez;
@@ -1540,7 +1542,7 @@ class GeometryXD{
         var rez:Array<Array<Float>> = null;
         if (
             dot3D.length != 3 ||
-            !AM.same_size_F(vec3Dfield) ||
+            !am.same_size_F(vec3Dfield) ||
             vec3Dfield.length != distances.length ||
             vec3Dfield[0].length != 3
         ){ return rez; }
@@ -1584,7 +1586,7 @@ class GeometryXD{
             vecXDnorm(vn) == 0 ||
             vecXDparalleled(va, vn)
         ){ return rez; }
-        var x:Float = 360 / AM.sum_F(ap);
+        var x:Float = 360 / am.sum_F(ap);
         va = projection_vec3D_on_plane3D(va, [vn[0], vn[1], vn[2], 0]);
         rez = [t];
         var u:Float = 0;
@@ -1664,7 +1666,7 @@ class GeometryXD{
         var uvv:Float = vecXDangle(pv1, pv2, rad);
         var pvn:Array<Float> = (vecXDparalleled(pv1, pv2)) ? vn : vec3Dnormal(pv1, pv2);
         var uvnpvn:Float = vecXDangle(vn, pvn, rad);
-        var uznak:Float = (rad) ? NM.radians(90) : 90;
+        var uznak:Float = (rad) ? nm.radians(90) : 90;
         rez = (uvnpvn > uznak) ? -uvv : uvv;
         return rez;
     }
