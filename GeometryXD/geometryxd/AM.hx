@@ -4,7 +4,7 @@ package geometryxd;
  * array manipulation
  */
 class AM{
-    public  function new(){trace("array manipulation is ready for use");}
+    public  function new(){}
     
     var nm = new NM();
     

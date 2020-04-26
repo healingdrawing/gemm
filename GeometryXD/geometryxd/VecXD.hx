@@ -9,13 +9,13 @@ package geometryxd;
      */
     public var value:Array<Float>;
     
-     /**
-      * new multidimentional vector object. Both dots must have same dimensions number, or dotXDb will returned
-      * @param dotXDb end multidimensional dot of vector
-      * @param dotXDa start multidimensional dot of vector. Default will be `[0,...,0]`
-      */
-     public function new(dotXDb:DotXD, ?dotXDa:DotXD) {
-        this.value = (dotXDa != null && am.same_size_F([dotXDb.value,dotXDa.value])) ? am.diff_xF([dotXDb.value,dotXDa.value]) : dotXDb.value;
+    /**
+     * new multidimentional vector object. Both dots must have same dimensions number, or dotXDb will returned
+     * @param dotXDb end multidimensional dot of vector
+     * @param dotXDa start multidimensional dot of vector. Default will be `[0,...,0]`
+     */
+    public function new(dotXDb:DotXD, ?dotXDa:DotXD) {
+       this.value = (dotXDa != null && am.same_size_F([dotXDb.value,dotXDa.value])) ? am.diff_xF([dotXDb.value,dotXDa.value]) : dotXDb.value;
     }
     
     var am = new AM();

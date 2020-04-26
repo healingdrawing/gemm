@@ -4,7 +4,7 @@ package geometryxd;
  * number manipulation
  */
 class NM{
-    public function new(){trace("number manipulation is ready for use");}
+    public function new(){}
     
     /**
      return sign of Int. if x < 0 return -1, else return 1.
