@@ -74,7 +74,7 @@ class GeometryXD{
         return rez;
     }
     /**
-     recount vector to length equal 1
+     recount vector to length equal 1 or return incoming vector as result if incoming vector length equal 0
      @param vecXD - incoming vector
     **/
     public function vecXDone(vecXD:Array<Float>):Array<Float>{

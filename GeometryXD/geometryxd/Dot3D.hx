@@ -23,7 +23,7 @@ class Dot3D{
      * @param y coordinate of dot
      * @param z coordinate of dot
      */
-    public function new(x:Float, y:Float, z:Float) {
+    public function new(x:Float = 0, y:Float = 0, z:Float = 0) {
         this.x = x;
         this.y = y;
         this.z = z;
