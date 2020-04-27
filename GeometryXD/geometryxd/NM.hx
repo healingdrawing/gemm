@@ -124,31 +124,4 @@ class NM{
         }return rez;
     }
     
-    /**
-     chain bonus function. split range to sequences specified length n with same border values.
-     f(6, 3, false) return [[0, 1, 2], [2, 3, 4]]. But f(6, 3, true) return [[0, 1, 2], [2, 3, 4], [4, 5, 0]].
-     Can be used to split dotsXDfield (array of 3D dots) to array of separated 4dots curves trajectories which have same border dots.
-     Just split array of dots length a_l to n = 4. Then recount to beziercurves or create multidot curve use each last three dots.
-     @param a_l - range of indexes (length of array which will be used later as splitted)
-     @param n - length of each sequence (chain link)
-     @param ring - if true then 0 will be added at the end of range of indexes, for the case of strict coincidence
-    **/
-    public function chain_indexes(
-        a_l:Int,
-        n:Int,
-        ring:Bool
-        ):Array<Array<Int>>{
-        var rez:Array<Array<Int>> = null;
-        if (n > a_l || n < 1){ return rez; }
-        var ind:Array<Int> = [];
-        var indring:Array<Int> = [for (i in 0...a_l) i];
-        if(ring){
-            indring.push(0);
-            ind = [for (i in 0...Std.int((a_l + 1) / (n - 1)) * (n - 1) ) (i%(n-1) == 0 && i+n-1 < a_l + 1)? i : continue ]; // close to for loop(0 to a_l+1 with step=n)
-        }else{
-            ind = [for (i in 0...Std.int(a_l / (n - 1)) * (n - 1) ) (i%(n-1) == 0 && i+n-1 < a_l)? i : continue ]; // close to for loop(0 to a_l with step=n)
-        }rez = [for (i in 0...ind.length) [for (j in 0...n) indring[ind[i]+j]] ];
-        return rez;
-    }
-    
 }
