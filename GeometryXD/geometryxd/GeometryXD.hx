@@ -1690,7 +1690,7 @@ class GeometryXD{
      * @param dot coordinates
      * @return DotXD
      */
-    public function DotXD(dot:Array<Float>):DotXD { return new DotXD(dot); }
+    public function objDotXD(dot:Array<Float>):DotXD { return new DotXD(dot); }
     
     /**
      * 3D dot object. Default `[0,0,0]`.
@@ -1699,20 +1699,20 @@ class GeometryXD{
      * @param z coordinate
      * @return Dot3D
      */
-    public function Dot3D(x:Float = 0,y:Float = 0,z:Float = 0):Dot3D { return new Dot3D(x,y,z); }
+    public function objDot3D(x:Float = 0,y:Float = 0,z:Float = 0):Dot3D { return new Dot3D(x,y,z); }
     
     /**
      * multidimentional vector object. Both dots must have same dimensions number, or `dotXDb` will returned
      * @param dotXDb end multidimensional dot of vector
      * @param dotXDa start multidimensional dot of vector. Default will be `[0,...,0]`
      */
-    public function VecXD(dotXDb:DotXD, ?dotXDa:DotXD):VecXD { return new VecXD(dotXDb,dotXDa); }
+    public function objVecXD(dotXDb:DotXD, ?dotXDa:DotXD):VecXD { return new VecXD(dotXDb,dotXDa); }
     
     /**
      * new 3D vector object
      * @param dot3Db end 3D dot of vector
      * @param dot3Da start 3D dot of vector. Default will be `[0,0,0]`
      */
-    public function Vec3D(dot3Db:Dot3D, ?dot3Da:Dot3D):Vec3D { return new Vec3D(dot3Db, dot3Da); }
+    public function objVec3D(dot3Db:Dot3D, ?dot3Da:Dot3D):Vec3D { return new Vec3D(dot3Db, dot3Da); }
     
 }
