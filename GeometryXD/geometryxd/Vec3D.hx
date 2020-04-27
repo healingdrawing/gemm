@@ -18,6 +18,11 @@ package geometryxd;
     public var z:Float;
     
     /**
+     * internal usage of methods
+     */
+    var geo = new GeometryXD();
+    
+    /**
      * new 3D vector object
      * @param dot3Db end 3D dot of vector
      * @param dot3Da start 3D dot of vector. Default will be `[0,0,0]`
