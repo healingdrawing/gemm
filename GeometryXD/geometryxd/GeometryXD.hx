@@ -19,6 +19,10 @@ class GeometryXD{
     **/
     public static function main(){trace("GeometryXD connected");}
     
+    public var nm:NM;
+    public var am:AM;
+    
+    
     public function new(){
         trace("=============================");
         trace("= GeometryXD ready          =");
@@ -28,9 +32,6 @@ class GeometryXD{
         trace("= array manipulation ready  =");
         trace("=============================");
     }
-    
-    var nm:NM;
-    var am:AM;
     
     /**
      return vector length (other names "norm" or "magnitude").
