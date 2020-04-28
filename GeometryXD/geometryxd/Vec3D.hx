@@ -39,9 +39,29 @@ package geometryxd;
         }
     }
     
+    /**
+     * set `x,y,z` properties using array of coordinates. Used first three array elements. Not enough length replaced uses 0.
+     * @param xyz array of 3D vector coordinates `[x,y,z]`
+     */
+    public function useArray(xyz:Array<Float>) {
+        if (xyz.length < 3) for (i in xyz.length ... 3) xyz.push(0);
+        this.x = xyz[0];
+        this.y = xyz[1];
+        this.z = xyz[2];
+    }
     
     /**
-     * number or vector dimensions
+     * new Vec3D object from array of coordinates. Used first three array elements. Not enough length replaced uses 0.
+     * @param xyz array of 3D vector coordinates `[x,y,z]`
+     */
+    public function fromArray(xyz:Array<Float>) {
+        if (xyz.length < 3) for (i in xyz.length ... 3) xyz.push(0);
+        return vd(xyz);
+    }
+    
+    
+    /**
+     * number of vector dimensions
      */
      public function dn() {
         return this.value().length;
