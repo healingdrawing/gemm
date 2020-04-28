@@ -21,7 +21,7 @@ package geometryxd;
     var am = new AM();
     
     /**
-     * number or vector dimensions
+     * number of vector dimensions
      */
     public function dn() {
         return this.value.length;
