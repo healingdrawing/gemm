@@ -29,7 +29,7 @@ class Dot3D{
         this.z = z;
     }
     
-    var am = new AM();
+    var geo = new GeometryXD();
     
     /**
      * array of dot coordinates `[x,y,z]`
@@ -41,14 +41,14 @@ class Dot3D{
      * number or dot dimensions
      */
     public function dn() {
-        return this.value().length;
+        return 3;
     }
     
     /**
      * array of mirrored values of dot coordinates. If `value()` = `[1,2,3]` return `[-1,-2,-3]`
      */
     public function valueM(){
-        return am.minus_F(this.value());
+        return [-this.x,-this.y,-this.z];
     }
     
     /**
