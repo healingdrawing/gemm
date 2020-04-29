@@ -3828,27 +3828,52 @@
 		<meta><m n=":directlyUsed"/></meta>
 	</class>
 	<class path="geometryxd.VecXD" params="" file="./geometryxd/VecXD.hx">
-		<value public="1">
+		<coordinates>
 			<c path="Array"><x path="Float"/></c>
-			<haxe_doc>* array of vector coordinates</haxe_doc>
-		</value>
+			<haxe_doc>* internal property. array of vector coordinates</haxe_doc>
+		</coordinates>
+		<useArray public="1" set="method" line="26">
+			<f a="coordinates">
+				<c path="Array"><x path="Float"/></c>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>* set vector coordinates properties using array of coordinates.
+     * @param coordinates array of XD vector coordinates `[x,y,...,z]`</haxe_doc>
+		</useArray>
+		<fromArray public="1" set="method" line="34">
+			<f a="coordinates">
+				<c path="Array"><x path="Float"/></c>
+				<c path="geometryxd.VecXD"/>
+			</f>
+			<haxe_doc>* new VecXD object from array of coordinates.
+     * @param coordinates array of multidimensional vector coordinates `[x,y,...,z]`</haxe_doc>
+		</fromArray>
 		<am expr="new AM()">
 			<c path="geometryxd.AM"/>
 			<meta><m n=":value"><e>new AM()</e></m></meta>
 		</am>
-		<dn public="1" set="method" line="26">
+		<value public="1" set="method" line="41"><f a=""><c path="Array"><x path="Float"/></c></f></value>
+		<dn public="1" set="method" line="48">
 			<f a=""><x path="Int"/></f>
 			<haxe_doc>* number of vector dimensions</haxe_doc>
 		</dn>
-		<valueM public="1" set="method" line="33">
+		<valueM public="1" set="method" line="55">
 			<f a=""><c path="Array"><x path="Float"/></c></f>
 			<haxe_doc>* array of mirrored values of vector coordinates. If `value` = `[1,2,3,-4]` return `[-1,-2,-3,4]`</haxe_doc>
 		</valueM>
-		<vecXDM public="1" set="method" line="40">
+		<vd get="inline" set="null" line="64">
+			<f a="c">
+				<c path="Array"><x path="Float"/></c>
+				<c path="geometryxd.VecXD"/>
+			</f>
+			<haxe_doc>* internal function. Return VecXD object from multidimensional dot coordinates
+     * @param c multidimensional dot coordinates array `[x,y,...,z]`</haxe_doc>
+		</vd>
+		<vecXDM public="1" set="method" line="71">
 			<f a=""><c path="geometryxd.VecXD"/></f>
 			<haxe_doc>* new multidimensional vector object with mirrored coordinates. If `value` = `[1,2,3,-4]` return vecXD().value = `[-1,-2,-3,4]`</haxe_doc>
 		</vecXDM>
-		<vecXDcopy public="1" set="method" line="47">
+		<vecXDcopy public="1" set="method" line="78">
 			<f a=""><c path="geometryxd.VecXD"/></f>
 			<haxe_doc>* new multidimensional vector object with same coordinates. if `value` = `[1,2,3,-4]` return vecXD().value = `[1,2,3,-4]`</haxe_doc>
 		</vecXDcopy>
