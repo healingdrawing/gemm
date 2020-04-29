@@ -1793,11 +1793,7 @@
 	@see https://haxe.org/manual/std-reflection.html</haxe_doc>
 	</class>
 	<class path="geometryxd.AM" params="" file="./geometryxd/AM.hx">
-		<nm expr="new NM()">
-			<c path="geometryxd.NM"/>
-			<meta><m n=":value"><e>new NM()</e></m></meta>
-		</nm>
-		<positive_inside_I public="1" get="inline" set="null" line="15">
+		<positive_inside_I public="1" get="inline" set="null" line="13">
 			<f a="a">
 				<c path="Array"><x path="Int"/></c>
 				<x path="Bool"/>
@@ -1805,7 +1801,7 @@
 			<haxe_doc>return true if incoming Int Array have at least one positive element
       @param a - incoming array</haxe_doc>
 		</positive_inside_I>
-		<zero_inside_I public="1" get="inline" set="null" line="23">
+		<zero_inside_I public="1" get="inline" set="null" line="21">
 			<f a="a">
 				<c path="Array"><x path="Int"/></c>
 				<x path="Bool"/>
@@ -1813,7 +1809,7 @@
 			<haxe_doc>return true if incoming Int Array have at least one zero element
       @param a - incoming array</haxe_doc>
 		</zero_inside_I>
-		<negative_inside_I public="1" get="inline" set="null" line="31">
+		<negative_inside_I public="1" get="inline" set="null" line="29">
 			<f a="a">
 				<c path="Array"><x path="Int"/></c>
 				<x path="Bool"/>
@@ -1821,7 +1817,7 @@
 			<haxe_doc>return true if incoming Int Array have at least one negative element
       @param a - incoming array</haxe_doc>
 		</negative_inside_I>
-		<positive_inside_F public="1" get="inline" set="null" line="39">
+		<positive_inside_F public="1" get="inline" set="null" line="37">
 			<f a="a">
 				<c path="Array"><x path="Float"/></c>
 				<x path="Bool"/>
@@ -1829,7 +1825,7 @@
 			<haxe_doc>return true if incoming Float Array have at least one positive element
       @param a - incoming array</haxe_doc>
 		</positive_inside_F>
-		<zero_inside_F public="1" get="inline" set="null" line="47">
+		<zero_inside_F public="1" get="inline" set="null" line="45">
 			<f a="a">
 				<c path="Array"><x path="Float"/></c>
 				<x path="Bool"/>
@@ -1837,7 +1833,7 @@
 			<haxe_doc>return true if incoming Float Array have at least one zero element
       @param a - incoming array</haxe_doc>
 		</zero_inside_F>
-		<negative_inside_F public="1" get="inline" set="null" line="56">
+		<negative_inside_F public="1" get="inline" set="null" line="54">
 			<f a="a">
 				<c path="Array"><x path="Float"/></c>
 				<x path="Bool"/>
@@ -1845,7 +1841,7 @@
 			<haxe_doc>return true if incoming Float Array have at least one negative element
       @param a - incoming array</haxe_doc>
 		</negative_inside_F>
-		<same_size_I public="1" get="inline" set="null" line="65">
+		<same_size_I public="1" get="inline" set="null" line="63">
 			<f a="a">
 				<c path="Array"><c path="Array"><x path="Int"/></c></c>
 				<x path="Null"><x path="Bool"/></x>
@@ -1853,7 +1849,7 @@
 			<haxe_doc>return true if Int Arrays have same size
       @param a - incoming arrays</haxe_doc>
 		</same_size_I>
-		<same_size_F public="1" get="inline" set="null" line="81">
+		<same_size_F public="1" get="inline" set="null" line="79">
 			<f a="a">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<x path="Null"><x path="Bool"/></x>
@@ -1861,7 +1857,7 @@
 			<haxe_doc>return true if Float Arrays have same size
       @param a - incoming arrays</haxe_doc>
 		</same_size_F>
-		<same_xI public="1" set="method" line="98">
+		<same_xI public="1" set="method" line="96">
 			<f a="a">
 				<c path="Array"><c path="Array"><x path="Int"/></c></c>
 				<x path="Null"><x path="Bool"/></x>
@@ -1869,7 +1865,7 @@
 			<haxe_doc>compare Int Arrays. Returns true if all arrays have equal data
      @param a - incoming array field</haxe_doc>
 		</same_xI>
-		<same_xF public="1" set="method" line="116">
+		<same_xF public="1" set="method" line="114">
 			<f a="a">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<x path="Null"><x path="Bool"/></x>
@@ -1877,7 +1873,7 @@
 			<haxe_doc>compare Float Arrays. Returns true if all arrays have equal data
      @param a - incoming array field</haxe_doc>
 		</same_xF>
-		<sum_I public="1" get="inline" set="null" line="135">
+		<sum_I public="1" get="inline" set="null" line="133">
 			<f a="a">
 				<c path="Array"><x path="Int"/></c>
 				<x path="Null"><x path="Int"/></x>
@@ -1885,7 +1881,7 @@
 			<haxe_doc><![CDATA[returns sum of Int Array elements. [1,2,3] -> 6. tested
       @param a - incoming array]]></haxe_doc>
 		</sum_I>
-		<sum_F public="1" get="inline" set="null" line="145">
+		<sum_F public="1" get="inline" set="null" line="143">
 			<f a="a">
 				<c path="Array"><x path="Float"/></c>
 				<x path="Null"><x path="Float"/></x>
@@ -1893,7 +1889,7 @@
 			<haxe_doc><![CDATA[returns sum of Float Array elements. [1.1,2,3] -> 6.1. tested
       @param a - incoming array]]></haxe_doc>
 		</sum_F>
-		<diff_I public="1" set="method" line="155">
+		<diff_I public="1" set="method" line="153">
 			<f a="a">
 				<c path="Array"><x path="Int"/></c>
 				<x path="Null"><x path="Int"/></x>
@@ -1901,7 +1897,7 @@
 			<haxe_doc><![CDATA[returns diff between first and others Int Array elements. [1,2,3] -> -4. tested
       @param a - incoming array]]></haxe_doc>
 		</diff_I>
-		<diff_F public="1" set="method" line="167">
+		<diff_F public="1" set="method" line="165">
 			<f a="a">
 				<c path="Array"><x path="Float"/></c>
 				<x path="Null"><x path="Float"/></x>
@@ -1909,7 +1905,7 @@
 			<haxe_doc><![CDATA[returns diff between first and others Float Array elements. [1.1,2,3] -> -3.9. tested
       @param a - incoming array]]></haxe_doc>
 		</diff_F>
-		<middle_F public="1" set="method" line="179">
+		<middle_F public="1" set="method" line="177">
 			<f a="a">
 				<c path="Array"><x path="Float"/></c>
 				<x path="Null"><x path="Float"/></x>
@@ -1917,7 +1913,7 @@
 			<haxe_doc>returns middle value of Float Array
       @param a - incoming array</haxe_doc>
 		</middle_F>
-		<multiply_I_I public="1" get="inline" set="null" line="190">
+		<multiply_I_I public="1" get="inline" set="null" line="188">
 			<f a="a:n">
 				<c path="Array"><x path="Int"/></c>
 				<x path="Int"/>
@@ -1927,7 +1923,7 @@
       @param a - incoming array
       @param n - multiplier of each element</haxe_doc>
 		</multiply_I_I>
-		<multiply_F_F public="1" get="inline" set="null" line="204">
+		<multiply_F_F public="1" get="inline" set="null" line="202">
 			<f a="a:n">
 				<c path="Array"><x path="Float"/></c>
 				<x path="Float"/>
@@ -1937,7 +1933,7 @@
       @param a - incoming array
       @param n - multiplier of each element</haxe_doc>
 		</multiply_F_F>
-		<multiply_I public="1" get="inline" set="null" line="217">
+		<multiply_I public="1" get="inline" set="null" line="215">
 			<f a="a">
 				<c path="Array"><x path="Int"/></c>
 				<x path="Null"><x path="Int"/></x>
@@ -1945,7 +1941,7 @@
 			<haxe_doc>multiplies all elements of an Int Array. [1, 2, 3] return 1 * 2 * 3
       @param a - incoming array</haxe_doc>
 		</multiply_I>
-		<multiply_F public="1" get="inline" set="null" line="229">
+		<multiply_F public="1" get="inline" set="null" line="227">
 			<f a="a">
 				<c path="Array"><x path="Float"/></c>
 				<x path="Null"><x path="Float"/></x>
@@ -1953,7 +1949,7 @@
 			<haxe_doc>multiplies all elements of an Float Array. [1.1, 2.0, 3.0] return 1.1 * 2.0 * 3.0
       @param a - incoming array</haxe_doc>
 		</multiply_F>
-		<minus_I public="1" get="inline" set="null" line="241">
+		<minus_I public="1" get="inline" set="null" line="239">
 			<f a="a">
 				<c path="Array"><x path="Int"/></c>
 				<c path="Array"><x path="Int"/></c>
@@ -1961,7 +1957,7 @@
 			<haxe_doc>multiplies each element of the Int Array by -1
       @param a - incoming array</haxe_doc>
 		</minus_I>
-		<minus_F public="1" get="inline" set="null" line="248">
+		<minus_F public="1" get="inline" set="null" line="246">
 			<f a="a">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -1969,7 +1965,7 @@
 			<haxe_doc>multiplies each element of the Float Array by -1
       @param a - incoming array</haxe_doc>
 		</minus_F>
-		<sum_xI public="1" set="method" line="256">
+		<sum_xI public="1" set="method" line="254">
 			<f a="a">
 				<c path="Array"><c path="Array"><x path="Int"/></c></c>
 				<c path="Array"><x path="Int"/></c>
@@ -1977,7 +1973,7 @@
 			<haxe_doc>return Int Array which is Int Arrays sum. [[1, 2, 3], [-3, -2, -1]] return [-2, 0, 2]
       @param a - incoming arrays</haxe_doc>
 		</sum_xI>
-		<sum_xF public="1" set="method" line="265">
+		<sum_xF public="1" set="method" line="263">
 			<f a="a">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><x path="Float"/></c>
@@ -1985,7 +1981,7 @@
 			<haxe_doc>return Float Array which is Float Arrays sum. [[1.1, 2, 3], [-3, -2, -1]] return [-1.9, 0, 2]
       @param a - incoming arrays</haxe_doc>
 		</sum_xF>
-		<diff_xI public="1" set="method" line="274">
+		<diff_xI public="1" set="method" line="272">
 			<f a="a">
 				<c path="Array"><c path="Array"><x path="Int"/></c></c>
 				<c path="Array"><x path="Int"/></c>
@@ -1993,7 +1989,7 @@
 			<haxe_doc>return Int Array which is result of diff between first Int Array and others. [[1, 2, 3], [-3, -2, -1]] return [4, 4, 4]
       @param a - incoming arrays</haxe_doc>
 		</diff_xI>
-		<diff_xF public="1" set="method" line="283">
+		<diff_xF public="1" set="method" line="281">
 			<f a="a">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2001,7 +1997,7 @@
 			<haxe_doc>return Float Array which is result of diff between first Float Array and others. [[1.1, 2, 3], [-3, -2, -1]] return [4.1, 4, 4]
       @param a - incoming arrays</haxe_doc>
 		</diff_xF>
-		<middle_xF public="1" set="method" line="292">
+		<middle_xF public="1" set="method" line="290">
 			<f a="a">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2009,7 +2005,7 @@
 			<haxe_doc>return Float Array with middle values from arrays. [[1.1, 2, 3], [-3, -2, -1]] return [(1.1 - 3) / 2, (2 - 2) / 2, (3 - 1) / 2]
       @param a - incoming arrays</haxe_doc>
 		</middle_xF>
-		<multiply_xI_I public="1" set="method" line="302">
+		<multiply_xI_I public="1" set="method" line="300">
 			<f a="a:n">
 				<c path="Array"><c path="Array"><x path="Int"/></c></c>
 				<x path="Int"/>
@@ -2019,7 +2015,7 @@
       @param a - incoming arrays
       @param n - multiplier</haxe_doc>
 		</multiply_xI_I>
-		<multiply_xF_F public="1" set="method" line="315">
+		<multiply_xF_F public="1" set="method" line="313">
 			<f a="a:n">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<x path="Float"/>
@@ -2029,7 +2025,7 @@
       @param a - incoming arrays
       @param n - multiplier</haxe_doc>
 		</multiply_xF_F>
-		<multiply_xI public="1" set="method" line="327">
+		<multiply_xI public="1" set="method" line="325">
 			<f a="a">
 				<c path="Array"><c path="Array"><x path="Int"/></c></c>
 				<c path="Array"><x path="Int"/></c>
@@ -2037,7 +2033,7 @@
 			<haxe_doc>return Int Array which is result of multiplying arrays. [[1, 2], [3, 4]] return [1 * 3, 2 * 4]
       @param a - incoming arrays</haxe_doc>
 		</multiply_xI>
-		<multiply_xF public="1" set="method" line="342">
+		<multiply_xF public="1" set="method" line="340">
 			<f a="a">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2045,7 +2041,7 @@
 			<haxe_doc>return Float Array which is result of multiplying arrays. [[3.1, 2], [3, 4]] return [3.1 * 3, 2 * 4]
       @param a - incoming arrays</haxe_doc>
 		</multiply_xF>
-		<multisum_xI public="1" set="method" line="357">
+		<multisum_xI public="1" set="method" line="355">
 			<f a="a">
 				<c path="Array"><c path="Array"><x path="Int"/></c></c>
 				<x path="Null"><x path="Int"/></x>
@@ -2053,7 +2049,7 @@
 			<haxe_doc>Int Arrays bonus function. Short form of sum_I(multiply_xI(a)). [[a, b], [c, d]] return a * c + b * d
       @param a - incoming arrays</haxe_doc>
 		</multisum_xI>
-		<multisum_xF public="1" set="method" line="372">
+		<multisum_xF public="1" set="method" line="370">
 			<f a="a">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<x path="Null"><x path="Float"/></x>
@@ -2061,7 +2057,7 @@
 			<haxe_doc>Float Arrays bonus function. Short form of sum_F(multiply_xF(a)). [[a, b], [c, d]] return a * c + b * d
       @param a - incoming arrays</haxe_doc>
 		</multisum_xF>
-		<sum_previous_I public="1" get="inline" set="null" line="387">
+		<sum_previous_I public="1" get="inline" set="null" line="385">
 			<f a="a">
 				<c path="Array"><x path="Int"/></c>
 				<c path="Array"><x path="Int"/></c>
@@ -2069,7 +2065,7 @@
 			<haxe_doc>return Int Array which is result of sum with previous element. [1, 2, 3] return [1, 3, 5]
       @param a - incoming array</haxe_doc>
 		</sum_previous_I>
-		<diff_previous_I public="1" get="inline" set="null" line="397">
+		<diff_previous_I public="1" get="inline" set="null" line="395">
 			<f a="a">
 				<c path="Array"><x path="Int"/></c>
 				<c path="Array"><x path="Int"/></c>
@@ -2077,7 +2073,7 @@
 			<haxe_doc>return Int Array which is result of diff with previous element. [1, 2, 3] return [1, 1, 1]
       @param a - incoming array</haxe_doc>
 		</diff_previous_I>
-		<sum_before_I public="1" get="inline" set="null" line="407">
+		<sum_before_I public="1" get="inline" set="null" line="405">
 			<f a="a">
 				<c path="Array"><x path="Int"/></c>
 				<c path="Array"><x path="Int"/></c>
@@ -2085,7 +2081,7 @@
 			<haxe_doc>return Int Array which is result of sum each element with before elements sum. [1, 2, 3] return [1, 3, 6]
       @param a - incoming array</haxe_doc>
 		</sum_before_I>
-		<diff_before_I public="1" get="inline" set="null" line="421">
+		<diff_before_I public="1" get="inline" set="null" line="419">
 			<f a="a">
 				<c path="Array"><x path="Int"/></c>
 				<c path="Array"><x path="Int"/></c>
@@ -2093,7 +2089,7 @@
 			<haxe_doc>return Int Array which is result of diff each element with before elements diff. [1, 2, 3] return [1, 1, 2]
       @param a - incoming array</haxe_doc>
 		</diff_before_I>
-		<sum_previous_F public="1" get="inline" set="null" line="435">
+		<sum_previous_F public="1" get="inline" set="null" line="433">
 			<f a="a">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2101,7 +2097,7 @@
 			<haxe_doc>return Float Array which is result of sum with previous element. [1.1, 2, 3] return [1.1, 3.1, 5]
       @param a - incoming array</haxe_doc>
 		</sum_previous_F>
-		<diff_previous_F public="1" get="inline" set="null" line="445">
+		<diff_previous_F public="1" get="inline" set="null" line="443">
 			<f a="a">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2109,7 +2105,7 @@
 			<haxe_doc>return Float Array which is result of diff with previous element. [1.1, 2, 3] return [1.1, 0.9, 1]
       @param a - incoming array</haxe_doc>
 		</diff_previous_F>
-		<sum_before_F public="1" get="inline" set="null" line="455">
+		<sum_before_F public="1" get="inline" set="null" line="453">
 			<f a="a">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2117,7 +2113,7 @@
 			<haxe_doc>return Float Array which is result of sum each element with before elements sum. [1.1, 2, 3] return [1.1, 3.1, 6.1]
       @param a - incoming array</haxe_doc>
 		</sum_before_F>
-		<diff_before_F public="1" get="inline" set="null" line="469">
+		<diff_before_F public="1" get="inline" set="null" line="467">
 			<f a="a">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2125,7 +2121,7 @@
 			<haxe_doc>return Float Array which is result of diff each element with before elements diff. [1.1, 2, 3] return [1.1, 0.9, 2.1]
       @param a - incoming array</haxe_doc>
 		</diff_before_F>
-		<recounter_I_F public="1" get="inline" set="null" line="484">
+		<recounter_I_F public="1" get="inline" set="null" line="482">
 			<f a="what">
 				<c path="Array"><x path="Int"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2133,7 +2129,7 @@
 			<haxe_doc>recount Int Array to Float Array
      @param what - incoming array</haxe_doc>
 		</recounter_I_F>
-		<recounter_F_I public="1" get="inline" set="null" line="493">
+		<recounter_F_I public="1" get="inline" set="null" line="491">
 			<f a="what">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Int"/></c>
@@ -2141,7 +2137,7 @@
 			<haxe_doc>recount Float Array to Int Array
      @param what - incoming array</haxe_doc>
 		</recounter_F_I>
-		<recounter_I_S public="1" get="inline" set="null" line="502">
+		<recounter_I_S public="1" get="inline" set="null" line="500">
 			<f a="what">
 				<c path="Array"><x path="Int"/></c>
 				<c path="Array"><c path="String"/></c>
@@ -2149,7 +2145,7 @@
 			<haxe_doc>recount Int Array to String Array
      @param what - incoming array</haxe_doc>
 		</recounter_I_S>
-		<recounter_F_S public="1" get="inline" set="null" line="511">
+		<recounter_F_S public="1" get="inline" set="null" line="509">
 			<f a="what">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><c path="String"/></c>
@@ -2157,7 +2153,7 @@
 			<haxe_doc>recount Float Array to String Array
      @param what - incoming array</haxe_doc>
 		</recounter_F_S>
-		<recounter_S_I public="1" get="inline" set="null" line="520">
+		<recounter_S_I public="1" get="inline" set="null" line="518">
 			<f a="what">
 				<c path="Array"><c path="String"/></c>
 				<c path="Array"><x path="Int"/></c>
@@ -2165,7 +2161,7 @@
 			<haxe_doc>recount String Array to Int Array
      @param what - incoming array</haxe_doc>
 		</recounter_S_I>
-		<recounter_S_F public="1" get="inline" set="null" line="529">
+		<recounter_S_F public="1" get="inline" set="null" line="527">
 			<f a="what">
 				<c path="Array"><c path="String"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2173,7 +2169,7 @@
 			<haxe_doc>recount String Array to Float Array
      @param what - incoming array</haxe_doc>
 		</recounter_S_F>
-		<repeater_F_F public="1" get="inline" set="null" line="541">
+		<repeater_F_F public="1" get="inline" set="null" line="539">
 			<f a="n:what:?full" v="::false">
 				<x path="Int"/>
 				<c path="Array"><x path="Float"/></c>
@@ -2186,7 +2182,7 @@
      @param what - incoming array
      @param full - if true then result array will be not cutted to result array length parameter</haxe_doc>
 		</repeater_F_F>
-		<repeater_I_I public="1" get="inline" set="null" line="563">
+		<repeater_I_I public="1" get="inline" set="null" line="561">
 			<f a="n:what:?full" v="::false">
 				<x path="Int"/>
 				<c path="Array"><x path="Int"/></c>
@@ -2199,7 +2195,7 @@
      @param what - incoming array
      @param full - if true then result array will be not cutted to result array length parameter</haxe_doc>
 		</repeater_I_I>
-		<repeater_S_S public="1" get="inline" set="null" line="585">
+		<repeater_S_S public="1" get="inline" set="null" line="583">
 			<f a="n:what:?full" v="::false">
 				<x path="Int"/>
 				<c path="Array"><c path="String"/></c>
@@ -2212,7 +2208,7 @@
      @param what - incoming array
      @param full - if true then result array will be not cutted to result array length parameter</haxe_doc>
 		</repeater_S_S>
-		<repeater_F_I public="1" set="method" line="607">
+		<repeater_F_I public="1" set="method" line="605">
 			<f a="n:what_:?full" v="::false">
 				<x path="Int"/>
 				<c path="Array"><x path="Float"/></c>
@@ -2225,7 +2221,7 @@
      @param what - incoming array
      @param full - if true then result array will be not cutted to result array length parameter</haxe_doc>
 		</repeater_F_I>
-		<repeater_S_I public="1" set="method" line="630">
+		<repeater_S_I public="1" set="method" line="628">
 			<f a="n:what_:?full" v="::false">
 				<x path="Int"/>
 				<c path="Array"><c path="String"/></c>
@@ -2238,7 +2234,7 @@
      @param what - incoming array
      @param full - if true then result array will be not cutted to result array length parameter</haxe_doc>
 		</repeater_S_I>
-		<repeater_I_F public="1" set="method" line="653">
+		<repeater_I_F public="1" set="method" line="651">
 			<f a="n:what_:?full" v="::false">
 				<x path="Int"/>
 				<c path="Array"><x path="Int"/></c>
@@ -2251,7 +2247,7 @@
      @param what - incoming array
      @param full - if true then result array will be not cutted to result array length parameter</haxe_doc>
 		</repeater_I_F>
-		<repeater_S_F public="1" set="method" line="676">
+		<repeater_S_F public="1" set="method" line="674">
 			<f a="n:what_:?full" v="::false">
 				<x path="Int"/>
 				<c path="Array"><c path="String"/></c>
@@ -2264,7 +2260,7 @@
      @param what - incoming array
      @param full - if true then result array will be not cutted to result array length parameter</haxe_doc>
 		</repeater_S_F>
-		<repeater_I_S public="1" set="method" line="699">
+		<repeater_I_S public="1" set="method" line="697">
 			<f a="n:what_:?full" v="::false">
 				<x path="Int"/>
 				<c path="Array"><x path="Int"/></c>
@@ -2277,7 +2273,7 @@
      @param what - incoming array
      @param full - if true then result array will be not cutted to result array length parameter</haxe_doc>
 		</repeater_I_S>
-		<repeater_F_S public="1" set="method" line="722">
+		<repeater_F_S public="1" set="method" line="720">
 			<f a="n:what_:?full" v="::false">
 				<x path="Int"/>
 				<c path="Array"><x path="Float"/></c>
@@ -2290,7 +2286,7 @@
      @param what - incoming array
      @param full - if true then result array will be not cutted to result array length parameter</haxe_doc>
 		</repeater_F_S>
-		<an_in_b_S public="1" get="inline" set="null" line="746">
+		<an_in_b_S public="1" get="inline" set="null" line="744">
 			<f a="a:b">
 				<c path="Array"><c path="String"/></c>
 				<c path="Array"><c path="String"/></c>
@@ -2301,7 +2297,7 @@
      @param a - array what find
      @param b - array where find</haxe_doc>
 		</an_in_b_S>
-		<an_in_bn_S public="1" get="inline" set="null" line="766">
+		<an_in_bn_S public="1" get="inline" set="null" line="764">
 			<f a="a:b">
 				<c path="Array"><c path="String"/></c>
 				<c path="Array"><c path="Array"><c path="String"/></c></c>
@@ -2312,7 +2308,7 @@
      @param a - array what find
      @param b - array where find</haxe_doc>
 		</an_in_bn_S>
-		<an_in_b_I public="1" get="inline" set="null" line="788">
+		<an_in_b_I public="1" get="inline" set="null" line="786">
 			<f a="a:b">
 				<c path="Array"><x path="Int"/></c>
 				<c path="Array"><x path="Int"/></c>
@@ -2323,7 +2319,7 @@
      @param a - array what find
      @param b - array where find</haxe_doc>
 		</an_in_b_I>
-		<an_in_bn_I public="1" get="inline" set="null" line="808">
+		<an_in_bn_I public="1" get="inline" set="null" line="806">
 			<f a="a:b">
 				<c path="Array"><x path="Int"/></c>
 				<c path="Array"><c path="Array"><x path="Int"/></c></c>
@@ -2334,7 +2330,7 @@
      @param a - array what find
      @param b - array where find</haxe_doc>
 		</an_in_bn_I>
-		<an_in_b_F public="1" get="inline" set="null" line="830">
+		<an_in_b_F public="1" get="inline" set="null" line="828">
 			<f a="a:b">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2345,7 +2341,7 @@
      @param a - array what find
      @param b - array where find</haxe_doc>
 		</an_in_b_F>
-		<an_in_bn_F public="1" get="inline" set="null" line="850">
+		<an_in_bn_F public="1" get="inline" set="null" line="848">
 			<f a="a:b">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
@@ -2356,7 +2352,22 @@
      @param a - array what find
      @param b - array where find</haxe_doc>
 		</an_in_bn_F>
-		<chain_S public="1" get="inline" set="null" line="873">
+		<chain_indexes public="1" set="method" line="874">
+			<f a="a_l:n:ring">
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Bool"/>
+				<c path="Array"><c path="Array"><x path="Int"/></c></c>
+			</f>
+			<haxe_doc>chain bonus function. split range to sequences specified length n with same border values.
+     f(6, 3, false) return [[0, 1, 2], [2, 3, 4]]. But f(6, 3, true) return [[0, 1, 2], [2, 3, 4], [4, 5, 0]].
+     Can be used to split dotsXDfield (array of 3D dots) to array of separated 4dots curves trajectories which have same border dots.
+     Just split array of dots length a_l to n = 4. Then recount to beziercurves or create multidot curve use each last three dots.
+     @param a_l - range of indexes (length of array which will be used later as splitted)
+     @param n - length of each sequence (chain link)
+     @param ring - if true then 0 will be added at the end of range of indexes, for the case of strict coincidence</haxe_doc>
+		</chain_indexes>
+		<chain_S public="1" get="inline" set="null" line="897">
 			<f a="a:n:?ring" v="::false">
 				<c path="Array"><c path="String"/></c>
 				<x path="Int"/>
@@ -2369,7 +2380,7 @@
      @param n - chain link length
      @param ring - if true then first incoming element will be added at the end of range, for the case of strict coincidence</haxe_doc>
 		</chain_S>
-		<chain_I public="1" get="inline" set="null" line="891">
+		<chain_I public="1" get="inline" set="null" line="915">
 			<f a="a:n:?ring" v="::false">
 				<c path="Array"><x path="Int"/></c>
 				<x path="Int"/>
@@ -2382,7 +2393,7 @@
      @param n - chain link length
      @param ring - if true then first incoming element will be added at the end of range, for the case of strict coincidence</haxe_doc>
 		</chain_I>
-		<chain_F public="1" get="inline" set="null" line="909">
+		<chain_F public="1" get="inline" set="null" line="933">
 			<f a="a:n:?ring" v="::false">
 				<c path="Array"><x path="Float"/></c>
 				<x path="Int"/>
@@ -2395,7 +2406,7 @@
      @param n - chain link length
      @param ring - if true then first incoming element will be added at the end of range, for the case of strict coincidence</haxe_doc>
 		</chain_F>
-		<maxabs public="1" set="method" line="927">
+		<maxabs public="1" set="method" line="951">
 			<f a="a">
 				<c path="Array"><x path="Float"/></c>
 				<x path="Float"/>
@@ -2526,9 +2537,9 @@
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>trace `GeometryXD is ready for use` message in time of initialisation</haxe_doc>
 		</main>
-		<nm><c path="geometryxd.NM"/></nm>
-		<am><c path="geometryxd.AM"/></am>
-		<vecXDnorm public="1" set="method" line="40">
+		<nm public="1"><c path="geometryxd.NM"/></nm>
+		<am public="1"><c path="geometryxd.AM"/></am>
+		<vecXDnorm public="1" set="method" line="41">
 			<f a="vecXD">
 				<c path="Array"><x path="Float"/></c>
 				<x path="Float"/>
@@ -2537,7 +2548,7 @@
      For `[2,3]` return Math.sqrt((2 * 2) + (3 * 3))
      @param vecXD - incoming vector</haxe_doc>
 		</vecXDnorm>
-		<vecXDfieldnorm public="1" get="inline" set="null" line="49">
+		<vecXDfieldnorm public="1" get="inline" set="null" line="50">
 			<f a="vecXDfield">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2545,7 +2556,7 @@
 			<haxe_doc>return array of lengths of vectors
      @param vecXDfield - incoming vectors array(vector field)</haxe_doc>
 		</vecXDfieldnorm>
-		<zero_vector_inside public="1" get="inline" set="null" line="59">
+		<zero_vector_inside public="1" get="inline" set="null" line="60">
 			<f a="vecXDfield">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<x path="Null"><x path="Bool"/></x>
@@ -2554,7 +2565,7 @@
      * @param vecXDfield multidimensional vector field
      * @return Null<Bool>]]></haxe_doc>
 		</zero_vector_inside>
-		<vecXD public="1" set="method" line="73">
+		<vecXD public="1" set="method" line="74">
 			<f a="dotXDb:?dotXDa">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2564,7 +2575,7 @@
      @param dotXDb - vector end dot
      @param dotXDa - vector start dot. Default will be `[0,...,0]`</haxe_doc>
 		</vecXD>
-		<vecXDone public="1" set="method" line="92">
+		<vecXDone public="1" set="method" line="93">
 			<f a="vecXD">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2572,7 +2583,7 @@
 			<haxe_doc>recount vector to length equal 1 or return incoming vector as result if incoming vector length equal 0
      @param vecXD - incoming vector</haxe_doc>
 		</vecXDone>
-		<vecXDfield public="1" set="method" line="105">
+		<vecXDfield public="1" set="method" line="106">
 			<f a="dots">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
@@ -2580,7 +2591,7 @@
 			<haxe_doc>return vector field from first dot to each other
      @param dots - dots field for vector field. `dots[0]` used as first dot</haxe_doc>
 		</vecXDfield>
-		<vecXDsame public="1" get="inline" set="null" line="115">
+		<vecXDsame public="1" get="inline" set="null" line="116">
 			<f a="vecXDa:vecXDb">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2590,7 +2601,7 @@
      @param vecXDa - incoming vector
      @param vecXDb - incoming vector</haxe_doc>
 		</vecXDsame>
-		<vecXDfieldsame public="1" get="inline" set="null" line="128">
+		<vecXDfieldsame public="1" get="inline" set="null" line="129">
 			<f a="vecXDfield">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<x path="Null"><x path="Bool"/></x>
@@ -2598,7 +2609,7 @@
 			<haxe_doc>compare vectors from vector field. Returns true if all vectors have same data
      @param vecXDfield - vector field(array of vectors)</haxe_doc>
 		</vecXDfieldsame>
-		<vecXDrandom public="1" set="method" line="133">
+		<vecXDrandom public="1" set="method" line="134">
 			<f a="?x" v="3">
 				<x path="Int"/>
 				<c path="Array"><x path="Float"/></c>
@@ -2607,7 +2618,7 @@
 			<haxe_doc><![CDATA[return random vector with length equal 1
      @param x - number of vector dimension. For example x = 3 -> 3D vector, x = 4 -> 4D vector]]></haxe_doc>
 		</vecXDrandom>
-		<vecXDsum public="1" set="method" line="147">
+		<vecXDsum public="1" set="method" line="148">
 			<f a="vecXDa:vecXDb">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2617,7 +2628,7 @@
      @param vecXDa - vector
      @param vecXDb - vector</haxe_doc>
 		</vecXDsum>
-		<vecXDfieldsum public="1" set="method" line="157">
+		<vecXDfieldsum public="1" set="method" line="158">
 			<f a="vecXDfield">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2625,7 +2636,7 @@
 			<haxe_doc>return vector, which is sum of vector field
      @param vecXDfield - vector field (array of vectors)</haxe_doc>
 		</vecXDfieldsum>
-		<vecXDdiff public="1" set="method" line="165">
+		<vecXDdiff public="1" set="method" line="166">
 			<f a="vecXDa:vecXDb">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2635,7 +2646,7 @@
      @param vecXDa - vector
      @param vecXDb - vector</haxe_doc>
 		</vecXDdiff>
-		<vecXDfielddiff public="1" set="method" line="175">
+		<vecXDfielddiff public="1" set="method" line="176">
 			<f a="vecXDfield">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2643,7 +2654,7 @@
 			<haxe_doc>return vector, which is diff of vector field. v0-v1...-vn
      @param vecXDfield - vector field(array of vectors)</haxe_doc>
 		</vecXDfielddiff>
-		<vecXDback public="1" set="method" line="182">
+		<vecXDback public="1" set="method" line="183">
 			<f a="vecXD">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2651,7 +2662,7 @@
 			<haxe_doc>return opposite vector. [1, 2, -4] return [-1, -2, 4]
      @param vecXD - vector</haxe_doc>
 		</vecXDback>
-		<vecXDfieldback public="1" set="method" line="189">
+		<vecXDfieldback public="1" set="method" line="190">
 			<f a="vecXDfield">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
@@ -2659,7 +2670,7 @@
 			<haxe_doc>return opposite vector field. [[1, 2], [3, -4]] return [[-1, -2], [-3, 4]]
      @param vecXDfield - vector field(array of vectors)</haxe_doc>
 		</vecXDfieldback>
-		<vecXDparalleled_sameside public="1" set="method" line="198">
+		<vecXDparalleled_sameside public="1" set="method" line="199">
 			<f a="vecXDa:vecXDb">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2669,7 +2680,7 @@
      @param vecXDa - vector
      @param vecXDb - vector</haxe_doc>
 		</vecXDparalleled_sameside>
-		<vecXDparalleled_opposite public="1" set="method" line="213">
+		<vecXDparalleled_opposite public="1" set="method" line="214">
 			<f a="vecXDa:vecXDb">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2679,7 +2690,7 @@
      @param vecXDa - vector
      @param vecXDb - vector</haxe_doc>
 		</vecXDparalleled_opposite>
-		<vecXDparalleled public="1" set="method" line="226">
+		<vecXDparalleled public="1" set="method" line="227">
 			<f a="vecXDa:vecXDb">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2689,7 +2700,7 @@
      @param vecXDa - vector
      @param vecXDb - vector</haxe_doc>
 		</vecXDparalleled>
-		<vecXDscalar public="1" set="method" line="238">
+		<vecXDscalar public="1" set="method" line="239">
 			<f a="vecXDa:vecXDb">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2699,7 +2710,7 @@
      @param vecXDa - vector
      @param vecXDb - vector</haxe_doc>
 		</vecXDscalar>
-		<vecXDcos public="1" set="method" line="253">
+		<vecXDcos public="1" set="method" line="254">
 			<f a="vecXDa:vecXDb">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2709,7 +2720,7 @@
      @param vecXDa - vector
      @param vecXDb - vector</haxe_doc>
 		</vecXDcos>
-		<vecXDangle public="1" set="method" line="270">
+		<vecXDangle public="1" set="method" line="271">
 			<f a="vecXDa:vecXDb:?rad" v="::false">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2722,7 +2733,7 @@
      @param vecXDb - vector
      @param rad - if true then return radians angle, default false(degrees angle)</haxe_doc>
 		</vecXDangle>
-		<vec3Dnormal public="1" set="method" line="289">
+		<vec3Dnormal public="1" set="method" line="290">
 			<f a="vec3Da:vec3Db">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2734,7 +2745,7 @@
      @param vec3Da - vector
      @param vec3Db - vector</haxe_doc>
 		</vec3Dnormal>
-		<vec3Dfieldnormal public="1" set="method" line="306">
+		<vec3Dfieldnormal public="1" set="method" line="307">
 			<f a="vec3Dfield">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2743,7 +2754,7 @@
      from vector field with previous cross product result vector 3D
      @param vec3Dfield - vector field 3D(array of vectors 3D)</haxe_doc>
 		</vec3Dfieldnormal>
-		<vecXDmiddle public="1" set="method" line="321">
+		<vecXDmiddle public="1" set="method" line="322">
 			<f a="vecXDa:vecXDb">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2753,7 +2764,7 @@
      @param vecXDa - vector
      @param vecXDb - vector</haxe_doc>
 		</vecXDmiddle>
-		<vecXDfieldmiddle public="1" set="method" line="331">
+		<vecXDfieldmiddle public="1" set="method" line="332">
 			<f a="vecXDfield">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2761,7 +2772,7 @@
 			<haxe_doc>return vector with middle value. Just call middle_xF(vecXDfield)
      @param vecXDfield - vector field(array of vectors)</haxe_doc>
 		</vecXDfieldmiddle>
-		<vecXDsamesize public="1" set="method" line="339">
+		<vecXDsamesize public="1" set="method" line="340">
 			<f a="vecXDa:vecXDb">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2771,7 +2782,7 @@
      @param vecXDa - vector
      @param vecXDb - vector</haxe_doc>
 		</vecXDsamesize>
-		<vecXDfieldsamesize public="1" set="method" line="349">
+		<vecXDfieldsamesize public="1" set="method" line="350">
 			<f a="vecXDfield">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<x path="Null"><x path="Bool"/></x>
@@ -2779,7 +2790,7 @@
 			<haxe_doc>return true if vector from vector field have same size. Bonus function. Just call same_size_F(vecXDfield)
      @param vecXDfield - vector field(array of vectors)</haxe_doc>
 		</vecXDfieldsamesize>
-		<dotXDoffset public="1" set="method" line="359">
+		<dotXDoffset public="1" set="method" line="360">
 			<f a="dotXD:vecXD:t">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2791,7 +2802,7 @@
      @param vecXD - vector
      @param t - distance</haxe_doc>
 		</dotXDoffset>
-		<dot3Dline3D_x_plane3D public="1" set="method" line="385">
+		<dot3Dline3D_x_plane3D public="1" set="method" line="386">
 			<f a="dot3D0:vec3D0:vec3Dplane:?dplane" v=":::0">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2806,7 +2817,7 @@
      @param vec3Dplane - vector 3D, which is plane 3D normal vector
      @param dplane - displacement of plane 3D from [0,0,0]. default 0 ([0,0,0] dot belongs to the plane)</haxe_doc>
 		</dot3Dline3D_x_plane3D>
-		<projection_dot3D_on_plane3D public="1" set="method" line="422">
+		<projection_dot3D_on_plane3D public="1" set="method" line="423">
 			<f a="dot3D:plane3D">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2818,7 +2829,7 @@
      Where (a, b, c) - normal vector of plane 3D. (d) - distance from (0, 0, 0). 
      if d = 0, then the plane passes through the center of coordinates</haxe_doc>
 		</projection_dot3D_on_plane3D>
-		<dot3D_to_dot2Dviewplane public="1" set="method" line="457">
+		<dot3D_to_dot2Dviewplane public="1" set="method" line="458">
 			<f a="dot3D:dot3Dviewplanecenter:vec3Dviewplane:vec3Dviewplane_ox">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2837,7 +2848,7 @@
      Second axis will be calculated automatically, 
      uses rotate projected ox around view plane normal vector</haxe_doc>
 		</dot3D_to_dot2Dviewplane>
-		<dotXDscale public="1" set="method" line="491">
+		<dotXDscale public="1" set="method" line="492">
 			<f a="dotXD:scaleXD:dotXDc">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2849,7 +2860,7 @@
      @param scaleXD - scales array . For 3D case [sx, sy, sz]
      @param dotXDc - scaling center dot . For 3D case [xc, yc, zc]</haxe_doc>
 		</dotXDscale>
-		<vec3Drotate public="1" set="method" line="510">
+		<vec3Drotate public="1" set="method" line="511">
 			<f a="vec3D:vec3Daxis:angle:?rad" v=":::false">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2864,7 +2875,7 @@
      @param angle - angle of rotation
      @param rad - it true then radians angle, default false (degrees angle)</haxe_doc>
 		</vec3Drotate>
-		<vec3Dfield_rotate_around_vec3Daxes public="1" set="method" line="541">
+		<vec3Dfield_rotate_around_vec3Daxes public="1" set="method" line="542">
 			<f a="vec3Dfield:vec3Daxes:angles:?rad" v=":::false">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
@@ -2879,7 +2890,7 @@
      @param angles - angles of rotating for each vector
      @param rad - if true then radians angles, default false (degrees angles)</haxe_doc>
 		</vec3Dfield_rotate_around_vec3Daxes>
-		<dot3Drotate public="1" set="method" line="573">
+		<dot3Drotate public="1" set="method" line="574">
 			<f a="dot3D:dot3Dc:vec3D:angle:?rad" v="::::false">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2896,7 +2907,7 @@
      @param angle - rotation angle
      @param rad - if true then radians angle, default false (degrees angle)</haxe_doc>
 		</dot3Drotate>
-		<plane3D_dot3Dnormal public="1" set="method" line="599">
+		<plane3D_dot3Dnormal public="1" set="method" line="600">
 			<f a="dot3D:vec3D">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2907,7 +2918,7 @@
      @param dot3D - dot 3D
      @param vec3D - plane 3D normal vector 3D</haxe_doc>
 		</plane3D_dot3Dnormal>
-		<plane3D_dot_vec_vec public="1" set="method" line="618">
+		<plane3D_dot_vec_vec public="1" set="method" line="619">
 			<f a="dot3D:vec3Da:vec3Db">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2920,7 +2931,7 @@
      @param vec3Da - vector 3D
      @param vec3Db - vector 3D</haxe_doc>
 		</plane3D_dot_vec_vec>
-		<plane3D_3dots public="1" set="method" line="642">
+		<plane3D_3dots public="1" set="method" line="643">
 			<f a="dot3D:dot3Da:dot3Db">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2933,7 +2944,7 @@
      @param dot3Da - dot 3D
      @param dot3Db - dot 3D</haxe_doc>
 		</plane3D_3dots>
-		<plane3D_2dots public="1" set="method" line="668">
+		<plane3D_2dots public="1" set="method" line="669">
 			<f a="dot3D:dot3Da">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2944,7 +2955,7 @@
      @param dot3D - dot 3D
      @param dot3Da - dot 3D</haxe_doc>
 		</plane3D_2dots>
-		<distance_dot3D_plane3D public="1" set="method" line="686">
+		<distance_dot3D_plane3D public="1" set="method" line="687">
 			<f a="dot3D:plane3D">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2955,7 +2966,7 @@
      @param plane3D - plane 3D (a, b, c, d). 
      Where (a, b, c) is plane 3D normal vector, and (d) is displacement plane from (0, 0, 0)</haxe_doc>
 		</distance_dot3D_plane3D>
-		<random_vec3D_in_plane3D public="1" set="method" line="706">
+		<random_vec3D_in_plane3D public="1" set="method" line="707">
 			<f a="plane3D">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2964,7 +2975,7 @@
      @param plane3D - plane 3D (a, b, c, d). 
      Where (a, b, c) is plane 3D normal vector, and (d) is displacement plane from (0, 0, 0)</haxe_doc>
 		</random_vec3D_in_plane3D>
-		<random_dot3D_in_plane3D public="1" set="method" line="730">
+		<random_dot3D_in_plane3D public="1" set="method" line="731">
 			<f a="plane3D:dot3D:radius">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2978,7 +2989,7 @@
      If dot not in plane , then will be uesd projection this dot on plane
      @param radius - radius of round area on plane 3D. Result will be calculated inside area</haxe_doc>
 		</random_dot3D_in_plane3D>
-		<curve3D_4dots public="1" set="method" line="759">
+		<curve3D_4dots public="1" set="method" line="760">
 			<f a="dot3D1:vec3D1:distance1:dot3D2:vec3D2:distance2">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -2999,7 +3010,7 @@
      @param vec3D2 - vector 3D (a, b, c) for offset end internal dot
      @param distance2 - distance for offset end internal dot along offset vector</haxe_doc>
 		</curve3D_4dots>
-		<curve3D_3dots public="1" set="method" line="794">
+		<curve3D_3dots public="1" set="method" line="795">
 			<f a="dot3D0:dot3D1:dot3D2:?lever1:?lever2:?a_s" v=":::0.55:0.55:-1">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3026,7 +3037,7 @@
      if a_s = 0 then lever1 vector will be paralleled lever2 vector and both will be directed 
      from dot3D0 to dot between dot3D1 and dot3D2 center dot]]></haxe_doc>
 		</curve3D_3dots>
-		<line3D_2dots public="1" set="method" line="842">
+		<line3D_2dots public="1" set="method" line="843">
 			<f a="dot3D0:dot3D1">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3038,7 +3049,7 @@
      @param dot3D0 - start line dot 3D
      @param dot3D1 - end line dot 3D</haxe_doc>
 		</line3D_2dots>
-		<line3D_dot_offset public="1" set="method" line="865">
+		<line3D_dot_offset public="1" set="method" line="866">
 			<f a="dot3D:vec3D:distance">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3051,7 +3062,7 @@
      @param vec3D - offset start line dot vector 3D
      @param distance - offset distance for end line dot</haxe_doc>
 		</line3D_dot_offset>
-		<curve3D_4to12 public="1" get="inline" set="null" line="885">
+		<curve3D_4to12 public="1" get="inline" set="null" line="886">
 			<f a="curve">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3060,7 +3071,7 @@
      [[x, y, z], [x, y, z], [x, y, z], [x, y, z]] return [x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4]
      @param curve - curve 3D ((x, y, z), (x, y, z), (x, y, z), (x, y, z))</haxe_doc>
 		</curve3D_4to12>
-		<curve3D_12to4 public="1" get="inline" set="null" line="900">
+		<curve3D_12to4 public="1" get="inline" set="null" line="901">
 			<f a="curve">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
@@ -3069,7 +3080,7 @@
      [x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4] return [[x, y, z], [x, y, z], [x, y, z], [x, y, z]]
      @param curve - curve 3D data (x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4)</haxe_doc>
 		</curve3D_12to4>
-		<beziercubic3D_derivativeparameters public="1" get="inline" set="null" line="911">
+		<beziercubic3D_derivativeparameters public="1" get="inline" set="null" line="912">
 			<f a="curve">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
@@ -3078,7 +3089,7 @@
      [[x1, y1, z1], [x2, y2, z2], [x3, y3, z3], [x4, y4, z4]] return [[x1,x2,x3,x4],[y1,y2,y3,y4],[z1,z2,z3,z4]]
      @param curve - bezier cubic curve 3D ((x1, y1, z1), (x2, y2, z2), (x3, y3, z3), (x4, y4, z4))</haxe_doc>
 		</beziercubic3D_derivativeparameters>
-		<beziercubic_derivative public="1" get="inline" set="null" line="923">
+		<beziercubic_derivative public="1" get="inline" set="null" line="924">
 			<f a="bcp:p">
 				<c path="Array"><x path="Float"/></c>
 				<x path="Float"/>
@@ -3088,7 +3099,7 @@
      @param bcp - bezier curve derivative parameters, precalculated uses `beziercubic3D_derivativeparameters(...)`
      @param p - bezier cubic curve parameter. Standart values equal range 0...1 include borders</haxe_doc>
 		</beziercubic_derivative>
-		<beziercubic3D_derivative public="1" set="method" line="939">
+		<beziercubic3D_derivative public="1" set="method" line="940">
 			<f a="curve:p">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<x path="Float"/>
@@ -3098,7 +3109,7 @@
      @param curve - bezier cubic curve 3D ((x, y, z), (x, y, z), (x, y, z), (x, y, z))
      @param p - bezier cubic curve parameter. Standart values equal range 0...1 include borders</haxe_doc>
 		</beziercubic3D_derivative>
-		<beziercubic_support_dot_one public="1" get="inline" set="null" line="957">
+		<beziercubic_support_dot_one public="1" get="inline" set="null" line="958">
 			<f a="beziercubic_one_axis_coordinates">
 				<c path="Array"><x path="Float"/></c>
 				<x path="Null"><x path="Float"/></x>
@@ -3106,7 +3117,7 @@
 			<haxe_doc>returns cubic bezier curve support dot one(first lever) paramater for each coordinate. Usual case `x` or `y` or `z`
      @param beziercubic_one_axis_coordinates - [c1,c2,c3,c4]. Where c is cubic bezier curve trajectory dots values for one of `x` or `y` or `z`</haxe_doc>
 		</beziercubic_support_dot_one>
-		<beziercubic3D_support_dot_one public="1" set="method" line="967">
+		<beziercubic3D_support_dot_one public="1" set="method" line="968">
 			<f a="curve3D_4dots">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3114,7 +3125,7 @@
 			<haxe_doc>returns dot 3D, which is bezier cubic curve 3D support dot one(first lever)
      @param curve3D_4dots - curve 3D trajectory, which is [[x1, y1, z1], [x2, y2, z2], [x3, y3, z3], [x4, y4, z4]]</haxe_doc>
 		</beziercubic3D_support_dot_one>
-		<beziercubic_support_dot_two public="1" get="inline" set="null" line="977">
+		<beziercubic_support_dot_two public="1" get="inline" set="null" line="978">
 			<f a="beziercubic_one_axis_coordinates">
 				<c path="Array"><x path="Float"/></c>
 				<x path="Null"><x path="Float"/></x>
@@ -3122,7 +3133,7 @@
 			<haxe_doc>returns cubic bezier curve support dot two(second lever) paramater for each coordinate. Usual case `x` or `y` or `z`
      @param beziercubic_one_axis_coordinates - [c1,c2,c3,c4]. Where c is cubic bezier curve trajectory dots values for one of `x` or `y` or `z`</haxe_doc>
 		</beziercubic_support_dot_two>
-		<beziercubic3D_support_dot_two public="1" set="method" line="987">
+		<beziercubic3D_support_dot_two public="1" set="method" line="988">
 			<f a="curve3D_4dots">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3130,7 +3141,7 @@
 			<haxe_doc>returns dot 3D, which is bezier cubic curve 3D support dot two(second lever)
      @param curve3D_4dots - curve 3D trajectory, which is [[x1, y1, z1], [x2, y2, z2], [x3, y3, z3], [x4, y4, z4]]</haxe_doc>
 		</beziercubic3D_support_dot_two>
-		<beziercubic3D_follow_4dots_trajectory public="1" get="inline" set="null" line="997">
+		<beziercubic3D_follow_4dots_trajectory public="1" get="inline" set="null" line="998">
 			<f a="dots">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
@@ -3138,7 +3149,7 @@
 			<haxe_doc>returns bezier cubic curve 3D, calculated from 4dots 3D(curve 3D trajectory)
      @param dots - curve 3D trajectory. Must be of the form [[x1, y1, z1], [x2, y2, z2], [x3, y3, z3], [x4, y4, z4]]</haxe_doc>
 		</beziercubic3D_follow_4dots_trajectory>
-		<beziercubic_coordinate public="1" get="inline" set="null" line="1011">
+		<beziercubic_coordinate public="1" get="inline" set="null" line="1012">
 			<f a="beziercubic_one_axis_coordinates:parameter">
 				<c path="Array"><x path="Float"/></c>
 				<x path="Float"/>
@@ -3149,7 +3160,7 @@
      For case [[x1, y1, z1], [x2, y2, z2], [x3, y3, z3], [x4, y4, z4]] curve and x axis must be [x1, x2, x3, x4]
      @param parameter - parameter of bezier curve equation. Usual case range 0...1 include borders</haxe_doc>
 		</beziercubic_coordinate>
-		<beziercubic3Ddot public="1" set="method" line="1031">
+		<beziercubic3Ddot public="1" set="method" line="1032">
 			<f a="beziercubic3D:parameter">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<x path="Float"/>
@@ -3160,7 +3171,7 @@
      Which is [dot3Dstart, lever3Dstart, lever3Dend, dot3Dend]
      @param parameter - parameter of bezier curve equation. Usual case range 0...1 include borders</haxe_doc>
 		</beziercubic3Ddot>
-		<curve3D_4dots_follow_beziercubic_trajectory public="1" get="inline" set="null" line="1047">
+		<curve3D_4dots_follow_beziercubic_trajectory public="1" get="inline" set="null" line="1048">
 			<f a="beziercubic3D">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
@@ -3169,7 +3180,7 @@
      Two internal dots belongs on bezier cubic curve trajectory, with parameter 1/3 and 2/3
      @param beziercubic3D - curve 3D, which must be of the form [[x1, y1, z1], [x2, y2, z2], [x3, y3, z3], [x4, y4, z4]]</haxe_doc>
 		</curve3D_4dots_follow_beziercubic_trajectory>
-		<curve3Doffset public="1" get="inline" set="null" line="1065">
+		<curve3Doffset public="1" get="inline" set="null" line="1066">
 			<f a="curve3D:vec3D:distance">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3181,7 +3192,7 @@
      @param vec3D - vector 3D (a, b, c)
      @param distance - displacement distance</haxe_doc>
 		</curve3Doffset>
-		<curve3Drotate public="1" get="inline" set="null" line="1088">
+		<curve3Drotate public="1" get="inline" set="null" line="1089">
 			<f a="curve3D:dot3D:vec3D:angle:?rad" v="::::false">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3198,7 +3209,7 @@
      @param angle - rotation angle
      @param rad - if true then radians angle, default false (degrees angle)</haxe_doc>
 		</curve3Drotate>
-		<curve3Dscale public="1" get="inline" set="null" line="1114">
+		<curve3Dscale public="1" get="inline" set="null" line="1115">
 			<f a="curve3D:scale_xyz:dot3D">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3210,7 +3221,7 @@
      @param scale_xyz - scale for each axis. Must be of the form [sx, sy, sz]
      @param dot3D - scaling center(base) dot 3D</haxe_doc>
 		</curve3Dscale>
-		<ellipse2Dperimeter_ramanujan public="1" get="inline" set="null" line="1139">
+		<ellipse2Dperimeter_ramanujan public="1" get="inline" set="null" line="1140">
 			<f a="semiaxis_a:semiaxis_b">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -3221,7 +3232,7 @@
      @param semiaxis_a - ellipse a semiaxes. Usual paralleled x axis
      @param semiaxis_b - ellipse b semiaxes. Usual paralleled y axis</haxe_doc>
 		</ellipse2Dperimeter_ramanujan>
-		<tangent_centered_ellipse2Ddot public="1" set="method" line="1171">
+		<tangent_centered_ellipse2Ddot public="1" set="method" line="1172">
 			<f a="semiaxis_a:semiaxis_b:ellipse_dot2D">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -3233,7 +3244,7 @@
      @param semiaxis_b - ellipse b semiaxes. Usual paralleled y axis
      @param ellipse_dot2D - dot 2D belongs to the ellipse perimeter</haxe_doc>
 		</tangent_centered_ellipse2Ddot>
-		<ellipse_e_parameter public="1" get="inline" set="null" line="1228">
+		<ellipse_e_parameter public="1" get="inline" set="null" line="1229">
 			<f a="semiaxis_a:semiaxis_b">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -3243,7 +3254,7 @@
      @param semiaxis_a - ellipse a semiaxes. Usual paralleled x axis
      @param semiaxis_b - ellipse b semiaxes. Usual paralleled y axis</haxe_doc>
 		</ellipse_e_parameter>
-		<ellipse_c_parameter public="1" set="method" line="1244">
+		<ellipse_c_parameter public="1" set="method" line="1245">
 			<f a="semiaxis_a:semiaxis_b">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -3253,7 +3264,7 @@
      @param semiaxis_a - ellipse a semiaxes. Usual paralleled x axis
      @param semiaxis_b - ellipse b semiaxes. Usual paralleled y axis</haxe_doc>
 		</ellipse_c_parameter>
-		<tangent_vec3D_in_plane_of_ellipse2D_placed_in_3Dspace public="1" set="method" line="1273">
+		<tangent_vec3D_in_plane_of_ellipse2D_placed_in_3Dspace public="1" set="method" line="1274">
 			<f a="dot3D:vec3Dnormal_ellipse_plane:vec3Dsemiaxis_a_direction:semiaxis_a:semiaxis_b:semiaxis_a_negative:semiaxis_b_negative:angle:rad">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3281,7 +3292,7 @@
      Calculating will be directed from positive semiaxis a to positive semiaxis b, for positive angle
      @param rad - if true then radians angle, default false(degrees angle)</haxe_doc>
 		</tangent_vec3D_in_plane_of_ellipse2D_placed_in_3Dspace>
-		<ellipse3D_dots public="1" set="method" line="1326">
+		<ellipse3D_dots public="1" set="method" line="1327">
 			<f a="dot3D:vec3Dsemiaxes:semiaxes">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
@@ -3295,7 +3306,7 @@
      Which is [a, b, an, bn], where an and bn is negative semiaxes direction vectors 
      @param semiaxes - array of semiaxes lengths. Must be of the form [a, b, an, bn]</haxe_doc>
 		</ellipse3D_dots>
-		<ellipse2Ddot public="1" get="inline" set="null" line="1368">
+		<ellipse2Ddot public="1" get="inline" set="null" line="1369">
 			<f a="angle:semiaxis_a_ox:semiaxis_b_oy:?rad" v=":::false">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -3310,7 +3321,7 @@
      @param semiaxis_b_oy - semiaxis b length
      @param rad - if true then radians angle, default false(degrees angle)</haxe_doc>
 		</ellipse2Ddot>
-		<curve2D_4dots_elliptic_shape_restricted_to_quarter public="1" set="method" line="1388">
+		<curve2D_4dots_elliptic_shape_restricted_to_quarter public="1" set="method" line="1389">
 			<f a="angle0:angle1:semiaxis_a_ox:semiaxis_b_oy:?rad" v="::::false">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -3327,7 +3338,7 @@
      @param semiaxis_b_oy - length of semiaxis b (oy)
      @param rad - if true then radians angle, default false(degrees angle)</haxe_doc>
 		</curve2D_4dots_elliptic_shape_restricted_to_quarter>
-		<beziercubic3D_elliptic_shape_restricted_to_quarter public="1" set="method" line="1419">
+		<beziercubic3D_elliptic_shape_restricted_to_quarter public="1" set="method" line="1420">
 			<f a="dot3Dc:vec3D_a_ox:vec3D_b_oy:semiaxis_a_ox:semiaxis_b_oy:angle0:angle1:?rad" v=":::::::false">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3351,7 +3362,7 @@
      @param angle1 - angle from semiaxis a to semiaxis b direction started from end of `angle0`
      @param rad - if true then radians angle, default false(degrees angle)</haxe_doc>
 		</beziercubic3D_elliptic_shape_restricted_to_quarter>
-		<angle_required_to_place_curve_on_ellipse public="1" set="method" line="1457">
+		<angle_required_to_place_curve_on_ellipse public="1" set="method" line="1458">
 			<f a="curve_length:semiaxis_a_ox:semiaxis_b_oy:angle0:?rad" v="::::false">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -3370,7 +3381,7 @@
      Curve placing started from end of `angle0`
      @param rad - if true then radians angle, default false(degrees angle)</haxe_doc>
 		</angle_required_to_place_curve_on_ellipse>
-		<polygon3D_inside_ellipse public="1" set="method" line="1493">
+		<polygon3D_inside_ellipse public="1" set="method" line="1494">
 			<f a="dot3D:vec3Dsemiaxes:semiaxes:angle_proportions">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
@@ -3388,7 +3399,7 @@
      @param angle_proportions - proportions array for splitting 360 degrees angle(without units, not matter). 
      `[90, 90, 90, 90]` returns result same as `[1, 1, 1, 1]`, in both cases will be created quadrangle inside ellipse</haxe_doc>
 		</polygon3D_inside_ellipse>
-		<polygon3D_vec3Dfield_distances public="1" set="method" line="1549">
+		<polygon3D_vec3Dfield_distances public="1" set="method" line="1550">
 			<f a="dot3D:vec3Dfield:distances">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
@@ -3403,7 +3414,7 @@
      Each Vertex will be offsetted along own vector
      @param distances - polygon vertexes radial distances array(offset length)</haxe_doc>
 		</polygon3D_vec3Dfield_distances>
-		<polygon3D_in_plane public="1" set="method" line="1579">
+		<polygon3D_in_plane public="1" set="method" line="1580">
 			<f a="dot3D:vec3Dplane_normal:vec3Dsemiaxis_a_direction:angle_proportions:distances">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3424,7 +3435,7 @@
      `[90, 90, 90, 90]` returns result same as `[1, 1, 1, 1]`, in both cases will be created quadrangle belongs to plane
      @param distances - polygon vertexes radial distances array(offset length)</haxe_doc>
 		</polygon3D_in_plane>
-		<polygon3D_to_vec3Dfield public="1" set="method" line="1616">
+		<polygon3D_to_vec3Dfield public="1" set="method" line="1617">
 			<f a="polygon3D">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
@@ -3434,7 +3445,7 @@
      @param polygon3D - must be of the form 
      [ polygon center dot 3D, polygon vertex first dot 3D , ... ,polygon vertex last dot 3D ]</haxe_doc>
 		</polygon3D_to_vec3Dfield>
-		<projection_vec3D_on_plane3D public="1" set="method" line="1626">
+		<projection_vec3D_on_plane3D public="1" set="method" line="1627">
 			<f a="vec3D:plane3D">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3444,7 +3455,7 @@
      @param vec3D - vector 3D (a, b, c)
      @param plane3D - plane 3D (a, b, c, d), where (a, b, c) normal vector of plane, and (d) displacement from (0, 0, 0)</haxe_doc>
 		</projection_vec3D_on_plane3D>
-		<angle_vec3Dvec3D_projection_on_plane3D public="1" set="method" line="1657">
+		<angle_vec3Dvec3D_projection_on_plane3D public="1" set="method" line="1658">
 			<f a="vec3D1:vec3D2:plane3D:?rad" v=":::false">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3462,7 +3473,7 @@
      @param plane3D - plane 3D (a, b, c, d), where (a, b, c) normal vector of plane, and (d) displacement from (0, 0, 0)
      @param rad - if true then radians angle, default false(degrees angle)</haxe_doc>
 		</angle_vec3Dvec3D_projection_on_plane3D>
-		<objDotXD public="1" set="method" line="1693">
+		<objDotXD public="1" set="method" line="1694">
 			<f a="dot">
 				<c path="Array"><x path="Float"/></c>
 				<c path="geometryxd.DotXD"/>
@@ -3471,7 +3482,7 @@
      * @param dot coordinates
      * @return DotXD</haxe_doc>
 		</objDotXD>
-		<objDot3D public="1" set="method" line="1702">
+		<objDot3D public="1" set="method" line="1703">
 			<f a="?x:?y:?z" v="0:0:0">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -3485,7 +3496,7 @@
      * @param z coordinate
      * @return Dot3D</haxe_doc>
 		</objDot3D>
-		<objVecXD public="1" set="method" line="1709">
+		<objVecXD public="1" set="method" line="1710">
 			<f a="dotXDb:?dotXDa">
 				<c path="geometryxd.DotXD"/>
 				<c path="geometryxd.DotXD"/>
@@ -3495,7 +3506,7 @@
      * @param dotXDb end multidimensional dot of vector
      * @param dotXDa start multidimensional dot of vector. Default will be `[0,...,0]`</haxe_doc>
 		</objVecXD>
-		<objVec3D public="1" set="method" line="1716">
+		<objVec3D public="1" set="method" line="1717">
 			<f a="dot3Db:?dot3Da">
 				<c path="geometryxd.Dot3D"/>
 				<c path="geometryxd.Dot3D"/>
@@ -3505,7 +3516,7 @@
      * @param dot3Db end 3D dot of vector
      * @param dot3Da start 3D dot of vector. Default will be `[0,0,0]`</haxe_doc>
 		</objVec3D>
-		<new public="1" set="method" line="22"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="26"><f a=""><x path="Void"/></f></new>
 		<haxe_doc><![CDATA[GeometryXD - multidimensional geometry manipulations. Primarily targeted for 3D objects (points, vectors, curves).  
   Additional methods allow manipulate with arrays.  
   Convert arrays. Int <-> Float <-> String <-> Int Arrays.  
@@ -3515,6 +3526,7 @@
   Sum array elements.  
   Calculate max abs value from Float Array.  
   Not pro level library.]]></haxe_doc>
+		<meta><m n=":directlyUsed"/></meta>
 	</class>
 	<class path="geometryxd.NM" params="" file="./geometryxd/NM.hx">
 		<sign_I public="1" get="inline" set="null" line="13">
@@ -3624,21 +3636,6 @@
      @param n - repeat number
      @param direction - if < 0 then from negative to minimum border direction. if > 0 then from maximum border to positive direction. if == 0 then both]]></haxe_doc>
 		</steps_external>
-		<chain_indexes public="1" set="method" line="136">
-			<f a="a_l:n:ring">
-				<x path="Int"/>
-				<x path="Int"/>
-				<x path="Bool"/>
-				<c path="Array"><c path="Array"><x path="Int"/></c></c>
-			</f>
-			<haxe_doc>chain bonus function. split range to sequences specified length n with same border values.
-     f(6, 3, false) return [[0, 1, 2], [2, 3, 4]]. But f(6, 3, true) return [[0, 1, 2], [2, 3, 4], [4, 5, 0]].
-     Can be used to split dotsXDfield (array of 3D dots) to array of separated 4dots curves trajectories which have same border dots.
-     Just split array of dots length a_l to n = 4. Then recount to beziercurves or create multidot curve use each last three dots.
-     @param a_l - range of indexes (length of array which will be used later as splitted)
-     @param n - length of each sequence (chain link)
-     @param ring - if true then 0 will be added at the end of range of indexes, for the case of strict coincidence</haxe_doc>
-		</chain_indexes>
 		<new public="1" set="method" line="7"><f a=""><x path="Void"/></f></new>
 		<haxe_doc>* number manipulation</haxe_doc>
 		<meta><m n=":directlyUsed"/></meta>
@@ -3656,55 +3653,168 @@
 			<x path="Float"/>
 			<haxe_doc>* z coordinate of vec</haxe_doc>
 		</z>
-		<am expr="new AM()">
-			<c path="geometryxd.AM"/>
-			<meta><m n=":value"><e>new AM()</e></m></meta>
-		</am>
-		<value public="1" set="method" line="42">
-			<f a=""><c path="Array"><x path="Float"/></c></f>
-			<haxe_doc>* array of vec coordinates `[x,y,z]`</haxe_doc>
-		</value>
-		<dn public="1" set="method" line="48">
+		<geo expr="new GeometryXD()">
+			<c path="geometryxd.GeometryXD"/>
+			<meta><m n=":value"><e>new GeometryXD()</e></m></meta>
+			<haxe_doc>* internal usage of methods</haxe_doc>
+		</geo>
+		<useArray public="1" set="method" line="46">
+			<f a="xyz">
+				<c path="Array"><x path="Float"/></c>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>* set `x,y,z` properties using array of coordinates. Used first three array elements. Not enough length replaced uses 0.
+     * @param xyz array of 3D vector coordinates `[x,y,z]`</haxe_doc>
+		</useArray>
+		<fromArray public="1" set="method" line="57">
+			<f a="xyz">
+				<c path="Array"><x path="Float"/></c>
+				<c path="geometryxd.Vec3D"/>
+			</f>
+			<haxe_doc>* new Vec3D object from array of coordinates. Used first three array elements. Not enough length replaced uses 0.
+     * @param xyz array of 3D vector coordinates `[x,y,z]`</haxe_doc>
+		</fromArray>
+		<dn public="1" set="method" line="66">
 			<f a=""><x path="Int"/></f>
-			<haxe_doc>* number or vec dimensions</haxe_doc>
+			<haxe_doc>* number of vector dimensions</haxe_doc>
 		</dn>
-		<valueM public="1" set="method" line="55">
+		<value public="1" set="method" line="74">
+			<f a=""><c path="Array"><x path="Float"/></c></f>
+			<haxe_doc>* array of vector coordinates `[x,y,z]`</haxe_doc>
+		</value>
+		<valueM public="1" set="method" line="81">
 			<f a=""><c path="Array"><x path="Float"/></c></f>
 			<haxe_doc>* array of mirrored values of vec coordinates. If `value()` = `[1,2,3]` return `[-1,-2,-3]`</haxe_doc>
 		</valueM>
-		<valueMx public="1" set="method" line="62">
+		<valueMx public="1" set="method" line="88">
 			<f a=""><c path="Array"><x path="Float"/></c></f>
 			<haxe_doc>* array of values of vec coordinates with mirrored x coordinate. If `value()` = `[1,2,3]` return `[-1,2,3]`</haxe_doc>
 		</valueMx>
-		<valueMy public="1" set="method" line="69">
+		<valueMy public="1" set="method" line="95">
 			<f a=""><c path="Array"><x path="Float"/></c></f>
 			<haxe_doc>* array of values of vec coordinates with mirrored y coordinate. If `value()` = `[1,2,3]` return `[1,-2,3]`</haxe_doc>
 		</valueMy>
-		<valueMz public="1" set="method" line="76">
+		<valueMz public="1" set="method" line="102">
 			<f a=""><c path="Array"><x path="Float"/></c></f>
 			<haxe_doc>* array of values of vec coordinates with mirrored z coordinate. If `value()` = `[1,2,3]` return `[1,2,-3]`</haxe_doc>
 		</valueMz>
-		<vec3DM public="1" set="method" line="83">
+		<valueMxy public="1" set="method" line="109">
+			<f a=""><c path="Array"><x path="Float"/></c></f>
+			<haxe_doc>* array of values of vec coordinates with mirrored x y coordinates. If `value()` = `[1,2,3]` return `[-1,-2,3]`</haxe_doc>
+		</valueMxy>
+		<valueMxz public="1" set="method" line="116">
+			<f a=""><c path="Array"><x path="Float"/></c></f>
+			<haxe_doc>* array of values of vec coordinates with mirrored x z coordinates. If `value()` = `[1,2,3]` return `[-1,2,-3]`</haxe_doc>
+		</valueMxz>
+		<valueMyz public="1" set="method" line="123">
+			<f a=""><c path="Array"><x path="Float"/></c></f>
+			<haxe_doc>* array of values of vec coordinates with mirrored y z coordinates. If `value()` = `[1,2,3]` return `[1,-2,-3]`</haxe_doc>
+		</valueMyz>
+		<valueOne public="1" set="method" line="131">
+			<f a=""><c path="Array"><x path="Float"/></c></f>
+			<haxe_doc>* value of vector recounted to length equal 1</haxe_doc>
+		</valueOne>
+		<valueOneM public="1" set="method" line="138">
+			<f a=""><c path="Array"><x path="Float"/></c></f>
+			<haxe_doc>* value of mirrored vector, recounted to length equal 1</haxe_doc>
+		</valueOneM>
+		<valueOneMx public="1" set="method" line="145">
+			<f a=""><c path="Array"><x path="Float"/></c></f>
+			<haxe_doc>* value of vector with mirrored x coordinate, recounted to length equal 1</haxe_doc>
+		</valueOneMx>
+		<valueOneMy public="1" set="method" line="152">
+			<f a=""><c path="Array"><x path="Float"/></c></f>
+			<haxe_doc>* value of vector with mirrored y coordinate, recounted to length equal 1</haxe_doc>
+		</valueOneMy>
+		<valueOneMz public="1" set="method" line="159">
+			<f a=""><c path="Array"><x path="Float"/></c></f>
+			<haxe_doc>* value of vector with mirrored z coordinate, recounted to length equal 1</haxe_doc>
+		</valueOneMz>
+		<valueOneMxy public="1" set="method" line="166">
+			<f a=""><c path="Array"><x path="Float"/></c></f>
+			<haxe_doc>* value of vector with mirrored x y coordinates, recounted to length equal 1</haxe_doc>
+		</valueOneMxy>
+		<valueOneMxz public="1" set="method" line="173">
+			<f a=""><c path="Array"><x path="Float"/></c></f>
+			<haxe_doc>* value of vector with mirrored x z coordinates, recounted to length equal 1</haxe_doc>
+		</valueOneMxz>
+		<valueOneMyz public="1" set="method" line="180">
+			<f a=""><c path="Array"><x path="Float"/></c></f>
+			<haxe_doc>* value of vector with mirrored y z coordinates, recounted to length equal 1</haxe_doc>
+		</valueOneMyz>
+		<vd get="inline" set="null" line="189">
+			<f a="c">
+				<c path="Array"><x path="Float"/></c>
+				<c path="geometryxd.Vec3D"/>
+			</f>
+			<haxe_doc>* internal function. Return Vec3D object from 3D dot coordinates
+     * @param c 3D dot coordinates array `[x,y,z]`</haxe_doc>
+		</vd>
+		<vec3DM public="1" set="method" line="196">
 			<f a=""><c path="geometryxd.Vec3D"/></f>
-			<haxe_doc>* new 3D vec object with mirrored coordinates. if `value()` = `[1,2,3]` return vec3DM().value() = `[-1,-2,-3]`</haxe_doc>
+			<haxe_doc>* new 3D vector object with mirrored coordinates. if `value()` = `[1,2,3]` return vec3DM().value() = `[-1,-2,-3]`</haxe_doc>
 		</vec3DM>
-		<vec3DMx public="1" set="method" line="90">
+		<vec3DMx public="1" set="method" line="203">
 			<f a=""><c path="geometryxd.Vec3D"/></f>
-			<haxe_doc>* new 3D vec object with mirrored x coordinate. if `value()` = `[1,2,3]` return vec3DM().value() = `[-1,2,3]`</haxe_doc>
+			<haxe_doc>* new 3D vector object with mirrored x coordinate. if `value()` = `[1,2,3]` return vec3DM().value() = `[-1,2,3]`</haxe_doc>
 		</vec3DMx>
-		<vec3DMy public="1" set="method" line="97">
+		<vec3DMy public="1" set="method" line="210">
 			<f a=""><c path="geometryxd.Vec3D"/></f>
-			<haxe_doc>* new 3D vec object with mirrored y coordinate. if `value()` = `[1,2,3]` return vec3DM().value() = `[1,-2,3]`</haxe_doc>
+			<haxe_doc>* new 3D vector object with mirrored y coordinate. if `value()` = `[1,2,3]` return vec3DM().value() = `[1,-2,3]`</haxe_doc>
 		</vec3DMy>
-		<vec3DMz public="1" set="method" line="104">
+		<vec3DMz public="1" set="method" line="217">
 			<f a=""><c path="geometryxd.Vec3D"/></f>
-			<haxe_doc>* new 3D vec object with mirrored z coordinate. if `value()` = `[1,2,3]` return vec3DM().value() = `[1,2,-3]`</haxe_doc>
+			<haxe_doc>* new 3D vector object with mirrored z coordinate. if `value()` = `[1,2,3]` return vec3DM().value() = `[1,2,-3]`</haxe_doc>
 		</vec3DMz>
-		<vec3Dcopy public="1" set="method" line="111">
+		<vec3DMxy public="1" set="method" line="224">
 			<f a=""><c path="geometryxd.Vec3D"/></f>
-			<haxe_doc>* new 3D vec object with same coordinates. if `value()` = `[1,2,3]` return vec3DM().value() = `[1,2,3]`</haxe_doc>
+			<haxe_doc>* new 3D vector object with mirrored x y coordinates. if `value()` = `[1,2,3]` return vec3DM().value() = `[-1,-2,3]`</haxe_doc>
+		</vec3DMxy>
+		<vec3DMxz public="1" set="method" line="231">
+			<f a=""><c path="geometryxd.Vec3D"/></f>
+			<haxe_doc>* new 3D vector object with mirrored x z coordinates. if `value()` = `[1,2,3]` return vec3DM().value() = `[-1,2,-3]`</haxe_doc>
+		</vec3DMxz>
+		<vec3DMyz public="1" set="method" line="238">
+			<f a=""><c path="geometryxd.Vec3D"/></f>
+			<haxe_doc>* new 3D vector object with mirrored y z coordinates. if `value()` = `[1,2,3]` return vec3DM().value() = `[1,-2,-3]`</haxe_doc>
+		</vec3DMyz>
+		<vec3Done public="1" set="method" line="246">
+			<f a=""><c path="geometryxd.Vec3D"/></f>
+			<haxe_doc>* new 3D vector object, recounted to length equal 1</haxe_doc>
+		</vec3Done>
+		<vec3DoneM public="1" set="method" line="253">
+			<f a=""><c path="geometryxd.Vec3D"/></f>
+			<haxe_doc>* new 3D vector object, with mirrored coordinates, recounted to length equal 1</haxe_doc>
+		</vec3DoneM>
+		<vec3DoneMx public="1" set="method" line="260">
+			<f a=""><c path="geometryxd.Vec3D"/></f>
+			<haxe_doc>* new 3D vector object, with mirrored x coordinate, recounted to length equal 1</haxe_doc>
+		</vec3DoneMx>
+		<vec3DoneMy public="1" set="method" line="267">
+			<f a=""><c path="geometryxd.Vec3D"/></f>
+			<haxe_doc>* new 3D vector object, with mirrored y coordinate, recounted to length equal 1</haxe_doc>
+		</vec3DoneMy>
+		<vec3DoneMz public="1" set="method" line="274">
+			<f a=""><c path="geometryxd.Vec3D"/></f>
+			<haxe_doc>* new 3D vector object, with mirrored z coordinate, recounted to length equal 1</haxe_doc>
+		</vec3DoneMz>
+		<vec3DoneMxy public="1" set="method" line="281">
+			<f a=""><c path="geometryxd.Vec3D"/></f>
+			<haxe_doc>* new 3D vector object, with mirrored x y coordinates, recounted to length equal 1</haxe_doc>
+		</vec3DoneMxy>
+		<vec3DoneMxz public="1" set="method" line="288">
+			<f a=""><c path="geometryxd.Vec3D"/></f>
+			<haxe_doc>* new 3D vector object, with mirrored x z coordinates, recounted to length equal 1</haxe_doc>
+		</vec3DoneMxz>
+		<vec3DoneMyz public="1" set="method" line="295">
+			<f a=""><c path="geometryxd.Vec3D"/></f>
+			<haxe_doc>* new 3D vector object, with mirrored y z coordinates, recounted to length equal 1</haxe_doc>
+		</vec3DoneMyz>
+		<vec3Dcopy public="1" set="method" line="303">
+			<f a=""><c path="geometryxd.Vec3D"/></f>
+			<haxe_doc>* new 3D vector object with same coordinates. if `value()` = `[1,2,3]` return vec3DM().value() = `[1,2,3]`</haxe_doc>
 		</vec3Dcopy>
-		<new public="1" set="method" line="25">
+		<new public="1" set="method" line="30">
 			<f a="dot3Db:?dot3Da">
 				<c path="geometryxd.Dot3D"/>
 				<c path="geometryxd.Dot3D"/>
@@ -3728,7 +3838,7 @@
 		</am>
 		<dn public="1" set="method" line="26">
 			<f a=""><x path="Int"/></f>
-			<haxe_doc>* number or vector dimensions</haxe_doc>
+			<haxe_doc>* number of vector dimensions</haxe_doc>
 		</dn>
 		<valueM public="1" set="method" line="33">
 			<f a=""><c path="Array"><x path="Float"/></c></f>
