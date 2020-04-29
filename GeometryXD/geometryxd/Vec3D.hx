@@ -64,7 +64,7 @@ package geometryxd;
      * number of vector dimensions
      */
      public function dn() {
-        return this.value().length;
+        return 3;
     }
     
     
