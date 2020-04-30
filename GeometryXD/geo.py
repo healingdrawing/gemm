@@ -210,12 +210,11 @@ class python_HaxeIterator:
 
 class geometryxd_AM:
     _hx_class_name = "geometryxd.AM"
-    __slots__ = ("nm",)
-    _hx_fields = ["nm"]
-    _hx_methods = ["positive_inside_I", "zero_inside_I", "negative_inside_I", "positive_inside_F", "zero_inside_F", "negative_inside_F", "same_size_I", "same_size_F", "same_xI", "same_xF", "sum_I", "sum_F", "diff_I", "diff_F", "middle_F", "multiply_I_I", "multiply_F_F", "multiply_I", "multiply_F", "minus_I", "minus_F", "sum_xI", "sum_xF", "diff_xI", "diff_xF", "middle_xF", "multiply_xI_I", "multiply_xF_F", "multiply_xI", "multiply_xF", "multisum_xI", "multisum_xF", "sum_previous_I", "diff_previous_I", "sum_before_I", "diff_before_I", "sum_previous_F", "diff_previous_F", "sum_before_F", "diff_before_F", "recounter_I_F", "recounter_F_I", "recounter_I_S", "recounter_F_S", "recounter_S_I", "recounter_S_F", "repeater_F_F", "repeater_I_I", "repeater_S_S", "repeater_F_I", "repeater_S_I", "repeater_I_F", "repeater_S_F", "repeater_I_S", "repeater_F_S", "an_in_b_S", "an_in_bn_S", "an_in_b_I", "an_in_bn_I", "an_in_b_F", "an_in_bn_F", "chain_S", "chain_I", "chain_F", "maxabs"]
+    __slots__ = ()
+    _hx_methods = ["positive_inside_I", "zero_inside_I", "negative_inside_I", "positive_inside_F", "zero_inside_F", "negative_inside_F", "same_size_I", "same_size_F", "same_xI", "same_xF", "sum_I", "sum_F", "diff_I", "diff_F", "middle_F", "multiply_I_I", "multiply_F_F", "multiply_I", "multiply_F", "minus_I", "minus_F", "sum_xI", "sum_xF", "diff_xI", "diff_xF", "middle_xF", "multiply_xI_I", "multiply_xF_F", "multiply_xI", "multiply_xF", "multisum_xI", "multisum_xF", "sum_previous_I", "diff_previous_I", "sum_before_I", "diff_before_I", "sum_previous_F", "diff_previous_F", "sum_before_F", "diff_before_F", "recounter_I_F", "recounter_F_I", "recounter_I_S", "recounter_F_S", "recounter_S_I", "recounter_S_F", "repeater_F_F", "repeater_I_I", "repeater_S_S", "repeater_F_I", "repeater_S_I", "repeater_I_F", "repeater_S_F", "repeater_I_S", "repeater_F_S", "an_in_b_S", "an_in_bn_S", "an_in_b_I", "an_in_bn_I", "an_in_b_F", "an_in_bn_F", "chain_indexes", "chain_S", "chain_I", "chain_F", "maxabs"]
 
     def __init__(self):
-        self.nm = geometryxd_NM()
+        pass
 
     def positive_inside_I(self,a):
         _g = 0
@@ -1781,6 +1780,79 @@ class geometryxd_AM:
                         rez.append([ia, ib, ibn])
         return rez
 
+    def chain_indexes(self,a_l,n,ring):
+        rez = None
+        if ((n > a_l) or ((n < 1))):
+            return rez
+        ind = []
+        _g = []
+        _g1 = 0
+        _g2 = a_l
+        while (_g1 < _g2):
+            i = _g1
+            _g1 = (_g1 + 1)
+            _g.append(i)
+        indring = _g
+        if ring:
+            indring.append(0)
+            _g3 = []
+            _g4 = 0
+            _g5 = None
+            try:
+                _g5 = int((((a_l + 1)) / ((n - 1))))
+            except Exception as _hx_e:
+                _hx_e1 = _hx_e
+                e = _hx_e1
+                _g5 = None
+            _g51 = (_g5 * ((n - 1)))
+            while (_g4 < _g51):
+                i1 = _g4
+                _g4 = (_g4 + 1)
+                x = None
+                if ((HxOverrides.mod(i1, ((n - 1))) == 0) and ((((i1 + n) - 1) < ((a_l + 1))))):
+                    x = i1
+                else:
+                    continue
+                _g3.append(x)
+            ind = _g3
+        else:
+            _g31 = []
+            _g41 = 0
+            _g52 = None
+            try:
+                _g52 = int((a_l / ((n - 1))))
+            except Exception as _hx_e:
+                _hx_e1 = _hx_e
+                e1 = _hx_e1
+                _g52 = None
+            _g53 = (_g52 * ((n - 1)))
+            while (_g41 < _g53):
+                i2 = _g41
+                _g41 = (_g41 + 1)
+                x1 = None
+                if ((HxOverrides.mod(i2, ((n - 1))) == 0) and ((((i2 + n) - 1) < a_l))):
+                    x1 = i2
+                else:
+                    continue
+                _g31.append(x1)
+            ind = _g31
+        _g32 = []
+        _g42 = 0
+        _g54 = len(ind)
+        while (_g42 < _g54):
+            i3 = _g42
+            _g42 = (_g42 + 1)
+            _g43 = []
+            _g55 = 0
+            _g6 = n
+            while (_g55 < _g6):
+                j = _g55
+                _g55 = (_g55 + 1)
+                _g43.append(python_internal_ArrayImpl._get(indring, ((ind[i3] if i3 >= 0 and i3 < len(ind) else None) + j)))
+            _g32.append(_g43)
+        rez = _g32
+        return rez
+
     def chain_S(self,a,n,ring = None):
         if (ring is None):
             ring = False
@@ -1788,7 +1860,7 @@ class geometryxd_AM:
         a_l = len(a)
         if ((n > a_l) or ((n < 1))):
             return rez
-        ind = self.nm.chain_indexes(a_l,n,ring)
+        ind = self.chain_indexes(a_l,n,ring)
         _g = []
         _g1 = 0
         _g2 = len(ind)
@@ -1813,7 +1885,7 @@ class geometryxd_AM:
         a_l = len(a)
         if ((n > a_l) or ((n < 1))):
             return rez
-        ind = self.nm.chain_indexes(a_l,n,ring)
+        ind = self.chain_indexes(a_l,n,ring)
         _g = []
         _g1 = 0
         _g2 = len(ind)
@@ -1838,7 +1910,7 @@ class geometryxd_AM:
         a_l = len(a)
         if ((n > a_l) or ((n < 1))):
             return rez
-        ind = self.nm.chain_indexes(a_l,n,ring)
+        ind = self.chain_indexes(a_l,n,ring)
         _g = []
         _g1 = 0
         _g2 = len(ind)
@@ -1870,9 +1942,9 @@ class geometryxd_AM:
 
 class geometryxd_Dot3D:
     _hx_class_name = "geometryxd.Dot3D"
-    __slots__ = ("x", "y", "z", "am")
-    _hx_fields = ["x", "y", "z", "am"]
-    _hx_methods = ["value", "dn", "valueM", "valueMx", "valueMy", "valueMz", "dot3DM", "dot3DMx", "dot3DMy", "dot3DMz", "dot3Dcopy"]
+    __slots__ = ("x", "y", "z", "geo")
+    _hx_fields = ["x", "y", "z", "geo"]
+    _hx_methods = ["dd", "fromArray", "useArray", "useM", "useMx", "useMy", "useMz", "useMxy", "useMxz", "useMyz", "dn", "value", "valueM", "valueMx", "valueMy", "valueMz", "dot3DM", "dot3DMx", "dot3DMy", "dot3DMz", "dot3Dcopy"]
 
     def __init__(self,x = None,y = None,z = None):
         if (x is None):
@@ -1881,28 +1953,106 @@ class geometryxd_Dot3D:
             y = 0
         if (z is None):
             z = 0
-        self.am = geometryxd_AM()
+        self.geo = geometryxd_GeometryXD(False)
         self.x = x
         self.y = y
         self.z = z
 
+    def dd(self,c):
+        return geometryxd_Dot3D((c[0] if 0 < len(c) else None),(c[1] if 1 < len(c) else None),(c[2] if 2 < len(c) else None))
+
+    def fromArray(self,xyz):
+        if (len(xyz) < 3):
+            _g = len(xyz)
+            _g1 = 3
+            while (_g < _g1):
+                i = _g
+                _g = (_g + 1)
+                xyz.append(0)
+        return geometryxd_Dot3D((xyz[0] if 0 < len(xyz) else None),(xyz[1] if 1 < len(xyz) else None),(xyz[2] if 2 < len(xyz) else None))
+
+    def useArray(self,xyz):
+        if (len(xyz) < 3):
+            _g = len(xyz)
+            _g1 = 3
+            while (_g < _g1):
+                i = _g
+                _g = (_g + 1)
+                xyz.append(0)
+        self.x = (xyz[0] if 0 < len(xyz) else None)
+        self.y = (xyz[1] if 1 < len(xyz) else None)
+        self.z = (xyz[2] if 2 < len(xyz) else None)
+
+    def useM(self):
+        _hx_local_0 = self
+        _hx_local_1 = _hx_local_0.x
+        _hx_local_0.x = (_hx_local_1 * -1)
+        _hx_local_0.x
+        _hx_local_2 = self
+        _hx_local_3 = _hx_local_2.y
+        _hx_local_2.y = (_hx_local_3 * -1)
+        _hx_local_2.y
+        _hx_local_4 = self
+        _hx_local_5 = _hx_local_4.z
+        _hx_local_4.z = (_hx_local_5 * -1)
+        _hx_local_4.z
+
+    def useMx(self):
+        _hx_local_0 = self
+        _hx_local_1 = _hx_local_0.x
+        _hx_local_0.x = (_hx_local_1 * -1)
+        _hx_local_0.x
+
+    def useMy(self):
+        _hx_local_0 = self
+        _hx_local_1 = _hx_local_0.y
+        _hx_local_0.y = (_hx_local_1 * -1)
+        _hx_local_0.y
+
+    def useMz(self):
+        _hx_local_0 = self
+        _hx_local_1 = _hx_local_0.z
+        _hx_local_0.z = (_hx_local_1 * -1)
+        _hx_local_0.z
+
+    def useMxy(self):
+        _hx_local_0 = self
+        _hx_local_1 = _hx_local_0.x
+        _hx_local_0.x = (_hx_local_1 * -1)
+        _hx_local_0.x
+        _hx_local_2 = self
+        _hx_local_3 = _hx_local_2.y
+        _hx_local_2.y = (_hx_local_3 * -1)
+        _hx_local_2.y
+
+    def useMxz(self):
+        _hx_local_0 = self
+        _hx_local_1 = _hx_local_0.x
+        _hx_local_0.x = (_hx_local_1 * -1)
+        _hx_local_0.x
+        _hx_local_2 = self
+        _hx_local_3 = _hx_local_2.z
+        _hx_local_2.z = (_hx_local_3 * -1)
+        _hx_local_2.z
+
+    def useMyz(self):
+        _hx_local_0 = self
+        _hx_local_1 = _hx_local_0.y
+        _hx_local_0.y = (_hx_local_1 * -1)
+        _hx_local_0.y
+        _hx_local_2 = self
+        _hx_local_3 = _hx_local_2.z
+        _hx_local_2.z = (_hx_local_3 * -1)
+        _hx_local_2.z
+
+    def dn(self):
+        return 3
+
     def value(self):
         return [self.x, self.y, self.z]
 
-    def dn(self):
-        return len(self.value())
-
     def valueM(self):
-        _this = self.am
-        a = self.value()
-        _g = []
-        _g1 = 0
-        _g2 = len(a)
-        while (_g1 < _g2):
-            i = _g1
-            _g1 = (_g1 + 1)
-            _g.append(-(a[i] if i >= 0 and i < len(a) else None))
-        return _g
+        return [-self.x, -self.y, -self.z]
 
     def valueMx(self):
         return [-self.x, self.y, self.z]
@@ -1932,20 +2082,29 @@ class geometryxd_Dot3D:
 
 class geometryxd_DotXD:
     _hx_class_name = "geometryxd.DotXD"
-    __slots__ = ("value", "am")
-    _hx_fields = ["value", "am"]
-    _hx_methods = ["dn", "valueM", "dotXDM", "dotXDcopy"]
+    __slots__ = ("coordinates", "geo")
+    _hx_fields = ["coordinates", "geo"]
+    _hx_methods = ["useArray", "fromArray", "dn", "value", "valueM", "dotXDM", "dotXDcopy"]
 
     def __init__(self,dotXD):
-        self.am = geometryxd_AM()
-        self.value = dotXD
+        self.geo = geometryxd_GeometryXD(False)
+        self.coordinates = dotXD
+
+    def useArray(self,coordinates):
+        self.coordinates = coordinates
+
+    def fromArray(self,coordinates):
+        return geometryxd_DotXD(coordinates)
 
     def dn(self):
-        return len(self.value)
+        return len(self.value())
+
+    def value(self):
+        return self.coordinates
 
     def valueM(self):
-        _this = self.am
-        a = self.value
+        _this = self.geo.am
+        a = self.value()
         _g = []
         _g1 = 0
         _g2 = len(a)
@@ -1956,8 +2115,8 @@ class geometryxd_DotXD:
         return _g
 
     def dotXDM(self):
-        _this = self.am
-        a = self.value
+        _this = self.geo.am
+        a = self.value()
         _g = []
         _g1 = 0
         _g2 = len(a)
@@ -1968,7 +2127,7 @@ class geometryxd_DotXD:
         return geometryxd_DotXD(_g)
 
     def dotXDcopy(self):
-        return geometryxd_DotXD(self.value)
+        return geometryxd_DotXD(self.value())
 
 
 
@@ -1976,17 +2135,22 @@ class geometryxd_GeometryXD:
     _hx_class_name = "geometryxd.GeometryXD"
     __slots__ = ("nm", "am")
     _hx_fields = ["nm", "am"]
-    _hx_methods = ["vecXDnorm", "vecXDfieldnorm", "zero_vector_inside", "vecXD", "vecXDone", "vecXDfield", "vecXDsame", "vecXDfieldsame", "vecXDrandom", "vecXDsum", "vecXDfieldsum", "vecXDdiff", "vecXDfielddiff", "vecXDback", "vecXDfieldback", "vecXDparalleled_sameside", "vecXDparalleled_opposite", "vecXDparalleled", "vecXDscalar", "vecXDcos", "vecXDangle", "vec3Dnormal", "vec3Dfieldnormal", "vecXDmiddle", "vecXDfieldmiddle", "vecXDsamesize", "vecXDfieldsamesize", "dotXDoffset", "dot3Dline3D_x_plane3D", "projection_dot3D_on_plane3D", "dot3D_to_dot2Dviewplane", "dotXDscale", "vec3Drotate", "vec3Dfield_rotate_around_vec3Daxes", "dot3Drotate", "plane3D_dot3Dnormal", "plane3D_dot_vec_vec", "plane3D_3dots", "plane3D_2dots", "distance_dot3D_plane3D", "random_vec3D_in_plane3D", "random_dot3D_in_plane3D", "curve3D_4dots", "curve3D_3dots", "line3D_2dots", "line3D_dot_offset", "curve3D_4to12", "curve3D_12to4", "beziercubic3D_derivativeparameters", "beziercubic_derivative", "beziercubic3D_derivative", "beziercubic_support_dot_one", "beziercubic3D_support_dot_one", "beziercubic_support_dot_two", "beziercubic3D_support_dot_two", "beziercubic3D_follow_4dots_trajectory", "beziercubic_coordinate", "beziercubic3Ddot", "curve3D_4dots_follow_beziercubic_trajectory", "curve3Doffset", "curve3Drotate", "curve3Dscale", "ellipse2Dperimeter_ramanujan", "tangent_centered_ellipse2Ddot", "ellipse_e_parameter", "ellipse_c_parameter", "tangent_vec3D_in_plane_of_ellipse2D_placed_in_3Dspace", "ellipse3D_dots", "ellipse2Ddot", "curve2D_4dots_elliptic_shape_restricted_to_quarter", "beziercubic3D_elliptic_shape_restricted_to_quarter", "angle_required_to_place_curve_on_ellipse", "polygon3D_inside_ellipse", "polygon3D_vec3Dfield_distances", "polygon3D_in_plane", "polygon3D_to_vec3Dfield", "projection_vec3D_on_plane3D", "angle_vec3Dvec3D_projection_on_plane3D", "DotXD", "Dot3D", "VecXD", "Vec3D"]
+    _hx_methods = ["vecXDnorm", "vecXDfieldnorm", "zero_vector_inside", "vecXD", "vecXDone", "vecXDfield", "vecXDsame", "vecXDfieldsame", "vecXDrandom", "vecXDsum", "vecXDfieldsum", "vecXDdiff", "vecXDfielddiff", "vecXDback", "vecXDfieldback", "vecXDparalleled_sameside", "vecXDparalleled_opposite", "vecXDparalleled", "vecXDscalar", "vecXDcos", "vecXDangle", "vec3Dnormal", "vec3Dfieldnormal", "vecXDmiddle", "vecXDfieldmiddle", "vecXDsamesize", "vecXDfieldsamesize", "dotXDoffset", "dot3Dline3D_x_plane3D", "projection_dot3D_on_plane3D", "dot3D_to_dot2Dviewplane", "dotXDscale", "vec3Drotate", "vec3Dfield_rotate_around_vec3Daxes", "dot3Drotate", "plane3D_dot3Dnormal", "plane3D_dot_vec_vec", "plane3D_3dots", "plane3D_2dots", "distance_dot3D_plane3D", "random_vec3D_in_plane3D", "random_dot3D_in_plane3D", "curve3D_4dots", "curve3D_3dots", "line3D_2dots", "line3D_dot_offset", "curve3D_4to12", "curve3D_12to4", "beziercubic3D_derivativeparameters", "beziercubic_derivative", "beziercubic3D_derivative", "beziercubic_support_dot_one", "beziercubic3D_support_dot_one", "beziercubic_support_dot_two", "beziercubic3D_support_dot_two", "beziercubic3D_follow_4dots_trajectory", "beziercubic_coordinate", "beziercubic3Ddot", "curve3D_4dots_follow_beziercubic_trajectory", "curve3Doffset", "curve3Drotate", "curve3Dscale", "ellipse2Dperimeter_ramanujan", "tangent_centered_ellipse2Ddot", "ellipse_e_parameter", "ellipse_c_parameter", "tangent_vec3D_in_plane_of_ellipse2D_placed_in_3Dspace", "ellipse3D_dots", "ellipse2Ddot", "curve2D_4dots_elliptic_shape_restricted_to_quarter", "beziercubic3D_elliptic_shape_restricted_to_quarter", "angle_required_to_place_curve_on_ellipse", "polygon3D_inside_ellipse", "polygon3D_vec3Dfield_distances", "polygon3D_in_plane", "polygon3D_to_vec3Dfield", "projection_vec3D_on_plane3D", "angle_vec3Dvec3D_projection_on_plane3D", "objDotXD", "objDot3D", "objVecXD", "objVec3D"]
     _hx_statics = ["main"]
 
-    def __init__(self):
-        print("=============================")
-        print("= GeometryXD ready          =")
-        self.nm = geometryxd_NM()
-        print("= number manipulation ready =")
-        self.am = geometryxd_AM()
-        print("= array manipulation ready  =")
-        print("=============================")
+    def __init__(self,message = None):
+        if (message is None):
+            message = True
+        self.am = None
+        self.nm = None
+        if message:
+            print("=============================")
+            print("= GeometryXD ready          =")
+            self.nm = geometryxd_NM()
+            print("= number manipulation ready =")
+            self.am = geometryxd_AM()
+            print("= array manipulation ready  =")
+            print("=============================")
 
     def vecXDnorm(self,vecXD):
         sum = 0
@@ -4090,10 +4254,10 @@ class geometryxd_GeometryXD:
         rez = (-uvv if ((uvnpvn > uznak)) else uvv)
         return rez
 
-    def DotXD(self,dot):
+    def objDotXD(self,dot):
         return geometryxd_DotXD(dot)
 
-    def Dot3D(self,x = None,y = None,z = None):
+    def objDot3D(self,x = None,y = None,z = None):
         if (x is None):
             x = 0
         if (y is None):
@@ -4102,10 +4266,10 @@ class geometryxd_GeometryXD:
             z = 0
         return geometryxd_Dot3D(x,y,z)
 
-    def VecXD(self,dotXDb,dotXDa = None):
+    def objVecXD(self,dotXDb,dotXDa = None):
         return geometryxd_VecXD(dotXDb,dotXDa)
 
-    def Vec3D(self,dot3Db,dot3Da = None):
+    def objVec3D(self,dot3Db,dot3Da = None):
         return geometryxd_Vec3D(dot3Db,dot3Da)
 
     @staticmethod
@@ -4117,7 +4281,7 @@ class geometryxd_GeometryXD:
 class geometryxd_NM:
     _hx_class_name = "geometryxd.NM"
     __slots__ = ()
-    _hx_methods = ["sign_I", "sign_F", "sign3_I", "sign3_F", "sin_cos_cut", "degrees", "radians", "angle_quadrant", "steps_internal", "steps_external", "chain_indexes"]
+    _hx_methods = ["sign_I", "sign_F", "sign3_I", "sign3_F", "sin_cos_cut", "degrees", "radians", "angle_quadrant", "steps_internal", "steps_external"]
 
     def __init__(self):
         pass
@@ -4263,92 +4427,19 @@ class geometryxd_NM:
             rez = _g4
         return rez
 
-    def chain_indexes(self,a_l,n,ring):
-        rez = None
-        if ((n > a_l) or ((n < 1))):
-            return rez
-        ind = []
-        _g = []
-        _g1 = 0
-        _g2 = a_l
-        while (_g1 < _g2):
-            i = _g1
-            _g1 = (_g1 + 1)
-            _g.append(i)
-        indring = _g
-        if ring:
-            indring.append(0)
-            _g3 = []
-            _g4 = 0
-            _g5 = None
-            try:
-                _g5 = int((((a_l + 1)) / ((n - 1))))
-            except Exception as _hx_e:
-                _hx_e1 = _hx_e
-                e = _hx_e1
-                _g5 = None
-            _g51 = (_g5 * ((n - 1)))
-            while (_g4 < _g51):
-                i1 = _g4
-                _g4 = (_g4 + 1)
-                x = None
-                if ((HxOverrides.mod(i1, ((n - 1))) == 0) and ((((i1 + n) - 1) < ((a_l + 1))))):
-                    x = i1
-                else:
-                    continue
-                _g3.append(x)
-            ind = _g3
-        else:
-            _g31 = []
-            _g41 = 0
-            _g52 = None
-            try:
-                _g52 = int((a_l / ((n - 1))))
-            except Exception as _hx_e:
-                _hx_e1 = _hx_e
-                e1 = _hx_e1
-                _g52 = None
-            _g53 = (_g52 * ((n - 1)))
-            while (_g41 < _g53):
-                i2 = _g41
-                _g41 = (_g41 + 1)
-                x1 = None
-                if ((HxOverrides.mod(i2, ((n - 1))) == 0) and ((((i2 + n) - 1) < a_l))):
-                    x1 = i2
-                else:
-                    continue
-                _g31.append(x1)
-            ind = _g31
-        _g32 = []
-        _g42 = 0
-        _g54 = len(ind)
-        while (_g42 < _g54):
-            i3 = _g42
-            _g42 = (_g42 + 1)
-            _g43 = []
-            _g55 = 0
-            _g6 = n
-            while (_g55 < _g6):
-                j = _g55
-                _g55 = (_g55 + 1)
-                _g43.append(python_internal_ArrayImpl._get(indring, ((ind[i3] if i3 >= 0 and i3 < len(ind) else None) + j)))
-            _g32.append(_g43)
-        rez = _g32
-        return rez
-
 
 
 class geometryxd_Vec3D:
     _hx_class_name = "geometryxd.Vec3D"
-    __slots__ = ("x", "y", "z", "am")
-    _hx_fields = ["x", "y", "z", "am"]
-    _hx_methods = ["value", "dn", "valueM", "valueMx", "valueMy", "valueMz", "vec3DM", "vec3DMx", "vec3DMy", "vec3DMz", "vec3Dcopy"]
+    __slots__ = ("x", "y", "z", "geo")
+    _hx_fields = ["x", "y", "z", "geo"]
+    _hx_methods = ["vd", "fromArray", "useArray", "useM", "useMx", "useMy", "useMz", "useMxy", "useMxz", "useMyz", "dn", "value", "valueM", "valueMx", "valueMy", "valueMz", "valueMxy", "valueMxz", "valueMyz", "valueOne", "valueOneM", "valueOneMx", "valueOneMy", "valueOneMz", "valueOneMxy", "valueOneMxz", "valueOneMyz", "vec3DM", "vec3DMx", "vec3DMy", "vec3DMz", "vec3DMxy", "vec3DMxz", "vec3DMyz", "vec3Done", "vec3DoneM", "vec3DoneMx", "vec3DoneMy", "vec3DoneMz", "vec3DoneMxy", "vec3DoneMxz", "vec3DoneMyz", "vec3Dcopy"]
 
     def __init__(self,dot3Db,dot3Da = None):
         self.z = None
         self.y = None
         self.x = None
-        self.am = geometryxd_AM()
+        self.geo = geometryxd_GeometryXD(False)
         if (dot3Da is not None):
             self.x = (dot3Db.x - dot3Da.x)
             self.y = (dot3Db.y - dot3Da.y)
@@ -4358,23 +4449,101 @@ class geometryxd_Vec3D:
             self.y = dot3Db.y
             self.z = dot3Db.z
 
+    def vd(self,c):
+        return geometryxd_Vec3D(geometryxd_Dot3D((c[0] if 0 < len(c) else None),(c[1] if 1 < len(c) else None),(c[2] if 2 < len(c) else None)))
+
+    def fromArray(self,xyz):
+        if (len(xyz) < 3):
+            _g = len(xyz)
+            _g1 = 3
+            while (_g < _g1):
+                i = _g
+                _g = (_g + 1)
+                xyz.append(0)
+        return geometryxd_Vec3D(geometryxd_Dot3D((xyz[0] if 0 < len(xyz) else None),(xyz[1] if 1 < len(xyz) else None),(xyz[2] if 2 < len(xyz) else None)))
+
+    def useArray(self,xyz):
+        if (len(xyz) < 3):
+            _g = len(xyz)
+            _g1 = 3
+            while (_g < _g1):
+                i = _g
+                _g = (_g + 1)
+                xyz.append(0)
+        self.x = (xyz[0] if 0 < len(xyz) else None)
+        self.y = (xyz[1] if 1 < len(xyz) else None)
+        self.z = (xyz[2] if 2 < len(xyz) else None)
+
+    def useM(self):
+        _hx_local_0 = self
+        _hx_local_1 = _hx_local_0.x
+        _hx_local_0.x = (_hx_local_1 * -1)
+        _hx_local_0.x
+        _hx_local_2 = self
+        _hx_local_3 = _hx_local_2.y
+        _hx_local_2.y = (_hx_local_3 * -1)
+        _hx_local_2.y
+        _hx_local_4 = self
+        _hx_local_5 = _hx_local_4.z
+        _hx_local_4.z = (_hx_local_5 * -1)
+        _hx_local_4.z
+
+    def useMx(self):
+        _hx_local_0 = self
+        _hx_local_1 = _hx_local_0.x
+        _hx_local_0.x = (_hx_local_1 * -1)
+        _hx_local_0.x
+
+    def useMy(self):
+        _hx_local_0 = self
+        _hx_local_1 = _hx_local_0.y
+        _hx_local_0.y = (_hx_local_1 * -1)
+        _hx_local_0.y
+
+    def useMz(self):
+        _hx_local_0 = self
+        _hx_local_1 = _hx_local_0.z
+        _hx_local_0.z = (_hx_local_1 * -1)
+        _hx_local_0.z
+
+    def useMxy(self):
+        _hx_local_0 = self
+        _hx_local_1 = _hx_local_0.x
+        _hx_local_0.x = (_hx_local_1 * -1)
+        _hx_local_0.x
+        _hx_local_2 = self
+        _hx_local_3 = _hx_local_2.y
+        _hx_local_2.y = (_hx_local_3 * -1)
+        _hx_local_2.y
+
+    def useMxz(self):
+        _hx_local_0 = self
+        _hx_local_1 = _hx_local_0.x
+        _hx_local_0.x = (_hx_local_1 * -1)
+        _hx_local_0.x
+        _hx_local_2 = self
+        _hx_local_3 = _hx_local_2.z
+        _hx_local_2.z = (_hx_local_3 * -1)
+        _hx_local_2.z
+
+    def useMyz(self):
+        _hx_local_0 = self
+        _hx_local_1 = _hx_local_0.y
+        _hx_local_0.y = (_hx_local_1 * -1)
+        _hx_local_0.y
+        _hx_local_2 = self
+        _hx_local_3 = _hx_local_2.z
+        _hx_local_2.z = (_hx_local_3 * -1)
+        _hx_local_2.z
+
+    def dn(self):
+        return 3
+
     def value(self):
         return [self.x, self.y, self.z]
 
-    def dn(self):
-        return len(self.value())
-
     def valueM(self):
-        _this = self.am
-        a = self.value()
-        _g = []
-        _g1 = 0
-        _g2 = len(a)
-        while (_g1 < _g2):
-            i = _g1
-            _g1 = (_g1 + 1)
-            _g.append(-(a[i] if i >= 0 and i < len(a) else None))
-        return _g
+        return [-self.x, -self.y, -self.z]
 
     def valueMx(self):
         return [-self.x, self.y, self.z]
@@ -4385,35 +4554,117 @@ class geometryxd_Vec3D:
     def valueMz(self):
         return [self.x, self.y, -self.z]
 
+    def valueMxy(self):
+        return [-self.x, -self.y, self.z]
+
+    def valueMxz(self):
+        return [-self.x, self.y, -self.z]
+
+    def valueMyz(self):
+        return [self.x, -self.y, -self.z]
+
+    def valueOne(self):
+        return self.geo.vecXDone(self.value())
+
+    def valueOneM(self):
+        return self.geo.vecXDone(self.geo.vecXDback(self.value()))
+
+    def valueOneMx(self):
+        return self.geo.vecXDone([-self.x, self.y, self.z])
+
+    def valueOneMy(self):
+        return self.geo.vecXDone([self.x, -self.y, self.z])
+
+    def valueOneMz(self):
+        return self.geo.vecXDone([self.x, self.y, -self.z])
+
+    def valueOneMxy(self):
+        return self.geo.vecXDone([-self.x, -self.y, self.z])
+
+    def valueOneMxz(self):
+        return self.geo.vecXDone([-self.x, self.y, -self.z])
+
+    def valueOneMyz(self):
+        return self.geo.vecXDone([self.x, -self.y, -self.z])
+
     def vec3DM(self):
-        return geometryxd_Vec3D(geometryxd_Dot3D(-self.x,-self.y,-self.z))
+        c = self.valueM()
+        return geometryxd_Vec3D(geometryxd_Dot3D((c[0] if 0 < len(c) else None),(c[1] if 1 < len(c) else None),(c[2] if 2 < len(c) else None)))
 
     def vec3DMx(self):
-        return geometryxd_Vec3D(geometryxd_Dot3D(-self.x,self.y,self.z))
+        c = self.valueMx()
+        return geometryxd_Vec3D(geometryxd_Dot3D((c[0] if 0 < len(c) else None),(c[1] if 1 < len(c) else None),(c[2] if 2 < len(c) else None)))
 
     def vec3DMy(self):
-        return geometryxd_Vec3D(geometryxd_Dot3D(self.x,-self.y,self.z))
+        c = self.valueMy()
+        return geometryxd_Vec3D(geometryxd_Dot3D((c[0] if 0 < len(c) else None),(c[1] if 1 < len(c) else None),(c[2] if 2 < len(c) else None)))
 
     def vec3DMz(self):
-        return geometryxd_Vec3D(geometryxd_Dot3D(self.x,self.y,-self.z))
+        c = self.valueMz()
+        return geometryxd_Vec3D(geometryxd_Dot3D((c[0] if 0 < len(c) else None),(c[1] if 1 < len(c) else None),(c[2] if 2 < len(c) else None)))
+
+    def vec3DMxy(self):
+        c = self.valueMxy()
+        return geometryxd_Vec3D(geometryxd_Dot3D((c[0] if 0 < len(c) else None),(c[1] if 1 < len(c) else None),(c[2] if 2 < len(c) else None)))
+
+    def vec3DMxz(self):
+        c = self.valueMxz()
+        return geometryxd_Vec3D(geometryxd_Dot3D((c[0] if 0 < len(c) else None),(c[1] if 1 < len(c) else None),(c[2] if 2 < len(c) else None)))
+
+    def vec3DMyz(self):
+        c = self.valueMyz()
+        return geometryxd_Vec3D(geometryxd_Dot3D((c[0] if 0 < len(c) else None),(c[1] if 1 < len(c) else None),(c[2] if 2 < len(c) else None)))
+
+    def vec3Done(self):
+        c = self.valueOne()
+        return geometryxd_Vec3D(geometryxd_Dot3D((c[0] if 0 < len(c) else None),(c[1] if 1 < len(c) else None),(c[2] if 2 < len(c) else None)))
+
+    def vec3DoneM(self):
+        c = self.valueOneM()
+        return geometryxd_Vec3D(geometryxd_Dot3D((c[0] if 0 < len(c) else None),(c[1] if 1 < len(c) else None),(c[2] if 2 < len(c) else None)))
+
+    def vec3DoneMx(self):
+        c = self.valueOneMx()
+        return geometryxd_Vec3D(geometryxd_Dot3D((c[0] if 0 < len(c) else None),(c[1] if 1 < len(c) else None),(c[2] if 2 < len(c) else None)))
+
+    def vec3DoneMy(self):
+        c = self.valueOneMy()
+        return geometryxd_Vec3D(geometryxd_Dot3D((c[0] if 0 < len(c) else None),(c[1] if 1 < len(c) else None),(c[2] if 2 < len(c) else None)))
+
+    def vec3DoneMz(self):
+        c = self.valueOneMz()
+        return geometryxd_Vec3D(geometryxd_Dot3D((c[0] if 0 < len(c) else None),(c[1] if 1 < len(c) else None),(c[2] if 2 < len(c) else None)))
+
+    def vec3DoneMxy(self):
+        c = self.valueOneMxy()
+        return geometryxd_Vec3D(geometryxd_Dot3D((c[0] if 0 < len(c) else None),(c[1] if 1 < len(c) else None),(c[2] if 2 < len(c) else None)))
+
+    def vec3DoneMxz(self):
+        c = self.valueOneMxz()
+        return geometryxd_Vec3D(geometryxd_Dot3D((c[0] if 0 < len(c) else None),(c[1] if 1 < len(c) else None),(c[2] if 2 < len(c) else None)))
+
+    def vec3DoneMyz(self):
+        c = self.valueOneMyz()
+        return geometryxd_Vec3D(geometryxd_Dot3D((c[0] if 0 < len(c) else None),(c[1] if 1 < len(c) else None),(c[2] if 2 < len(c) else None)))
 
     def vec3Dcopy(self):
-        return geometryxd_Vec3D(geometryxd_Dot3D(self.x,self.y,self.z))
+        c = self.value()
+        return geometryxd_Vec3D(geometryxd_Dot3D((c[0] if 0 < len(c) else None),(c[1] if 1 < len(c) else None),(c[2] if 2 < len(c) else None)))
 
 
 
 class geometryxd_VecXD:
     _hx_class_name = "geometryxd.VecXD"
-    __slots__ = ("value", "am")
-    _hx_fields = ["value", "am"]
-    _hx_methods = ["dn", "valueM", "vecXDM", "vecXDcopy"]
+    __slots__ = ("coordinates", "geo")
+    _hx_fields = ["coordinates", "geo"]
+    _hx_methods = ["vd", "useArray", "fromArray", "value", "dn", "valueM", "vecXDM", "vecXDcopy"]
 
     def __init__(self,dotXDb,dotXDa = None):
-        self.am = geometryxd_AM()
+        self.geo = geometryxd_GeometryXD(False)
         tmp = None
         if (dotXDa is not None):
-            _this = self.am
-            a = [dotXDb.value, dotXDa.value]
+            _this = self.geo.am
+            a = [dotXDb.value(), dotXDa.value()]
             rez = None
             al = len(a)
             if (al > 1):
@@ -4431,14 +4682,26 @@ class geometryxd_VecXD:
             tmp = rez
         else:
             tmp = False
-        self.value = (self.am.diff_xF([dotXDb.value, dotXDa.value]) if tmp else dotXDb.value)
+        self.coordinates = (self.geo.am.diff_xF([dotXDb.value(), dotXDa.value()]) if tmp else dotXDb.value())
+
+    def vd(self,c):
+        return geometryxd_VecXD(geometryxd_DotXD(c))
+
+    def useArray(self,coordinates):
+        self.coordinates = coordinates
+
+    def fromArray(self,coordinates):
+        return geometryxd_VecXD(geometryxd_DotXD(coordinates))
+
+    def value(self):
+        return self.coordinates
 
     def dn(self):
-        return len(self.value)
+        return len(self.value())
 
     def valueM(self):
-        _this = self.am
-        a = self.value
+        _this = self.geo.am
+        a = self.value()
         _g = []
         _g1 = 0
         _g2 = len(a)
@@ -4449,19 +4712,10 @@ class geometryxd_VecXD:
         return _g
 
     def vecXDM(self):
-        _this = self.am
-        a = self.value
-        _g = []
-        _g1 = 0
-        _g2 = len(a)
-        while (_g1 < _g2):
-            i = _g1
-            _g1 = (_g1 + 1)
-            _g.append(-(a[i] if i >= 0 and i < len(a) else None))
-        return geometryxd_VecXD(geometryxd_DotXD(_g))
+        return geometryxd_VecXD(geometryxd_DotXD(self.valueM()))
 
     def vecXDcopy(self):
-        return geometryxd_VecXD(geometryxd_DotXD(self.value))
+        return geometryxd_VecXD(geometryxd_DotXD(self.value()))
 
 
 

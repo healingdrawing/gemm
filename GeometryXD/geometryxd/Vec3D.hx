@@ -20,7 +20,7 @@ package geometryxd;
     /**
      * internal usage of methods
      */
-    var geo = new GeometryXD();
+    var geo = new GeometryXD(false);
     
     /**
      * new 3D vector object

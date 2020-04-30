@@ -15,7 +15,7 @@ package geometryxd;
 **/
 class GeometryXD{
     /**
-      trace `GeometryXD is ready for use` message in time of initialisation
+      trace `GeometryXD connected` message in time of initialisation
     **/
     public static function main(){trace("GeometryXD connected");}
     
@@ -23,14 +23,16 @@ class GeometryXD{
     public var am:AM;
     
     
-    public function new(){
-        trace("=============================");
-        trace("= GeometryXD ready          =");
-        nm = new NM();
-        trace("= number manipulation ready =");
-        am = new AM();
-        trace("= array manipulation ready  =");
-        trace("=============================");
+    public function new(message = true){
+        if (message){
+            trace("=============================");
+            trace("= GeometryXD ready          =");
+            nm = new NM();
+            trace("= number manipulation ready =");
+            am = new AM();
+            trace("= array manipulation ready  =");
+            trace("=============================");
+        }
     }
     
     /**

@@ -15,7 +15,21 @@ package geometryxd;
      * @param dotXDa start multidimensional dot of vector. Default will be `[0,...,0]`
      */
     public function new(dotXDb:DotXD, ?dotXDa:DotXD) {
-       this.coordinates = (dotXDa != null && am.same_size_F([dotXDb.value,dotXDa.value])) ? am.diff_xF([dotXDb.value,dotXDa.value]) : dotXDb.value;
+       this.coordinates = (dotXDa != null && geo.am.same_size_F([dotXDb.value(),dotXDa.value()])) ? geo.am.diff_xF([dotXDb.value(),dotXDa.value()]) : dotXDb.value();
+    }
+    
+    /**
+     * internal usage of methods
+     */
+     var geo = new GeometryXD(false);
+    
+    
+    /**
+     * internal function. Return VecXD object from multidimensional dot coordinates
+     * @param c multidimensional dot coordinates array `[x,y,...,z]`
+     */
+     inline function vd(c:Array<Float>) {
+        return new VecXD(new DotXD(c));
     }
     
     
@@ -36,8 +50,6 @@ package geometryxd;
     }
     
     
-    var am = new AM();
-    
     public function value() {
         return this.coordinates;
     }
@@ -53,17 +65,9 @@ package geometryxd;
      * array of mirrored values of vector coordinates. If `value` = `[1,2,3,-4]` return `[-1,-2,-3,4]`
      */
     public function valueM(){
-        return am.minus_F(this.value());
+        return geo.am.minus_F(this.value());
     }
     
-    
-    /**
-     * internal function. Return VecXD object from multidimensional dot coordinates
-     * @param c multidimensional dot coordinates array `[x,y,...,z]`
-     */
-     inline function vd(c:Array<Float>) {
-        return new VecXD(new DotXD(c));
-    }
     
     /**
      * new multidimensional vector object with mirrored coordinates. If `value` = `[1,2,3,-4]` return vecXD().value = `[-1,-2,-3,4]`
