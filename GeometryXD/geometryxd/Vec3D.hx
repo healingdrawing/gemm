@@ -39,6 +39,17 @@ package geometryxd;
         }
     }
     
+    
+    /**
+     * new Vec3D object from array of coordinates. Used first three array elements. Not enough length replaced uses 0.
+     * @param xyz array of 3D vector coordinates `[x,y,z]`
+     */
+     public function fromArray(xyz:Array<Float>) {
+        if (xyz.length < 3) for (i in xyz.length ... 3) xyz.push(0);
+        return vd(xyz);
+    }
+    
+    
     /**
      * set `x,y,z` properties using array of coordinates. Used first three array elements. Not enough length replaced uses 0.
      * @param xyz array of 3D vector coordinates `[x,y,z]`
@@ -51,12 +62,57 @@ package geometryxd;
     }
     
     /**
-     * new Vec3D object from array of coordinates. Used first three array elements. Not enough length replaced uses 0.
-     * @param xyz array of 3D vector coordinates `[x,y,z]`
+     * mirror 3D vector coordinates. `[1,2,3]` -> `[-1,-2,-3]`
      */
-    public function fromArray(xyz:Array<Float>) {
-        if (xyz.length < 3) for (i in xyz.length ... 3) xyz.push(0);
-        return vd(xyz);
+    public function useM() {
+        this.x *= -1;
+        this.y *= -1;
+        this.z *= -1;
+    }
+    
+    /**
+     * mirror 3D vector x coordinate. `[1,2,3]` -> `[-1,2,3]`
+     */
+    public function useMx() {
+        this.x *= -1;
+    }
+    
+    /**
+     * mirror 3D vector y coordinate. `[1,2,3]` -> `[1,-2,3]`
+     */
+    public function useMy() {
+        this.y *= -1;
+    }
+    
+    /**
+     * mirror 3D vector z coordinate. `[1,2,3]` -> `[1,2,-3]`
+     */
+    public function useMz() {
+        this.z *= -1;
+    }
+    
+    /**
+     * mirror 3D vector x y coordinates. `[1,2,3]` -> `[-1,-2,3]`
+     */
+    public function useMxy() {
+        this.x *= -1;
+        this.y *= -1;
+    }
+    
+    /**
+     * mirror 3D vector x z coordinates. `[1,2,3]` -> `[-1,2,-3]`
+     */
+    public function useMxz() {
+        this.x *= -1;
+        this.z *= -1;
+    }
+    
+    /**
+     * mirror 3D vector y z coordinates. `[1,2,3]` -> `[1,-2,-3]`
+     */
+    public function useMyz() {
+        this.y *= -1;
+        this.z *= -1;
     }
     
     
