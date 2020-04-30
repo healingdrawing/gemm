@@ -39,6 +39,13 @@ package geometryxd;
         }
     }
     
+    /**
+     * internal function. Return Vec3D object from 3D dot coordinates
+     * @param c 3D dot coordinates array `[x,y,z]`
+     */
+     inline function vd(c:Array<Float>) {
+        return new Vec3D(new Dot3D(c[0],c[1],c[2]));
+    }
     
     /**
      * new Vec3D object from array of coordinates. Used first three array elements. Not enough length replaced uses 0.
@@ -237,14 +244,6 @@ package geometryxd;
         return geo.vecXDone([this.x,-this.y,-this.z]);
     }
     
-    
-    /**
-     * internal function. Return Vec3D object from 3D dot coordinates
-     * @param c 3D dot coordinates array `[x,y,z]`
-     */
-    inline function vd(c:Array<Float>) {
-        return new Vec3D(new Dot3D(c[0],c[1],c[2]));
-    }
     
     /**
      * new 3D vector object with mirrored coordinates. if `value()` = `[1,2,3]` return vec3DM().value() = `[-1,-2,-3]`
