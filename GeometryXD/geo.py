@@ -1940,6 +1940,241 @@ class geometryxd_AM:
 
 
 
+class geometryxd_Angle:
+    _hx_class_name = "geometryxd.Angle"
+    __slots__ = ("value", "geo")
+    _hx_fields = ["value", "geo"]
+    _hx_methods = ["useTurn", "useMulp", "useQuad", "useSext", "useRad", "useHexa", "useBdeg", "useDeg", "useGrad", "useMarc", "useSarc", "turn", "mulp", "quad", "sext", "rad", "hexa", "bdeg", "deg", "grad", "marc", "sarc", "sin", "cos", "tan", "cot", "sec", "csc", "sinh", "cosh", "tanh", "coth", "sech", "csch", "useSin", "useCos", "useTan", "useCot", "useSec", "useCsc", "useSinh", "useCosh", "useTanh", "useCoth", "useSech", "useCsch", "fromSin", "fromCos", "fromTan", "fromCot", "fromSec", "fromCsc", "fromSinh", "fromCosh", "fromTanh", "fromCoth", "fromSech", "fromCsch"]
+
+    def __init__(self):
+        self.geo = geometryxd_GeometryXD(False)
+        self.value = 0
+
+    def useTurn(self,value):
+        self.value = value
+
+    def useMulp(self,value):
+        self.value = (value / 2)
+
+    def useQuad(self,value):
+        self.value = (value / 4)
+
+    def useSext(self,value):
+        self.value = (value / 6)
+
+    def useRad(self,value):
+        self.value = ((value / 2) / Math.PI)
+
+    def useHexa(self,value):
+        self.value = (value / 60)
+
+    def useBdeg(self,value):
+        self.value = (value / 256)
+
+    def useDeg(self,value):
+        self.value = (value / 360)
+
+    def useGrad(self,value):
+        self.value = (value / 400)
+
+    def useMarc(self,value):
+        self.value = (value / 21600)
+
+    def useSarc(self,value):
+        self.value = (value / 1296000)
+
+    def turn(self):
+        return self.value
+
+    def mulp(self):
+        return (self.value * 2)
+
+    def quad(self):
+        return (self.value * 4)
+
+    def sext(self):
+        return (self.value * 6)
+
+    def rad(self):
+        return ((self.value * 2) * Math.PI)
+
+    def hexa(self):
+        return (self.value * 60)
+
+    def bdeg(self):
+        return (self.value * 256)
+
+    def deg(self):
+        return (self.value * 360)
+
+    def grad(self):
+        return (self.value * 400)
+
+    def marc(self):
+        return (self.value * 21600)
+
+    def sarc(self):
+        return (self.value * 1296000)
+
+    def sin(self):
+        v = self.rad()
+        if ((v == Math.POSITIVE_INFINITY) or ((v == Math.NEGATIVE_INFINITY))):
+            return Math.NaN
+        else:
+            return python_lib_Math.sin(v)
+
+    def cos(self):
+        v = self.rad()
+        if ((v == Math.POSITIVE_INFINITY) or ((v == Math.NEGATIVE_INFINITY))):
+            return Math.NaN
+        else:
+            return python_lib_Math.cos(v)
+
+    def tan(self):
+        return Math.tan(self.rad())
+
+    def cot(self):
+        return (1 / self.tan())
+
+    def sec(self):
+        return (1 / self.cos())
+
+    def csc(self):
+        return (1 / self.sin())
+
+    def sinh(self):
+        a = self.rad()
+        v = -a
+        return (((((0.0 if ((a == Math.NEGATIVE_INFINITY)) else (Math.POSITIVE_INFINITY if ((a == Math.POSITIVE_INFINITY)) else Reflect.field(Math,"exp")(a)))) - ((0.0 if ((v == Math.NEGATIVE_INFINITY)) else (Math.POSITIVE_INFINITY if ((v == Math.POSITIVE_INFINITY)) else Reflect.field(Math,"exp")(v)))))) / 2)
+
+    def cosh(self):
+        a = self.rad()
+        v = -a
+        return (((((0.0 if ((a == Math.NEGATIVE_INFINITY)) else (Math.POSITIVE_INFINITY if ((a == Math.POSITIVE_INFINITY)) else Reflect.field(Math,"exp")(a)))) + ((0.0 if ((v == Math.NEGATIVE_INFINITY)) else (Math.POSITIVE_INFINITY if ((v == Math.POSITIVE_INFINITY)) else Reflect.field(Math,"exp")(v)))))) / 2)
+
+    def tanh(self):
+        return (self.sinh() / self.cosh())
+
+    def coth(self):
+        return (self.cosh() / self.sinh())
+
+    def sech(self):
+        return (1 / self.cosh())
+
+    def csch(self):
+        return (1 / self.sinh())
+
+    def useSin(self,v):
+        self.useRad(Math.asin(v))
+
+    def useCos(self,v):
+        self.useRad(Math.acos(v))
+
+    def useTan(self,v):
+        self.useRad(Math.atan(v))
+
+    def useCot(self,v):
+        self.useRad((Math.atan(v) + ((Math.PI if ((v < 0)) else 0))))
+
+    def useSec(self,v):
+        self.useRad(Math.acos((1 / v)))
+
+    def useCsc(self,v):
+        self.useRad(Math.asin((1 / v)))
+
+    def useSinh(self,v):
+        v1 = ((v * v) + 1)
+        v2 = (v + ((Math.NaN if ((v1 < 0)) else python_lib_Math.sqrt(v1))))
+        self.useRad((Math.NEGATIVE_INFINITY if ((v2 == 0.0)) else (Math.NaN if ((v2 < 0.0)) else python_lib_Math.log(v2))))
+
+    def useCosh(self,v):
+        v1 = ((v * v) - 1)
+        v2 = (v + ((Math.NaN if ((v1 < 0)) else python_lib_Math.sqrt(v1))))
+        self.useRad((Math.NEGATIVE_INFINITY if ((v2 == 0.0)) else (Math.NaN if ((v2 < 0.0)) else python_lib_Math.log(v2))))
+
+    def useTanh(self,v):
+        v1 = (((1 + v)) / ((1 - v)))
+        self.useRad((0.5 * ((Math.NEGATIVE_INFINITY if ((v1 == 0.0)) else (Math.NaN if ((v1 < 0.0)) else python_lib_Math.log(v1))))))
+
+    def useCoth(self,v):
+        v1 = (((v + 1)) / ((v - 1)))
+        self.useRad((0.5 * ((Math.NEGATIVE_INFINITY if ((v1 == 0.0)) else (Math.NaN if ((v1 < 0.0)) else python_lib_Math.log(v1))))))
+
+    def useSech(self,v):
+        v1 = ((1 / ((v * v))) - 1)
+        v2 = ((1 / v) + ((Math.NaN if ((v1 < 0)) else python_lib_Math.sqrt(v1))))
+        self.useRad((Math.NEGATIVE_INFINITY if ((v2 == 0.0)) else (Math.NaN if ((v2 < 0.0)) else python_lib_Math.log(v2))))
+
+    def useCsch(self,v):
+        v1 = ((1 / ((v * v))) + 1)
+        v2 = ((1 / v) + ((Math.NaN if ((v1 < 0)) else python_lib_Math.sqrt(v1))))
+        self.useRad((Math.NEGATIVE_INFINITY if ((v2 == 0.0)) else (Math.NaN if ((v2 < 0.0)) else python_lib_Math.log(v2))))
+
+    def fromSin(self,v):
+        a = geometryxd_Angle()
+        a.useRad(Math.asin(v))
+        return a
+
+    def fromCos(self,v):
+        geometryxd_Angle().useRad(Math.acos(v))
+        return
+
+    def fromTan(self,v):
+        geometryxd_Angle().useRad(Math.atan(v))
+        return
+
+    def fromCot(self,v):
+        geometryxd_Angle().useRad((Math.atan(v) + ((Math.PI if ((v < 0)) else 0))))
+        return
+
+    def fromSec(self,v):
+        geometryxd_Angle().useRad(Math.acos((1 / v)))
+        return
+
+    def fromCsc(self,v):
+        geometryxd_Angle().useRad(Math.asin((1 / v)))
+        return
+
+    def fromSinh(self,v):
+        tmp = geometryxd_Angle()
+        v1 = ((v * v) + 1)
+        v2 = (v + ((Math.NaN if ((v1 < 0)) else python_lib_Math.sqrt(v1))))
+        tmp.useRad((Math.NEGATIVE_INFINITY if ((v2 == 0.0)) else (Math.NaN if ((v2 < 0.0)) else python_lib_Math.log(v2))))
+        return
+
+    def fromCosh(self,v):
+        tmp = geometryxd_Angle()
+        v1 = ((v * v) - 1)
+        v2 = (v + ((Math.NaN if ((v1 < 0)) else python_lib_Math.sqrt(v1))))
+        tmp.useRad((Math.NEGATIVE_INFINITY if ((v2 == 0.0)) else (Math.NaN if ((v2 < 0.0)) else python_lib_Math.log(v2))))
+        return
+
+    def fromTanh(self,v):
+        v1 = (((1 + v)) / ((1 - v)))
+        geometryxd_Angle().useRad((0.5 * ((Math.NEGATIVE_INFINITY if ((v1 == 0.0)) else (Math.NaN if ((v1 < 0.0)) else python_lib_Math.log(v1))))))
+        return
+
+    def fromCoth(self,v):
+        v1 = (((v + 1)) / ((v - 1)))
+        geometryxd_Angle().useRad((0.5 * ((Math.NEGATIVE_INFINITY if ((v1 == 0.0)) else (Math.NaN if ((v1 < 0.0)) else python_lib_Math.log(v1))))))
+        return
+
+    def fromSech(self,v):
+        tmp = geometryxd_Angle()
+        v1 = ((1 / ((v * v))) - 1)
+        v2 = ((1 / v) + ((Math.NaN if ((v1 < 0)) else python_lib_Math.sqrt(v1))))
+        tmp.useRad((Math.NEGATIVE_INFINITY if ((v2 == 0.0)) else (Math.NaN if ((v2 < 0.0)) else python_lib_Math.log(v2))))
+        return
+
+    def fromCsch(self,v):
+        tmp = geometryxd_Angle()
+        v1 = ((1 / ((v * v))) + 1)
+        v2 = ((1 / v) + ((Math.NaN if ((v1 < 0)) else python_lib_Math.sqrt(v1))))
+        tmp.useRad((Math.NEGATIVE_INFINITY if ((v2 == 0.0)) else (Math.NaN if ((v2 < 0.0)) else python_lib_Math.log(v2))))
+        return
+
+
+
 class geometryxd_Dot3D:
     _hx_class_name = "geometryxd.Dot3D"
     __slots__ = ("x", "y", "z", "geo")
@@ -2135,7 +2370,7 @@ class geometryxd_GeometryXD:
     _hx_class_name = "geometryxd.GeometryXD"
     __slots__ = ("nm", "am")
     _hx_fields = ["nm", "am"]
-    _hx_methods = ["vecXDnorm", "vecXDfieldnorm", "zero_vector_inside", "vecXD", "vecXDone", "vecXDfield", "vecXDsame", "vecXDfieldsame", "vecXDrandom", "vecXDsum", "vecXDfieldsum", "vecXDdiff", "vecXDfielddiff", "vecXDback", "vecXDfieldback", "vecXDparalleled_sameside", "vecXDparalleled_opposite", "vecXDparalleled", "vecXDscalar", "vecXDcos", "vecXDangle", "vec3Dnormal", "vec3Dfieldnormal", "vecXDmiddle", "vecXDfieldmiddle", "vecXDsamesize", "vecXDfieldsamesize", "dotXDoffset", "dot3Dline3D_x_plane3D", "projection_dot3D_on_plane3D", "dot3D_to_dot2Dviewplane", "dotXDscale", "vec3Drotate", "vec3Dfield_rotate_around_vec3Daxes", "dot3Drotate", "plane3D_dot3Dnormal", "plane3D_dot_vec_vec", "plane3D_3dots", "plane3D_2dots", "distance_dot3D_plane3D", "random_vec3D_in_plane3D", "random_dot3D_in_plane3D", "curve3D_4dots", "curve3D_3dots", "line3D_2dots", "line3D_dot_offset", "curve3D_4to12", "curve3D_12to4", "beziercubic3D_derivativeparameters", "beziercubic_derivative", "beziercubic3D_derivative", "beziercubic_support_dot_one", "beziercubic3D_support_dot_one", "beziercubic_support_dot_two", "beziercubic3D_support_dot_two", "beziercubic3D_follow_4dots_trajectory", "beziercubic_coordinate", "beziercubic3Ddot", "curve3D_4dots_follow_beziercubic_trajectory", "curve3Doffset", "curve3Drotate", "curve3Dscale", "ellipse2Dperimeter_ramanujan", "tangent_centered_ellipse2Ddot", "ellipse_e_parameter", "ellipse_c_parameter", "tangent_vec3D_in_plane_of_ellipse2D_placed_in_3Dspace", "ellipse3D_dots", "ellipse2Ddot", "curve2D_4dots_elliptic_shape_restricted_to_quarter", "beziercubic3D_elliptic_shape_restricted_to_quarter", "angle_required_to_place_curve_on_ellipse", "polygon3D_inside_ellipse", "polygon3D_vec3Dfield_distances", "polygon3D_in_plane", "polygon3D_to_vec3Dfield", "projection_vec3D_on_plane3D", "angle_vec3Dvec3D_projection_on_plane3D", "objDotXD", "objDot3D", "objVecXD", "objVec3D"]
+    _hx_methods = ["vecXDnorm", "vecXDfieldnorm", "zero_vector_inside", "vecXD", "vecXDone", "vecXDfield", "vecXDsame", "vecXDfieldsame", "vecXDrandom", "vecXDsum", "vecXDfieldsum", "vecXDdiff", "vecXDfielddiff", "vecXDback", "vecXDfieldback", "vecXDparalleled_sameside", "vecXDparalleled_opposite", "vecXDparalleled", "vecXDscalar", "vecXDcos", "vecXDangle", "vec3Dnormal", "vec3Dfieldnormal", "vecXDmiddle", "vecXDfieldmiddle", "vecXDsamesize", "vecXDfieldsamesize", "dotXDoffset", "dot3Dline3D_x_plane3D", "projection_dot3D_on_plane3D", "dot3D_to_dot2Dviewplane", "dotXDscale", "vec3Drotate", "vec3Dfield_rotate_around_vec3Daxes", "dot3Drotate", "plane3D_dot3Dnormal", "plane3D_dot_vec_vec", "plane3D_3dots", "plane3D_2dots", "distance_dot3D_plane3D", "random_vec3D_in_plane3D", "random_dot3D_in_plane3D", "curve3D_4dots", "curve3D_3dots", "line3D_2dots", "line3D_dot_offset", "curve3D_4to12", "curve3D_12to4", "beziercubic3D_derivativeparameters", "beziercubic_derivative", "beziercubic3D_derivative", "beziercubic_support_dot_one", "beziercubic3D_support_dot_one", "beziercubic_support_dot_two", "beziercubic3D_support_dot_two", "beziercubic3D_follow_4dots_trajectory", "beziercubic_coordinate", "beziercubic3Ddot", "curve3D_4dots_follow_beziercubic_trajectory", "curve3Doffset", "curve3Drotate", "curve3Dscale", "ellipse2Dperimeter_ramanujan", "tangent_centered_ellipse2Ddot", "ellipse_e_parameter", "ellipse_c_parameter", "tangent_vec3D_in_plane_of_ellipse2D_placed_in_3Dspace", "ellipse3D_dots", "ellipse2Ddot", "curve2D_4dots_elliptic_shape_restricted_to_quarter", "beziercubic3D_elliptic_shape_restricted_to_quarter", "angle_required_to_place_curve_on_ellipse", "polygon3D_inside_ellipse", "polygon3D_vec3Dfield_distances", "polygon3D_in_plane", "polygon3D_to_vec3Dfield", "projection_vec3D_on_plane3D", "angle_vec3Dvec3D_projection_on_plane3D", "objAngle", "objDotXD", "objDot3D", "objVecXD", "objVec3D"]
     _hx_statics = ["main"]
 
     def __init__(self,message = None):
@@ -4253,6 +4488,9 @@ class geometryxd_GeometryXD:
         uznak = ((0.5 * Math.PI) if rad else 90)
         rez = (-uvv if ((uvnpvn > uznak)) else uvv)
         return rez
+
+    def objAngle(self):
+        return geometryxd_Angle()
 
     def objDotXD(self,dot):
         return geometryxd_DotXD(dot)

@@ -1689,6 +1689,13 @@ class GeometryXD{
     //20200422 new object using trying section . Delete comment later
     
     /**
+     * new angle object with few unit of measurement functionality. Created new instance angle value is 0.
+     */
+    public function objAngle() {
+        return new Angle();
+    }
+    
+    /**
      * multidimensional dot object
      * @param dot coordinates
      * @return DotXD
