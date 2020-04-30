@@ -2116,62 +2116,69 @@ class geometryxd_Angle:
         return a
 
     def fromCos(self,v):
-        geometryxd_Angle().useRad(Math.acos(v))
-        return
+        a = geometryxd_Angle()
+        a.useRad(Math.acos(v))
+        return a
 
     def fromTan(self,v):
-        geometryxd_Angle().useRad(Math.atan(v))
-        return
+        a = geometryxd_Angle()
+        a.useRad(Math.atan(v))
+        return a
 
     def fromCot(self,v):
-        geometryxd_Angle().useRad((Math.atan(v) + ((Math.PI if ((v < 0)) else 0))))
-        return
+        a = geometryxd_Angle()
+        a.useRad((Math.atan(v) + ((Math.PI if ((v < 0)) else 0))))
+        return a
 
     def fromSec(self,v):
-        geometryxd_Angle().useRad(Math.acos((1 / v)))
-        return
+        a = geometryxd_Angle()
+        a.useRad(Math.acos((1 / v)))
+        return a
 
     def fromCsc(self,v):
-        geometryxd_Angle().useRad(Math.asin((1 / v)))
-        return
+        a = geometryxd_Angle()
+        a.useRad(Math.asin((1 / v)))
+        return a
 
     def fromSinh(self,v):
-        tmp = geometryxd_Angle()
+        a = geometryxd_Angle()
         v1 = ((v * v) + 1)
         v2 = (v + ((Math.NaN if ((v1 < 0)) else python_lib_Math.sqrt(v1))))
-        tmp.useRad((Math.NEGATIVE_INFINITY if ((v2 == 0.0)) else (Math.NaN if ((v2 < 0.0)) else python_lib_Math.log(v2))))
-        return
+        a.useRad((Math.NEGATIVE_INFINITY if ((v2 == 0.0)) else (Math.NaN if ((v2 < 0.0)) else python_lib_Math.log(v2))))
+        return a
 
     def fromCosh(self,v):
-        tmp = geometryxd_Angle()
+        a = geometryxd_Angle()
         v1 = ((v * v) - 1)
         v2 = (v + ((Math.NaN if ((v1 < 0)) else python_lib_Math.sqrt(v1))))
-        tmp.useRad((Math.NEGATIVE_INFINITY if ((v2 == 0.0)) else (Math.NaN if ((v2 < 0.0)) else python_lib_Math.log(v2))))
-        return
+        a.useRad((Math.NEGATIVE_INFINITY if ((v2 == 0.0)) else (Math.NaN if ((v2 < 0.0)) else python_lib_Math.log(v2))))
+        return a
 
     def fromTanh(self,v):
+        a = geometryxd_Angle()
         v1 = (((1 + v)) / ((1 - v)))
-        geometryxd_Angle().useRad((0.5 * ((Math.NEGATIVE_INFINITY if ((v1 == 0.0)) else (Math.NaN if ((v1 < 0.0)) else python_lib_Math.log(v1))))))
-        return
+        a.useRad((0.5 * ((Math.NEGATIVE_INFINITY if ((v1 == 0.0)) else (Math.NaN if ((v1 < 0.0)) else python_lib_Math.log(v1))))))
+        return a
 
     def fromCoth(self,v):
+        a = geometryxd_Angle()
         v1 = (((v + 1)) / ((v - 1)))
-        geometryxd_Angle().useRad((0.5 * ((Math.NEGATIVE_INFINITY if ((v1 == 0.0)) else (Math.NaN if ((v1 < 0.0)) else python_lib_Math.log(v1))))))
-        return
+        a.useRad((0.5 * ((Math.NEGATIVE_INFINITY if ((v1 == 0.0)) else (Math.NaN if ((v1 < 0.0)) else python_lib_Math.log(v1))))))
+        return a
 
     def fromSech(self,v):
-        tmp = geometryxd_Angle()
+        a = geometryxd_Angle()
         v1 = ((1 / ((v * v))) - 1)
         v2 = ((1 / v) + ((Math.NaN if ((v1 < 0)) else python_lib_Math.sqrt(v1))))
-        tmp.useRad((Math.NEGATIVE_INFINITY if ((v2 == 0.0)) else (Math.NaN if ((v2 < 0.0)) else python_lib_Math.log(v2))))
-        return
+        a.useRad((Math.NEGATIVE_INFINITY if ((v2 == 0.0)) else (Math.NaN if ((v2 < 0.0)) else python_lib_Math.log(v2))))
+        return a
 
     def fromCsch(self,v):
-        tmp = geometryxd_Angle()
+        a = geometryxd_Angle()
         v1 = ((1 / ((v * v))) + 1)
         v2 = ((1 / v) + ((Math.NaN if ((v1 < 0)) else python_lib_Math.sqrt(v1))))
-        tmp.useRad((Math.NEGATIVE_INFINITY if ((v2 == 0.0)) else (Math.NaN if ((v2 < 0.0)) else python_lib_Math.log(v2))))
-        return
+        a.useRad((Math.NEGATIVE_INFINITY if ((v2 == 0.0)) else (Math.NaN if ((v2 < 0.0)) else python_lib_Math.log(v2))))
+        return a
 
 
 
