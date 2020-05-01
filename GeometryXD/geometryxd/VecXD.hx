@@ -79,7 +79,7 @@ package geometryxd;
     /**
      * new multidimensional vector object with same coordinates. if `value` = `[1,2,3,-4]` return vecXD().value = `[1,2,3,-4]`
      */
-     public function vecXDcopy(){
+     public function copy(){
         return vd(value());
     }
     

@@ -192,7 +192,7 @@ class Dot3D{
     /**
      * new 3D dot object with same coordinates. if `value()` = `[1,2,3]` return dot3DM().value() = `[1,2,3]`
      */
-    public function dot3Dcopy(){
+    public function copy(){
         return new Dot3D(this.x,this.y,this.z);
     }
     

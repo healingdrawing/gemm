@@ -71,7 +71,7 @@ class DotXD{
     /**
      * new multidimensional dot object with same coordinates. if `value` = `[1,2,3,-4]` return dotXD().value = `[1,2,3,-4]`
      */
-     public function dotXDcopy(){
+     public function copy(){
         return new DotXD(this.value());
     }
     

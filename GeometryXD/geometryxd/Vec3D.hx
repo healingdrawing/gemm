@@ -355,7 +355,7 @@ package geometryxd;
     /**
      * new 3D vector object with same coordinates. if `value()` = `[1,2,3]` return vec3DM().value() = `[1,2,3]`
      */
-    public function vec3Dcopy(){
+    public function copy(){
         return vd(value());
     }
     
