@@ -467,6 +467,98 @@ class Angle {
     
     //plus minus value section for each unit variant
     
+    /**
+     * add value to angle object. Incoming parameter angular unit is `turn`
+     * @param value of angle
+     */
+     public function addTurn(value:Float) { useTurn(turn()+value); }
+    
+    /**
+     * add value to angle object. Incoming parameter angular unit is `multiples of Math.PI`
+     * @param value of angle
+     */
+    public function addMulp(value:Float) { useMulp(mulp()+value); }
+    
+    /**
+     * add value to angle object. Incoming parameter angular unit is `quadrant`
+     * @param value of angle
+     */
+    public function addQuad(value:Float) { useQuad(quad()+value); }
+    
+    /**
+     * add value to angle object. Incoming parameter angular unit is `sextant`
+     * @param value of angle
+     */
+    public function addSext(value:Float) { useSext(sext()+value); }
+    
+    /**
+     * add value to angle object. Incoming parameter angular unit is `radian`
+     * @param value of angle
+     */
+    public function addRad(value:Float) { useRad(rad()+value); }
+    
+    /**
+     * add value to angle object. Incoming parameter angular unit is `hexacontade`
+     * @param value of angle
+     */
+    public function addHexa(value:Float) { useHexa(hexa()+value); }
+    
+    /**
+     * add value to angle object. Incoming parameter angular unit is `binary degree`
+     * @param value of angle
+     */
+    public function addBdeg(value:Float) { useBdeg(bdeg()+value); }
+    
+    /**
+     * add value to angle object. Incoming parameter angular unit is `degree`
+     * @param value of angle
+     */
+    public function addDeg(value:Float) { useDeg(deg()+value); }
+    
+    /**
+     * add value to angle object. Incoming parameter angular unit is `grad`
+     * @param value of angle
+     */
+    public function addGrad(value:Float) { useGrad(grad()+value); }
+    
+    /**
+     * add value to angle object. Incoming parameter angular unit is `minute of arc`
+     * @param value of angle
+     */
+    public function addMarc(value:Float) { useMarc(marc()+value); }
+    
+    /**
+     * add value to angle object. Incoming parameter angular unit is `second of arc`
+     * @param value of angle
+     */
+    public function addSarc(value:Float) { useSarc(sarc()+value); }
+    
     //plus minus obj section
+    
+    /**
+     * add angle object to angle object
+     * @param angle incoming angle object
+     */
+     public function addAngle(angle:Angle) { value+=angle.value; }
+    
+    /**
+     * subtract angle object from angle object
+     * @param angle incoming angle object
+     */
+     public function diffAngle(angle:Angle) { value-=angle.value; }
+    
+    /**
+     * new angle object, with similar value
+     */
+    public function copy() {
+        return new Angle(Turn,turn());
+    }
+    
+    /**
+     * new angle object, with negative value
+     */
+    public function minus() {
+        return new Angle(Turn,-turn());
+    }
     
 }
