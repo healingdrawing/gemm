@@ -1944,7 +1944,7 @@ class geometryxd_Angle:
     _hx_class_name = "geometryxd.Angle"
     __slots__ = ("value", "geo")
     _hx_fields = ["value", "geo"]
-    _hx_methods = ["useAngle", "useTurn", "useMulp", "useQuad", "useSext", "useRad", "useHexa", "useBdeg", "useDeg", "useGrad", "useMarc", "useSarc", "turn", "mulp", "quad", "sext", "rad", "hexa", "bdeg", "deg", "grad", "marc", "sarc", "sin", "cos", "tan", "cot", "sec", "csc", "sinh", "cosh", "tanh", "coth", "sech", "csch", "useSin", "useCos", "useTan", "useCot", "useSec", "useCsc", "useSinh", "useCosh", "useTanh", "useCoth", "useSech", "useCsch", "fromSin", "fromCos", "fromTan", "fromCot", "fromSec", "fromCsc", "fromSinh", "fromCosh", "fromTanh", "fromCoth", "fromSech", "fromCsch"]
+    _hx_methods = ["useAngle", "useTurn", "useMulp", "useQuad", "useSext", "useRad", "useHexa", "useBdeg", "useDeg", "useGrad", "useMarc", "useSarc", "turn", "mulp", "quad", "sext", "rad", "hexa", "bdeg", "deg", "grad", "marc", "sarc", "sin", "cos", "tan", "cot", "sec", "csc", "sinh", "cosh", "tanh", "coth", "sech", "csch", "useSin", "useCos", "useTan", "useCot", "useSec", "useCsc", "useSinh", "useCosh", "useTanh", "useCoth", "useSech", "useCsch", "fromSin", "fromCos", "fromTan", "fromCot", "fromSec", "fromCsc", "fromSinh", "fromCosh", "fromTanh", "fromCoth", "fromSech", "fromCsch", "fromAngle", "fromTurn", "fromMulp", "fromQuad", "fromSext", "fromRad", "fromHexa", "fromBdeg", "fromDeg", "fromGrad", "fromMarc", "fromSarc", "addTurn", "addMulp", "addQuad", "addSext", "addRad", "addHexa", "addBdeg", "addDeg", "addGrad", "addMarc", "addSarc", "addAngle", "diffAngle", "copy", "minus"]
 
     def __init__(self,unit = None,value = None):
         if (value is None):
@@ -1952,7 +1952,7 @@ class geometryxd_Angle:
         self.value = None
         self.geo = geometryxd_GeometryXD(False)
         if (unit is None):
-            self.value = 0
+            self.value = value
         else:
             unit1 = unit
             if (unit1 == 1):
@@ -1978,7 +1978,7 @@ class geometryxd_Angle:
             elif (unit1 == 11):
                 self.useSarc(value)
             else:
-                self.value = 0
+                self.value = value
 
     def useAngle(self,angle):
         self.value = angle.value
@@ -2191,13 +2191,100 @@ class geometryxd_Angle:
         v2 = ((1 / v) + ((Math.NaN if ((v1 < 0)) else python_lib_Math.sqrt(v1))))
         return geometryxd_Angle(5,(Math.NEGATIVE_INFINITY if ((v2 == 0.0)) else (Math.NaN if ((v2 < 0.0)) else python_lib_Math.log(v2))))
 
+    def fromAngle(self,angle):
+        return geometryxd_Angle(1,angle.turn())
+
+    def fromTurn(self,value):
+        return geometryxd_Angle(1,value)
+
+    def fromMulp(self,value):
+        return geometryxd_Angle(2,value)
+
+    def fromQuad(self,value):
+        return geometryxd_Angle(3,value)
+
+    def fromSext(self,value):
+        return geometryxd_Angle(4,value)
+
+    def fromRad(self,value):
+        return geometryxd_Angle(5,value)
+
+    def fromHexa(self,value):
+        return geometryxd_Angle(6,value)
+
+    def fromBdeg(self,value):
+        return geometryxd_Angle(7,value)
+
+    def fromDeg(self,value):
+        return geometryxd_Angle(8,value)
+
+    def fromGrad(self,value):
+        return geometryxd_Angle(9,value)
+
+    def fromMarc(self,value):
+        return geometryxd_Angle(10,value)
+
+    def fromSarc(self,value):
+        return geometryxd_Angle(11,value)
+
+    def addTurn(self,value):
+        self.useTurn((self.turn() + value))
+
+    def addMulp(self,value):
+        self.useMulp((self.mulp() + value))
+
+    def addQuad(self,value):
+        self.useQuad((self.quad() + value))
+
+    def addSext(self,value):
+        self.useSext((self.sext() + value))
+
+    def addRad(self,value):
+        self.useRad((self.rad() + value))
+
+    def addHexa(self,value):
+        self.useHexa((self.hexa() + value))
+
+    def addBdeg(self,value):
+        self.useBdeg((self.bdeg() + value))
+
+    def addDeg(self,value):
+        self.useDeg((self.deg() + value))
+
+    def addGrad(self,value):
+        self.useGrad((self.grad() + value))
+
+    def addMarc(self,value):
+        self.useMarc((self.marc() + value))
+
+    def addSarc(self,value):
+        self.useSarc((self.sarc() + value))
+
+    def addAngle(self,angle):
+        _hx_local_0 = self
+        _hx_local_1 = _hx_local_0.value
+        _hx_local_0.value = (_hx_local_1 + angle.value)
+        _hx_local_0.value
+
+    def diffAngle(self,angle):
+        _hx_local_0 = self
+        _hx_local_1 = _hx_local_0.value
+        _hx_local_0.value = (_hx_local_1 - angle.value)
+        _hx_local_0.value
+
+    def copy(self):
+        return geometryxd_Angle(1,self.turn())
+
+    def minus(self):
+        return geometryxd_Angle(1,-self.turn())
+
 
 
 class geometryxd_Dot3D:
     _hx_class_name = "geometryxd.Dot3D"
     __slots__ = ("x", "y", "z", "geo")
     _hx_fields = ["x", "y", "z", "geo"]
-    _hx_methods = ["dd", "fromArray", "useArray", "useM", "useMx", "useMy", "useMz", "useMxy", "useMxz", "useMyz", "dn", "value", "valueM", "valueMx", "valueMy", "valueMz", "dot3DM", "dot3DMx", "dot3DMy", "dot3DMz", "dot3Dcopy"]
+    _hx_methods = ["dd", "fromArray", "useArray", "useM", "useMx", "useMy", "useMz", "useMxy", "useMxz", "useMyz", "dn", "value", "valueM", "valueMx", "valueMy", "valueMz", "dot3DM", "dot3DMx", "dot3DMy", "dot3DMz", "copy"]
 
     def __init__(self,x = None,y = None,z = None):
         if (x is None):
@@ -2328,7 +2415,7 @@ class geometryxd_Dot3D:
     def dot3DMz(self):
         return geometryxd_Dot3D(self.x,self.y,-self.z)
 
-    def dot3Dcopy(self):
+    def copy(self):
         return geometryxd_Dot3D(self.x,self.y,self.z)
 
 
@@ -2337,7 +2424,7 @@ class geometryxd_DotXD:
     _hx_class_name = "geometryxd.DotXD"
     __slots__ = ("coordinates", "geo")
     _hx_fields = ["coordinates", "geo"]
-    _hx_methods = ["useArray", "fromArray", "dn", "value", "valueM", "dotXDM", "dotXDcopy"]
+    _hx_methods = ["useArray", "fromArray", "dn", "value", "valueM", "dotXDM", "copy"]
 
     def __init__(self,dotXD):
         self.geo = geometryxd_GeometryXD(False)
@@ -2379,7 +2466,7 @@ class geometryxd_DotXD:
             _g.append(-(a[i] if i >= 0 and i < len(a) else None))
         return geometryxd_DotXD(_g)
 
-    def dotXDcopy(self):
+    def copy(self):
         return geometryxd_DotXD(self.value())
 
 
@@ -4691,7 +4778,7 @@ class geometryxd_Vec3D:
     _hx_class_name = "geometryxd.Vec3D"
     __slots__ = ("x", "y", "z", "geo")
     _hx_fields = ["x", "y", "z", "geo"]
-    _hx_methods = ["vd", "fromArray", "useArray", "useM", "useMx", "useMy", "useMz", "useMxy", "useMxz", "useMyz", "dn", "value", "valueM", "valueMx", "valueMy", "valueMz", "valueMxy", "valueMxz", "valueMyz", "valueOne", "valueOneM", "valueOneMx", "valueOneMy", "valueOneMz", "valueOneMxy", "valueOneMxz", "valueOneMyz", "vec3DM", "vec3DMx", "vec3DMy", "vec3DMz", "vec3DMxy", "vec3DMxz", "vec3DMyz", "vec3Done", "vec3DoneM", "vec3DoneMx", "vec3DoneMy", "vec3DoneMz", "vec3DoneMxy", "vec3DoneMxz", "vec3DoneMyz", "vec3Dcopy"]
+    _hx_methods = ["vd", "fromArray", "useArray", "useM", "useMx", "useMy", "useMz", "useMxy", "useMxz", "useMyz", "dn", "value", "valueM", "valueMx", "valueMy", "valueMz", "valueMxy", "valueMxz", "valueMyz", "valueOne", "valueOneM", "valueOneMx", "valueOneMy", "valueOneMz", "valueOneMxy", "valueOneMxz", "valueOneMyz", "vec3DM", "vec3DMx", "vec3DMy", "vec3DMz", "vec3DMxy", "vec3DMxz", "vec3DMyz", "vec3Done", "vec3DoneM", "vec3DoneMx", "vec3DoneMy", "vec3DoneMz", "vec3DoneMxy", "vec3DoneMxz", "vec3DoneMyz", "copy"]
 
     def __init__(self,dot3Db,dot3Da = None):
         self.z = None
@@ -4905,7 +4992,7 @@ class geometryxd_Vec3D:
         c = self.valueOneMyz()
         return geometryxd_Vec3D(geometryxd_Dot3D((c[0] if 0 < len(c) else None),(c[1] if 1 < len(c) else None),(c[2] if 2 < len(c) else None)))
 
-    def vec3Dcopy(self):
+    def copy(self):
         c = self.value()
         return geometryxd_Vec3D(geometryxd_Dot3D((c[0] if 0 < len(c) else None),(c[1] if 1 < len(c) else None),(c[2] if 2 < len(c) else None)))
 
@@ -4915,7 +5002,7 @@ class geometryxd_VecXD:
     _hx_class_name = "geometryxd.VecXD"
     __slots__ = ("coordinates", "geo")
     _hx_fields = ["coordinates", "geo"]
-    _hx_methods = ["vd", "useArray", "fromArray", "value", "dn", "valueM", "vecXDM", "vecXDcopy"]
+    _hx_methods = ["vd", "useArray", "fromArray", "value", "dn", "valueM", "vecXDM", "copy"]
 
     def __init__(self,dotXDb,dotXDa = None):
         self.geo = geometryxd_GeometryXD(False)
@@ -4972,7 +5059,7 @@ class geometryxd_VecXD:
     def vecXDM(self):
         return geometryxd_VecXD(geometryxd_DotXD(self.valueM()))
 
-    def vecXDcopy(self):
+    def copy(self):
         return geometryxd_VecXD(geometryxd_DotXD(self.value()))
 
 
