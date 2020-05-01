@@ -60,7 +60,7 @@ class Angle {
     
     
     /**
-     * new angle object with few unit of measurement functionality. Created new instance angle default value is 0.
+     * new angle object with few unit of measurement functionality. Created new instance angle default value is 0, default unit is `Turn`.
      * @param unit None = 0; Turn = 1; Mulp = 2; Quad = 3; Sext = 4; Rad = 5; Hexa = 6; Bdeg = 7; Deg = 8; Grad = 9; Marc = 10; Sarc = 11;
      * @param value 
      */
@@ -77,7 +77,7 @@ class Angle {
             case Grad: useGrad(value);
             case Marc: useMarc(value);
             case Sarc: useSarc(value);
-            default: this.value = 0;
+            default: this.value = value;
         }
     }
     
@@ -391,6 +391,78 @@ class Angle {
     
     //from unit section
     
+    
+    /**
+     * new angle object using incoming angle object
+     * @param value of angle
+     */
+     public function fromAngle(angle:Angle) { return new Angle(Turn,angle.turn()); }
+    
+    /**
+     * new angle object. Incoming parameter angular unit is `turn`
+     * @param value of angle
+     */
+     public function fromTurn(value:Float) { return new Angle(Turn,value); }
+    
+    /**
+     * new angle object. Incoming parameter angular unit is `multiples of Math.PI`
+     * @param value of angle
+     */
+    public function fromMulp(value:Float) { return new Angle(Mulp,value); }
+    
+    /**
+     * new angle object. Incoming parameter angular unit is `quadrant`
+     * @param value of angle
+     */
+    public function fromQuad(value:Float) { return new Angle(Quad,value); }
+    
+    /**
+     * new angle object. Incoming parameter angular unit is `sextant`
+     * @param value of angle
+     */
+    public function fromSext(value:Float) { return new Angle(Sext,value); }
+    
+    /**
+     * new angle object. Incoming parameter angular unit is `radian`
+     * @param value of angle
+     */
+    public function fromRad(value:Float) { return new Angle(Rad,value); }
+    
+    /**
+     * new angle object. Incoming parameter angular unit is `hexacontade`
+     * @param value of angle
+     */
+    public function fromHexa(value:Float) { return new Angle(Hexa,value); }
+    
+    /**
+     * new angle object. Incoming parameter angular unit is `binary degree`
+     * @param value of angle
+     */
+    public function fromBdeg(value:Float) { return new Angle(Bdeg,value); }
+    
+    /**
+     * new angle object. Incoming parameter angular unit is `degree`
+     * @param value of angle
+     */
+    public function fromDeg(value:Float) { return new Angle(Deg,value); }
+    
+    /**
+     * new angle object. Incoming parameter angular unit is `grad`
+     * @param value of angle
+     */
+    public function fromGrad(value:Float) { return new Angle(Grad,value); }
+    
+    /**
+     * new angle object. Incoming parameter angular unit is `minute of arc`
+     * @param value of angle
+     */
+    public function fromMarc(value:Float) { return new Angle(Marc,value); }
+    
+    /**
+     * new angle object. Incoming parameter angular unit is `second of arc`
+     * @param value of angle
+     */
+    public function fromSarc(value:Float) { return new Angle(Sarc,value); }
     
     
     //plus minus value section for each unit variant
