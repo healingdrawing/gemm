@@ -1,5 +1,20 @@
 package geometryxd;
 
+enum abstract AngleUnit(Int){
+    var None = 0;
+    var Turn = 1;
+    var Mulp = 2;
+    var Quad = 3;
+    var Sext = 4;
+    var Rad = 5;
+    var Hexa = 6;
+    var Bdeg = 7;
+    var Deg = 8;
+    var Grad = 9;
+    var Marc = 10;
+    var Sarc = 11;
+}
+
 /**
  * Angle object with few unit of measurement functionality. Created new instance angle value is 0.
  * Internal storage unit is `turn`. Alternative names is `cyc`(circle), `rev`(revolution), `rot`(complete rotation).
@@ -45,12 +60,35 @@ class Angle {
     
     
     /**
-     * new angle object with few unit of measurement functionality. Created new instance angle value is 0.
+     * new angle object with few unit of measurement functionality. Created new instance angle default value is 0.
+     * @param unit None = 0; Turn = 1; Mulp = 2; Quad = 3; Sext = 4; Rad = 5; Hexa = 6; Bdeg = 7; Deg = 8; Grad = 9; Marc = 10; Sarc = 11;
+     * @param value 
      */
-    public function new() {
-        this.value = 0;
+    public function new(?unit:AngleUnit, value:Float = 0) {
+        switch unit{
+            case Turn: useTurn(value);
+            case Mulp: useMulp(value);
+            case Quad: useQuad(value);
+            case Sext: useSext(value);
+            case Rad: useRad(value);
+            case Hexa: useHexa(value);
+            case Bdeg: useBdeg(value);
+            case Deg: useDeg(value);
+            case Grad: useGrad(value);
+            case Marc: useMarc(value);
+            case Sarc: useSarc(value);
+            default: this.value = 0;
+        }
     }
     
+    
+    /**
+     * set angle value.
+     * @param angle incoming Angle object
+     */
+    public function useAngle(angle:Angle) {
+        this.value = angle.value;
+    }
     
     /**
      * set angle value. Incoming parameter angular unit is `turn`
@@ -234,9 +272,9 @@ class Angle {
     public function csc() { return 1/sin(); }
     
     /** hyperbolic sine of angle */
-    public function sinh() { var a = rad(); return (Math.exp(a) - Math.exp(-a))/2; }
+    public function sinh() { return (Math.exp(rad()) - Math.exp(-rad()))/2; }
     /** hyperbolic cosine of angle */
-    public function cosh() { var a = rad(); return (Math.exp(a) + Math.exp(-a))/2; }
+    public function cosh() { return (Math.exp(rad()) + Math.exp(-rad()))/2; }
     /** hyperbolic tangent of angle */
     public function tanh() { return sinh()/cosh(); }
     /** hyperbolic cotangent of angle */
@@ -304,52 +342,54 @@ class Angle {
     /** new Angle object from trigonometric sine of angle 
      * @param v sine of angle
     */
-    public function fromSin(v:Float) { var a = new Angle(); a.useRad( Math.asin(v) ); return a; }
+    public function fromSin(v:Float) { return new Angle(Rad,(Math.asin(v))); }
     /** new Angle object from trigonometric cosine of angle 
      * @param v cosine of angle
     */
-    public function fromCos(v:Float) { var a = new Angle(); a.useRad(Math.acos(v)); return a; }
+    public function fromCos(v:Float) { return new Angle(Rad,(Math.acos(v))); }
     /** new Angle object from trigonometric tangent of angle 
      * @param v tangent of angle
     */
-    public function fromTan(v:Float) { var a = new Angle(); a.useRad(Math.atan(v)); return a; }
+    public function fromTan(v:Float) { return new Angle(Rad,(Math.atan(v))); }
     /** new Angle object from trigonometric cotangent of angle 
      * @param v cotangent of angle
     */
-    public function fromCot(v:Float) { var a = new Angle(); a.useRad( Math.atan(v) + ((v<0)?Math.PI:0) ); return a; }
+    public function fromCot(v:Float) { return new Angle(Rad,(Math.atan(v) + ((v<0)?Math.PI:0))); }
     /** new Angle object from trigonometric secant of angle 
      * @param v secant of angle
     */
-    public function fromSec(v:Float) { var a = new Angle(); a.useRad(Math.acos(1/v)); return a; }
+    public function fromSec(v:Float) { return new Angle(Rad,(Math.acos(1/v))); }
     /** new Angle object from trigonometric cosecant of angle 
      * @param v cosecant of angle
     */
-    public function fromCsc(v:Float) { var a = new Angle(); a.useRad(Math.asin(1/v)); return a; }
+    public function fromCsc(v:Float) { return new Angle(Rad,(Math.asin(1/v))); }
     
     /** new Angle object from hyperbolic sine of angle 
      * @param v sine of angle
     */
-    public function fromSinh(v:Float) { var a = new Angle(); a.useRad( Math.log( v + Math.sqrt(v*v + 1) ) ); return a; }
+    public function fromSinh(v:Float) { return new Angle(Rad,(Math.log( v + Math.sqrt(v*v + 1)))); }
     /** new Angle object from hyperbolic cosine of angle 
      * @param v cosine of angle
     */
-    public function fromCosh(v:Float) { var a = new Angle(); a.useRad( Math.log( v + Math.sqrt(v*v - 1) ) ); return a; }
+    public function fromCosh(v:Float) { return new Angle(Rad,(Math.log( v + Math.sqrt(v*v - 1)))); }
     /** new Angle object from hyperbolic tangent of angle 
      * @param v tangent of angle
     */
-    public function fromTanh(v:Float) { var a = new Angle(); a.useRad( 0.5 * Math.log( (1+v)/(1-v) ) ); return a; }
+    public function fromTanh(v:Float) { return new Angle(Rad,(0.5 * Math.log( (1+v)/(1-v)))); }
     /** new Angle object from hyperbolic cotangent of angle 
      * @param v cotangent of angle
     */
-    public function fromCoth(v:Float) { var a = new Angle(); a.useRad( 0.5 * Math.log( (v+1)/(v-1) ) ); return a; }
+    public function fromCoth(v:Float) { return new Angle(Rad,(0.5 * Math.log( (v+1)/(v-1)))); }
     /** new Angle object from hyperbolic secant of angle 
      * @param v secant of angle
     */
-    public function fromSech(v:Float) { var a = new Angle(); a.useRad( Math.log( 1/v + Math.sqrt(1/(v*v) - 1) ) ); return a; }
+    public function fromSech(v:Float) { return new Angle(Rad,(Math.log( 1/v + Math.sqrt(1/(v*v) - 1)))); }
     /** new Angle object from hyperbolic cosecant of angle 
      * @param v cosecant of angle
     */
-    public function fromCsch(v:Float) { var a = new Angle(); a.useRad( Math.log( 1/v + Math.sqrt(1/(v*v) + 1) ) ); return a; }
+    public function fromCsch(v:Float) { return new Angle(Rad,(Math.log( 1/v + Math.sqrt(1/(v*v) + 1)))); }
+    
+    //from unit section
     
     
     

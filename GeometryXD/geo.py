@@ -1944,11 +1944,44 @@ class geometryxd_Angle:
     _hx_class_name = "geometryxd.Angle"
     __slots__ = ("value", "geo")
     _hx_fields = ["value", "geo"]
-    _hx_methods = ["useTurn", "useMulp", "useQuad", "useSext", "useRad", "useHexa", "useBdeg", "useDeg", "useGrad", "useMarc", "useSarc", "turn", "mulp", "quad", "sext", "rad", "hexa", "bdeg", "deg", "grad", "marc", "sarc", "sin", "cos", "tan", "cot", "sec", "csc", "sinh", "cosh", "tanh", "coth", "sech", "csch", "useSin", "useCos", "useTan", "useCot", "useSec", "useCsc", "useSinh", "useCosh", "useTanh", "useCoth", "useSech", "useCsch", "fromSin", "fromCos", "fromTan", "fromCot", "fromSec", "fromCsc", "fromSinh", "fromCosh", "fromTanh", "fromCoth", "fromSech", "fromCsch"]
+    _hx_methods = ["useAngle", "useTurn", "useMulp", "useQuad", "useSext", "useRad", "useHexa", "useBdeg", "useDeg", "useGrad", "useMarc", "useSarc", "turn", "mulp", "quad", "sext", "rad", "hexa", "bdeg", "deg", "grad", "marc", "sarc", "sin", "cos", "tan", "cot", "sec", "csc", "sinh", "cosh", "tanh", "coth", "sech", "csch", "useSin", "useCos", "useTan", "useCot", "useSec", "useCsc", "useSinh", "useCosh", "useTanh", "useCoth", "useSech", "useCsch", "fromSin", "fromCos", "fromTan", "fromCot", "fromSec", "fromCsc", "fromSinh", "fromCosh", "fromTanh", "fromCoth", "fromSech", "fromCsch"]
 
-    def __init__(self):
+    def __init__(self,unit = None,value = None):
+        if (value is None):
+            value = 0
+        self.value = None
         self.geo = geometryxd_GeometryXD(False)
-        self.value = 0
+        if (unit is None):
+            self.value = 0
+        else:
+            unit1 = unit
+            if (unit1 == 1):
+                self.useTurn(value)
+            elif (unit1 == 2):
+                self.useMulp(value)
+            elif (unit1 == 3):
+                self.useQuad(value)
+            elif (unit1 == 4):
+                self.useSext(value)
+            elif (unit1 == 5):
+                self.useRad(value)
+            elif (unit1 == 6):
+                self.useHexa(value)
+            elif (unit1 == 7):
+                self.useBdeg(value)
+            elif (unit1 == 8):
+                self.useDeg(value)
+            elif (unit1 == 9):
+                self.useGrad(value)
+            elif (unit1 == 10):
+                self.useMarc(value)
+            elif (unit1 == 11):
+                self.useSarc(value)
+            else:
+                self.value = 0
+
+    def useAngle(self,angle):
+        self.value = angle.value
 
     def useTurn(self,value):
         self.value = value
@@ -2043,14 +2076,16 @@ class geometryxd_Angle:
         return (1 / self.sin())
 
     def sinh(self):
-        a = self.rad()
-        v = -a
-        return (((((0.0 if ((a == Math.NEGATIVE_INFINITY)) else (Math.POSITIVE_INFINITY if ((a == Math.POSITIVE_INFINITY)) else Reflect.field(Math,"exp")(a)))) - ((0.0 if ((v == Math.NEGATIVE_INFINITY)) else (Math.POSITIVE_INFINITY if ((v == Math.POSITIVE_INFINITY)) else Reflect.field(Math,"exp")(v)))))) / 2)
+        v = self.rad()
+        tmp = (0.0 if ((v == Math.NEGATIVE_INFINITY)) else (Math.POSITIVE_INFINITY if ((v == Math.POSITIVE_INFINITY)) else Reflect.field(Math,"exp")(v)))
+        v1 = -self.rad()
+        return (((tmp - ((0.0 if ((v1 == Math.NEGATIVE_INFINITY)) else (Math.POSITIVE_INFINITY if ((v1 == Math.POSITIVE_INFINITY)) else Reflect.field(Math,"exp")(v1)))))) / 2)
 
     def cosh(self):
-        a = self.rad()
-        v = -a
-        return (((((0.0 if ((a == Math.NEGATIVE_INFINITY)) else (Math.POSITIVE_INFINITY if ((a == Math.POSITIVE_INFINITY)) else Reflect.field(Math,"exp")(a)))) + ((0.0 if ((v == Math.NEGATIVE_INFINITY)) else (Math.POSITIVE_INFINITY if ((v == Math.POSITIVE_INFINITY)) else Reflect.field(Math,"exp")(v)))))) / 2)
+        v = self.rad()
+        tmp = (0.0 if ((v == Math.NEGATIVE_INFINITY)) else (Math.POSITIVE_INFINITY if ((v == Math.POSITIVE_INFINITY)) else Reflect.field(Math,"exp")(v)))
+        v1 = -self.rad()
+        return (((tmp + ((0.0 if ((v1 == Math.NEGATIVE_INFINITY)) else (Math.POSITIVE_INFINITY if ((v1 == Math.POSITIVE_INFINITY)) else Reflect.field(Math,"exp")(v1)))))) / 2)
 
     def tanh(self):
         return (self.sinh() / self.cosh())
@@ -2111,74 +2146,50 @@ class geometryxd_Angle:
         self.useRad((Math.NEGATIVE_INFINITY if ((v2 == 0.0)) else (Math.NaN if ((v2 < 0.0)) else python_lib_Math.log(v2))))
 
     def fromSin(self,v):
-        a = geometryxd_Angle()
-        a.useRad(Math.asin(v))
-        return a
+        return geometryxd_Angle(5,Math.asin(v))
 
     def fromCos(self,v):
-        a = geometryxd_Angle()
-        a.useRad(Math.acos(v))
-        return a
+        return geometryxd_Angle(5,Math.acos(v))
 
     def fromTan(self,v):
-        a = geometryxd_Angle()
-        a.useRad(Math.atan(v))
-        return a
+        return geometryxd_Angle(5,Math.atan(v))
 
     def fromCot(self,v):
-        a = geometryxd_Angle()
-        a.useRad((Math.atan(v) + ((Math.PI if ((v < 0)) else 0))))
-        return a
+        return geometryxd_Angle(5,(Math.atan(v) + ((Math.PI if ((v < 0)) else 0))))
 
     def fromSec(self,v):
-        a = geometryxd_Angle()
-        a.useRad(Math.acos((1 / v)))
-        return a
+        return geometryxd_Angle(5,Math.acos((1 / v)))
 
     def fromCsc(self,v):
-        a = geometryxd_Angle()
-        a.useRad(Math.asin((1 / v)))
-        return a
+        return geometryxd_Angle(5,Math.asin((1 / v)))
 
     def fromSinh(self,v):
-        a = geometryxd_Angle()
         v1 = ((v * v) + 1)
         v2 = (v + ((Math.NaN if ((v1 < 0)) else python_lib_Math.sqrt(v1))))
-        a.useRad((Math.NEGATIVE_INFINITY if ((v2 == 0.0)) else (Math.NaN if ((v2 < 0.0)) else python_lib_Math.log(v2))))
-        return a
+        return geometryxd_Angle(5,(Math.NEGATIVE_INFINITY if ((v2 == 0.0)) else (Math.NaN if ((v2 < 0.0)) else python_lib_Math.log(v2))))
 
     def fromCosh(self,v):
-        a = geometryxd_Angle()
         v1 = ((v * v) - 1)
         v2 = (v + ((Math.NaN if ((v1 < 0)) else python_lib_Math.sqrt(v1))))
-        a.useRad((Math.NEGATIVE_INFINITY if ((v2 == 0.0)) else (Math.NaN if ((v2 < 0.0)) else python_lib_Math.log(v2))))
-        return a
+        return geometryxd_Angle(5,(Math.NEGATIVE_INFINITY if ((v2 == 0.0)) else (Math.NaN if ((v2 < 0.0)) else python_lib_Math.log(v2))))
 
     def fromTanh(self,v):
-        a = geometryxd_Angle()
         v1 = (((1 + v)) / ((1 - v)))
-        a.useRad((0.5 * ((Math.NEGATIVE_INFINITY if ((v1 == 0.0)) else (Math.NaN if ((v1 < 0.0)) else python_lib_Math.log(v1))))))
-        return a
+        return geometryxd_Angle(5,(0.5 * ((Math.NEGATIVE_INFINITY if ((v1 == 0.0)) else (Math.NaN if ((v1 < 0.0)) else python_lib_Math.log(v1))))))
 
     def fromCoth(self,v):
-        a = geometryxd_Angle()
         v1 = (((v + 1)) / ((v - 1)))
-        a.useRad((0.5 * ((Math.NEGATIVE_INFINITY if ((v1 == 0.0)) else (Math.NaN if ((v1 < 0.0)) else python_lib_Math.log(v1))))))
-        return a
+        return geometryxd_Angle(5,(0.5 * ((Math.NEGATIVE_INFINITY if ((v1 == 0.0)) else (Math.NaN if ((v1 < 0.0)) else python_lib_Math.log(v1))))))
 
     def fromSech(self,v):
-        a = geometryxd_Angle()
         v1 = ((1 / ((v * v))) - 1)
         v2 = ((1 / v) + ((Math.NaN if ((v1 < 0)) else python_lib_Math.sqrt(v1))))
-        a.useRad((Math.NEGATIVE_INFINITY if ((v2 == 0.0)) else (Math.NaN if ((v2 < 0.0)) else python_lib_Math.log(v2))))
-        return a
+        return geometryxd_Angle(5,(Math.NEGATIVE_INFINITY if ((v2 == 0.0)) else (Math.NaN if ((v2 < 0.0)) else python_lib_Math.log(v2))))
 
     def fromCsch(self,v):
-        a = geometryxd_Angle()
         v1 = ((1 / ((v * v))) + 1)
         v2 = ((1 / v) + ((Math.NaN if ((v1 < 0)) else python_lib_Math.sqrt(v1))))
-        a.useRad((Math.NEGATIVE_INFINITY if ((v2 == 0.0)) else (Math.NaN if ((v2 < 0.0)) else python_lib_Math.log(v2))))
-        return a
+        return geometryxd_Angle(5,(Math.NEGATIVE_INFINITY if ((v2 == 0.0)) else (Math.NaN if ((v2 < 0.0)) else python_lib_Math.log(v2))))
 
 
 
@@ -4496,8 +4507,10 @@ class geometryxd_GeometryXD:
         rez = (-uvv if ((uvnpvn > uznak)) else uvv)
         return rez
 
-    def objAngle(self):
-        return geometryxd_Angle()
+    def objAngle(self,unit = None,value = None):
+        if (value is None):
+            value = 0
+        return geometryxd_Angle(unit,value)
 
     def objDotXD(self,dot):
         return geometryxd_DotXD(dot)

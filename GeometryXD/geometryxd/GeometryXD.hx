@@ -2,6 +2,9 @@
  Copyright (c) 2018 llll
 **/
 package geometryxd;
+
+import geometryxd.Angle.AngleUnit;
+
 /**
   GeometryXD - multidimensional geometry manipulations. Primarily targeted for 3D objects (points, vectors, curves).  
   Additional methods allow manipulate with arrays.  
@@ -1689,10 +1692,12 @@ class GeometryXD{
     //20200422 new object using trying section . Delete comment later
     
     /**
-     * new angle object with few unit of measurement functionality. Created new instance angle value is 0.
+     * new angle object with few unit of measurement functionality. Created new instance angle default value is 0.
+     * @param unit None = 0; Turn = 1; Mulp = 2; Quad = 3; Sext = 4; Rad = 5; Hexa = 6; Bdeg = 7; Deg = 8; Grad = 9; Marc = 10; Sarc = 11;
+     * @param value 
      */
-    public function objAngle() {
-        return new Angle();
+    public function objAngle(?unit:AngleUnit, value:Float = 0) {
+        return new Angle(unit, value);
     }
     
     /**

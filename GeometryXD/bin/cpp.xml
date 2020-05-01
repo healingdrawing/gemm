@@ -2562,6 +2562,246 @@
 			<f a=""><x path="Float"/></f>
 			<haxe_doc>* get angle value as `second of arc`</haxe_doc>
 		</sarc>
+		<sin public="1" set="method" line="224">
+			<f a=""><x path="Float"/></f>
+			<haxe_doc>trigonometric sine of angle</haxe_doc>
+		</sin>
+		<cos public="1" set="method" line="226">
+			<f a=""><x path="Float"/></f>
+			<haxe_doc>trigonometric cosine of angle</haxe_doc>
+		</cos>
+		<tan public="1" set="method" line="228">
+			<f a=""><x path="Float"/></f>
+			<haxe_doc>trigonometric tangent of angle</haxe_doc>
+		</tan>
+		<cot public="1" set="method" line="230">
+			<f a=""><x path="Float"/></f>
+			<haxe_doc>trigonometric cotangent of angle</haxe_doc>
+		</cot>
+		<sec public="1" set="method" line="232">
+			<f a=""><x path="Float"/></f>
+			<haxe_doc>trigonometric secant of angle</haxe_doc>
+		</sec>
+		<csc public="1" set="method" line="234">
+			<f a=""><x path="Float"/></f>
+			<haxe_doc>trigonometric cosecant of angle</haxe_doc>
+		</csc>
+		<sinh public="1" set="method" line="237">
+			<f a=""><x path="Float"/></f>
+			<haxe_doc>hyperbolic sine of angle</haxe_doc>
+		</sinh>
+		<cosh public="1" set="method" line="239">
+			<f a=""><x path="Float"/></f>
+			<haxe_doc>hyperbolic cosine of angle</haxe_doc>
+		</cosh>
+		<tanh public="1" set="method" line="241">
+			<f a=""><x path="Float"/></f>
+			<haxe_doc>hyperbolic tangent of angle</haxe_doc>
+		</tanh>
+		<coth public="1" set="method" line="243">
+			<f a=""><x path="Float"/></f>
+			<haxe_doc>hyperbolic cotangent of angle</haxe_doc>
+		</coth>
+		<sech public="1" set="method" line="245">
+			<f a=""><x path="Float"/></f>
+			<haxe_doc>hyperbolic secant of angle</haxe_doc>
+		</sech>
+		<csch public="1" set="method" line="247">
+			<f a=""><x path="Float"/></f>
+			<haxe_doc>hyperbolic cosecant of angle</haxe_doc>
+		</csch>
+		<useSin public="1" set="method" line="254">
+			<f a="v">
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>set angle value using trigonometric sine of angle 
+     * @param v sine of angle</haxe_doc>
+		</useSin>
+		<useCos public="1" set="method" line="258">
+			<f a="v">
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>set angle value using trigonometric cosine of angle 
+     * @param v cosine of angle</haxe_doc>
+		</useCos>
+		<useTan public="1" set="method" line="262">
+			<f a="v">
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>set angle value using trigonometric tangent of angle 
+     * @param v tangent of angle</haxe_doc>
+		</useTan>
+		<useCot public="1" set="method" line="266">
+			<f a="v">
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>set angle value using trigonometric cotangent of angle 
+     * @param v cotangent of angle</haxe_doc>
+		</useCot>
+		<useSec public="1" set="method" line="270">
+			<f a="v">
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>set angle value using trigonometric secant of angle 
+     * @param v secant of angle</haxe_doc>
+		</useSec>
+		<useCsc public="1" set="method" line="274">
+			<f a="v">
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>set angle value using trigonometric cosecant of angle 
+     * @param v cosecant of angle</haxe_doc>
+		</useCsc>
+		<useSinh public="1" set="method" line="279">
+			<f a="v">
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>set angle value using hyperbolic sine of angle 
+     * @param v sine of angle</haxe_doc>
+		</useSinh>
+		<useCosh public="1" set="method" line="283">
+			<f a="v">
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>set angle value using hyperbolic cosine of angle 
+     * @param v cosine of angle</haxe_doc>
+		</useCosh>
+		<useTanh public="1" set="method" line="287">
+			<f a="v">
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>set angle value using hyperbolic tangent of angle 
+     * @param v tangent of angle</haxe_doc>
+		</useTanh>
+		<useCoth public="1" set="method" line="291">
+			<f a="v">
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>set angle value using hyperbolic cotangent of angle 
+     * @param v cotangent of angle</haxe_doc>
+		</useCoth>
+		<useSech public="1" set="method" line="295">
+			<f a="v">
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>set angle value using hyperbolic secant of angle 
+     * @param v secant of angle</haxe_doc>
+		</useSech>
+		<useCsch public="1" set="method" line="299">
+			<f a="v">
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>set angle value using hyperbolic cosecant of angle 
+     * @param v cosecant of angle</haxe_doc>
+		</useCsch>
+		<fromSin public="1" set="method" line="307">
+			<f a="v">
+				<x path="Float"/>
+				<c path="geometryxd.Angle"/>
+			</f>
+			<haxe_doc>new Angle object from trigonometric sine of angle 
+     * @param v sine of angle</haxe_doc>
+		</fromSin>
+		<fromCos public="1" set="method" line="311">
+			<f a="v">
+				<x path="Float"/>
+				<c path="geometryxd.Angle"/>
+			</f>
+			<haxe_doc>new Angle object from trigonometric cosine of angle 
+     * @param v cosine of angle</haxe_doc>
+		</fromCos>
+		<fromTan public="1" set="method" line="315">
+			<f a="v">
+				<x path="Float"/>
+				<c path="geometryxd.Angle"/>
+			</f>
+			<haxe_doc>new Angle object from trigonometric tangent of angle 
+     * @param v tangent of angle</haxe_doc>
+		</fromTan>
+		<fromCot public="1" set="method" line="319">
+			<f a="v">
+				<x path="Float"/>
+				<c path="geometryxd.Angle"/>
+			</f>
+			<haxe_doc>new Angle object from trigonometric cotangent of angle 
+     * @param v cotangent of angle</haxe_doc>
+		</fromCot>
+		<fromSec public="1" set="method" line="323">
+			<f a="v">
+				<x path="Float"/>
+				<c path="geometryxd.Angle"/>
+			</f>
+			<haxe_doc>new Angle object from trigonometric secant of angle 
+     * @param v secant of angle</haxe_doc>
+		</fromSec>
+		<fromCsc public="1" set="method" line="327">
+			<f a="v">
+				<x path="Float"/>
+				<c path="geometryxd.Angle"/>
+			</f>
+			<haxe_doc>new Angle object from trigonometric cosecant of angle 
+     * @param v cosecant of angle</haxe_doc>
+		</fromCsc>
+		<fromSinh public="1" set="method" line="332">
+			<f a="v">
+				<x path="Float"/>
+				<c path="geometryxd.Angle"/>
+			</f>
+			<haxe_doc>new Angle object from hyperbolic sine of angle 
+     * @param v sine of angle</haxe_doc>
+		</fromSinh>
+		<fromCosh public="1" set="method" line="336">
+			<f a="v">
+				<x path="Float"/>
+				<c path="geometryxd.Angle"/>
+			</f>
+			<haxe_doc>new Angle object from hyperbolic cosine of angle 
+     * @param v cosine of angle</haxe_doc>
+		</fromCosh>
+		<fromTanh public="1" set="method" line="340">
+			<f a="v">
+				<x path="Float"/>
+				<c path="geometryxd.Angle"/>
+			</f>
+			<haxe_doc>new Angle object from hyperbolic tangent of angle 
+     * @param v tangent of angle</haxe_doc>
+		</fromTanh>
+		<fromCoth public="1" set="method" line="344">
+			<f a="v">
+				<x path="Float"/>
+				<c path="geometryxd.Angle"/>
+			</f>
+			<haxe_doc>new Angle object from hyperbolic cotangent of angle 
+     * @param v cotangent of angle</haxe_doc>
+		</fromCoth>
+		<fromSech public="1" set="method" line="348">
+			<f a="v">
+				<x path="Float"/>
+				<c path="geometryxd.Angle"/>
+			</f>
+			<haxe_doc>new Angle object from hyperbolic secant of angle 
+     * @param v secant of angle</haxe_doc>
+		</fromSech>
+		<fromCsch public="1" set="method" line="352">
+			<f a="v">
+				<x path="Float"/>
+				<c path="geometryxd.Angle"/>
+			</f>
+			<haxe_doc>new Angle object from hyperbolic cosecant of angle 
+     * @param v cosecant of angle</haxe_doc>
+		</fromCsch>
 		<new public="1" set="method" line="50">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>* new angle object with few unit of measurement functionality. Created new instance angle value is 0.</haxe_doc>
@@ -2594,6 +2834,7 @@
  * * grad() -> `grad`
  * * marc() -> `minute of arc`
  * * sarc() -> `second of arc`]]></haxe_doc>
+		<meta><m n=":directlyUsed"/></meta>
 	</class>
 	<class path="geometryxd.Dot3D" params="" file="./geometryxd/Dot3D.hx">
 		<x public="1">
@@ -3720,7 +3961,11 @@
      @param plane3D - plane 3D (a, b, c, d), where (a, b, c) normal vector of plane, and (d) displacement from (0, 0, 0)
      @param rad - if true then radians angle, default false(degrees angle)</haxe_doc>
 		</angle_vec3Dvec3D_projection_on_plane3D>
-		<objDotXD public="1" set="method" line="1696">
+		<objAngle public="1" set="method" line="1694">
+			<f a=""><c path="geometryxd.Angle"/></f>
+			<haxe_doc>* new angle object with few unit of measurement functionality. Created new instance angle value is 0.</haxe_doc>
+		</objAngle>
+		<objDotXD public="1" set="method" line="1703">
 			<f a="dot">
 				<c path="Array"><x path="Float"/></c>
 				<c path="geometryxd.DotXD"/>
@@ -3729,7 +3974,7 @@
      * @param dot coordinates
      * @return DotXD</haxe_doc>
 		</objDotXD>
-		<objDot3D public="1" set="method" line="1705">
+		<objDot3D public="1" set="method" line="1712">
 			<f a="?x:?y:?z" v="0:0:0">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -3743,7 +3988,7 @@
      * @param z coordinate
      * @return Dot3D</haxe_doc>
 		</objDot3D>
-		<objVecXD public="1" set="method" line="1712">
+		<objVecXD public="1" set="method" line="1719">
 			<f a="dotXDb:?dotXDa">
 				<c path="geometryxd.DotXD"/>
 				<c path="geometryxd.DotXD"/>
@@ -3753,7 +3998,7 @@
      * @param dotXDb end multidimensional dot of vector
      * @param dotXDa start multidimensional dot of vector. Default will be `[0,...,0]`</haxe_doc>
 		</objVecXD>
-		<objVec3D public="1" set="method" line="1719">
+		<objVec3D public="1" set="method" line="1726">
 			<f a="dot3Db:?dot3Da">
 				<c path="geometryxd.Dot3D"/>
 				<c path="geometryxd.Dot3D"/>
