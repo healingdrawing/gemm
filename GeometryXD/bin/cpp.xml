@@ -2419,6 +2419,208 @@
 		<haxe_doc>* array manipulation</haxe_doc>
 		<meta><m n=":directlyUsed"/></meta>
 	</class>
+	<abstract path="geometryxd.AngleUnit" params="" file="./geometryxd/Angle.hx" module="geometryxd.Angle">
+		<this><x path="Int"/></this>
+		<meta><m n=":enum"/></meta>
+		<impl><class path="geometryxd._Angle.AngleUnit_Impl_" params="" file="./geometryxd/Angle.hx" private="1" module="geometryxd.Angle" extern="1">
+	<None public="1" get="inline" set="null" expr="cast 0" line="4" static="1">
+		<x path="geometryxd.AngleUnit"/>
+		<meta>
+			<m n=":value"><e>cast 0</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+	</None>
+	<Turn public="1" get="inline" set="null" expr="cast 1" line="5" static="1">
+		<x path="geometryxd.AngleUnit"/>
+		<meta>
+			<m n=":value"><e>cast 1</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+	</Turn>
+	<Mulp public="1" get="inline" set="null" expr="cast 2" line="6" static="1">
+		<x path="geometryxd.AngleUnit"/>
+		<meta>
+			<m n=":value"><e>cast 2</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+	</Mulp>
+	<Quad public="1" get="inline" set="null" expr="cast 3" line="7" static="1">
+		<x path="geometryxd.AngleUnit"/>
+		<meta>
+			<m n=":value"><e>cast 3</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+	</Quad>
+	<Sext public="1" get="inline" set="null" expr="cast 4" line="8" static="1">
+		<x path="geometryxd.AngleUnit"/>
+		<meta>
+			<m n=":value"><e>cast 4</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+	</Sext>
+	<Rad public="1" get="inline" set="null" expr="cast 5" line="9" static="1">
+		<x path="geometryxd.AngleUnit"/>
+		<meta>
+			<m n=":value"><e>cast 5</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+	</Rad>
+	<Hexa public="1" get="inline" set="null" expr="cast 6" line="10" static="1">
+		<x path="geometryxd.AngleUnit"/>
+		<meta>
+			<m n=":value"><e>cast 6</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+	</Hexa>
+	<Bdeg public="1" get="inline" set="null" expr="cast 7" line="11" static="1">
+		<x path="geometryxd.AngleUnit"/>
+		<meta>
+			<m n=":value"><e>cast 7</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+	</Bdeg>
+	<Deg public="1" get="inline" set="null" expr="cast 8" line="12" static="1">
+		<x path="geometryxd.AngleUnit"/>
+		<meta>
+			<m n=":value"><e>cast 8</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+	</Deg>
+	<Grad public="1" get="inline" set="null" expr="cast 9" line="13" static="1">
+		<x path="geometryxd.AngleUnit"/>
+		<meta>
+			<m n=":value"><e>cast 9</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+	</Grad>
+	<Marc public="1" get="inline" set="null" expr="cast 10" line="14" static="1">
+		<x path="geometryxd.AngleUnit"/>
+		<meta>
+			<m n=":value"><e>cast 10</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+	</Marc>
+	<Sarc public="1" get="inline" set="null" expr="cast 11" line="15" static="1">
+		<x path="geometryxd.AngleUnit"/>
+		<meta>
+			<m n=":value"><e>cast 11</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+	</Sarc>
+	<meta><m n=":enum"/></meta>
+</class></impl>
+	</abstract>
+	<class path="geometryxd._Angle.AngleUnit_Impl_" params="" file="./geometryxd/Angle.hx" private="1" module="geometryxd.Angle" extern="1">
+		<None public="1" get="inline" set="null" expr="cast 0" line="4" static="1">
+			<x path="geometryxd.AngleUnit"/>
+			<meta>
+				<m n=":value"><e>cast 0</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
+		</None>
+		<Turn public="1" get="inline" set="null" expr="cast 1" line="5" static="1">
+			<x path="geometryxd.AngleUnit"/>
+			<meta>
+				<m n=":value"><e>cast 1</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
+		</Turn>
+		<Mulp public="1" get="inline" set="null" expr="cast 2" line="6" static="1">
+			<x path="geometryxd.AngleUnit"/>
+			<meta>
+				<m n=":value"><e>cast 2</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
+		</Mulp>
+		<Quad public="1" get="inline" set="null" expr="cast 3" line="7" static="1">
+			<x path="geometryxd.AngleUnit"/>
+			<meta>
+				<m n=":value"><e>cast 3</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
+		</Quad>
+		<Sext public="1" get="inline" set="null" expr="cast 4" line="8" static="1">
+			<x path="geometryxd.AngleUnit"/>
+			<meta>
+				<m n=":value"><e>cast 4</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
+		</Sext>
+		<Rad public="1" get="inline" set="null" expr="cast 5" line="9" static="1">
+			<x path="geometryxd.AngleUnit"/>
+			<meta>
+				<m n=":value"><e>cast 5</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
+		</Rad>
+		<Hexa public="1" get="inline" set="null" expr="cast 6" line="10" static="1">
+			<x path="geometryxd.AngleUnit"/>
+			<meta>
+				<m n=":value"><e>cast 6</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
+		</Hexa>
+		<Bdeg public="1" get="inline" set="null" expr="cast 7" line="11" static="1">
+			<x path="geometryxd.AngleUnit"/>
+			<meta>
+				<m n=":value"><e>cast 7</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
+		</Bdeg>
+		<Deg public="1" get="inline" set="null" expr="cast 8" line="12" static="1">
+			<x path="geometryxd.AngleUnit"/>
+			<meta>
+				<m n=":value"><e>cast 8</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
+		</Deg>
+		<Grad public="1" get="inline" set="null" expr="cast 9" line="13" static="1">
+			<x path="geometryxd.AngleUnit"/>
+			<meta>
+				<m n=":value"><e>cast 9</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
+		</Grad>
+		<Marc public="1" get="inline" set="null" expr="cast 10" line="14" static="1">
+			<x path="geometryxd.AngleUnit"/>
+			<meta>
+				<m n=":value"><e>cast 10</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
+		</Marc>
+		<Sarc public="1" get="inline" set="null" expr="cast 11" line="15" static="1">
+			<x path="geometryxd.AngleUnit"/>
+			<meta>
+				<m n=":value"><e>cast 11</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
+		</Sarc>
+		<meta><m n=":enum"/></meta>
+	</class>
 	<class path="geometryxd.Angle" params="" file="./geometryxd/Angle.hx">
 		<value>
 			<x path="Float"/>
@@ -2430,7 +2632,15 @@
 			<meta><m n=":value"><e>new GeometryXD(false)</e></m></meta>
 			<haxe_doc>* internal usage of methods</haxe_doc>
 		</geo>
-		<useTurn public="1" set="method" line="59">
+		<useAngle public="1" set="method" line="89">
+			<f a="angle">
+				<c path="geometryxd.Angle"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>* set angle value.
+     * @param angle incoming Angle object</haxe_doc>
+		</useAngle>
+		<useTurn public="1" set="method" line="97">
 			<f a="value">
 				<x path="Float"/>
 				<x path="Void"/>
@@ -2438,7 +2648,7 @@
 			<haxe_doc>* set angle value. Incoming parameter angular unit is `turn`
      * @param value of angle</haxe_doc>
 		</useTurn>
-		<useMulp public="1" set="method" line="67">
+		<useMulp public="1" set="method" line="105">
 			<f a="value">
 				<x path="Float"/>
 				<x path="Void"/>
@@ -2446,7 +2656,7 @@
 			<haxe_doc>* set angle value. Incoming parameter angular unit is `multiples of Math.PI`
      * @param value of angle</haxe_doc>
 		</useMulp>
-		<useQuad public="1" set="method" line="75">
+		<useQuad public="1" set="method" line="113">
 			<f a="value">
 				<x path="Float"/>
 				<x path="Void"/>
@@ -2454,7 +2664,7 @@
 			<haxe_doc>* set angle value. Incoming parameter angular unit is `quadrant`
      * @param value of angle</haxe_doc>
 		</useQuad>
-		<useSext public="1" set="method" line="83">
+		<useSext public="1" set="method" line="121">
 			<f a="value">
 				<x path="Float"/>
 				<x path="Void"/>
@@ -2462,7 +2672,7 @@
 			<haxe_doc>* set angle value. Incoming parameter angular unit is `sextant`
      * @param value of angle</haxe_doc>
 		</useSext>
-		<useRad public="1" set="method" line="91">
+		<useRad public="1" set="method" line="129">
 			<f a="value">
 				<x path="Float"/>
 				<x path="Void"/>
@@ -2470,7 +2680,7 @@
 			<haxe_doc>* set angle value. Incoming parameter angular unit is `radian`
      * @param value of angle</haxe_doc>
 		</useRad>
-		<useHexa public="1" set="method" line="99">
+		<useHexa public="1" set="method" line="137">
 			<f a="value">
 				<x path="Float"/>
 				<x path="Void"/>
@@ -2478,7 +2688,7 @@
 			<haxe_doc>* set angle value. Incoming parameter angular unit is `hexacontade`
      * @param value of angle</haxe_doc>
 		</useHexa>
-		<useBdeg public="1" set="method" line="107">
+		<useBdeg public="1" set="method" line="145">
 			<f a="value">
 				<x path="Float"/>
 				<x path="Void"/>
@@ -2486,7 +2696,7 @@
 			<haxe_doc>* set angle value. Incoming parameter angular unit is `binary degree`
      * @param value of angle</haxe_doc>
 		</useBdeg>
-		<useDeg public="1" set="method" line="115">
+		<useDeg public="1" set="method" line="153">
 			<f a="value">
 				<x path="Float"/>
 				<x path="Void"/>
@@ -2494,7 +2704,7 @@
 			<haxe_doc>* set angle value. Incoming parameter angular unit is `degree`
      * @param value of angle</haxe_doc>
 		</useDeg>
-		<useGrad public="1" set="method" line="123">
+		<useGrad public="1" set="method" line="161">
 			<f a="value">
 				<x path="Float"/>
 				<x path="Void"/>
@@ -2502,7 +2712,7 @@
 			<haxe_doc>* set angle value. Incoming parameter angular unit is `grad`
      * @param value of angle</haxe_doc>
 		</useGrad>
-		<useMarc public="1" set="method" line="131">
+		<useMarc public="1" set="method" line="169">
 			<f a="value">
 				<x path="Float"/>
 				<x path="Void"/>
@@ -2510,7 +2720,7 @@
 			<haxe_doc>* set angle value. Incoming parameter angular unit is `minute of arc`
      * @param value of angle</haxe_doc>
 		</useMarc>
-		<useSarc public="1" set="method" line="139">
+		<useSarc public="1" set="method" line="177">
 			<f a="value">
 				<x path="Float"/>
 				<x path="Void"/>
@@ -2518,99 +2728,99 @@
 			<haxe_doc>* set angle value. Incoming parameter angular unit is `second of arc`
      * @param value of angle</haxe_doc>
 		</useSarc>
-		<turn public="1" set="method" line="148">
+		<turn public="1" set="method" line="186">
 			<f a=""><x path="Float"/></f>
 			<haxe_doc>* get angle value as `turn`</haxe_doc>
 		</turn>
-		<mulp public="1" set="method" line="155">
+		<mulp public="1" set="method" line="193">
 			<f a=""><x path="Float"/></f>
 			<haxe_doc>* get angle value as `multiples of Math.PI`</haxe_doc>
 		</mulp>
-		<quad public="1" set="method" line="162">
+		<quad public="1" set="method" line="200">
 			<f a=""><x path="Float"/></f>
 			<haxe_doc>* get angle value as `quadrant`</haxe_doc>
 		</quad>
-		<sext public="1" set="method" line="169">
+		<sext public="1" set="method" line="207">
 			<f a=""><x path="Float"/></f>
 			<haxe_doc>* get angle value as `sextant`</haxe_doc>
 		</sext>
-		<rad public="1" set="method" line="176">
+		<rad public="1" set="method" line="214">
 			<f a=""><x path="Float"/></f>
 			<haxe_doc>* get angle value as `radian`</haxe_doc>
 		</rad>
-		<hexa public="1" set="method" line="183">
+		<hexa public="1" set="method" line="221">
 			<f a=""><x path="Float"/></f>
 			<haxe_doc>* get angle value as `hexacontade`</haxe_doc>
 		</hexa>
-		<bdeg public="1" set="method" line="190">
+		<bdeg public="1" set="method" line="228">
 			<f a=""><x path="Float"/></f>
 			<haxe_doc>* get angle value as `binary degree`</haxe_doc>
 		</bdeg>
-		<deg public="1" set="method" line="197">
+		<deg public="1" set="method" line="235">
 			<f a=""><x path="Float"/></f>
 			<haxe_doc>* get angle value as `degree`</haxe_doc>
 		</deg>
-		<grad public="1" set="method" line="204">
+		<grad public="1" set="method" line="242">
 			<f a=""><x path="Float"/></f>
 			<haxe_doc>* get angle value as `grad`</haxe_doc>
 		</grad>
-		<marc public="1" set="method" line="211">
+		<marc public="1" set="method" line="249">
 			<f a=""><x path="Float"/></f>
 			<haxe_doc>* get angle value as `minute of arc`</haxe_doc>
 		</marc>
-		<sarc public="1" set="method" line="218">
+		<sarc public="1" set="method" line="256">
 			<f a=""><x path="Float"/></f>
 			<haxe_doc>* get angle value as `second of arc`</haxe_doc>
 		</sarc>
-		<sin public="1" set="method" line="224">
+		<sin public="1" set="method" line="262">
 			<f a=""><x path="Float"/></f>
 			<haxe_doc>trigonometric sine of angle</haxe_doc>
 		</sin>
-		<cos public="1" set="method" line="226">
+		<cos public="1" set="method" line="264">
 			<f a=""><x path="Float"/></f>
 			<haxe_doc>trigonometric cosine of angle</haxe_doc>
 		</cos>
-		<tan public="1" set="method" line="228">
+		<tan public="1" set="method" line="266">
 			<f a=""><x path="Float"/></f>
 			<haxe_doc>trigonometric tangent of angle</haxe_doc>
 		</tan>
-		<cot public="1" set="method" line="230">
+		<cot public="1" set="method" line="268">
 			<f a=""><x path="Float"/></f>
 			<haxe_doc>trigonometric cotangent of angle</haxe_doc>
 		</cot>
-		<sec public="1" set="method" line="232">
+		<sec public="1" set="method" line="270">
 			<f a=""><x path="Float"/></f>
 			<haxe_doc>trigonometric secant of angle</haxe_doc>
 		</sec>
-		<csc public="1" set="method" line="234">
+		<csc public="1" set="method" line="272">
 			<f a=""><x path="Float"/></f>
 			<haxe_doc>trigonometric cosecant of angle</haxe_doc>
 		</csc>
-		<sinh public="1" set="method" line="237">
+		<sinh public="1" set="method" line="275">
 			<f a=""><x path="Float"/></f>
 			<haxe_doc>hyperbolic sine of angle</haxe_doc>
 		</sinh>
-		<cosh public="1" set="method" line="239">
+		<cosh public="1" set="method" line="277">
 			<f a=""><x path="Float"/></f>
 			<haxe_doc>hyperbolic cosine of angle</haxe_doc>
 		</cosh>
-		<tanh public="1" set="method" line="241">
+		<tanh public="1" set="method" line="279">
 			<f a=""><x path="Float"/></f>
 			<haxe_doc>hyperbolic tangent of angle</haxe_doc>
 		</tanh>
-		<coth public="1" set="method" line="243">
+		<coth public="1" set="method" line="281">
 			<f a=""><x path="Float"/></f>
 			<haxe_doc>hyperbolic cotangent of angle</haxe_doc>
 		</coth>
-		<sech public="1" set="method" line="245">
+		<sech public="1" set="method" line="283">
 			<f a=""><x path="Float"/></f>
 			<haxe_doc>hyperbolic secant of angle</haxe_doc>
 		</sech>
-		<csch public="1" set="method" line="247">
+		<csch public="1" set="method" line="285">
 			<f a=""><x path="Float"/></f>
 			<haxe_doc>hyperbolic cosecant of angle</haxe_doc>
 		</csch>
-		<useSin public="1" set="method" line="254">
+		<useSin public="1" set="method" line="292">
 			<f a="v">
 				<x path="Float"/>
 				<x path="Void"/>
@@ -2618,7 +2828,7 @@
 			<haxe_doc>set angle value using trigonometric sine of angle 
      * @param v sine of angle</haxe_doc>
 		</useSin>
-		<useCos public="1" set="method" line="258">
+		<useCos public="1" set="method" line="296">
 			<f a="v">
 				<x path="Float"/>
 				<x path="Void"/>
@@ -2626,7 +2836,7 @@
 			<haxe_doc>set angle value using trigonometric cosine of angle 
      * @param v cosine of angle</haxe_doc>
 		</useCos>
-		<useTan public="1" set="method" line="262">
+		<useTan public="1" set="method" line="300">
 			<f a="v">
 				<x path="Float"/>
 				<x path="Void"/>
@@ -2634,7 +2844,7 @@
 			<haxe_doc>set angle value using trigonometric tangent of angle 
      * @param v tangent of angle</haxe_doc>
 		</useTan>
-		<useCot public="1" set="method" line="266">
+		<useCot public="1" set="method" line="304">
 			<f a="v">
 				<x path="Float"/>
 				<x path="Void"/>
@@ -2642,7 +2852,7 @@
 			<haxe_doc>set angle value using trigonometric cotangent of angle 
      * @param v cotangent of angle</haxe_doc>
 		</useCot>
-		<useSec public="1" set="method" line="270">
+		<useSec public="1" set="method" line="308">
 			<f a="v">
 				<x path="Float"/>
 				<x path="Void"/>
@@ -2650,7 +2860,7 @@
 			<haxe_doc>set angle value using trigonometric secant of angle 
      * @param v secant of angle</haxe_doc>
 		</useSec>
-		<useCsc public="1" set="method" line="274">
+		<useCsc public="1" set="method" line="312">
 			<f a="v">
 				<x path="Float"/>
 				<x path="Void"/>
@@ -2658,7 +2868,7 @@
 			<haxe_doc>set angle value using trigonometric cosecant of angle 
      * @param v cosecant of angle</haxe_doc>
 		</useCsc>
-		<useSinh public="1" set="method" line="279">
+		<useSinh public="1" set="method" line="317">
 			<f a="v">
 				<x path="Float"/>
 				<x path="Void"/>
@@ -2666,7 +2876,7 @@
 			<haxe_doc>set angle value using hyperbolic sine of angle 
      * @param v sine of angle</haxe_doc>
 		</useSinh>
-		<useCosh public="1" set="method" line="283">
+		<useCosh public="1" set="method" line="321">
 			<f a="v">
 				<x path="Float"/>
 				<x path="Void"/>
@@ -2674,7 +2884,7 @@
 			<haxe_doc>set angle value using hyperbolic cosine of angle 
      * @param v cosine of angle</haxe_doc>
 		</useCosh>
-		<useTanh public="1" set="method" line="287">
+		<useTanh public="1" set="method" line="325">
 			<f a="v">
 				<x path="Float"/>
 				<x path="Void"/>
@@ -2682,7 +2892,7 @@
 			<haxe_doc>set angle value using hyperbolic tangent of angle 
      * @param v tangent of angle</haxe_doc>
 		</useTanh>
-		<useCoth public="1" set="method" line="291">
+		<useCoth public="1" set="method" line="329">
 			<f a="v">
 				<x path="Float"/>
 				<x path="Void"/>
@@ -2690,7 +2900,7 @@
 			<haxe_doc>set angle value using hyperbolic cotangent of angle 
      * @param v cotangent of angle</haxe_doc>
 		</useCoth>
-		<useSech public="1" set="method" line="295">
+		<useSech public="1" set="method" line="333">
 			<f a="v">
 				<x path="Float"/>
 				<x path="Void"/>
@@ -2698,7 +2908,7 @@
 			<haxe_doc>set angle value using hyperbolic secant of angle 
      * @param v secant of angle</haxe_doc>
 		</useSech>
-		<useCsch public="1" set="method" line="299">
+		<useCsch public="1" set="method" line="337">
 			<f a="v">
 				<x path="Float"/>
 				<x path="Void"/>
@@ -2706,7 +2916,7 @@
 			<haxe_doc>set angle value using hyperbolic cosecant of angle 
      * @param v cosecant of angle</haxe_doc>
 		</useCsch>
-		<fromSin public="1" set="method" line="307">
+		<fromSin public="1" set="method" line="345">
 			<f a="v">
 				<x path="Float"/>
 				<c path="geometryxd.Angle"/>
@@ -2714,7 +2924,7 @@
 			<haxe_doc>new Angle object from trigonometric sine of angle 
      * @param v sine of angle</haxe_doc>
 		</fromSin>
-		<fromCos public="1" set="method" line="311">
+		<fromCos public="1" set="method" line="349">
 			<f a="v">
 				<x path="Float"/>
 				<c path="geometryxd.Angle"/>
@@ -2722,7 +2932,7 @@
 			<haxe_doc>new Angle object from trigonometric cosine of angle 
      * @param v cosine of angle</haxe_doc>
 		</fromCos>
-		<fromTan public="1" set="method" line="315">
+		<fromTan public="1" set="method" line="353">
 			<f a="v">
 				<x path="Float"/>
 				<c path="geometryxd.Angle"/>
@@ -2730,7 +2940,7 @@
 			<haxe_doc>new Angle object from trigonometric tangent of angle 
      * @param v tangent of angle</haxe_doc>
 		</fromTan>
-		<fromCot public="1" set="method" line="319">
+		<fromCot public="1" set="method" line="357">
 			<f a="v">
 				<x path="Float"/>
 				<c path="geometryxd.Angle"/>
@@ -2738,7 +2948,7 @@
 			<haxe_doc>new Angle object from trigonometric cotangent of angle 
      * @param v cotangent of angle</haxe_doc>
 		</fromCot>
-		<fromSec public="1" set="method" line="323">
+		<fromSec public="1" set="method" line="361">
 			<f a="v">
 				<x path="Float"/>
 				<c path="geometryxd.Angle"/>
@@ -2746,7 +2956,7 @@
 			<haxe_doc>new Angle object from trigonometric secant of angle 
      * @param v secant of angle</haxe_doc>
 		</fromSec>
-		<fromCsc public="1" set="method" line="327">
+		<fromCsc public="1" set="method" line="365">
 			<f a="v">
 				<x path="Float"/>
 				<c path="geometryxd.Angle"/>
@@ -2754,7 +2964,7 @@
 			<haxe_doc>new Angle object from trigonometric cosecant of angle 
      * @param v cosecant of angle</haxe_doc>
 		</fromCsc>
-		<fromSinh public="1" set="method" line="332">
+		<fromSinh public="1" set="method" line="370">
 			<f a="v">
 				<x path="Float"/>
 				<c path="geometryxd.Angle"/>
@@ -2762,7 +2972,7 @@
 			<haxe_doc>new Angle object from hyperbolic sine of angle 
      * @param v sine of angle</haxe_doc>
 		</fromSinh>
-		<fromCosh public="1" set="method" line="336">
+		<fromCosh public="1" set="method" line="374">
 			<f a="v">
 				<x path="Float"/>
 				<c path="geometryxd.Angle"/>
@@ -2770,7 +2980,7 @@
 			<haxe_doc>new Angle object from hyperbolic cosine of angle 
      * @param v cosine of angle</haxe_doc>
 		</fromCosh>
-		<fromTanh public="1" set="method" line="340">
+		<fromTanh public="1" set="method" line="378">
 			<f a="v">
 				<x path="Float"/>
 				<c path="geometryxd.Angle"/>
@@ -2778,7 +2988,7 @@
 			<haxe_doc>new Angle object from hyperbolic tangent of angle 
      * @param v tangent of angle</haxe_doc>
 		</fromTanh>
-		<fromCoth public="1" set="method" line="344">
+		<fromCoth public="1" set="method" line="382">
 			<f a="v">
 				<x path="Float"/>
 				<c path="geometryxd.Angle"/>
@@ -2786,7 +2996,7 @@
 			<haxe_doc>new Angle object from hyperbolic cotangent of angle 
      * @param v cotangent of angle</haxe_doc>
 		</fromCoth>
-		<fromSech public="1" set="method" line="348">
+		<fromSech public="1" set="method" line="386">
 			<f a="v">
 				<x path="Float"/>
 				<c path="geometryxd.Angle"/>
@@ -2794,7 +3004,7 @@
 			<haxe_doc>new Angle object from hyperbolic secant of angle 
      * @param v secant of angle</haxe_doc>
 		</fromSech>
-		<fromCsch public="1" set="method" line="352">
+		<fromCsch public="1" set="method" line="390">
 			<f a="v">
 				<x path="Float"/>
 				<c path="geometryxd.Angle"/>
@@ -2802,9 +3012,224 @@
 			<haxe_doc>new Angle object from hyperbolic cosecant of angle 
      * @param v cosecant of angle</haxe_doc>
 		</fromCsch>
-		<new public="1" set="method" line="50">
-			<f a=""><x path="Void"/></f>
-			<haxe_doc>* new angle object with few unit of measurement functionality. Created new instance angle value is 0.</haxe_doc>
+		<fromAngle public="1" set="method" line="399">
+			<f a="angle">
+				<c path="geometryxd.Angle"/>
+				<c path="geometryxd.Angle"/>
+			</f>
+			<haxe_doc>* new angle object using incoming angle object
+     * @param value of angle</haxe_doc>
+		</fromAngle>
+		<fromTurn public="1" set="method" line="405">
+			<f a="value">
+				<x path="Float"/>
+				<c path="geometryxd.Angle"/>
+			</f>
+			<haxe_doc>* new angle object. Incoming parameter angular unit is `turn`
+     * @param value of angle</haxe_doc>
+		</fromTurn>
+		<fromMulp public="1" set="method" line="411">
+			<f a="value">
+				<x path="Float"/>
+				<c path="geometryxd.Angle"/>
+			</f>
+			<haxe_doc>* new angle object. Incoming parameter angular unit is `multiples of Math.PI`
+     * @param value of angle</haxe_doc>
+		</fromMulp>
+		<fromQuad public="1" set="method" line="417">
+			<f a="value">
+				<x path="Float"/>
+				<c path="geometryxd.Angle"/>
+			</f>
+			<haxe_doc>* new angle object. Incoming parameter angular unit is `quadrant`
+     * @param value of angle</haxe_doc>
+		</fromQuad>
+		<fromSext public="1" set="method" line="423">
+			<f a="value">
+				<x path="Float"/>
+				<c path="geometryxd.Angle"/>
+			</f>
+			<haxe_doc>* new angle object. Incoming parameter angular unit is `sextant`
+     * @param value of angle</haxe_doc>
+		</fromSext>
+		<fromRad public="1" set="method" line="429">
+			<f a="value">
+				<x path="Float"/>
+				<c path="geometryxd.Angle"/>
+			</f>
+			<haxe_doc>* new angle object. Incoming parameter angular unit is `radian`
+     * @param value of angle</haxe_doc>
+		</fromRad>
+		<fromHexa public="1" set="method" line="435">
+			<f a="value">
+				<x path="Float"/>
+				<c path="geometryxd.Angle"/>
+			</f>
+			<haxe_doc>* new angle object. Incoming parameter angular unit is `hexacontade`
+     * @param value of angle</haxe_doc>
+		</fromHexa>
+		<fromBdeg public="1" set="method" line="441">
+			<f a="value">
+				<x path="Float"/>
+				<c path="geometryxd.Angle"/>
+			</f>
+			<haxe_doc>* new angle object. Incoming parameter angular unit is `binary degree`
+     * @param value of angle</haxe_doc>
+		</fromBdeg>
+		<fromDeg public="1" set="method" line="447">
+			<f a="value">
+				<x path="Float"/>
+				<c path="geometryxd.Angle"/>
+			</f>
+			<haxe_doc>* new angle object. Incoming parameter angular unit is `degree`
+     * @param value of angle</haxe_doc>
+		</fromDeg>
+		<fromGrad public="1" set="method" line="453">
+			<f a="value">
+				<x path="Float"/>
+				<c path="geometryxd.Angle"/>
+			</f>
+			<haxe_doc>* new angle object. Incoming parameter angular unit is `grad`
+     * @param value of angle</haxe_doc>
+		</fromGrad>
+		<fromMarc public="1" set="method" line="459">
+			<f a="value">
+				<x path="Float"/>
+				<c path="geometryxd.Angle"/>
+			</f>
+			<haxe_doc>* new angle object. Incoming parameter angular unit is `minute of arc`
+     * @param value of angle</haxe_doc>
+		</fromMarc>
+		<fromSarc public="1" set="method" line="465">
+			<f a="value">
+				<x path="Float"/>
+				<c path="geometryxd.Angle"/>
+			</f>
+			<haxe_doc>* new angle object. Incoming parameter angular unit is `second of arc`
+     * @param value of angle</haxe_doc>
+		</fromSarc>
+		<addTurn public="1" set="method" line="474">
+			<f a="value">
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>* add value to angle object. Incoming parameter angular unit is `turn`
+     * @param value of angle</haxe_doc>
+		</addTurn>
+		<addMulp public="1" set="method" line="480">
+			<f a="value">
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>* add value to angle object. Incoming parameter angular unit is `multiples of Math.PI`
+     * @param value of angle</haxe_doc>
+		</addMulp>
+		<addQuad public="1" set="method" line="486">
+			<f a="value">
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>* add value to angle object. Incoming parameter angular unit is `quadrant`
+     * @param value of angle</haxe_doc>
+		</addQuad>
+		<addSext public="1" set="method" line="492">
+			<f a="value">
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>* add value to angle object. Incoming parameter angular unit is `sextant`
+     * @param value of angle</haxe_doc>
+		</addSext>
+		<addRad public="1" set="method" line="498">
+			<f a="value">
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>* add value to angle object. Incoming parameter angular unit is `radian`
+     * @param value of angle</haxe_doc>
+		</addRad>
+		<addHexa public="1" set="method" line="504">
+			<f a="value">
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>* add value to angle object. Incoming parameter angular unit is `hexacontade`
+     * @param value of angle</haxe_doc>
+		</addHexa>
+		<addBdeg public="1" set="method" line="510">
+			<f a="value">
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>* add value to angle object. Incoming parameter angular unit is `binary degree`
+     * @param value of angle</haxe_doc>
+		</addBdeg>
+		<addDeg public="1" set="method" line="516">
+			<f a="value">
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>* add value to angle object. Incoming parameter angular unit is `degree`
+     * @param value of angle</haxe_doc>
+		</addDeg>
+		<addGrad public="1" set="method" line="522">
+			<f a="value">
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>* add value to angle object. Incoming parameter angular unit is `grad`
+     * @param value of angle</haxe_doc>
+		</addGrad>
+		<addMarc public="1" set="method" line="528">
+			<f a="value">
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>* add value to angle object. Incoming parameter angular unit is `minute of arc`
+     * @param value of angle</haxe_doc>
+		</addMarc>
+		<addSarc public="1" set="method" line="534">
+			<f a="value">
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>* add value to angle object. Incoming parameter angular unit is `second of arc`
+     * @param value of angle</haxe_doc>
+		</addSarc>
+		<addAngle public="1" set="method" line="542">
+			<f a="angle">
+				<c path="geometryxd.Angle"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>* add angle object to angle object
+     * @param angle incoming angle object</haxe_doc>
+		</addAngle>
+		<diffAngle public="1" set="method" line="548">
+			<f a="angle">
+				<c path="geometryxd.Angle"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>* subtract angle object from angle object
+     * @param angle incoming angle object</haxe_doc>
+		</diffAngle>
+		<copy public="1" set="method" line="553">
+			<f a=""><c path="geometryxd.Angle"/></f>
+			<haxe_doc>* new angle object, with similar value</haxe_doc>
+		</copy>
+		<minus public="1" set="method" line="560">
+			<f a=""><c path="geometryxd.Angle"/></f>
+			<haxe_doc>* new angle object, with negative value</haxe_doc>
+		</minus>
+		<new public="1" set="method" line="67">
+			<f a="?unit:?value" v=":0">
+				<x path="geometryxd.AngleUnit"/>
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":value"><e>{ value : 0 }</e></m></meta>
+			<haxe_doc>* new angle object with few unit of measurement functionality. Created new instance angle default value is 0, default unit is `Turn`.
+     * @param unit None = 0; Turn = 1; Mulp = 2; Quad = 3; Sext = 4; Rad = 5; Hexa = 6; Bdeg = 7; Deg = 8; Grad = 9; Marc = 10; Sarc = 11;
+     * @param value</haxe_doc>
 		</new>
 		<haxe_doc><![CDATA[* Angle object with few unit of measurement functionality. Created new instance angle value is 0.
  * Internal storage unit is `turn`. Alternative names is `cyc`(circle), `rev`(revolution), `rot`(complete rotation).
@@ -2946,10 +3371,10 @@
 			<f a=""><c path="geometryxd.Dot3D"/></f>
 			<haxe_doc>* new 3D dot object with mirrored z coordinate. if `value()` = `[1,2,3]` return dot3DM().value() = `[1,2,-3]`</haxe_doc>
 		</dot3DMz>
-		<dot3Dcopy public="1" set="method" line="195">
+		<copy public="1" set="method" line="195">
 			<f a=""><c path="geometryxd.Dot3D"/></f>
 			<haxe_doc>* new 3D dot object with same coordinates. if `value()` = `[1,2,3]` return dot3DM().value() = `[1,2,3]`</haxe_doc>
-		</dot3Dcopy>
+		</copy>
 		<new public="1" set="method" line="31">
 			<f a="?x:?y:?z" v="0:0:0">
 				<x path="Float"/>
@@ -3005,10 +3430,10 @@
 			<f a=""><c path="geometryxd.DotXD"/></f>
 			<haxe_doc>* new multidimensional dot object with mirrored coordinates. If `value` = `[1,2,3,-4]` return dotXD().value = `[-1,-2,-3,4]`</haxe_doc>
 		</dotXDM>
-		<dotXDcopy public="1" set="method" line="74">
+		<copy public="1" set="method" line="74">
 			<f a=""><c path="geometryxd.DotXD"/></f>
 			<haxe_doc>* new multidimensional dot object with same coordinates. if `value` = `[1,2,3,-4]` return dotXD().value = `[1,2,3,-4]`</haxe_doc>
-		</dotXDcopy>
+		</copy>
 		<new public="1" set="method" line="16">
 			<f a="dotXD">
 				<c path="Array"><x path="Float"/></c>
@@ -3021,13 +3446,13 @@
 		<meta><m n=":directlyUsed"/></meta>
 	</class>
 	<class path="geometryxd.GeometryXD" params="" file="./geometryxd/GeometryXD.hx">
-		<main public="1" set="method" line="20" static="1">
+		<main public="1" set="method" line="23" static="1">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>trace `GeometryXD connected` message in time of initialisation</haxe_doc>
 		</main>
 		<nm public="1"><c path="geometryxd.NM"/></nm>
 		<am public="1"><c path="geometryxd.AM"/></am>
-		<vecXDnorm public="1" set="method" line="43">
+		<vecXDnorm public="1" set="method" line="46">
 			<f a="vecXD">
 				<c path="Array"><x path="Float"/></c>
 				<x path="Float"/>
@@ -3036,7 +3461,7 @@
      For `[2,3]` return Math.sqrt((2 * 2) + (3 * 3))
      @param vecXD - incoming vector</haxe_doc>
 		</vecXDnorm>
-		<vecXDfieldnorm public="1" get="inline" set="null" line="52">
+		<vecXDfieldnorm public="1" get="inline" set="null" line="55">
 			<f a="vecXDfield">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3044,7 +3469,7 @@
 			<haxe_doc>return array of lengths of vectors
      @param vecXDfield - incoming vectors array(vector field)</haxe_doc>
 		</vecXDfieldnorm>
-		<zero_vector_inside public="1" get="inline" set="null" line="62">
+		<zero_vector_inside public="1" get="inline" set="null" line="65">
 			<f a="vecXDfield">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<x path="Null"><x path="Bool"/></x>
@@ -3053,7 +3478,7 @@
      * @param vecXDfield multidimensional vector field
      * @return Null<Bool>]]></haxe_doc>
 		</zero_vector_inside>
-		<vecXD public="1" set="method" line="76">
+		<vecXD public="1" set="method" line="79">
 			<f a="dotXDb:?dotXDa">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3063,7 +3488,7 @@
      @param dotXDb - vector end dot
      @param dotXDa - vector start dot. Default will be `[0,...,0]`</haxe_doc>
 		</vecXD>
-		<vecXDone public="1" set="method" line="95">
+		<vecXDone public="1" set="method" line="98">
 			<f a="vecXD">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3071,7 +3496,7 @@
 			<haxe_doc>recount vector to length equal 1 or return incoming vector as result if incoming vector length equal 0
      @param vecXD - incoming vector</haxe_doc>
 		</vecXDone>
-		<vecXDfield public="1" set="method" line="108">
+		<vecXDfield public="1" set="method" line="111">
 			<f a="dots">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
@@ -3079,7 +3504,7 @@
 			<haxe_doc>return vector field from first dot to each other
      @param dots - dots field for vector field. `dots[0]` used as first dot</haxe_doc>
 		</vecXDfield>
-		<vecXDsame public="1" get="inline" set="null" line="118">
+		<vecXDsame public="1" get="inline" set="null" line="121">
 			<f a="vecXDa:vecXDb">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3089,7 +3514,7 @@
      @param vecXDa - incoming vector
      @param vecXDb - incoming vector</haxe_doc>
 		</vecXDsame>
-		<vecXDfieldsame public="1" get="inline" set="null" line="131">
+		<vecXDfieldsame public="1" get="inline" set="null" line="134">
 			<f a="vecXDfield">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<x path="Null"><x path="Bool"/></x>
@@ -3097,7 +3522,7 @@
 			<haxe_doc>compare vectors from vector field. Returns true if all vectors have same data
      @param vecXDfield - vector field(array of vectors)</haxe_doc>
 		</vecXDfieldsame>
-		<vecXDrandom public="1" set="method" line="136">
+		<vecXDrandom public="1" set="method" line="139">
 			<f a="?x" v="3">
 				<x path="Int"/>
 				<c path="Array"><x path="Float"/></c>
@@ -3106,7 +3531,7 @@
 			<haxe_doc><![CDATA[return random vector with length equal 1
      @param x - number of vector dimension. For example x = 3 -> 3D vector, x = 4 -> 4D vector]]></haxe_doc>
 		</vecXDrandom>
-		<vecXDsum public="1" set="method" line="150">
+		<vecXDsum public="1" set="method" line="153">
 			<f a="vecXDa:vecXDb">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3116,7 +3541,7 @@
      @param vecXDa - vector
      @param vecXDb - vector</haxe_doc>
 		</vecXDsum>
-		<vecXDfieldsum public="1" set="method" line="160">
+		<vecXDfieldsum public="1" set="method" line="163">
 			<f a="vecXDfield">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3124,7 +3549,7 @@
 			<haxe_doc>return vector, which is sum of vector field
      @param vecXDfield - vector field (array of vectors)</haxe_doc>
 		</vecXDfieldsum>
-		<vecXDdiff public="1" set="method" line="168">
+		<vecXDdiff public="1" set="method" line="171">
 			<f a="vecXDa:vecXDb">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3134,7 +3559,7 @@
      @param vecXDa - vector
      @param vecXDb - vector</haxe_doc>
 		</vecXDdiff>
-		<vecXDfielddiff public="1" set="method" line="178">
+		<vecXDfielddiff public="1" set="method" line="181">
 			<f a="vecXDfield">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3142,7 +3567,7 @@
 			<haxe_doc>return vector, which is diff of vector field. v0-v1...-vn
      @param vecXDfield - vector field(array of vectors)</haxe_doc>
 		</vecXDfielddiff>
-		<vecXDback public="1" set="method" line="185">
+		<vecXDback public="1" set="method" line="188">
 			<f a="vecXD">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3150,7 +3575,7 @@
 			<haxe_doc>return opposite vector. [1, 2, -4] return [-1, -2, 4]
      @param vecXD - vector</haxe_doc>
 		</vecXDback>
-		<vecXDfieldback public="1" set="method" line="192">
+		<vecXDfieldback public="1" set="method" line="195">
 			<f a="vecXDfield">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
@@ -3158,7 +3583,7 @@
 			<haxe_doc>return opposite vector field. [[1, 2], [3, -4]] return [[-1, -2], [-3, 4]]
      @param vecXDfield - vector field(array of vectors)</haxe_doc>
 		</vecXDfieldback>
-		<vecXDparalleled_sameside public="1" set="method" line="201">
+		<vecXDparalleled_sameside public="1" set="method" line="204">
 			<f a="vecXDa:vecXDb">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3168,7 +3593,7 @@
      @param vecXDa - vector
      @param vecXDb - vector</haxe_doc>
 		</vecXDparalleled_sameside>
-		<vecXDparalleled_opposite public="1" set="method" line="216">
+		<vecXDparalleled_opposite public="1" set="method" line="219">
 			<f a="vecXDa:vecXDb">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3178,7 +3603,7 @@
      @param vecXDa - vector
      @param vecXDb - vector</haxe_doc>
 		</vecXDparalleled_opposite>
-		<vecXDparalleled public="1" set="method" line="229">
+		<vecXDparalleled public="1" set="method" line="232">
 			<f a="vecXDa:vecXDb">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3188,7 +3613,7 @@
      @param vecXDa - vector
      @param vecXDb - vector</haxe_doc>
 		</vecXDparalleled>
-		<vecXDscalar public="1" set="method" line="241">
+		<vecXDscalar public="1" set="method" line="244">
 			<f a="vecXDa:vecXDb">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3198,7 +3623,7 @@
      @param vecXDa - vector
      @param vecXDb - vector</haxe_doc>
 		</vecXDscalar>
-		<vecXDcos public="1" set="method" line="256">
+		<vecXDcos public="1" set="method" line="259">
 			<f a="vecXDa:vecXDb">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3208,7 +3633,7 @@
      @param vecXDa - vector
      @param vecXDb - vector</haxe_doc>
 		</vecXDcos>
-		<vecXDangle public="1" set="method" line="273">
+		<vecXDangle public="1" set="method" line="276">
 			<f a="vecXDa:vecXDb:?rad" v="::false">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3221,7 +3646,7 @@
      @param vecXDb - vector
      @param rad - if true then return radians angle, default false(degrees angle)</haxe_doc>
 		</vecXDangle>
-		<vec3Dnormal public="1" set="method" line="292">
+		<vec3Dnormal public="1" set="method" line="295">
 			<f a="vec3Da:vec3Db">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3233,7 +3658,7 @@
      @param vec3Da - vector
      @param vec3Db - vector</haxe_doc>
 		</vec3Dnormal>
-		<vec3Dfieldnormal public="1" set="method" line="309">
+		<vec3Dfieldnormal public="1" set="method" line="312">
 			<f a="vec3Dfield">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3242,7 +3667,7 @@
      from vector field with previous cross product result vector 3D
      @param vec3Dfield - vector field 3D(array of vectors 3D)</haxe_doc>
 		</vec3Dfieldnormal>
-		<vecXDmiddle public="1" set="method" line="324">
+		<vecXDmiddle public="1" set="method" line="327">
 			<f a="vecXDa:vecXDb">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3252,7 +3677,7 @@
      @param vecXDa - vector
      @param vecXDb - vector</haxe_doc>
 		</vecXDmiddle>
-		<vecXDfieldmiddle public="1" set="method" line="334">
+		<vecXDfieldmiddle public="1" set="method" line="337">
 			<f a="vecXDfield">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3260,7 +3685,7 @@
 			<haxe_doc>return vector with middle value. Just call middle_xF(vecXDfield)
      @param vecXDfield - vector field(array of vectors)</haxe_doc>
 		</vecXDfieldmiddle>
-		<vecXDsamesize public="1" set="method" line="342">
+		<vecXDsamesize public="1" set="method" line="345">
 			<f a="vecXDa:vecXDb">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3270,7 +3695,7 @@
      @param vecXDa - vector
      @param vecXDb - vector</haxe_doc>
 		</vecXDsamesize>
-		<vecXDfieldsamesize public="1" set="method" line="352">
+		<vecXDfieldsamesize public="1" set="method" line="355">
 			<f a="vecXDfield">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<x path="Null"><x path="Bool"/></x>
@@ -3278,7 +3703,7 @@
 			<haxe_doc>return true if vector from vector field have same size. Bonus function. Just call same_size_F(vecXDfield)
      @param vecXDfield - vector field(array of vectors)</haxe_doc>
 		</vecXDfieldsamesize>
-		<dotXDoffset public="1" set="method" line="362">
+		<dotXDoffset public="1" set="method" line="365">
 			<f a="dotXD:vecXD:t">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3290,7 +3715,7 @@
      @param vecXD - vector
      @param t - distance</haxe_doc>
 		</dotXDoffset>
-		<dot3Dline3D_x_plane3D public="1" set="method" line="388">
+		<dot3Dline3D_x_plane3D public="1" set="method" line="391">
 			<f a="dot3D0:vec3D0:vec3Dplane:?dplane" v=":::0">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3305,7 +3730,7 @@
      @param vec3Dplane - vector 3D, which is plane 3D normal vector
      @param dplane - displacement of plane 3D from [0,0,0]. default 0 ([0,0,0] dot belongs to the plane)</haxe_doc>
 		</dot3Dline3D_x_plane3D>
-		<projection_dot3D_on_plane3D public="1" set="method" line="425">
+		<projection_dot3D_on_plane3D public="1" set="method" line="428">
 			<f a="dot3D:plane3D">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3317,7 +3742,7 @@
      Where (a, b, c) - normal vector of plane 3D. (d) - distance from (0, 0, 0). 
      if d = 0, then the plane passes through the center of coordinates</haxe_doc>
 		</projection_dot3D_on_plane3D>
-		<dot3D_to_dot2Dviewplane public="1" set="method" line="460">
+		<dot3D_to_dot2Dviewplane public="1" set="method" line="463">
 			<f a="dot3D:dot3Dviewplanecenter:vec3Dviewplane:vec3Dviewplane_ox">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3336,7 +3761,7 @@
      Second axis will be calculated automatically, 
      uses rotate projected ox around view plane normal vector</haxe_doc>
 		</dot3D_to_dot2Dviewplane>
-		<dotXDscale public="1" set="method" line="494">
+		<dotXDscale public="1" set="method" line="497">
 			<f a="dotXD:scaleXD:dotXDc">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3348,7 +3773,7 @@
      @param scaleXD - scales array . For 3D case [sx, sy, sz]
      @param dotXDc - scaling center dot . For 3D case [xc, yc, zc]</haxe_doc>
 		</dotXDscale>
-		<vec3Drotate public="1" set="method" line="513">
+		<vec3Drotate public="1" set="method" line="516">
 			<f a="vec3D:vec3Daxis:angle:?rad" v=":::false">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3363,7 +3788,7 @@
      @param angle - angle of rotation
      @param rad - it true then radians angle, default false (degrees angle)</haxe_doc>
 		</vec3Drotate>
-		<vec3Dfield_rotate_around_vec3Daxes public="1" set="method" line="544">
+		<vec3Dfield_rotate_around_vec3Daxes public="1" set="method" line="547">
 			<f a="vec3Dfield:vec3Daxes:angles:?rad" v=":::false">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
@@ -3378,7 +3803,7 @@
      @param angles - angles of rotating for each vector
      @param rad - if true then radians angles, default false (degrees angles)</haxe_doc>
 		</vec3Dfield_rotate_around_vec3Daxes>
-		<dot3Drotate public="1" set="method" line="576">
+		<dot3Drotate public="1" set="method" line="579">
 			<f a="dot3D:dot3Dc:vec3D:angle:?rad" v="::::false">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3395,7 +3820,7 @@
      @param angle - rotation angle
      @param rad - if true then radians angle, default false (degrees angle)</haxe_doc>
 		</dot3Drotate>
-		<plane3D_dot3Dnormal public="1" set="method" line="602">
+		<plane3D_dot3Dnormal public="1" set="method" line="605">
 			<f a="dot3D:vec3D">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3406,7 +3831,7 @@
      @param dot3D - dot 3D
      @param vec3D - plane 3D normal vector 3D</haxe_doc>
 		</plane3D_dot3Dnormal>
-		<plane3D_dot_vec_vec public="1" set="method" line="621">
+		<plane3D_dot_vec_vec public="1" set="method" line="624">
 			<f a="dot3D:vec3Da:vec3Db">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3419,7 +3844,7 @@
      @param vec3Da - vector 3D
      @param vec3Db - vector 3D</haxe_doc>
 		</plane3D_dot_vec_vec>
-		<plane3D_3dots public="1" set="method" line="645">
+		<plane3D_3dots public="1" set="method" line="648">
 			<f a="dot3D:dot3Da:dot3Db">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3432,7 +3857,7 @@
      @param dot3Da - dot 3D
      @param dot3Db - dot 3D</haxe_doc>
 		</plane3D_3dots>
-		<plane3D_2dots public="1" set="method" line="671">
+		<plane3D_2dots public="1" set="method" line="674">
 			<f a="dot3D:dot3Da">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3443,7 +3868,7 @@
      @param dot3D - dot 3D
      @param dot3Da - dot 3D</haxe_doc>
 		</plane3D_2dots>
-		<distance_dot3D_plane3D public="1" set="method" line="689">
+		<distance_dot3D_plane3D public="1" set="method" line="692">
 			<f a="dot3D:plane3D">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3454,7 +3879,7 @@
      @param plane3D - plane 3D (a, b, c, d). 
      Where (a, b, c) is plane 3D normal vector, and (d) is displacement plane from (0, 0, 0)</haxe_doc>
 		</distance_dot3D_plane3D>
-		<random_vec3D_in_plane3D public="1" set="method" line="709">
+		<random_vec3D_in_plane3D public="1" set="method" line="712">
 			<f a="plane3D">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3463,7 +3888,7 @@
      @param plane3D - plane 3D (a, b, c, d). 
      Where (a, b, c) is plane 3D normal vector, and (d) is displacement plane from (0, 0, 0)</haxe_doc>
 		</random_vec3D_in_plane3D>
-		<random_dot3D_in_plane3D public="1" set="method" line="733">
+		<random_dot3D_in_plane3D public="1" set="method" line="736">
 			<f a="plane3D:dot3D:radius">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3477,7 +3902,7 @@
      If dot not in plane , then will be uesd projection this dot on plane
      @param radius - radius of round area on plane 3D. Result will be calculated inside area</haxe_doc>
 		</random_dot3D_in_plane3D>
-		<curve3D_4dots public="1" set="method" line="762">
+		<curve3D_4dots public="1" set="method" line="765">
 			<f a="dot3D1:vec3D1:distance1:dot3D2:vec3D2:distance2">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3498,7 +3923,7 @@
      @param vec3D2 - vector 3D (a, b, c) for offset end internal dot
      @param distance2 - distance for offset end internal dot along offset vector</haxe_doc>
 		</curve3D_4dots>
-		<curve3D_3dots public="1" set="method" line="797">
+		<curve3D_3dots public="1" set="method" line="800">
 			<f a="dot3D0:dot3D1:dot3D2:?lever1:?lever2:?a_s" v=":::0.55:0.55:-1">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3525,7 +3950,7 @@
      if a_s = 0 then lever1 vector will be paralleled lever2 vector and both will be directed 
      from dot3D0 to dot between dot3D1 and dot3D2 center dot]]></haxe_doc>
 		</curve3D_3dots>
-		<line3D_2dots public="1" set="method" line="845">
+		<line3D_2dots public="1" set="method" line="848">
 			<f a="dot3D0:dot3D1">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3537,7 +3962,7 @@
      @param dot3D0 - start line dot 3D
      @param dot3D1 - end line dot 3D</haxe_doc>
 		</line3D_2dots>
-		<line3D_dot_offset public="1" set="method" line="868">
+		<line3D_dot_offset public="1" set="method" line="871">
 			<f a="dot3D:vec3D:distance">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3550,7 +3975,7 @@
      @param vec3D - offset start line dot vector 3D
      @param distance - offset distance for end line dot</haxe_doc>
 		</line3D_dot_offset>
-		<curve3D_4to12 public="1" get="inline" set="null" line="888">
+		<curve3D_4to12 public="1" get="inline" set="null" line="891">
 			<f a="curve">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3559,7 +3984,7 @@
      [[x, y, z], [x, y, z], [x, y, z], [x, y, z]] return [x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4]
      @param curve - curve 3D ((x, y, z), (x, y, z), (x, y, z), (x, y, z))</haxe_doc>
 		</curve3D_4to12>
-		<curve3D_12to4 public="1" get="inline" set="null" line="903">
+		<curve3D_12to4 public="1" get="inline" set="null" line="906">
 			<f a="curve">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
@@ -3568,7 +3993,7 @@
      [x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4] return [[x, y, z], [x, y, z], [x, y, z], [x, y, z]]
      @param curve - curve 3D data (x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4)</haxe_doc>
 		</curve3D_12to4>
-		<beziercubic3D_derivativeparameters public="1" get="inline" set="null" line="914">
+		<beziercubic3D_derivativeparameters public="1" get="inline" set="null" line="917">
 			<f a="curve">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
@@ -3577,7 +4002,7 @@
      [[x1, y1, z1], [x2, y2, z2], [x3, y3, z3], [x4, y4, z4]] return [[x1,x2,x3,x4],[y1,y2,y3,y4],[z1,z2,z3,z4]]
      @param curve - bezier cubic curve 3D ((x1, y1, z1), (x2, y2, z2), (x3, y3, z3), (x4, y4, z4))</haxe_doc>
 		</beziercubic3D_derivativeparameters>
-		<beziercubic_derivative public="1" get="inline" set="null" line="926">
+		<beziercubic_derivative public="1" get="inline" set="null" line="929">
 			<f a="bcp:p">
 				<c path="Array"><x path="Float"/></c>
 				<x path="Float"/>
@@ -3587,7 +4012,7 @@
      @param bcp - bezier curve derivative parameters, precalculated uses `beziercubic3D_derivativeparameters(...)`
      @param p - bezier cubic curve parameter. Standart values equal range 0...1 include borders</haxe_doc>
 		</beziercubic_derivative>
-		<beziercubic3D_derivative public="1" set="method" line="942">
+		<beziercubic3D_derivative public="1" set="method" line="945">
 			<f a="curve:p">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<x path="Float"/>
@@ -3597,7 +4022,7 @@
      @param curve - bezier cubic curve 3D ((x, y, z), (x, y, z), (x, y, z), (x, y, z))
      @param p - bezier cubic curve parameter. Standart values equal range 0...1 include borders</haxe_doc>
 		</beziercubic3D_derivative>
-		<beziercubic_support_dot_one public="1" get="inline" set="null" line="960">
+		<beziercubic_support_dot_one public="1" get="inline" set="null" line="963">
 			<f a="beziercubic_one_axis_coordinates">
 				<c path="Array"><x path="Float"/></c>
 				<x path="Null"><x path="Float"/></x>
@@ -3605,7 +4030,7 @@
 			<haxe_doc>returns cubic bezier curve support dot one(first lever) paramater for each coordinate. Usual case `x` or `y` or `z`
      @param beziercubic_one_axis_coordinates - [c1,c2,c3,c4]. Where c is cubic bezier curve trajectory dots values for one of `x` or `y` or `z`</haxe_doc>
 		</beziercubic_support_dot_one>
-		<beziercubic3D_support_dot_one public="1" set="method" line="970">
+		<beziercubic3D_support_dot_one public="1" set="method" line="973">
 			<f a="curve3D_4dots">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3613,7 +4038,7 @@
 			<haxe_doc>returns dot 3D, which is bezier cubic curve 3D support dot one(first lever)
      @param curve3D_4dots - curve 3D trajectory, which is [[x1, y1, z1], [x2, y2, z2], [x3, y3, z3], [x4, y4, z4]]</haxe_doc>
 		</beziercubic3D_support_dot_one>
-		<beziercubic_support_dot_two public="1" get="inline" set="null" line="980">
+		<beziercubic_support_dot_two public="1" get="inline" set="null" line="983">
 			<f a="beziercubic_one_axis_coordinates">
 				<c path="Array"><x path="Float"/></c>
 				<x path="Null"><x path="Float"/></x>
@@ -3621,7 +4046,7 @@
 			<haxe_doc>returns cubic bezier curve support dot two(second lever) paramater for each coordinate. Usual case `x` or `y` or `z`
      @param beziercubic_one_axis_coordinates - [c1,c2,c3,c4]. Where c is cubic bezier curve trajectory dots values for one of `x` or `y` or `z`</haxe_doc>
 		</beziercubic_support_dot_two>
-		<beziercubic3D_support_dot_two public="1" set="method" line="990">
+		<beziercubic3D_support_dot_two public="1" set="method" line="993">
 			<f a="curve3D_4dots">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3629,7 +4054,7 @@
 			<haxe_doc>returns dot 3D, which is bezier cubic curve 3D support dot two(second lever)
      @param curve3D_4dots - curve 3D trajectory, which is [[x1, y1, z1], [x2, y2, z2], [x3, y3, z3], [x4, y4, z4]]</haxe_doc>
 		</beziercubic3D_support_dot_two>
-		<beziercubic3D_follow_4dots_trajectory public="1" get="inline" set="null" line="1000">
+		<beziercubic3D_follow_4dots_trajectory public="1" get="inline" set="null" line="1003">
 			<f a="dots">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
@@ -3637,7 +4062,7 @@
 			<haxe_doc>returns bezier cubic curve 3D, calculated from 4dots 3D(curve 3D trajectory)
      @param dots - curve 3D trajectory. Must be of the form [[x1, y1, z1], [x2, y2, z2], [x3, y3, z3], [x4, y4, z4]]</haxe_doc>
 		</beziercubic3D_follow_4dots_trajectory>
-		<beziercubic_coordinate public="1" get="inline" set="null" line="1014">
+		<beziercubic_coordinate public="1" get="inline" set="null" line="1017">
 			<f a="beziercubic_one_axis_coordinates:parameter">
 				<c path="Array"><x path="Float"/></c>
 				<x path="Float"/>
@@ -3648,7 +4073,7 @@
      For case [[x1, y1, z1], [x2, y2, z2], [x3, y3, z3], [x4, y4, z4]] curve and x axis must be [x1, x2, x3, x4]
      @param parameter - parameter of bezier curve equation. Usual case range 0...1 include borders</haxe_doc>
 		</beziercubic_coordinate>
-		<beziercubic3Ddot public="1" set="method" line="1034">
+		<beziercubic3Ddot public="1" set="method" line="1037">
 			<f a="beziercubic3D:parameter">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<x path="Float"/>
@@ -3659,7 +4084,7 @@
      Which is [dot3Dstart, lever3Dstart, lever3Dend, dot3Dend]
      @param parameter - parameter of bezier curve equation. Usual case range 0...1 include borders</haxe_doc>
 		</beziercubic3Ddot>
-		<curve3D_4dots_follow_beziercubic_trajectory public="1" get="inline" set="null" line="1050">
+		<curve3D_4dots_follow_beziercubic_trajectory public="1" get="inline" set="null" line="1053">
 			<f a="beziercubic3D">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
@@ -3668,7 +4093,7 @@
      Two internal dots belongs on bezier cubic curve trajectory, with parameter 1/3 and 2/3
      @param beziercubic3D - curve 3D, which must be of the form [[x1, y1, z1], [x2, y2, z2], [x3, y3, z3], [x4, y4, z4]]</haxe_doc>
 		</curve3D_4dots_follow_beziercubic_trajectory>
-		<curve3Doffset public="1" get="inline" set="null" line="1068">
+		<curve3Doffset public="1" get="inline" set="null" line="1071">
 			<f a="curve3D:vec3D:distance">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3680,7 +4105,7 @@
      @param vec3D - vector 3D (a, b, c)
      @param distance - displacement distance</haxe_doc>
 		</curve3Doffset>
-		<curve3Drotate public="1" get="inline" set="null" line="1091">
+		<curve3Drotate public="1" get="inline" set="null" line="1094">
 			<f a="curve3D:dot3D:vec3D:angle:?rad" v="::::false">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3697,7 +4122,7 @@
      @param angle - rotation angle
      @param rad - if true then radians angle, default false (degrees angle)</haxe_doc>
 		</curve3Drotate>
-		<curve3Dscale public="1" get="inline" set="null" line="1117">
+		<curve3Dscale public="1" get="inline" set="null" line="1120">
 			<f a="curve3D:scale_xyz:dot3D">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3709,7 +4134,7 @@
      @param scale_xyz - scale for each axis. Must be of the form [sx, sy, sz]
      @param dot3D - scaling center(base) dot 3D</haxe_doc>
 		</curve3Dscale>
-		<ellipse2Dperimeter_ramanujan public="1" get="inline" set="null" line="1142">
+		<ellipse2Dperimeter_ramanujan public="1" get="inline" set="null" line="1145">
 			<f a="semiaxis_a:semiaxis_b">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -3720,7 +4145,7 @@
      @param semiaxis_a - ellipse a semiaxes. Usual paralleled x axis
      @param semiaxis_b - ellipse b semiaxes. Usual paralleled y axis</haxe_doc>
 		</ellipse2Dperimeter_ramanujan>
-		<tangent_centered_ellipse2Ddot public="1" set="method" line="1174">
+		<tangent_centered_ellipse2Ddot public="1" set="method" line="1177">
 			<f a="semiaxis_a:semiaxis_b:ellipse_dot2D">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -3732,7 +4157,7 @@
      @param semiaxis_b - ellipse b semiaxes. Usual paralleled y axis
      @param ellipse_dot2D - dot 2D belongs to the ellipse perimeter</haxe_doc>
 		</tangent_centered_ellipse2Ddot>
-		<ellipse_e_parameter public="1" get="inline" set="null" line="1231">
+		<ellipse_e_parameter public="1" get="inline" set="null" line="1234">
 			<f a="semiaxis_a:semiaxis_b">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -3742,7 +4167,7 @@
      @param semiaxis_a - ellipse a semiaxes. Usual paralleled x axis
      @param semiaxis_b - ellipse b semiaxes. Usual paralleled y axis</haxe_doc>
 		</ellipse_e_parameter>
-		<ellipse_c_parameter public="1" set="method" line="1247">
+		<ellipse_c_parameter public="1" set="method" line="1250">
 			<f a="semiaxis_a:semiaxis_b">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -3752,7 +4177,7 @@
      @param semiaxis_a - ellipse a semiaxes. Usual paralleled x axis
      @param semiaxis_b - ellipse b semiaxes. Usual paralleled y axis</haxe_doc>
 		</ellipse_c_parameter>
-		<tangent_vec3D_in_plane_of_ellipse2D_placed_in_3Dspace public="1" set="method" line="1276">
+		<tangent_vec3D_in_plane_of_ellipse2D_placed_in_3Dspace public="1" set="method" line="1279">
 			<f a="dot3D:vec3Dnormal_ellipse_plane:vec3Dsemiaxis_a_direction:semiaxis_a:semiaxis_b:semiaxis_a_negative:semiaxis_b_negative:angle:rad">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3780,7 +4205,7 @@
      Calculating will be directed from positive semiaxis a to positive semiaxis b, for positive angle
      @param rad - if true then radians angle, default false(degrees angle)</haxe_doc>
 		</tangent_vec3D_in_plane_of_ellipse2D_placed_in_3Dspace>
-		<ellipse3D_dots public="1" set="method" line="1329">
+		<ellipse3D_dots public="1" set="method" line="1332">
 			<f a="dot3D:vec3Dsemiaxes:semiaxes">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
@@ -3794,7 +4219,7 @@
      Which is [a, b, an, bn], where an and bn is negative semiaxes direction vectors 
      @param semiaxes - array of semiaxes lengths. Must be of the form [a, b, an, bn]</haxe_doc>
 		</ellipse3D_dots>
-		<ellipse2Ddot public="1" get="inline" set="null" line="1371">
+		<ellipse2Ddot public="1" get="inline" set="null" line="1374">
 			<f a="angle:semiaxis_a_ox:semiaxis_b_oy:?rad" v=":::false">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -3809,7 +4234,7 @@
      @param semiaxis_b_oy - semiaxis b length
      @param rad - if true then radians angle, default false(degrees angle)</haxe_doc>
 		</ellipse2Ddot>
-		<curve2D_4dots_elliptic_shape_restricted_to_quarter public="1" set="method" line="1391">
+		<curve2D_4dots_elliptic_shape_restricted_to_quarter public="1" set="method" line="1394">
 			<f a="angle0:angle1:semiaxis_a_ox:semiaxis_b_oy:?rad" v="::::false">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -3826,7 +4251,7 @@
      @param semiaxis_b_oy - length of semiaxis b (oy)
      @param rad - if true then radians angle, default false(degrees angle)</haxe_doc>
 		</curve2D_4dots_elliptic_shape_restricted_to_quarter>
-		<beziercubic3D_elliptic_shape_restricted_to_quarter public="1" set="method" line="1422">
+		<beziercubic3D_elliptic_shape_restricted_to_quarter public="1" set="method" line="1425">
 			<f a="dot3Dc:vec3D_a_ox:vec3D_b_oy:semiaxis_a_ox:semiaxis_b_oy:angle0:angle1:?rad" v=":::::::false">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3850,7 +4275,7 @@
      @param angle1 - angle from semiaxis a to semiaxis b direction started from end of `angle0`
      @param rad - if true then radians angle, default false(degrees angle)</haxe_doc>
 		</beziercubic3D_elliptic_shape_restricted_to_quarter>
-		<angle_required_to_place_curve_on_ellipse public="1" set="method" line="1460">
+		<angle_required_to_place_curve_on_ellipse public="1" set="method" line="1463">
 			<f a="curve_length:semiaxis_a_ox:semiaxis_b_oy:angle0:?rad" v="::::false">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -3869,7 +4294,7 @@
      Curve placing started from end of `angle0`
      @param rad - if true then radians angle, default false(degrees angle)</haxe_doc>
 		</angle_required_to_place_curve_on_ellipse>
-		<polygon3D_inside_ellipse public="1" set="method" line="1496">
+		<polygon3D_inside_ellipse public="1" set="method" line="1499">
 			<f a="dot3D:vec3Dsemiaxes:semiaxes:angle_proportions">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
@@ -3887,7 +4312,7 @@
      @param angle_proportions - proportions array for splitting 360 degrees angle(without units, not matter). 
      `[90, 90, 90, 90]` returns result same as `[1, 1, 1, 1]`, in both cases will be created quadrangle inside ellipse</haxe_doc>
 		</polygon3D_inside_ellipse>
-		<polygon3D_vec3Dfield_distances public="1" set="method" line="1552">
+		<polygon3D_vec3Dfield_distances public="1" set="method" line="1555">
 			<f a="dot3D:vec3Dfield:distances">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
@@ -3902,7 +4327,7 @@
      Each Vertex will be offsetted along own vector
      @param distances - polygon vertexes radial distances array(offset length)</haxe_doc>
 		</polygon3D_vec3Dfield_distances>
-		<polygon3D_in_plane public="1" set="method" line="1582">
+		<polygon3D_in_plane public="1" set="method" line="1585">
 			<f a="dot3D:vec3Dplane_normal:vec3Dsemiaxis_a_direction:angle_proportions:distances">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3923,7 +4348,7 @@
      `[90, 90, 90, 90]` returns result same as `[1, 1, 1, 1]`, in both cases will be created quadrangle belongs to plane
      @param distances - polygon vertexes radial distances array(offset length)</haxe_doc>
 		</polygon3D_in_plane>
-		<polygon3D_to_vec3Dfield public="1" set="method" line="1619">
+		<polygon3D_to_vec3Dfield public="1" set="method" line="1622">
 			<f a="polygon3D">
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
 				<c path="Array"><c path="Array"><x path="Float"/></c></c>
@@ -3933,7 +4358,7 @@
      @param polygon3D - must be of the form 
      [ polygon center dot 3D, polygon vertex first dot 3D , ... ,polygon vertex last dot 3D ]</haxe_doc>
 		</polygon3D_to_vec3Dfield>
-		<projection_vec3D_on_plane3D public="1" set="method" line="1629">
+		<projection_vec3D_on_plane3D public="1" set="method" line="1632">
 			<f a="vec3D:plane3D">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3943,7 +4368,7 @@
      @param vec3D - vector 3D (a, b, c)
      @param plane3D - plane 3D (a, b, c, d), where (a, b, c) normal vector of plane, and (d) displacement from (0, 0, 0)</haxe_doc>
 		</projection_vec3D_on_plane3D>
-		<angle_vec3Dvec3D_projection_on_plane3D public="1" set="method" line="1660">
+		<angle_vec3Dvec3D_projection_on_plane3D public="1" set="method" line="1663">
 			<f a="vec3D1:vec3D2:plane3D:?rad" v=":::false">
 				<c path="Array"><x path="Float"/></c>
 				<c path="Array"><x path="Float"/></c>
@@ -3961,11 +4386,18 @@
      @param plane3D - plane 3D (a, b, c, d), where (a, b, c) normal vector of plane, and (d) displacement from (0, 0, 0)
      @param rad - if true then radians angle, default false(degrees angle)</haxe_doc>
 		</angle_vec3Dvec3D_projection_on_plane3D>
-		<objAngle public="1" set="method" line="1694">
-			<f a=""><c path="geometryxd.Angle"/></f>
-			<haxe_doc>* new angle object with few unit of measurement functionality. Created new instance angle value is 0.</haxe_doc>
+		<objAngle public="1" set="method" line="1699">
+			<f a="?unit:?value" v=":0">
+				<x path="geometryxd.AngleUnit"/>
+				<x path="Float"/>
+				<c path="geometryxd.Angle"/>
+			</f>
+			<meta><m n=":value"><e>{ value : 0 }</e></m></meta>
+			<haxe_doc>* new angle object with few unit of measurement functionality. Created new instance angle default value is 0.
+     * @param unit None = 0; Turn = 1; Mulp = 2; Quad = 3; Sext = 4; Rad = 5; Hexa = 6; Bdeg = 7; Deg = 8; Grad = 9; Marc = 10; Sarc = 11;
+     * @param value</haxe_doc>
 		</objAngle>
-		<objDotXD public="1" set="method" line="1703">
+		<objDotXD public="1" set="method" line="1708">
 			<f a="dot">
 				<c path="Array"><x path="Float"/></c>
 				<c path="geometryxd.DotXD"/>
@@ -3974,7 +4406,7 @@
      * @param dot coordinates
      * @return DotXD</haxe_doc>
 		</objDotXD>
-		<objDot3D public="1" set="method" line="1712">
+		<objDot3D public="1" set="method" line="1717">
 			<f a="?x:?y:?z" v="0:0:0">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -3988,7 +4420,7 @@
      * @param z coordinate
      * @return Dot3D</haxe_doc>
 		</objDot3D>
-		<objVecXD public="1" set="method" line="1719">
+		<objVecXD public="1" set="method" line="1724">
 			<f a="dotXDb:?dotXDa">
 				<c path="geometryxd.DotXD"/>
 				<c path="geometryxd.DotXD"/>
@@ -3998,7 +4430,7 @@
      * @param dotXDb end multidimensional dot of vector
      * @param dotXDa start multidimensional dot of vector. Default will be `[0,...,0]`</haxe_doc>
 		</objVecXD>
-		<objVec3D public="1" set="method" line="1726">
+		<objVec3D public="1" set="method" line="1731">
 			<f a="dot3Db:?dot3Da">
 				<c path="geometryxd.Dot3D"/>
 				<c path="geometryxd.Dot3D"/>
@@ -4008,7 +4440,7 @@
      * @param dot3Db end 3D dot of vector
      * @param dot3Da start 3D dot of vector. Default will be `[0,0,0]`</haxe_doc>
 		</objVec3D>
-		<new public="1" set="method" line="26">
+		<new public="1" set="method" line="29">
 			<f a="?message" v="true">
 				<x path="Bool"/>
 				<x path="Void"/>
@@ -4336,10 +4768,10 @@
 			<f a=""><c path="geometryxd.Vec3D"/></f>
 			<haxe_doc>* new 3D vector object, with mirrored y z coordinates, recounted to length equal 1</haxe_doc>
 		</vec3DoneMyz>
-		<vec3Dcopy public="1" set="method" line="358">
+		<copy public="1" set="method" line="358">
 			<f a=""><c path="geometryxd.Vec3D"/></f>
 			<haxe_doc>* new 3D vector object with same coordinates. if `value()` = `[1,2,3]` return vec3DM().value() = `[1,2,3]`</haxe_doc>
-		</vec3Dcopy>
+		</copy>
 		<new public="1" set="method" line="30">
 			<f a="dot3Db:?dot3Da">
 				<c path="geometryxd.Dot3D"/>
@@ -4400,10 +4832,10 @@
 			<f a=""><c path="geometryxd.VecXD"/></f>
 			<haxe_doc>* new multidimensional vector object with mirrored coordinates. If `value` = `[1,2,3,-4]` return vecXD().value = `[-1,-2,-3,4]`</haxe_doc>
 		</vecXDM>
-		<vecXDcopy public="1" set="method" line="82">
+		<copy public="1" set="method" line="82">
 			<f a=""><c path="geometryxd.VecXD"/></f>
 			<haxe_doc>* new multidimensional vector object with same coordinates. if `value` = `[1,2,3,-4]` return vecXD().value = `[1,2,3,-4]`</haxe_doc>
-		</vecXDcopy>
+		</copy>
 		<new public="1" set="method" line="17">
 			<f a="dotXDb:?dotXDa">
 				<c path="geometryxd.DotXD"/>

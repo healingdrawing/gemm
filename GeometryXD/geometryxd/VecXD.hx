@@ -10,12 +10,12 @@ package geometryxd;
     var coordinates:Array<Float>;
     
     /**
-     * new multidimentional vector object. Both dots must have same dimensions number, or dotXDb will returned
-     * @param dotXDb end multidimensional dot of vector
-     * @param dotXDa start multidimensional dot of vector. Default will be `[0,...,0]`
+     * new multidimentional vector object. Both dots must have same dimensions number, or eDot will used
+     * @param eDot end dot of multidimensional vector
+     * @param sDot start dot of multidimensional vector. Default will be `[0,...,0]`
      */
-    public function new(dotXDb:DotXD, ?dotXDa:DotXD) {
-       this.coordinates = (dotXDa != null && geo.am.same_size_F([dotXDb.value(),dotXDa.value()])) ? geo.am.diff_xF([dotXDb.value(),dotXDa.value()]) : dotXDb.value();
+    public function new(eDot:DotXD, ?sDot:DotXD) {
+       this.coordinates = (sDot != null && geo.am.same_size_F([eDot.value(),sDot.value()])) ? geo.am.diff_xF([eDot.value(),sDot.value()]) : eDot.value();
     }
     
     /**
