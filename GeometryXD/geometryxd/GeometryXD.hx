@@ -511,7 +511,7 @@ class GeometryXD{
      @param vec3D - vector 3D
      @param vec3Daxis - axis of rotation . vector 3D
      @param angle - angle of rotation
-     @param rad - it true then radians angle, default false (degrees angle)
+     @param rad - if true then radians angle, default false (degrees angle)
     **/
     public function vec3Drotate(
         vec3D:Array<Float>,

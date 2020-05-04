@@ -8,6 +8,10 @@ class Ray3D {
     /** internal property. 3D ray start dot */
     var sDot:Dot3D;
     
+    /** internal usage of methods */
+    var geo = new GeometryXD(false);
+    
+    
     /**
      * new 3D ray object
      * @param vec ray vector
@@ -34,10 +38,38 @@ class Ray3D {
     }
     
     /**
+     * rotate ray around axis to angle
+     * @param axis rotation axis
+     * @param angle rotation angle
+     */
+    public function rotate(axis:Vec3D, angle:Angle) {
+        
+    }
+    
+    /**
+     * offset ray along vector to distance
+     * @param v offset vector
+     * @param d offset distance
+     */
+    public function offset(v:Vec3D, d:Float) {
+        
+    }
+    
+    /**
+     * scale ray start dot coordinates, relative to the scale center dot. Default is ray direction vector will not changed
+     * @param sxyz scales for axes `[sx,sy,sz]`
+     * @param cDot scale center dot
+     * @param full scale ray direction vector too. Default is false (ray direction  will not changed)
+     */
+    public function scale(sxyz:Array<Float>, ?cDot:Dot3D, full = false) {
+        
+    }
+    
+    /**
      * dot on ray
      * @param d displacement from ray start dot, along ray vector
      */
-     public function dot(d:Float) {
-         
-    }
+    public function dot(d:Float) { return geo.dotXDoffset(this.sDot.value(), this.vec.value(),d); }
+    
+    
 }
