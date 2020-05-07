@@ -22,6 +22,26 @@ class Ray3D {
         this.sDot = (sDot!=null)? sDot : new Dot3D();
     }
     
+    public function useDot() { }
+    public function useVec() { }
+    public function useArray() { /**ray direction**/ }
+    
+    public function fromDot() { }
+    public function fromVec() { }
+    public function fromArray() { /**new ray direction**/ }
+    
+    public function valueDot() { }
+    public function valueVec() { }
+    
+    public function valueDotM() { }
+    public function valueVecM() { }
+    
+    public function fromDotM() { }
+    public function fromVecM() { }
+    public function fromFullM() { }
+    
+    
+    
     
     /**
      * start dot of ray
@@ -41,9 +61,11 @@ class Ray3D {
      * rotate ray around axis to angle
      * @param axis rotation axis
      * @param angle rotation angle
+     * @param cDot rotation center 3D dot. if present then ray start 3D dot will be rotated too, around cDot
      */
-    public function rotate(axis:Vec3D, angle:Angle) {
-        
+    public function rotate(axis:Vec3D, angle:Angle, ?cDot:Dot3D) {
+        this.vec.useArray(geo.dot3Drotate(this.vec.value(),geo.cxyz,axis.value(),angle.deg()));
+        if (cDot != null) this.sDot.useArray(geo.dot3Drotate(this.sDot.value(),cDot.value(),axis.value(),angle.deg()));
     }
     
     /**
@@ -52,17 +74,18 @@ class Ray3D {
      * @param d offset distance
      */
     public function offset(v:Vec3D, d:Float) {
-        
+        this.sDot.useArray(geo.dotXDoffset(this.sDot.value(),v.value(),d));
     }
     
     /**
      * scale ray start dot coordinates, relative to the scale center dot. Default is ray direction vector will not changed
      * @param sxyz scales for axes `[sx,sy,sz]`
      * @param cDot scale center dot
-     * @param full scale ray direction vector too. Default is false (ray direction  will not changed)
+     * @param full scale ray direction vector too. Default is false (ray direction  will not changed). Scale center is `[0,0,0]`
      */
     public function scale(sxyz:Array<Float>, ?cDot:Dot3D, full = false) {
-        
+        this.sDot.useArray(geo.dotXDscale(this.sDot.value(),sxyz,cDot.value()));
+        if (full) this.vec.useArray(geo.dotXDscale(this.vec.value(),sxyz,[0,0,0]));
     }
     
     /**

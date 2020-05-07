@@ -22,9 +22,12 @@ class GeometryXD{
     **/
     public static function main(){trace("GeometryXD connected");}
     
+    /** NM instance. number manipulation */
     public var nm:NM;
+    /** AM instance. array manipulation */
     public var am:AM;
-    
+    /** center 3D coordinate system. Zero point value [0,0,0] */
+    public final cxyz:Array<Float> = [0,0,0];
     
     public function new(message = true){
         if (message){

@@ -3786,7 +3786,7 @@
      @param vec3D - vector 3D
      @param vec3Daxis - axis of rotation . vector 3D
      @param angle - angle of rotation
-     @param rad - it true then radians angle, default false (degrees angle)</haxe_doc>
+     @param rad - if true then radians angle, default false (degrees angle)</haxe_doc>
 		</vec3Drotate>
 		<vec3Dfield_rotate_around_vec3Daxes public="1" set="method" line="547">
 			<f a="vec3Dfield:vec3Daxes:angles:?rad" v=":::false">
@@ -4458,6 +4458,32 @@
   Not pro level library.]]></haxe_doc>
 		<meta><m n=":directlyUsed"/></meta>
 	</class>
+	<class path="geometryxd.Line3D" params="" file="./geometryxd/Line3D.hx">
+		<eDot>
+			<c path="geometryxd.Dot3D"/>
+			<haxe_doc>internal property. Line end dot</haxe_doc>
+		</eDot>
+		<sDot>
+			<c path="geometryxd.Dot3D"/>
+			<haxe_doc>internal property. Line start dot</haxe_doc>
+		</sDot>
+		<geo expr="new GeometryXD(false)">
+			<c path="geometryxd.GeometryXD"/>
+			<meta><m n=":value"><e>new GeometryXD(false)</e></m></meta>
+			<haxe_doc>internal usage of methods</haxe_doc>
+		</geo>
+		<new public="1" set="method" line="19">
+			<f a="eDot:?sDot">
+				<c path="geometryxd.Dot3D"/>
+				<c path="geometryxd.Dot3D"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>* new 3D line object.
+     * @param eDot 3D line end dot
+     * @param sDot 3D line start dot . Default will `[0,0,0]`</haxe_doc>
+		</new>
+		<haxe_doc>* 3D line object</haxe_doc>
+	</class>
 	<class path="geometryxd.NM" params="" file="./geometryxd/NM.hx">
 		<sign_I public="1" get="inline" set="null" line="13">
 			<f a="x">
@@ -4569,6 +4595,80 @@
 		<new public="1" set="method" line="7"><f a=""><x path="Void"/></f></new>
 		<haxe_doc>* number manipulation</haxe_doc>
 		<meta><m n=":directlyUsed"/></meta>
+	</class>
+	<class path="geometryxd.Ray3D" params="" file="./geometryxd/Ray3D.hx">
+		<vec>
+			<c path="geometryxd.Vec3D"/>
+			<haxe_doc>internal property. 3D ray vector</haxe_doc>
+		</vec>
+		<sDot>
+			<c path="geometryxd.Dot3D"/>
+			<haxe_doc>internal property. 3D ray start dot</haxe_doc>
+		</sDot>
+		<geo expr="new GeometryXD(false)">
+			<c path="geometryxd.GeometryXD"/>
+			<meta><m n=":value"><e>new GeometryXD(false)</e></m></meta>
+			<haxe_doc>internal usage of methods</haxe_doc>
+		</geo>
+		<s public="1" set="method" line="29">
+			<f a=""><c path="geometryxd.Dot3D"/></f>
+			<haxe_doc>* start dot of ray</haxe_doc>
+		</s>
+		<v public="1" set="method" line="36">
+			<f a=""><c path="geometryxd.Vec3D"/></f>
+			<haxe_doc>* vector of ray</haxe_doc>
+		</v>
+		<rotate public="1" set="method" line="45">
+			<f a="axis:angle">
+				<c path="geometryxd.Vec3D"/>
+				<c path="geometryxd.Angle"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>* rotate ray around axis to angle
+     * @param axis rotation axis
+     * @param angle rotation angle</haxe_doc>
+		</rotate>
+		<offset public="1" set="method" line="54">
+			<f a="v:d">
+				<c path="geometryxd.Vec3D"/>
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>* offset ray along vector to distance
+     * @param v offset vector
+     * @param d offset distance</haxe_doc>
+		</offset>
+		<scale public="1" set="method" line="64">
+			<f a="sxyz:?cDot:?full" v="::false">
+				<c path="Array"><x path="Float"/></c>
+				<c path="geometryxd.Dot3D"/>
+				<x path="Bool"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":value"><e>{ full : false }</e></m></meta>
+			<haxe_doc>* scale ray start dot coordinates, relative to the scale center dot. Default is ray direction vector will not changed
+     * @param sxyz scales for axes `[sx,sy,sz]`
+     * @param cDot scale center dot
+     * @param full scale ray direction vector too. Default is false (ray direction  will not changed)</haxe_doc>
+		</scale>
+		<dot public="1" set="method" line="72">
+			<f a="d">
+				<x path="Float"/>
+				<c path="Array"><x path="Float"/></c>
+			</f>
+			<haxe_doc>* dot on ray
+     * @param d displacement from ray start dot, along ray vector</haxe_doc>
+		</dot>
+		<new public="1" set="method" line="20">
+			<f a="vec:?sDot">
+				<c path="geometryxd.Vec3D"/>
+				<c path="geometryxd.Dot3D"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>* new 3D ray object
+     * @param vec ray vector
+     * @param sDot ray start dot</haxe_doc>
+		</new>
 	</class>
 	<class path="geometryxd.Vec3D" params="" file="./geometryxd/Vec3D.hx">
 		<x public="1">
@@ -4837,14 +4937,14 @@
 			<haxe_doc>* new multidimensional vector object with same coordinates. if `value` = `[1,2,3,-4]` return vecXD().value = `[1,2,3,-4]`</haxe_doc>
 		</copy>
 		<new public="1" set="method" line="17">
-			<f a="dotXDb:?dotXDa">
+			<f a="eDot:?sDot">
 				<c path="geometryxd.DotXD"/>
 				<c path="geometryxd.DotXD"/>
 				<x path="Void"/>
 			</f>
-			<haxe_doc>* new multidimentional vector object. Both dots must have same dimensions number, or dotXDb will returned
-     * @param dotXDb end multidimensional dot of vector
-     * @param dotXDa start multidimensional dot of vector. Default will be `[0,...,0]`</haxe_doc>
+			<haxe_doc>* new multidimentional vector object. Both dots must have same dimensions number, or eDot will used
+     * @param eDot end dot of multidimensional vector
+     * @param sDot start dot of multidimensional vector. Default will be `[0,...,0]`</haxe_doc>
 		</new>
 		<haxe_doc>* multidimensional vector object</haxe_doc>
 		<meta><m n=":directlyUsed"/></meta>
