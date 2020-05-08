@@ -23,25 +23,18 @@ class Ray3D {
     }
     
     public function useDot() { }
+    public function useDotArray() { }
     public function useVec() { }
-    public function useArray() { /**ray direction**/ }
+    public function useVecArray() { /**ray direction**/ }
     
     public function fromDot() { }
+    public function fromDotArray() { }
     public function fromVec() { }
-    public function fromArray() { /**new ray direction**/ }
+    public function fromVecArray() { /**new ray direction**/ }
     
-    public function valueDot() { }
-    public function valueVec() { }
-    
-    public function valueDotM() { }
-    public function valueVecM() { }
-    
-    public function fromDotM() { }
-    public function fromVecM() { }
-    public function fromFullM() { }
-    
-    
-    
+    public function valueDot() { return this.sDot.value(); }
+    public function valueVec() { return this.vec.value(); }
+    public function value() { return [valueVec(),valueDot()]; }
     
     /**
      * start dot of ray
@@ -94,5 +87,6 @@ class Ray3D {
      */
     public function dot(d:Float) { return geo.dotXDoffset(this.sDot.value(), this.vec.value(),d); }
     
-    
+    /** new 3D ray object, with same data. */
+    public function copy() { return new Ray3D(this.vec, this.sDot); }
 }
