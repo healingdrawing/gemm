@@ -139,6 +139,35 @@ class Dot3D{
     }
     
     /**
+     * rotate dot around axis to angle
+     * @param axis rotation axis
+     * @param angle rotation angle
+     * @param cDot rotation center 3D dot. if null, then `[0,0,0]` used as rotation center
+     */
+     public function rotate(axis:Vec3D, angle:Angle, ?cDot:Dot3D) {
+        useArray(geo.dot3Drotate(value(),(cDot!=null)?cDot.value():geo.cxyz,axis.value(),angle.deg()));
+    }
+    
+    /**
+     * offset dot along vector to distance
+     * @param v offset vector
+     * @param d offset distance
+     */
+    public function offset(v:Vec3D, d:Float) {
+        useArray(geo.dotXDoffset(value(),v.value(),d));
+    }
+    
+    /**
+     * scale dot coordinates, relative to the scale center dot.
+     * @param sxyz scales for axes `[sx,sy,sz]`
+     * @param cDot scale center dot
+     */
+    public function scale(sxyz:Array<Float>, ?cDot:Dot3D) {
+        useArray(geo.dotXDscale(value(),sxyz,(cDot!=null)?cDot.value():geo.cxyz));
+    }
+    
+    
+    /**
      * new 3D dot object with same data.
      */
     public function copy(){

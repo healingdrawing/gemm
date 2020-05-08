@@ -159,6 +159,25 @@ package geometryxd;
         return vd(valueOne());
     }
     
+    
+    /**
+     * rotate vector around axis to angle
+     * @param axis rotation axis
+     * @param angle rotation angle
+     */
+     public function rotate(axis:Vec3D, angle:Angle) {
+        useArray(geo.vec3Drotate(value(),axis.value(),angle.deg()));
+    }
+    
+    /**
+     * scale vector coordinates, relative to the `[0,0,0]`.
+     * @param sxyz scales for axes `[sx,sy,sz]`
+     */
+    public function scale(sxyz:Array<Float>) {
+        useArray(geo.dotXDscale(value(),sxyz,geo.cxyz));
+    }
+    
+    
     /**
      * new 3D vector object with same coordinates. if `value()` = `[1,2,3]` return vec3DM().value() = `[1,2,3]`
      */
