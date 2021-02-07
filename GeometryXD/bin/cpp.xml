@@ -3279,7 +3279,7 @@
 			<meta><m n=":value"><e>new GeometryXD(false)</e></m></meta>
 			<haxe_doc>* internal usage of methods</haxe_doc>
 		</geo>
-		<dd get="inline" set="null" line="41">
+		<dd get="inline" set="null" line="46">
 			<f a="c">
 				<c path="Array"><x path="Float"/></c>
 				<c path="geometryxd.Dot3D"/>
@@ -3287,7 +3287,7 @@
 			<haxe_doc>* internal function. Return Dot3D object from 3D dot coordinates
      * @param c 3D dot coordinates array `[x,y,z]`</haxe_doc>
 		</dd>
-		<fromArray public="1" set="method" line="49">
+		<fromArray public="1" set="method" line="54">
 			<f a="xyz">
 				<c path="Array"><x path="Float"/></c>
 				<c path="geometryxd.Dot3D"/>
@@ -3295,7 +3295,7 @@
 			<haxe_doc>* new Dot3D object from array of coordinates. Used first three array elements. Not enough length replaced uses 0.
      * @param xyz array of 3D dot coordinates `[x,y,z]`</haxe_doc>
 		</fromArray>
-		<useArray public="1" set="method" line="59">
+		<useArray public="1" set="method" line="64">
 			<f a="xyz">
 				<c path="Array"><x path="Float"/></c>
 				<x path="Void"/>
@@ -3303,90 +3303,92 @@
 			<haxe_doc>* set `x,y,z` properties using array of coordinates. Used first three array elements. Not enough length replaced uses 0.
      * @param xyz array of 3D dot coordinates `[x,y,z]`</haxe_doc>
 		</useArray>
-		<useM public="1" set="method" line="69">
+		<useM public="1" set="method" line="74">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc><![CDATA[* mirror 3D dot coordinates. `[1,2,3]` -> `[-1,-2,-3]`]]></haxe_doc>
 		</useM>
-		<useMx public="1" set="method" line="78">
+		<useMx public="1" set="method" line="83">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc><![CDATA[* mirror 3D dot x coordinate. `[1,2,3]` -> `[-1,2,3]`]]></haxe_doc>
 		</useMx>
-		<useMy public="1" set="method" line="85">
+		<useMy public="1" set="method" line="90">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc><![CDATA[* mirror 3D dot y coordinate. `[1,2,3]` -> `[1,-2,3]`]]></haxe_doc>
 		</useMy>
-		<useMz public="1" set="method" line="92">
+		<useMz public="1" set="method" line="97">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc><![CDATA[* mirror 3D dot z coordinate. `[1,2,3]` -> `[1,2,-3]`]]></haxe_doc>
 		</useMz>
-		<useMxy public="1" set="method" line="99">
+		<useMxy public="1" set="method" line="104">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc><![CDATA[* mirror 3D dot x y coordinates. `[1,2,3]` -> `[-1,-2,3]`]]></haxe_doc>
 		</useMxy>
-		<useMxz public="1" set="method" line="107">
+		<useMxz public="1" set="method" line="112">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc><![CDATA[* mirror 3D dot x z coordinates. `[1,2,3]` -> `[-1,2,-3]`]]></haxe_doc>
 		</useMxz>
-		<useMyz public="1" set="method" line="115">
+		<useMyz public="1" set="method" line="120">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc><![CDATA[* mirror 3D dot y z coordinates. `[1,2,3]` -> `[1,-2,-3]`]]></haxe_doc>
 		</useMyz>
-		<dn public="1" set="method" line="124">
+		<dn public="1" set="method" line="129">
 			<f a=""><x path="Int"/></f>
 			<haxe_doc>* number or dot dimensions</haxe_doc>
 		</dn>
-		<value public="1" set="method" line="132">
+		<value public="1" set="method" line="137">
 			<f a=""><c path="Array"><x path="Float"/></c></f>
 			<haxe_doc>* array of dot coordinates `[x,y,z]`</haxe_doc>
 		</value>
-		<valueM public="1" set="method" line="139">
-			<f a=""><c path="Array"><x path="Float"/></c></f>
-			<haxe_doc>* array of mirrored values of dot coordinates. If `value()` = `[1,2,3]` return `[-1,-2,-3]`</haxe_doc>
-		</valueM>
-		<valueMx public="1" set="method" line="146">
-			<f a=""><c path="Array"><x path="Float"/></c></f>
-			<haxe_doc>* array of values of dot coordinates with mirrored x coordinate. If `value()` = `[1,2,3]` return `[-1,2,3]`</haxe_doc>
-		</valueMx>
-		<valueMy public="1" set="method" line="153">
-			<f a=""><c path="Array"><x path="Float"/></c></f>
-			<haxe_doc>* array of values of dot coordinates with mirrored y coordinate. If `value()` = `[1,2,3]` return `[1,-2,3]`</haxe_doc>
-		</valueMy>
-		<valueMz public="1" set="method" line="160">
-			<f a=""><c path="Array"><x path="Float"/></c></f>
-			<haxe_doc>* array of values of dot coordinates with mirrored z coordinate. If `value()` = `[1,2,3]` return `[1,2,-3]`</haxe_doc>
-		</valueMz>
-		<dot3DM public="1" set="method" line="167">
+		<rotate public="1" set="method" line="147">
+			<f a="axis:angle:?cDot">
+				<c path="geometryxd.Vec3D"/>
+				<c path="geometryxd.Angle"/>
+				<c path="geometryxd.Dot3D"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>* rotate dot around axis to angle
+     * @param axis rotation axis
+     * @param angle rotation angle
+     * @param cDot rotation center 3D dot. if null, then `[0,0,0]` used as rotation center</haxe_doc>
+		</rotate>
+		<offset public="1" set="method" line="156">
+			<f a="v:d">
+				<c path="geometryxd.Vec3D"/>
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>* offset dot along vector to distance
+     * @param v offset vector
+     * @param d offset distance</haxe_doc>
+		</offset>
+		<scale public="1" set="method" line="165">
+			<f a="sxyz:?cDot">
+				<c path="Array"><x path="Float"/></c>
+				<c path="geometryxd.Dot3D"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>* scale dot coordinates, relative to the scale center dot.
+     * @param sxyz scales for axes `[sx,sy,sz]`
+     * @param cDot scale center dot</haxe_doc>
+		</scale>
+		<copy public="1" set="method" line="173">
 			<f a=""><c path="geometryxd.Dot3D"/></f>
-			<haxe_doc>* new 3D dot object with mirrored coordinates. if `value()` = `[1,2,3]` return dot3DM().value() = `[-1,-2,-3]`</haxe_doc>
-		</dot3DM>
-		<dot3DMx public="1" set="method" line="174">
-			<f a=""><c path="geometryxd.Dot3D"/></f>
-			<haxe_doc>* new 3D dot object with mirrored x coordinate. if `value()` = `[1,2,3]` return dot3DM().value() = `[-1,2,3]`</haxe_doc>
-		</dot3DMx>
-		<dot3DMy public="1" set="method" line="181">
-			<f a=""><c path="geometryxd.Dot3D"/></f>
-			<haxe_doc>* new 3D dot object with mirrored y coordinate. if `value()` = `[1,2,3]` return dot3DM().value() = `[1,-2,3]`</haxe_doc>
-		</dot3DMy>
-		<dot3DMz public="1" set="method" line="188">
-			<f a=""><c path="geometryxd.Dot3D"/></f>
-			<haxe_doc>* new 3D dot object with mirrored z coordinate. if `value()` = `[1,2,3]` return dot3DM().value() = `[1,2,-3]`</haxe_doc>
-		</dot3DMz>
-		<copy public="1" set="method" line="195">
-			<f a=""><c path="geometryxd.Dot3D"/></f>
-			<haxe_doc>* new 3D dot object with same coordinates. if `value()` = `[1,2,3]` return dot3DM().value() = `[1,2,3]`</haxe_doc>
+			<haxe_doc>* new 3D dot object with same data.</haxe_doc>
 		</copy>
-		<new public="1" set="method" line="31">
-			<f a="?x:?y:?z" v="0:0:0">
+		<new public="1" set="method" line="32">
+			<f a="?x:?y:?z:?xyz" v="0:0:0:">
 				<x path="Float"/>
 				<x path="Float"/>
 				<x path="Float"/>
+				<c path="Array"><x path="Float"/></c>
 				<x path="Void"/>
 			</f>
 			<meta><m n=":value"><e>{ z : 0, y : 0, x : 0 }</e></m></meta>
 			<haxe_doc>* new 3D dot object.
      * @param x coordinate of dot
      * @param y coordinate of dot
-     * @param z coordinate of dot</haxe_doc>
+     * @param z coordinate of dot
+     * @param xyz dot coordinates array. if not null, then used, and x,y,z parameters will ignored. Wrong sized array will extended using zero's.</haxe_doc>
 		</new>
 		<haxe_doc>* 3D dot object</haxe_doc>
 		<meta><m n=":directlyUsed"/></meta>
@@ -4622,27 +4624,25 @@
 			<haxe_doc>internal usage of methods</haxe_doc>
 		</geo>
 		<useDot public="1" set="method" line="25"><f a=""><x path="Void"/></f></useDot>
-		<useVec public="1" set="method" line="26"><f a=""><x path="Void"/></f></useVec>
-		<useArray public="1" set="method" line="27"><f a=""><x path="Void"/></f></useArray>
-		<fromDot public="1" set="method" line="29"><f a=""><x path="Void"/></f></fromDot>
-		<fromVec public="1" set="method" line="30"><f a=""><x path="Void"/></f></fromVec>
-		<fromArray public="1" set="method" line="31"><f a=""><x path="Void"/></f></fromArray>
-		<valueDot public="1" set="method" line="33"><f a=""><x path="Void"/></f></valueDot>
-		<valueVec public="1" set="method" line="34"><f a=""><x path="Void"/></f></valueVec>
-		<valueDotM public="1" set="method" line="36"><f a=""><x path="Void"/></f></valueDotM>
-		<valueVecM public="1" set="method" line="37"><f a=""><x path="Void"/></f></valueVecM>
-		<fromDotM public="1" set="method" line="39"><f a=""><x path="Void"/></f></fromDotM>
-		<fromVecM public="1" set="method" line="40"><f a=""><x path="Void"/></f></fromVecM>
-		<fromFullM public="1" set="method" line="41"><f a=""><x path="Void"/></f></fromFullM>
-		<s public="1" set="method" line="49">
+		<useDotArray public="1" set="method" line="26"><f a=""><x path="Void"/></f></useDotArray>
+		<useVec public="1" set="method" line="27"><f a=""><x path="Void"/></f></useVec>
+		<useVecArray public="1" set="method" line="28"><f a=""><x path="Void"/></f></useVecArray>
+		<fromDot public="1" set="method" line="30"><f a=""><x path="Void"/></f></fromDot>
+		<fromDotArray public="1" set="method" line="31"><f a=""><x path="Void"/></f></fromDotArray>
+		<fromVec public="1" set="method" line="32"><f a=""><x path="Void"/></f></fromVec>
+		<fromVecArray public="1" set="method" line="33"><f a=""><x path="Void"/></f></fromVecArray>
+		<valueDot public="1" set="method" line="35"><f a=""><c path="Array"><x path="Float"/></c></f></valueDot>
+		<valueVec public="1" set="method" line="36"><f a=""><c path="Array"><x path="Float"/></c></f></valueVec>
+		<value public="1" set="method" line="37"><f a=""><c path="Array"><c path="Array"><x path="Float"/></c></c></f></value>
+		<s public="1" set="method" line="42">
 			<f a=""><c path="geometryxd.Dot3D"/></f>
 			<haxe_doc>* start dot of ray</haxe_doc>
 		</s>
-		<v public="1" set="method" line="56">
+		<v public="1" set="method" line="49">
 			<f a=""><c path="geometryxd.Vec3D"/></f>
 			<haxe_doc>* vector of ray</haxe_doc>
 		</v>
-		<rotate public="1" set="method" line="66">
+		<rotate public="1" set="method" line="59">
 			<f a="axis:angle:?cDot">
 				<c path="geometryxd.Vec3D"/>
 				<c path="geometryxd.Angle"/>
@@ -4654,7 +4654,7 @@
      * @param angle rotation angle
      * @param cDot rotation center 3D dot. if present then ray start 3D dot will be rotated too, around cDot</haxe_doc>
 		</rotate>
-		<offset public="1" set="method" line="76">
+		<offset public="1" set="method" line="69">
 			<f a="v:d">
 				<c path="geometryxd.Vec3D"/>
 				<x path="Float"/>
@@ -4664,7 +4664,7 @@
      * @param v offset vector
      * @param d offset distance</haxe_doc>
 		</offset>
-		<scale public="1" set="method" line="86">
+		<scale public="1" set="method" line="79">
 			<f a="sxyz:?cDot:?full" v="::false">
 				<c path="Array"><x path="Float"/></c>
 				<c path="geometryxd.Dot3D"/>
@@ -4677,14 +4677,27 @@
      * @param cDot scale center dot
      * @param full scale ray direction vector too. Default is false (ray direction  will not changed). Scale center is `[0,0,0]`</haxe_doc>
 		</scale>
-		<dot public="1" set="method" line="95">
+		<dotArray public="1" set="method" line="88">
 			<f a="d">
 				<x path="Float"/>
 				<c path="Array"><x path="Float"/></c>
 			</f>
-			<haxe_doc>* dot on ray
+			<haxe_doc>* dot coordinates on ray
      * @param d displacement from ray start dot, along ray vector</haxe_doc>
+		</dotArray>
+		<dot public="1" set="method" line="95">
+			<f a="d">
+				<x path="Float"/>
+				<c path="geometryxd.Dot3D"/>
+			</f>
+			<haxe_doc>* dot object on ray
+     * @param d displacement from ray start dot, along ray vector
+     * @param mode 0-distance 1-x 2-y 3-z coordinates on ray</haxe_doc>
 		</dot>
+		<copy public="1" set="method" line="100">
+			<f a=""><c path="geometryxd.Ray3D"/></f>
+			<haxe_doc>new 3D ray object, with same data.</haxe_doc>
+		</copy>
 		<new public="1" set="method" line="20">
 			<f a="vec:?sDot">
 				<c path="geometryxd.Vec3D"/>
@@ -4714,7 +4727,11 @@
 			<meta><m n=":value"><e>new GeometryXD(false)</e></m></meta>
 			<haxe_doc>* internal usage of methods</haxe_doc>
 		</geo>
-		<vd get="inline" set="null" line="46">
+		<dn public="1" set="method" line="50">
+			<f a=""><x path="Int"/></f>
+			<haxe_doc>* number of vector dimensions</haxe_doc>
+		</dn>
+		<vd get="inline" set="null" line="58">
 			<f a="c">
 				<c path="Array"><x path="Float"/></c>
 				<c path="geometryxd.Vec3D"/>
@@ -4722,7 +4739,7 @@
 			<haxe_doc>* internal function. Return Vec3D object from 3D dot coordinates
      * @param c 3D dot coordinates array `[x,y,z]`</haxe_doc>
 		</vd>
-		<fromArray public="1" set="method" line="54">
+		<fromArray public="1" set="method" line="66">
 			<f a="xyz">
 				<c path="Array"><x path="Float"/></c>
 				<c path="geometryxd.Vec3D"/>
@@ -4730,7 +4747,7 @@
 			<haxe_doc>* new Vec3D object from array of coordinates. Used first three array elements. Not enough length replaced uses 0.
      * @param xyz array of 3D vector coordinates `[x,y,z]`</haxe_doc>
 		</fromArray>
-		<useArray public="1" set="method" line="64">
+		<useArray public="1" set="method" line="76">
 			<f a="xyz">
 				<c path="Array"><x path="Float"/></c>
 				<x path="Void"/>
@@ -4738,175 +4755,83 @@
 			<haxe_doc>* set `x,y,z` properties using array of coordinates. Used first three array elements. Not enough length replaced uses 0.
      * @param xyz array of 3D vector coordinates `[x,y,z]`</haxe_doc>
 		</useArray>
-		<useM public="1" set="method" line="74">
+		<useM public="1" set="method" line="86">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc><![CDATA[* mirror 3D vector coordinates. `[1,2,3]` -> `[-1,-2,-3]`]]></haxe_doc>
 		</useM>
-		<useMx public="1" set="method" line="83">
+		<useMx public="1" set="method" line="95">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc><![CDATA[* mirror 3D vector x coordinate. `[1,2,3]` -> `[-1,2,3]`]]></haxe_doc>
 		</useMx>
-		<useMy public="1" set="method" line="90">
+		<useMy public="1" set="method" line="102">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc><![CDATA[* mirror 3D vector y coordinate. `[1,2,3]` -> `[1,-2,3]`]]></haxe_doc>
 		</useMy>
-		<useMz public="1" set="method" line="97">
+		<useMz public="1" set="method" line="109">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc><![CDATA[* mirror 3D vector z coordinate. `[1,2,3]` -> `[1,2,-3]`]]></haxe_doc>
 		</useMz>
-		<useMxy public="1" set="method" line="104">
+		<useMxy public="1" set="method" line="116">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc><![CDATA[* mirror 3D vector x y coordinates. `[1,2,3]` -> `[-1,-2,3]`]]></haxe_doc>
 		</useMxy>
-		<useMxz public="1" set="method" line="112">
+		<useMxz public="1" set="method" line="124">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc><![CDATA[* mirror 3D vector x z coordinates. `[1,2,3]` -> `[-1,2,-3]`]]></haxe_doc>
 		</useMxz>
-		<useMyz public="1" set="method" line="120">
+		<useMyz public="1" set="method" line="132">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc><![CDATA[* mirror 3D vector y z coordinates. `[1,2,3]` -> `[1,-2,-3]`]]></haxe_doc>
 		</useMyz>
-		<dn public="1" set="method" line="129">
-			<f a=""><x path="Int"/></f>
-			<haxe_doc>* number of vector dimensions</haxe_doc>
-		</dn>
-		<value public="1" set="method" line="137">
+		<useOne public="1" set="method" line="138">
+			<f a=""><x path="Void"/></f>
+			<haxe_doc>scale vector length to value equal 1. Direction will not changed.</haxe_doc>
+		</useOne>
+		<value public="1" set="method" line="144">
 			<f a=""><c path="Array"><x path="Float"/></c></f>
 			<haxe_doc>* array of vector coordinates `[x,y,z]`</haxe_doc>
 		</value>
-		<valueM public="1" set="method" line="144">
-			<f a=""><c path="Array"><x path="Float"/></c></f>
-			<haxe_doc>* array of mirrored values of vec coordinates. If `value()` = `[1,2,3]` return `[-1,-2,-3]`</haxe_doc>
-		</valueM>
-		<valueMx public="1" set="method" line="151">
-			<f a=""><c path="Array"><x path="Float"/></c></f>
-			<haxe_doc>* array of values of vec coordinates with mirrored x coordinate. If `value()` = `[1,2,3]` return `[-1,2,3]`</haxe_doc>
-		</valueMx>
-		<valueMy public="1" set="method" line="158">
-			<f a=""><c path="Array"><x path="Float"/></c></f>
-			<haxe_doc>* array of values of vec coordinates with mirrored y coordinate. If `value()` = `[1,2,3]` return `[1,-2,3]`</haxe_doc>
-		</valueMy>
-		<valueMz public="1" set="method" line="165">
-			<f a=""><c path="Array"><x path="Float"/></c></f>
-			<haxe_doc>* array of values of vec coordinates with mirrored z coordinate. If `value()` = `[1,2,3]` return `[1,2,-3]`</haxe_doc>
-		</valueMz>
-		<valueMxy public="1" set="method" line="172">
-			<f a=""><c path="Array"><x path="Float"/></c></f>
-			<haxe_doc>* array of values of vec coordinates with mirrored x y coordinates. If `value()` = `[1,2,3]` return `[-1,-2,3]`</haxe_doc>
-		</valueMxy>
-		<valueMxz public="1" set="method" line="179">
-			<f a=""><c path="Array"><x path="Float"/></c></f>
-			<haxe_doc>* array of values of vec coordinates with mirrored x z coordinates. If `value()` = `[1,2,3]` return `[-1,2,-3]`</haxe_doc>
-		</valueMxz>
-		<valueMyz public="1" set="method" line="186">
-			<f a=""><c path="Array"><x path="Float"/></c></f>
-			<haxe_doc>* array of values of vec coordinates with mirrored y z coordinates. If `value()` = `[1,2,3]` return `[1,-2,-3]`</haxe_doc>
-		</valueMyz>
-		<valueOne public="1" set="method" line="194">
+		<valueOne public="1" set="method" line="151">
 			<f a=""><c path="Array"><x path="Float"/></c></f>
 			<haxe_doc>* value of vector recounted to length equal 1</haxe_doc>
 		</valueOne>
-		<valueOneM public="1" set="method" line="201">
-			<f a=""><c path="Array"><x path="Float"/></c></f>
-			<haxe_doc>* value of mirrored vector, recounted to length equal 1</haxe_doc>
-		</valueOneM>
-		<valueOneMx public="1" set="method" line="208">
-			<f a=""><c path="Array"><x path="Float"/></c></f>
-			<haxe_doc>* value of vector with mirrored x coordinate, recounted to length equal 1</haxe_doc>
-		</valueOneMx>
-		<valueOneMy public="1" set="method" line="215">
-			<f a=""><c path="Array"><x path="Float"/></c></f>
-			<haxe_doc>* value of vector with mirrored y coordinate, recounted to length equal 1</haxe_doc>
-		</valueOneMy>
-		<valueOneMz public="1" set="method" line="222">
-			<f a=""><c path="Array"><x path="Float"/></c></f>
-			<haxe_doc>* value of vector with mirrored z coordinate, recounted to length equal 1</haxe_doc>
-		</valueOneMz>
-		<valueOneMxy public="1" set="method" line="229">
-			<f a=""><c path="Array"><x path="Float"/></c></f>
-			<haxe_doc>* value of vector with mirrored x y coordinates, recounted to length equal 1</haxe_doc>
-		</valueOneMxy>
-		<valueOneMxz public="1" set="method" line="236">
-			<f a=""><c path="Array"><x path="Float"/></c></f>
-			<haxe_doc>* value of vector with mirrored x z coordinates, recounted to length equal 1</haxe_doc>
-		</valueOneMxz>
-		<valueOneMyz public="1" set="method" line="243">
-			<f a=""><c path="Array"><x path="Float"/></c></f>
-			<haxe_doc>* value of vector with mirrored y z coordinates, recounted to length equal 1</haxe_doc>
-		</valueOneMyz>
-		<vec3DM public="1" set="method" line="251">
+		<fromOne public="1" set="method" line="158">
 			<f a=""><c path="geometryxd.Vec3D"/></f>
-			<haxe_doc>* new 3D vector object with mirrored coordinates. if `value()` = `[1,2,3]` return vec3DM().value() = `[-1,-2,-3]`</haxe_doc>
-		</vec3DM>
-		<vec3DMx public="1" set="method" line="258">
-			<f a=""><c path="geometryxd.Vec3D"/></f>
-			<haxe_doc>* new 3D vector object with mirrored x coordinate. if `value()` = `[1,2,3]` return vec3DM().value() = `[-1,2,3]`</haxe_doc>
-		</vec3DMx>
-		<vec3DMy public="1" set="method" line="265">
-			<f a=""><c path="geometryxd.Vec3D"/></f>
-			<haxe_doc>* new 3D vector object with mirrored y coordinate. if `value()` = `[1,2,3]` return vec3DM().value() = `[1,-2,3]`</haxe_doc>
-		</vec3DMy>
-		<vec3DMz public="1" set="method" line="272">
-			<f a=""><c path="geometryxd.Vec3D"/></f>
-			<haxe_doc>* new 3D vector object with mirrored z coordinate. if `value()` = `[1,2,3]` return vec3DM().value() = `[1,2,-3]`</haxe_doc>
-		</vec3DMz>
-		<vec3DMxy public="1" set="method" line="279">
-			<f a=""><c path="geometryxd.Vec3D"/></f>
-			<haxe_doc>* new 3D vector object with mirrored x y coordinates. if `value()` = `[1,2,3]` return vec3DM().value() = `[-1,-2,3]`</haxe_doc>
-		</vec3DMxy>
-		<vec3DMxz public="1" set="method" line="286">
-			<f a=""><c path="geometryxd.Vec3D"/></f>
-			<haxe_doc>* new 3D vector object with mirrored x z coordinates. if `value()` = `[1,2,3]` return vec3DM().value() = `[-1,2,-3]`</haxe_doc>
-		</vec3DMxz>
-		<vec3DMyz public="1" set="method" line="293">
-			<f a=""><c path="geometryxd.Vec3D"/></f>
-			<haxe_doc>* new 3D vector object with mirrored y z coordinates. if `value()` = `[1,2,3]` return vec3DM().value() = `[1,-2,-3]`</haxe_doc>
-		</vec3DMyz>
-		<vec3Done public="1" set="method" line="301">
-			<f a=""><c path="geometryxd.Vec3D"/></f>
-			<haxe_doc>* new 3D vector object, recounted to length equal 1</haxe_doc>
-		</vec3Done>
-		<vec3DoneM public="1" set="method" line="308">
-			<f a=""><c path="geometryxd.Vec3D"/></f>
-			<haxe_doc>* new 3D vector object, with mirrored coordinates, recounted to length equal 1</haxe_doc>
-		</vec3DoneM>
-		<vec3DoneMx public="1" set="method" line="315">
-			<f a=""><c path="geometryxd.Vec3D"/></f>
-			<haxe_doc>* new 3D vector object, with mirrored x coordinate, recounted to length equal 1</haxe_doc>
-		</vec3DoneMx>
-		<vec3DoneMy public="1" set="method" line="322">
-			<f a=""><c path="geometryxd.Vec3D"/></f>
-			<haxe_doc>* new 3D vector object, with mirrored y coordinate, recounted to length equal 1</haxe_doc>
-		</vec3DoneMy>
-		<vec3DoneMz public="1" set="method" line="329">
-			<f a=""><c path="geometryxd.Vec3D"/></f>
-			<haxe_doc>* new 3D vector object, with mirrored z coordinate, recounted to length equal 1</haxe_doc>
-		</vec3DoneMz>
-		<vec3DoneMxy public="1" set="method" line="336">
-			<f a=""><c path="geometryxd.Vec3D"/></f>
-			<haxe_doc>* new 3D vector object, with mirrored x y coordinates, recounted to length equal 1</haxe_doc>
-		</vec3DoneMxy>
-		<vec3DoneMxz public="1" set="method" line="343">
-			<f a=""><c path="geometryxd.Vec3D"/></f>
-			<haxe_doc>* new 3D vector object, with mirrored x z coordinates, recounted to length equal 1</haxe_doc>
-		</vec3DoneMxz>
-		<vec3DoneMyz public="1" set="method" line="350">
-			<f a=""><c path="geometryxd.Vec3D"/></f>
-			<haxe_doc>* new 3D vector object, with mirrored y z coordinates, recounted to length equal 1</haxe_doc>
-		</vec3DoneMyz>
-		<copy public="1" set="method" line="358">
+			<haxe_doc>* new 3D vector object, from data recounted to length equal 1</haxe_doc>
+		</fromOne>
+		<rotate public="1" set="method" line="168">
+			<f a="axis:angle">
+				<c path="geometryxd.Vec3D"/>
+				<c path="geometryxd.Angle"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>* rotate vector around axis to angle
+     * @param axis rotation axis
+     * @param angle rotation angle</haxe_doc>
+		</rotate>
+		<scale public="1" set="method" line="176">
+			<f a="sxyz">
+				<c path="Array"><x path="Float"/></c>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>* scale vector coordinates, relative to the `[0,0,0]`.
+     * @param sxyz scales for axes `[sx,sy,sz]`</haxe_doc>
+		</scale>
+		<copy public="1" set="method" line="184">
 			<f a=""><c path="geometryxd.Vec3D"/></f>
 			<haxe_doc>* new 3D vector object with same coordinates. if `value()` = `[1,2,3]` return vec3DM().value() = `[1,2,3]`</haxe_doc>
 		</copy>
-		<new public="1" set="method" line="30">
-			<f a="dot3Db:?dot3Da">
+		<new public="1" set="method" line="31">
+			<f a="dot3Db:?dot3Da:?xyz">
 				<c path="geometryxd.Dot3D"/>
 				<c path="geometryxd.Dot3D"/>
+				<c path="Array"><x path="Float"/></c>
 				<x path="Void"/>
 			</f>
 			<haxe_doc>* new 3D vector object
      * @param dot3Db end 3D dot of vector
-     * @param dot3Da start 3D dot of vector. Default will be `[0,0,0]`</haxe_doc>
+     * @param dot3Da start 3D dot of vector. Default will be `[0,0,0]`
+     * @param xyz vector coordinates array. if not null, then used, and dot3Db, dot3Da will ignored. Wrong sized array will extended using zero's.</haxe_doc>
 		</new>
 		<haxe_doc>* 3D vector object</haxe_doc>
 		<meta><m n=":directlyUsed"/></meta>
