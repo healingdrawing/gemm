@@ -47,7 +47,7 @@ export class GEMM {
      vecXDnorm(vecXD:Array<number>){
       let sum = 0;
       let len = vecXD.length
-      for (let i=0;i<len;i++) sum += i*i
+      for (let i=0;i<len;i++) sum += vecXD[i]**2
       return Math.sqrt(sum);
   }
 
@@ -536,7 +536,7 @@ export class GEMM {
     ){
     const pabc = [plane3D[0], plane3D[1], plane3D[2]]
     const vl = this.vecXDnorm(pabc)
-    return ( dot3D.length !== 3 || plane3D.length !== 4 || !vl )?[]:
+    return ( dot3D.length !== 3 || plane3D.length !== 4 || !vl )?0:
     Math.abs( this.multisum_xF([pabc, dot3D]) + plane3D[3] ) / vl;
   }
 
