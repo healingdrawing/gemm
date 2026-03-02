@@ -381,8 +381,8 @@ export class GEMM {
     const lena = a[0].length
     if ( !alen || !this.same_size_F(a)) return rez
     else if (alen > 1){
-      const mf:number[] = []
       for(let i=0;i<lena;i++){
+        const mf:number[] = []
         for(let ai=0; ai < alen ;ai++) mf.push(a[ai][i])
         rez.push(this.multiply_F(mf))
       }
