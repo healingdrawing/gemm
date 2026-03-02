@@ -1,0 +1,84 @@
+// @ts-nocheck
+import { test, expect, describe } from "bun:test";
+import { GEMM } from "../gemm";
+const gemm = new GEMM();
+
+/**
+ * Test suite for vecXDnorm function using Bun's built-in test runner
+ * Tests vector length calculation (magnitude/norm) in n-dimensional space
+ */
+
+describe("vecXDnorm", () => {
+  describe("Basic norm calculation", () => {
+    test("should calculate norm for 2D vector [2,3]", () => {
+      const vec = [2, 3];
+      const result = gemm.vecXDnorm(vec);
+      expect(result).toBeCloseTo(Math.sqrt(13)); // sqrt(4 + 9)
+    });
+
+    test("should calculate norm for 3D vector [1,2,2]", () => {
+      const vec = [1, 2, 2];
+      const result = gemm.vecXDnorm(vec);
+      expect(result).toBeCloseTo(3); // sqrt(1 + 4 + 4)
+    });
+
+    test("should calculate norm for 4D vector [1,1,1,1]", () => {
+      const vec = [1, 1, 1, 1];
+      const result = gemm.vecXDnorm(vec);
+      expect(result).toBeCloseTo(2); // sqrt(1 + 1 + 1 + 1)
+    });
+
+    test("should calculate norm for 3-4-5 Pythagorean triple", () => {
+      const vec = [3, 4];
+      const result = gemm.vecXDnorm(vec);
+      expect(result).toBeCloseTo(5); // sqrt(9 + 16)
+    });
+
+    test("should calculate norm for 5-12-13 Pythagorean triple", () => {
+      const vec = [5, 12];
+      const result = gemm.vecXDnorm(vec);
+      expect(result).toBeCloseTo(13); // sqrt(25 + 144)
+    });
+  });
+
+  describe("Zero and unit vectors", () => {
+    test("should return 0 for zero vector [0,0]", () => {
+      const vec = [0, 0];
+      const result = gemm.vecXDnorm(vec);
+      expect(result).toBe(0);
+    });
+
+    test("should return 0 for zero vector in 3D [0,0,0]", () => {
+      const vec = [0, 0, 0];
+      const result = gemm.vecXDnorm(vec);
+      expect(result).toBe(0);
+    });
+
+    test("should return 1 for unit vector [1,0]", () => {
+      const vec = [1, 0];
+      const result = gemm.vecXDnorm(vec);
+      expect(result).toBe(1);
+    });
+
+    test("should return 1 for unit vector [0,1]", () => {
+      const vec = [0, 1];
+      const result = gemm.vecXDnorm(vec);
+      expect(result).toBe(1);
+    });
+
+    test("should return 1 for unit vector [0,0,1]", () => {
+      const vec = [0, 0, 1];
+      const result = gemm.vecXDnorm(vec);
+      expect(result).toBe(1);
+    });
+
+    test("should return 1 for normalized vector [1/sqrt(2), 1/sqrt(2)]", () => {
+      const vec = [1 / Math.sqrt(2), 1 / Math.sqrt(2)];
+      const result = gemm.vecXDnorm(vec);
+      expect(result).toBeCloseTo(1);
+    });
+  });
+
+});
+
+in 3Dplane creation functions the incoming vectors for plane normal/axes are normalized to ONE internally inside plane3D_dot3Dnormal() function

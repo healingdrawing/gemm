@@ -1,4 +1,4 @@
-// @ts-nocheck
+// -@ts-nocheck
 // gemm.ts
 export class GEMM {
 
@@ -13,7 +13,7 @@ export class GEMM {
             for (let i = 1; i<al;i++){
                 if (size !== a[i].length) return false
             }
-        } else {return false}
+        } else if (!al) return false;
         return true;
     }
 
@@ -140,7 +140,9 @@ export class GEMM {
                   if (step[j] !== base[j]) return false
               }
           }
-      }return true;
+          return true;
+      }
+      return false;
   }
 
   /**
@@ -166,7 +168,7 @@ export class GEMM {
     const lv = this.vecXDnorm(vecXD);
     if (!lv) return vecXD
     const len = vecXD.length
-    for (let i=0;i<len;i++) rez.push(i/lv)
+    for (let i=0;i<len;i++) rez.push(vecXD[i]/lv)
     return rez
   }
 
@@ -310,41 +312,43 @@ export class GEMM {
      @param vec3Dplane - vector 3D, which is plane 3D normal vector
      @param dplane - displacement of plane 3D from [0,0,0]. default 0 ([0,0,0] dot belongs to the plane)
     */
-  dot3Dline3D_x_plane3D(
-    dot3D0:Array<number>,
-    vec3D0:Array<number>,
-    vec3Dplane:Array<number>,
-    dplane:number = 0
-  ){
-    let rez:Array<number> = [];
-    const ldot = dot3D0.length;
-    const lvec = vec3D0.length;
-    const lplane = vec3Dplane.length;
-    if (ldot === 3 && ldot === lvec && lvec === lplane){
-        const checkup = - (
-            vec3Dplane[0] * dot3D0[0] +
-            vec3Dplane[1] * dot3D0[1] +
-            vec3Dplane[2] * dot3D0[2] +
-            dplane
-        );
-        const checkdn = (
-            vec3Dplane[0] * vec3D0[0] +
-            vec3Dplane[1] * vec3D0[1] +
-            vec3Dplane[2] * vec3D0[2]
-        );
+dot3Dline3D_x_plane3D(
+  dot3D0:Array<number>,
+  vec3D0:Array<number>,
+  vec3Dplane:Array<number>,
+  dplane:number = 0
+){
+  let rez:Array<number> = [];
+  const ldot = dot3D0.length;
+  const lvec = vec3D0.length;
+  const lplane = vec3Dplane.length;
 
-        if (checkdn === 0){return rez;}
-        else if (checkup === 0){return dot3D0;}
-        else {
-            var t = checkup / checkdn;
-            rez = [
-              dot3D0[0] + vec3D0[0] * t,
-              dot3D0[1] + vec3D0[1] * t,
-              dot3D0[2] + vec3D0[2] * t,
-            ]
-            
-        }
-    }
+  if (ldot !== 3 || lvec !== 3 || lplane !== 3 ) return rez
+  
+  const checkup = - (
+    vec3Dplane[0] * dot3D0[0]
+    + vec3Dplane[1] * dot3D0[1]
+    + vec3Dplane[2] * dot3D0[2]
+    + dplane
+  );
+  const checkdn = (
+    vec3Dplane[0] * vec3D0[0]
+    + vec3Dplane[1] * vec3D0[1]
+    + vec3Dplane[2] * vec3D0[2]
+  );
+
+  if (checkdn === 0) return rez
+  else if (checkup === 0) return dot3D0
+  else {
+      var t = checkup / checkdn;
+      rez = [
+        dot3D0[0] + vec3D0[0] * t,
+        dot3D0[1] + vec3D0[1] * t,
+        dot3D0[2] + vec3D0[2] * t,
+      ]
+      
+  }
+  
     return rez;
   }
 
@@ -379,9 +383,9 @@ export class GEMM {
   multiply_xF(a:Array<Array<number>>){
     var rez:Array<number> = [];
     var alen = a.length;
-    const lena = a[0].length
     if ( !alen || !this.same_size_F(a)) return rez
     else if (alen > 1){
+      const lena = a[0].length
       for(let i=0;i<lena;i++){
         const mf:number[] = []
         for(let ai=0; ai < alen ;ai++) mf.push(a[ai][i])
@@ -451,16 +455,17 @@ export class GEMM {
      Where (a, b, c) is plane 3D normal vector, and (d) is displacement plane from (0, 0, 0)
      @param dot3D - dot 3D
      @param vec3D - plane 3D normal vector 3D
-    **/
+    */
   plane3D_dot3Dnormal(
     dot3D:Array<number>,
     vec3D:Array<number>
     ):number[]
   {
+    const nvec3D = this.vecXDone(vec3D)
       return (dot3D.length !== 3
-          || vec3D.length !== 3
-          || this.vecXDnorm(vec3D) === 0) ? []:
-      [vec3D[0], vec3D[1], vec3D[2], - this.multisum_xF([vec3D, dot3D])];
+          || nvec3D.length !== 3
+          || this.vecXDnorm(nvec3D) === 0) ? []:
+      [nvec3D[0], nvec3D[1], nvec3D[2], - this.multisum_xF([nvec3D, dot3D])];
   }
 
   /**
