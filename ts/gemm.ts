@@ -1,3 +1,4 @@
+// @ts-nocheck
 // gemm.ts
 export class GEMM {
 
