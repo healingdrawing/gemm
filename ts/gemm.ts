@@ -384,8 +384,8 @@ export class GEMM {
       const mf:number[] = []
       for(let i=0;i<lena;i++){
         for(let ai=0; ai < alen ;ai++) mf.push(a[ai][i])
+        rez.push(this.multiply_F(mf))
       }
-      rez.push(this.multiply_F(mf))
     }
     return rez
   }
