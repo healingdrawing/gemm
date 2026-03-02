@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { test, expect, describe } from "bun:test";
-import { GEMM } from "./gemm";
+import { GEMM } from "../gemm";
 const gemm = new GEMM()
 /**
  * Test suite for distance_dot3D_plane3D function using Bun's built-in test runner
