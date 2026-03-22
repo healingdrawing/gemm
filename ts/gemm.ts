@@ -546,6 +546,150 @@ dot3Dline3D_x_plane3D(
     Math.abs( this.multisum_xF([pabc, dot3D]) + plane3D[3] ) / vl;
   }
 
-  /* todo consider 3D specific below, without arrays, but only with numbers */
+  /* todo consider 3D specific below, for performant calcs */
 
+  /**
+   * rotate v around naxis to angle. Mutates v on place. returns nothing
+   * @param v 3d vector to rotate around naxis. Will be mutated
+   * @param naxis normalized (length ≈ 1) axis [nax,nay,naz] of rotation(3d vector)
+   * @param angle in radians to rotate v
+   */
+  v3rotmut(
+    v:     Float32Array,
+    naxis:  Float32Array,
+    angle: number
+  ) {
+
+    const nax = naxis[0];
+    const nay = naxis[1];
+    const naz = naxis[2];
+
+    const vx = v[0];
+    const vy = v[1];
+    const vz = v[2];
+
+    const cos = Math.cos(angle);
+    const sin = Math.sin(angle);
+    const t   = 1 - cos;
+
+    // K·V
+    const dot = nax*vx + nay*vy + naz*vz;
+
+    // // K × V
+    // const cx = nay*vz - naz*vy;
+    // const cy = naz*vx - nax*vz;
+    // const cz = nax*vy - nay*vx;
+
+    // // v' = cos·v + sin·(k×v) + t·k·(k·v)
+    // v[0] = vx * cos + cx * sin + nax * dot * t;
+    // v[1] = vy * cos + cy * sin + nay * dot * t;
+    // v[2] = vz * cos + cz * sin + naz * dot * t;
+
+    v[0] = vx * cos + (nay*vz - naz*vy) * sin + nax * dot * t;
+    v[1] = vy * cos + (naz*vx - nax*vz) * sin + nay * dot * t;
+    v[2] = vz * cos + (nax*vy - nay*vx) * sin + naz * dot * t;
+
+  }
+
+  /**
+   * rotate v around naxis  to angle. Returns new array
+   * @param v 3d vector to rotate around axis
+   * @param naxis normalized axis (length ≈ 1) of rotation(3d vector)
+   * @param angle in radians to rotate v
+   * @returns rotated 3d vector
+   */
+  v3rotnew(
+    v:     Float32Array,
+    naxis:  Float32Array,
+    angle: number
+  ): Float32Array {
+    const out = new Float32Array(3);
+    out.set(v);
+    this.v3rotmut(out, naxis, angle);
+    return out
+  }
+
+  /**
+   * safe rotate v around naxis to angle. Mutates v on place. returns nothing. Implement checks include normalization before calcs. In case of any checks fail, silently do nothing with v.
+   * @param v 3d vector to rotate around naxis. Will be mutated
+   * @param naxis normalized (length ≈ 1) axis [nax,nay,naz] of rotation(3d vector)
+   * @param angle in radians to rotate v
+   */
+  v3rotmut_safe(
+    v:     Float32Array,
+    naxis:  Float32Array,
+    angle: number
+  ) {
+    /* checks */
+    if( this.v3_ok(v) && this.v3_ok(naxis) && isFinite(angle) ){
+      this.v3one(naxis)
+      this.v3rotmut(v, naxis, angle)
+    }else{
+      // console.log("CHECK FAILED v3rotmut_safe", v, naxis, angle )
+      // console.log("this.v3_ok(v)", this.v3_ok(v), v)
+      // console.log("this.v3_ok(naxis)", this.v3_ok(naxis), naxis)
+      return
+    }
+  }
+
+  /**
+   * rotate v around naxis to angle. Returns new array. Implement checks (include normalization) before calcs. In case of any checks fail, silently returns original v.
+   * @param v 3d vector to rotate around axis
+   * @param naxis normalized axis (length ≈ 1) of rotation(3d vector)
+   * @param angle in radians to rotate v
+   * @returns rotated 3d vector
+   */
+  v3rotnew_safe(
+    v:     Float32Array,
+    naxis:  Float32Array,
+    angle: number
+  ): Float32Array {
+    const out = new Float32Array(v.length);
+    out.set(v);
+    this.v3rotmut_safe(out, naxis, angle);
+    return out
+  }
+
+  /**
+    return vector length (other names "norm" or "magnitude"). NaN raise 0 result.
+    For [1,2,3] return Math.sqrt((1 * 1) + (2 * 2) + (3 * 3))
+    @param v3 - incoming 3d vector, must be sanitized before call
+    @returns number
+  */
+  v3norm(v3:Float32Array){ return Math.sqrt(v3[0]*v3[0] + v3[1]*v3[1] + v3[2]*v3[2]) || 0 }
+
+  /**
+    return vector squared length (similar as "v3norm" or "magnitude" but without Math.sqrt).  NaN raise 0 result.
+    For [1,2,3] return (1 * 1) + (2 * 2) + (3 * 3). To fast check vector is non zero
+    @param v3 - incoming 3d vector
+    @returns number
+  */
+  v3norm2(v3:Float32Array){ return v3[0]*v3[0] + v3[1]*v3[1] + v3[2]*v3[2] || 0 }
+
+  /**
+   * check if 3d vector is correct (finite AND non-zero)
+   * @param v3 3d vector
+   * @returns true if all components are finite and vector is non-zero
+   */
+  v3_ok(v3: Float32Array): boolean {
+    if (v3.length !== 3) return false
+    const x = v3[0]
+    const y = v3[1]
+    const z = v3[2]
+    const mag2 = x*x+y*y+z*z
+    return mag2 !== 0 && isFinite(mag2)    
+  }
+
+  /**
+   * mutate v3 to length equal 1. in Case of any fail, silently do nothing with v3
+   * @param v3 - sanitized incoming 3d vector
+   */
+  v3one(v3:Float32Array){
+    const lv = this.v3norm(v3);
+    if (!lv) return
+    v3[0] /= lv
+    v3[1] /= lv
+    v3[2] /= lv
+  }
+  
 }
