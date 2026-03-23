@@ -691,5 +691,25 @@ dot3Dline3D_x_plane3D(
     v3[1] /= lv
     v3[2] /= lv
   }
+
+  /**
+   mutate d3, as result of offset d3 along v3 to t
+    @param d3 - dot [x,y,z]
+    @param v3 - vector [vx,vy,vz]
+    @param t - distance
+  **/
+  d3offset_mut(
+    d3:Float32Array,
+    v3:Float32Array,
+    t:number
+  ){
+    if (!t || d3.length !== 3 || v3.length !== 3) return
+    const mag = this.v3norm(v3);
+    if (!mag) return
+    t /= mag
+    d3[0] += v3[0] * t
+    d3[1] += v3[1] * t
+    d3[2] += v3[2] * t
+  }
   
 }
