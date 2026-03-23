@@ -17,14 +17,14 @@ describe("v3one", () => {
       expect(vec[0]).toBeCloseTo(0.6);
       expect(vec[1]).toBeCloseTo(0.8);
       expect(vec[2]).toBeCloseTo(0);
-      expect(gemm.v3norm(vec)).toBeCloseTo(1);
+      expect(gemm.v3mag(vec)).toBeCloseTo(1);
     });
 
     test("should normalize [1,2,3] to unit vector", () => {
       const vec = new Float32Array([1, 2, 3]);
-      const originalNorm = gemm.v3norm(vec);
+      const originalNorm = gemm.v3mag(vec);
       gemm.v3one(vec);
-      const newNorm = gemm.v3norm(vec);
+      const newNorm = gemm.v3mag(vec);
       expect(newNorm).toBeCloseTo(1);
       expect(vec[0]).toBeCloseTo(1 / originalNorm);
       expect(vec[1]).toBeCloseTo(2 / originalNorm);
@@ -37,33 +37,33 @@ describe("v3one", () => {
       expect(vec[0]).toBeCloseTo(5 / 13);
       expect(vec[1]).toBeCloseTo(12 / 13);
       expect(vec[2]).toBeCloseTo(0);
-      expect(gemm.v3norm(vec)).toBeCloseTo(1);
+      expect(gemm.v3mag(vec)).toBeCloseTo(1);
     });
 
     test("should normalize [-1,-2,-3] to unit vector", () => {
       const vec = new Float32Array([-1, -2, -3]);
-      const originalNorm = gemm.v3norm(vec);
+      const originalNorm = gemm.v3mag(vec);
       gemm.v3one(vec);
-      const newNorm = gemm.v3norm(vec);
+      const newNorm = gemm.v3mag(vec);
       expect(newNorm).toBeCloseTo(1);
     });
 
     test("should normalize [0.1,0.2,0.3] to unit vector", () => {
       const vec = new Float32Array([0.1, 0.2, 0.3]);
       gemm.v3one(vec);
-      expect(gemm.v3norm(vec)).toBeCloseTo(1);
+      expect(gemm.v3mag(vec)).toBeCloseTo(1);
     });
 
     test("should normalize large values [100,200,300]", () => {
       const vec = new Float32Array([100, 200, 300]);
       gemm.v3one(vec);
-      expect(gemm.v3norm(vec)).toBeCloseTo(1);
+      expect(gemm.v3mag(vec)).toBeCloseTo(1);
     });
 
     test("should normalize very small values [0.00001,0.00001,0.00001]", () => {
       const vec = new Float32Array([0.00001, 0.00001, 0.00001]);
       gemm.v3one(vec);
-      expect(gemm.v3norm(vec)).toBeCloseTo(1);
+      expect(gemm.v3mag(vec)).toBeCloseTo(1);
     });
 
     test("should normalize [1,0,0] to [1,0,0]", () => {
@@ -72,7 +72,7 @@ describe("v3one", () => {
       expect(vec[0]).toBeCloseTo(1);
       expect(vec[1]).toBeCloseTo(0);
       expect(vec[2]).toBeCloseTo(0);
-      expect(gemm.v3norm(vec)).toBeCloseTo(1);
+      expect(gemm.v3mag(vec)).toBeCloseTo(1);
     });
 
     test("should normalize [0,1,0] to [0,1,0]", () => {
@@ -81,7 +81,7 @@ describe("v3one", () => {
       expect(vec[0]).toBeCloseTo(0);
       expect(vec[1]).toBeCloseTo(1);
       expect(vec[2]).toBeCloseTo(0);
-      expect(gemm.v3norm(vec)).toBeCloseTo(1);
+      expect(gemm.v3mag(vec)).toBeCloseTo(1);
     });
 
     test("should normalize [0,0,1] to [0,0,1]", () => {
@@ -90,13 +90,13 @@ describe("v3one", () => {
       expect(vec[0]).toBeCloseTo(0);
       expect(vec[1]).toBeCloseTo(0);
       expect(vec[2]).toBeCloseTo(1);
-      expect(gemm.v3norm(vec)).toBeCloseTo(1);
+      expect(gemm.v3mag(vec)).toBeCloseTo(1);
     });
 
     test("should normalize mixed signs [-3,4,0]", () => {
       const vec = new Float32Array([-3, 4, 0]);
       gemm.v3one(vec);
-      expect(gemm.v3norm(vec)).toBeCloseTo(1);
+      expect(gemm.v3mag(vec)).toBeCloseTo(1);
       expect(vec[0]).toBeCloseTo(-0.6);
       expect(vec[1]).toBeCloseTo(0.8);
       expect(vec[2]).toBeCloseTo(0);
@@ -121,7 +121,7 @@ describe("v3one", () => {
       expect(vec[2]).toBe(0);
     });
 
-    test("should not modify when v3norm returns 0", () => {
+    test("should not modify when v3mag returns 0", () => {
       const vec = new Float32Array([0, 0, 0]);
       const backup = new Float32Array(vec);
       gemm.v3one(vec);
@@ -163,7 +163,7 @@ describe("v3one", () => {
       expect(Number.isNaN(vec[2])).toBe(true);
     });
 
-    test("should not modify [NaN,1,1] (v3norm returns 0 due to NaN)", () => {
+    test("should not modify [NaN,1,1] (v3mag returns 0 due to NaN)", () => {
       const vec = new Float32Array([NaN, 1, 1]);
       const backup = [vec[0], vec[1], vec[2]];
       gemm.v3one(vec);
@@ -250,13 +250,13 @@ describe("v3one", () => {
     test("should handle already normalized vector [1,0,0]", () => {
       const vec = new Float32Array([1, 0, 0]);
       gemm.v3one(vec);
-      expect(gemm.v3norm(vec)).toBeCloseTo(1);
+      expect(gemm.v3mag(vec)).toBeCloseTo(1);
     });
 
     test("should handle already normalized vector [0,1,0]", () => {
       const vec = new Float32Array([0, 1, 0]);
       gemm.v3one(vec);
-      expect(gemm.v3norm(vec)).toBeCloseTo(1);
+      expect(gemm.v3mag(vec)).toBeCloseTo(1);
     });
   });
 
@@ -264,7 +264,7 @@ describe("v3one", () => {
     test("should normalize vector with very different magnitudes [1000,0.001,0]", () => {
       const vec = new Float32Array([1000, 0.001, 0]);
       gemm.v3one(vec);
-      expect(gemm.v3norm(vec)).toBeCloseTo(1);
+      expect(gemm.v3mag(vec)).toBeCloseTo(1);
     });
 
     test("should maintain sign after normalization", () => {
@@ -287,7 +287,7 @@ describe("v3one", () => {
     test("should normalize [1e-20, 1e-20, 1e-20] to unit vector", () => {
       const vec = new Float32Array([1e-20, 1e-20, 1e-20]);
       gemm.v3one(vec);
-      expect(gemm.v3norm(vec)).toBeCloseTo(1);
+      expect(gemm.v3mag(vec)).toBeCloseTo(1);
     });
   });
 

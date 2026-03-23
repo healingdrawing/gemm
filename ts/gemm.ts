@@ -656,7 +656,7 @@ dot3Dline3D_x_plane3D(
     @param v3 - incoming 3d vector, must be sanitized before call
     @returns number
   */
-  v3norm(v3:Float32Array){ return Math.sqrt(v3[0]*v3[0] + v3[1]*v3[1] + v3[2]*v3[2]) || 0 }
+  v3mag(v3:Float32Array){ return Math.sqrt(v3[0]*v3[0] + v3[1]*v3[1] + v3[2]*v3[2]) || 0 }
 
   /**
     return vector squared length (similar as "v3norm" or "magnitude" but without Math.sqrt).  NaN raise 0 result.
@@ -664,7 +664,7 @@ dot3Dline3D_x_plane3D(
     @param v3 - incoming 3d vector
     @returns number
   */
-  v3norm2(v3:Float32Array){ return v3[0]*v3[0] + v3[1]*v3[1] + v3[2]*v3[2] || 0 }
+  v3mag2(v3:Float32Array){ return v3[0]*v3[0] + v3[1]*v3[1] + v3[2]*v3[2] || 0 }
 
   /**
    * check if 3d vector is correct (finite AND non-zero)
@@ -685,15 +685,37 @@ dot3Dline3D_x_plane3D(
    * @param v3 - sanitized incoming 3d vector
    */
   v3one(v3:Float32Array){
-    const lv = this.v3norm(v3);
-    if (!lv) return
-    v3[0] /= lv
-    v3[1] /= lv
-    v3[2] /= lv
+    const lv = this.v3mag(v3);
+    if (lv){
+      v3[0] /= lv
+      v3[1] /= lv
+      v3[2] /= lv
+    }
   }
 
   /**
-   mutate d3, as result of offset d3 along v3 to t
+   check incomings, then mutate d3, as result of offset d3 along v3 to t
+    @param d3 - dot [x,y,z]
+    @param v3 - vector [vx,vy,vz]
+    @param t - distance
+  **/
+  d3offset_mut_safe(
+    d3:Float32Array,
+    v3:Float32Array,
+    t:number
+  ){
+    if (!t || d3.length !== 3 || v3.length !== 3) return
+    const mag = this.v3mag(v3);
+    if (!mag) return
+    t /= mag
+    d3[0] += v3[0] * t
+    d3[1] += v3[1] * t
+    d3[2] += v3[2] * t
+  }
+
+  /**
+    INCOMINGS MUST BE SANITIZED.
+    mutate d3, as result of offset d3 along v3 to t
     @param d3 - dot [x,y,z]
     @param v3 - vector [vx,vy,vz]
     @param t - distance
@@ -703,13 +725,77 @@ dot3Dline3D_x_plane3D(
     v3:Float32Array,
     t:number
   ){
-    if (!t || d3.length !== 3 || v3.length !== 3) return
-    const mag = this.v3norm(v3);
-    if (!mag) return
+    const mag = this.v3mag(v3);
+    if (!t || !mag) return
     t /= mag
     d3[0] += v3[0] * t
     d3[1] += v3[1] * t
     d3[2] += v3[2] * t
+  }
+
+  /**
+    check incomings, then fill v3n 3d vector, which is result of cross product of two vectors (normal vector of plane based on two vectors). 
+    Result vector placed so if you will see from end of result vector, then the rotating direction will be 
+    CCW from v3a to v3b.
+    Also internally v3n is normalized using v3one. To manage some edge case overflows.
+    @param v3a - 3d vector direction from [ax, ay, az]
+    @param v3b - 3d vector direction to [bx, by, bz]
+    @param v3n - 3d vector [nx, ny, nz] (empty/mutable result container to fill)
+  */
+  v3normal_safe(
+    v3a:Float32Array,
+    v3b:Float32Array,
+    v3n:Float32Array,
+  ){
+    if (this.v3_ok(v3a) && this.v3_ok(v3b)){
+      v3n[0] = v3a[1] * v3b[2] - v3a[2] * v3b[1];
+      v3n[1] = -v3a[0] * v3b[2] + v3a[2] * v3b[0];
+      v3n[2] = v3a[0] * v3b[1] - v3a[1] * v3b[0];
+      this.v3one(v3n)
+    }
+  }
+
+  /**
+    INCOMINGS MUST BE SANITIZED.
+    Fill v3n 3d vector, which is result of cross product of two vectors (normal vector of plane based on two vectors). 
+    Result vector placed so if you will see from end of result vector, then the rotating direction will be 
+    CCW from v3a to v3b.
+    Also internally v3n is normalized using v3one. To manage some edge case overflows.
+    @param v3a - 3d vector direction from [ax, ay, az]
+    @param v3b - 3d vector direction to [bx, by, bz]
+    @param v3n - 3d vector [nx, ny, nz] (empty/mutable result container to fill)
+  */
+  v3normal(
+    v3a:Float32Array,
+    v3b:Float32Array,
+    v3n:Float32Array,
+  ){
+    v3n[0] = v3a[1] * v3b[2] - v3a[2] * v3b[1];
+    v3n[1] = -v3a[0] * v3b[2] + v3a[2] * v3b[0];
+    v3n[2] = v3a[0] * v3b[1] - v3a[1] * v3b[0];
+    this.v3one(v3n)
+  }
+
+  /**
+    INCOMINGS MUST BE SANITIZED. At least 25% SLOWER than v3normal(), since returns new Float32Array.
+    Fill v3n 3d vector, which is result of cross product of two vectors (normal vector of plane based on two vectors). 
+    Result vector placed so if you will see from end of result vector, then the rotating direction will be 
+    CCW from v3a to v3b.
+    Also internally v3n is normalized using v3one. To manage some edge case overflows.
+    @param v3a - 3d vector direction from [ax, ay, az]
+    @param v3b - 3d vector direction to [bx, by, bz]
+    @returns v3n - 3d vector [nx, ny, nz] normal vector to v3a and v3b
+  */
+  v3normal_new(
+    v3a:Float32Array,
+    v3b:Float32Array
+  ){
+    const v3n = new Float32Array(3)
+    v3n[0] = v3a[1] * v3b[2] - v3a[2] * v3b[1];
+    v3n[1] = -v3a[0] * v3b[2] + v3a[2] * v3b[0];
+    v3n[2] = v3a[0] * v3b[1] - v3a[1] * v3b[0];
+    this.v3one(v3n)
+    return v3n
   }
   
 }
