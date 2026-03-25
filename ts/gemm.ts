@@ -958,4 +958,129 @@ dot3Dline3D_x_plane3D(
     return Math.abs(p3a*d3x + p3b*d3y + p3c*d3z + p3d) / Math.sqrt(p3a*p3a + p3b*p3b + p3c*p3c);
   }
 
+  /**
+    INCOMINGS MUST BE SANITIZED. The FASTEST version.
+    mutates 3d plane, determined by 3d dot and 3d vector.
+    Where [a, b, c] is 3d plane normal vector, and (d) is plane displacement plane from (0, 0, 0) along [a, b, c]
+    @param d3 3d dot on result 3d plane
+    @param v3 normal vector of result 3d plane
+    @param p3 container to resulted 3d plane [a,b,c,d] . d - displacement of plane 3D from [0,0,0] along plane normal vector [a,b,c]. Will be filled
+  */
+  p3_d3v3_mut(
+    d3:Float32Array,
+    v3:Float32Array,
+    p3:Float32Array
+  ){
+    const d3x = d3[0], d3y = d3[1], d3z = d3[2];
+    let v3x = v3[0], v3y = v3[1], v3z = v3[2];
+    
+    /* hardcoded this.v3one(v3) */
+    const lv = Math.sqrt(v3x*v3x+v3y*v3y+v3z*v3z)
+    v3x /= lv
+    v3y /= lv
+    v3z /= lv
+
+    p3[0] = v3x
+    p3[1] = v3y
+    p3[2] = v3z
+    p3[3] = -(v3x*d3x+v3y*d3y+v3z*d3z)
+  }
+
+  /**
+    INCOMINGS MUST BE SANITIZED. Plane normal vector from v3a to v3b CCW.
+    mutates 3d plane, determined by 3d dot and two 3d vectors.
+    @param d3 3d dot on result 3d plane
+    @param v3a 3d vector to calculate plane normal vector FROM (CCW)
+    @param v3b 3d vector to calculate plane normal vector TO (CCW)
+    @param p3 container to resulted 3d plane [a,b,c,d] . d - displacement of plane 3D from [0,0,0] along plane normal vector [a,b,c]. Will be filled
+  */
+  p3_d3v3v3_mut(
+    d3:Float32Array,
+    v3a:Float32Array,
+    v3b:Float32Array,
+    p3:Float32Array
+  ){
+    const d3x = d3[0], d3y = d3[1], d3z = d3[2];
+    /* hardcoded this.v3normal(v3a,v3b) */
+    let v3x = v3a[1] * v3b[2] - v3a[2] * v3b[1];
+    let v3y = -v3a[0] * v3b[2] + v3a[2] * v3b[0];
+    let v3z = v3a[0] * v3b[1] - v3a[1] * v3b[0];
+    /* hardcoded this.v3one(v3) */
+    const lv = Math.sqrt(v3x*v3x+v3y*v3y+v3z*v3z)
+    v3x /= lv
+    v3y /= lv
+    v3z /= lv
+
+    p3[0] = v3x
+    p3[1] = v3y
+    p3[2] = v3z
+    p3[3] = -(v3x*d3x+v3y*d3y+v3z*d3z)
+  }
+
+  /**
+    INCOMINGS MUST BE SANITIZED. Wrapper of this.p3_d3v3 (with prebuilt normal vector from d3 to d3n).
+    mutates 3d plane, determined by two 3d dots.
+    @param d3 3d dot on result 3d plane
+    @param d3n 3d dot at the end of the normal of the result 3d plane
+    @param p3 container to resulted 3d plane [a,b,c,d] . d - displacement of plane 3D from [0,0,0] along plane normal vector [a,b,c]. Will be filled
+  */
+  p3_d3d3_mut(
+    d3:Float32Array,
+    d3n:Float32Array,
+    p3:Float32Array
+  ){
+    const d3x = d3[0], d3y = d3[1], d3z = d3[2];
+    let v3x = d3n[0] - d3x, v3y = d3n[1] - d3y, v3z = d3n[2] - d3z;
+    /* hardcoded this.v3one(v3) */
+    const lv = Math.sqrt(v3x*v3x+v3y*v3y+v3z*v3z)
+    v3x /= lv
+    v3y /= lv
+    v3z /= lv
+
+    p3[0] = v3x
+    p3[1] = v3y
+    p3[2] = v3z
+    p3[3] = -(v3x*d3x+v3y*d3y+v3z*d3z)
+  }
+
+  /**
+    INCOMINGS MUST BE SANITIZED.
+    mutates 3d plane, determined by 3d dot and 3d vector.
+    Where [a, b, c] is 3d plane normal vector, and (d) is plane displacement plane from (0, 0, 0) along [a, b, c]
+    @param d3 3d dot on result 3d plane(also start dot for plane normal and two vectors in plane)
+    @param d3a 3d dot on result 3d plane
+    @param d3b 3d dot on result 3d plane
+    @param p3 container to resulted 3d plane [a,b,c,d] . d - displacement of plane 3D from [0,0,0] along plane normal vector [a,b,c]. Will be filled
+  */
+  p3_d3d3d3_mut(
+    d3:Float32Array,
+    d3a:Float32Array,
+    d3b:Float32Array,
+    p3:Float32Array
+  ){
+    const d3x = d3[0]
+    const d3y = d3[1]
+    const d3z = d3[2]
+    const v3ax = d3a[0] - d3x
+    const v3ay = d3a[1] - d3y
+    const v3az = d3a[2] - d3z
+    const v3bx = d3b[0] - d3x
+    const v3by = d3b[1] - d3y
+    const v3bz = d3b[2] - d3z
+    /* hardcoded this.v3normal(v3a, v3b) */
+    let v3x = v3ay * v3bz - v3az * v3by;
+    let v3y = -v3ax * v3bz + v3az * v3bx;
+    let v3z = v3ax * v3by - v3ay * v3bx;
+    /* hardcoded this.v3one(v3n) */
+    const lv = Math.sqrt(v3x*v3x+v3y*v3y+v3z*v3z)
+    v3x /= lv
+    v3y /= lv
+    v3z /= lv
+
+    p3[0] = v3x
+    p3[1] = v3y
+    p3[2] = v3z
+    p3[3] = -(v3x*d3x+v3y*d3y+v3z*d3z)
+  }
+
 }
