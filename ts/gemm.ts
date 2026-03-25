@@ -866,6 +866,20 @@ dot3Dline3D_x_plane3D(
   }
 
   /**
+    INCOMINGS MUST BE SANITIZED.
+    
+    Precision: 0.000001 (1e-6).
+
+    return true if 3d vectors paralleled
+    @param v3a - 3d vector
+    @param v3b - 3d vector
+  */
+  v3v3paralleled( v3a:Float32Array, v3b:Float32Array ):boolean{
+    const c = this.v3v3cos(v3a,v3b)
+    return c > 0.999999 || c < -0.999999
+  }
+
+  /**
     INCOMINGS MUST BE SANITIZED. returns true if 3d vectors have equal data.
     @param v3a - 3d vector
     @param v3b - 3d vector
