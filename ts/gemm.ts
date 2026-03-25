@@ -797,5 +797,31 @@ dot3Dline3D_x_plane3D(
     this.v3one(v3n)
     return v3n
   }
+
+  /**
+    INCOMINGS MUST BE SANITAZED. return scalar product of 3d vectors or 0(in case of any fail)
+    @param v3a - 3d vector
+    @param v3b - 3d vector
+  **/
+  v3v3scalar( v3a:Float32Array, v3b:Float32Array ){
+    return v3a[0] * v3b[0] + v3a[1] * v3b[1] + v3a[2] * v3b[2] || 0
+  }
   
+  /**
+    INCOMINGS MUST BE SANITIZED. return cos between vectors or 0(in case of any fail)
+    @param v3a - 3d vector
+    @param v3b - 3d vector
+  */
+  v3v3cos( v3a:Float32Array, v3b:Float32Array ){
+    return this.sin_cos_cut(this.v3v3scalar(v3a,v3b)/(this.v3mag(v3a)*this.v3mag(v3b))) || 0
+  }
+  
+  /**
+    INCOMINGS MUST BE SANITIZED. return angle(radians) between vectors or 0(in case of any fail)
+    @param v3a - 3d vector
+    @param v3b - 3d vector
+  */
+  v3v3angle( v3a:Float32Array, v3b:Float32Array ){
+    return Math.acos(this.v3v3cos(v3a,v3b)) || 0
+  }
 }
