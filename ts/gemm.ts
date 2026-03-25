@@ -909,17 +909,17 @@ dot3Dline3D_x_plane3D(
     @param d3 - 3d dot of start of line [x,y,z]
     @param v3 - 3d vector of line direction [vx,vy,vz]
     @param p3 - 3d plane [a,b,c,d] . d - displacement of plane 3D from [0,0,0] along plane normal vector [a,b,c].
-    @param dot - resuls container to fill uses data of 3d intersection dot [x,y,z]
+    @param dot - result container to fill uses data of 3d intersection dot [x,y,z]
   */
-  d3_line_x_plane(
+  d3_line_x_plane_mut(
     d3:Float32Array,
     v3:Float32Array,
     p3:Float32Array,
     dot:Float32Array,
   ){
-    const p3a = p3[0], p3b = p3[1], p3c = p3[2], p3d = p3[3];
     const d3x = d3[0], d3y = d3[1], d3z = d3[2];
     const v3x = v3[0], v3y = v3[1], v3z = v3[2];
+    const p3a = p3[0], p3b = p3[1], p3c = p3[2], p3d = p3[3];
 
     const t = -(p3a*d3x + p3b*d3y + p3c*d3z + p3d) / (p3a*v3x + p3b*v3y + p3c*v3z);
 
@@ -933,21 +933,29 @@ dot3Dline3D_x_plane3D(
     mutates 3d dot, which is projection of 3d dot (d3) on 3d plane (p3)
     @param d3 - 3d dot of start of line [x,y,z]
     @param p3 - 3d plane [a,b,c,d] . d - displacement of plane 3D from [0,0,0] along plane normal vector [a,b,c].
-    @param dot - resuls container to fill uses data of 3d intersection dot [x,y,z]
+    @param dot - result container to fill uses data of 3d intersection dot [x,y,z]
   */
-  d3_projection_on_p3(
-    d3:Float32Array,
-    p3:Float32Array,
-    dot:Float32Array
-  ){
-    const p3a = p3[0], p3b = p3[1], p3c = p3[2], p3d = p3[3];
+  d3_projection_on_p3_mut( d3:Float32Array, p3:Float32Array, dot:Float32Array ){
     const d3x = d3[0], d3y = d3[1], d3z = d3[2];
+    const p3a = p3[0], p3b = p3[1], p3c = p3[2], p3d = p3[3];
 
     const t = -(p3a*d3x + p3b*d3y + p3c*d3z + p3d) / (p3a*p3a + p3b*p3b + p3c*p3c);
 
     dot[0] = d3x + p3a * t;
     dot[1] = d3y + p3b * t;
     dot[2] = d3z + p3c * t;
+  }
+
+  /**
+    INCOMINGS MUST BE SANITIZED.
+    @param d3 3d dot of start of line [x,y,z]
+    @param p3 3d plane [a,b,c,d] . d - displacement of plane 3D from [0,0,0] along plane normal vector [a,b,c].
+    @returns distance from 3d dot (d3) to 3d plane (p3)
+  */
+  distance_d3_p3( d3:Float32Array, p3:Float32Array ){
+    const d3x = d3[0], d3y = d3[1], d3z = d3[2];
+    const p3a = p3[0], p3b = p3[1], p3c = p3[2], p3d = p3[3];
+    return Math.abs(p3a*d3x + p3b*d3y + p3c*d3z + p3d) / Math.sqrt(p3a*p3a + p3b*p3b + p3c*p3c);
   }
 
 }
