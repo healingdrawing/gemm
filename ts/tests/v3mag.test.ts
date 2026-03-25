@@ -136,34 +136,34 @@ describe("v3norm", () => {
   });
 
   describe("Fail cases - NaN handling (returns 0)", () => {
-    test("should return 0 when vector contains NaN [NaN,0,0]", () => {
+    test("should return NaN when vector contains NaN [NaN,0,0]", () => {
       const vec = new Float32Array([NaN, 0, 0]);
       const result = gemm.v3mag(vec);
-      expect(result).toBe(0);
+      expect(result).toBe(NaN);
     });
 
-    test("should return 0 when vector contains NaN [1,NaN,3]", () => {
+    test("should return NaN when vector contains NaN [1,NaN,3]", () => {
       const vec = new Float32Array([1, NaN, 3]);
       const result = gemm.v3mag(vec);
-      expect(result).toBe(0);
+      expect(result).toBe(NaN);
     });
 
-    test("should return 0 when all components are NaN [NaN,NaN,NaN]", () => {
+    test("should return NaN when all components are NaN [NaN,NaN,NaN]", () => {
       const vec = new Float32Array([NaN, NaN, NaN]);
       const result = gemm.v3mag(vec);
-      expect(result).toBe(0);
+      expect(result).toBe(NaN);
     });
 
-    test("should return 0 when NaN is in last component [1,2,NaN]", () => {
+    test("should return NaN when NaN is in last component [1,2,NaN]", () => {
       const vec = new Float32Array([1, 2, NaN]);
       const result = gemm.v3mag(vec);
-      expect(result).toBe(0);
+      expect(result).toBe(NaN);
     });
 
-    test("should return 0 for mixed NaN and normal values [0.5,NaN,0.5]", () => {
+    test("should return NaN for mixed NaN and normal values [0.5,NaN,0.5]", () => {
       const vec = new Float32Array([0.5, NaN, 0.5]);
       const result = gemm.v3mag(vec);
-      expect(result).toBe(0);
+      expect(result).toBe(NaN);
     });
   });
 
@@ -212,22 +212,22 @@ describe("v3norm", () => {
   });
 
   describe("Edge cases - NaN vs Infinity interaction", () => {
-    test("should return 0 when NaN and Infinity coexist [NaN,Infinity,0]", () => {
+    test("should return NaN when NaN and Infinity coexist [NaN,Infinity,0]", () => {
       const vec = new Float32Array([NaN, Infinity, 0]);
       const result = gemm.v3mag(vec);
-      expect(result).toBe(0);
+      expect(result).toBe(NaN);
     });
 
-    test("should return 0 when NaN and -Infinity coexist [-Infinity,NaN,5]", () => {
+    test("should return NaN when NaN and -Infinity coexist [-Infinity,NaN,5]", () => {
       const vec = new Float32Array([-Infinity, NaN, 5]);
       const result = gemm.v3mag(vec);
-      expect(result).toBe(0);
+      expect(result).toBe(NaN);
     });
 
-    test("should return 0 when NaN dominates over Infinity [NaN,Infinity,Infinity]", () => {
+    test("should return NaN when NaN dominates over Infinity [NaN,Infinity,Infinity]", () => {
       const vec = new Float32Array([NaN, Infinity, Infinity]);
       const result = gemm.v3mag(vec);
-      expect(result).toBe(0);
+      expect(result).toBe(NaN);
     });
   });
 

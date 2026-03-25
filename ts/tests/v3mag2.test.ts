@@ -108,19 +108,19 @@ describe("v3norm2", () => {
     test("should return NaN when vector contains NaN [NaN,0,0]", () => {
       const vec = new Float32Array([NaN, 0, 0]);
       const result = gemm.v3mag2(vec);
-      expect(result).toBe(0);
+      expect(result).toBe(NaN);
     });
 
     test("should return NaN when vector contains NaN [1,NaN,3]", () => {
       const vec = new Float32Array([1, NaN, 3]);
       const result = gemm.v3mag2(vec);
-      expect(result).toBe(0);
+      expect(result).toBe(NaN);
     });
 
     test("should return NaN when all components are NaN [NaN,NaN,NaN]", () => {
       const vec = new Float32Array([NaN, NaN, NaN]);
       const result = gemm.v3mag2(vec);
-      expect(result).toBe(0);
+      expect(result).toBe(NaN);
     });
   });
 
