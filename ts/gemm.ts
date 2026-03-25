@@ -546,7 +546,7 @@ dot3Dline3D_x_plane3D(
     Math.abs( this.multisum_xF([pabc, dot3D]) + plane3D[3] ) / vl;
   }
 
-  /* todo consider 3D specific below, for performant calcs */
+  /* 3D specific below, for performant calcs */
 
   /**
    * rotate v around naxis to angle. Mutates v on place. returns nothing
@@ -1082,5 +1082,8 @@ dot3Dline3D_x_plane3D(
     p3[2] = v3z
     p3[3] = -(v3x*d3x+v3y*d3y+v3z*d3z)
   }
+
+  /* todo maybe consider to refactor all d3* v3* p3* and distance_d3_p3 to code duplication approach to shorten calcs flow. Also some 3d specific new stuff not covered by test and benchmarks vs multidimentional stable versions.
+  Safe versions not implemented for several methods. After that consider to refactor space-sphere-shooter etc. Since it will be less or more ready. ... but i do not think so :) */
 
 }
