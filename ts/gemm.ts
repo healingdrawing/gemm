@@ -801,7 +801,7 @@ dot3Dline3D_x_plane3D(
   }
 
   /**
-    INCOMINGS MUST BE SANITAZED. return scalar product of 3d vectors or 0(in case of any fail)
+    INCOMINGS MUST BE SANITAZED. return scalar product of 3d vectors
     @param v3a - 3d vector
     @param v3b - 3d vector
   **/
@@ -810,7 +810,7 @@ dot3Dline3D_x_plane3D(
   }
   
   /**
-    INCOMINGS MUST BE SANITIZED. return cos between vectors or 0(in case of any fail)
+    INCOMINGS MUST BE SANITIZED. return cos between vectors
     @param v3a - 3d vector
     @param v3b - 3d vector
   */
@@ -819,7 +819,7 @@ dot3Dline3D_x_plane3D(
   }
   
   /**
-    INCOMINGS MUST BE SANITIZED. return angle(radians) between vectors or 0(in case of any fail)
+    INCOMINGS MUST BE SANITIZED. return angle(radians) between vectors
     @param v3a - 3d vector
     @param v3b - 3d vector
   */
