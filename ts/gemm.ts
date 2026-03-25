@@ -902,4 +902,29 @@ dot3Dline3D_x_plane3D(
            Math.abs(v3a[1] - v3b[1]) < epsilon &&
            Math.abs(v3a[2] - v3b[2]) < epsilon;
   }
+
+  /**
+    INCOMINGS MUST BE SANITIZED.
+    mutates 3d dot, which is intersection dot for 3d line(d3, v3) and 3d plane(p3)
+    @param d3 - 3d dot of start of line [x,y,z]
+    @param v3 - 3d vector of line direction [vx,vy,vz]
+    @param p3 - 3d plane [a,b,c,d] . d - displacement of plane 3D from [0,0,0] along plane normal vector [a,b,c].
+    @param dot - resuls container to fill uses data of 3d intersection dot [x,y,z]
+  */
+  d3_line_x_plane(
+    d3:Float32Array,
+    v3:Float32Array,
+    p3:Float32Array,
+    dot:Float32Array,
+  ){
+    const p3a = p3[0], p3b = p3[1], p3c = p3[2], p3d = p3[3];
+    const d3x = d3[0], d3y = d3[1], d3z = d3[2];
+    const v3x = v3[0], v3y = v3[1], v3z = v3[2];
+
+    const t = -(p3a*d3x + p3b*d3y + p3c*d3z + p3d) / (p3a*v3x + p3b*v3y + p3c*v3z);
+
+    dot[0] = d3x + v3x * t;
+    dot[1] = d3y + v3y * t;
+    dot[2] = d3z + v3z * t;
+  }
 }
