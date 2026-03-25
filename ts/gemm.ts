@@ -651,20 +651,22 @@ dot3Dline3D_x_plane3D(
   }
 
   /**
-    return vector length (other names "norm" or "magnitude"). NaN raise 0 result.
+    INCOMINGS MUST BE SANITIZED.
+    return vector length (other names "norm" or "magnitude"). NaN raise NaN result.
     For [1,2,3] return Math.sqrt((1 * 1) + (2 * 2) + (3 * 3))
     @param v3 - incoming 3d vector, must be sanitized before call
     @returns number
   */
-  v3mag(v3:Float32Array){ return Math.sqrt(v3[0]*v3[0] + v3[1]*v3[1] + v3[2]*v3[2]) || 0 }
+  v3mag(v3:Float32Array){ return Math.sqrt(v3[0]*v3[0] + v3[1]*v3[1] + v3[2]*v3[2]) }
 
   /**
-    return vector squared length (similar as "v3norm" or "magnitude" but without Math.sqrt).  NaN raise 0 result.
+    INCOMINGS MUST BE SANITIZED.
+    return vector squared length (similar as "v3norm" or "magnitude" but without Math.sqrt).  NaN raise NaN result.
     For [1,2,3] return (1 * 1) + (2 * 2) + (3 * 3). To fast check vector is non zero
     @param v3 - incoming 3d vector
     @returns number
   */
-  v3mag2(v3:Float32Array){ return v3[0]*v3[0] + v3[1]*v3[1] + v3[2]*v3[2] || 0 }
+  v3mag2(v3:Float32Array){ return v3[0]*v3[0] + v3[1]*v3[1] + v3[2]*v3[2] }
 
   /**
    * check if 3d vector is correct (finite AND non-zero)
@@ -804,7 +806,7 @@ dot3Dline3D_x_plane3D(
     @param v3b - 3d vector
   **/
   v3v3scalar( v3a:Float32Array, v3b:Float32Array ){
-    return v3a[0] * v3b[0] + v3a[1] * v3b[1] + v3a[2] * v3b[2] || 0
+    return v3a[0] * v3b[0] + v3a[1] * v3b[1] + v3a[2] * v3b[2]
   }
   
   /**
@@ -813,7 +815,7 @@ dot3Dline3D_x_plane3D(
     @param v3b - 3d vector
   */
   v3v3cos( v3a:Float32Array, v3b:Float32Array ){
-    return this.sin_cos_cut(this.v3v3scalar(v3a,v3b)/(this.v3mag(v3a)*this.v3mag(v3b))) || 0
+    return this.sin_cos_cut(this.v3v3scalar(v3a,v3b)/(this.v3mag(v3a)*this.v3mag(v3b)))
   }
   
   /**
@@ -822,6 +824,68 @@ dot3Dline3D_x_plane3D(
     @param v3b - 3d vector
   */
   v3v3angle( v3a:Float32Array, v3b:Float32Array ){
-    return Math.acos(this.v3v3cos(v3a,v3b)) || 0
+    return Math.acos(this.v3v3cos(v3a,v3b))
+  }
+
+  /**
+    INCOMINGS MUST BE SANITIZED. mutate 3d vector to opposite 3d vector. [1, 2, -4] return [-1, -2, 4]
+    @param v3 - 3d vector
+  */
+    v3back_mut(v3:Float32Array){
+    if(v3.length === 3){
+      v3[0] *= -1
+      v3[1] *= -1
+      v3[2] *= -1
+    }
+  }
+
+  /**
+    INCOMINGS MUST BE SANITIZED.
+    
+    Precision: 0.000001 (1e-6).
+
+    return true if 3d vectors paralleled and have same direction
+    @param v3a - 3d vector
+    @param v3b - 3d vector
+  */
+  v3v3paralleled_sameside( v3a:Float32Array, v3b:Float32Array ):boolean{
+    return this.v3v3cos(v3a,v3b) > 0.999999
+  }
+
+  /**
+    INCOMINGS MUST BE SANITIZED.
+    
+    Precision: 0.000001 (1e-6).
+
+    return true if 3d vectors paralleled and have opposite direction
+    @param v3a - 3d vector
+    @param v3b - 3d vector
+  */
+  v3v3paralleled_opposite( v3a:Float32Array, v3b:Float32Array ):boolean{
+    return this.v3v3cos(v3a,v3b) < -0.999999
+  }
+
+  /**
+    INCOMINGS MUST BE SANITIZED. returns true if 3d vectors have equal data.
+    @param v3a - 3d vector
+    @param v3b - 3d vector
+  */
+  v3v3same( v3a:Float32Array, v3b:Float32Array ):boolean{
+    return v3a[0] === v3b[0] && v3a[1] === v3b[1] && v3a[2] === v3b[2]
+  }
+
+  /**
+    INCOMINGS MUST BE SANITIZED. returns true if 3d vectors have similar components.
+    
+    Precision: 0.000001 (1e-6)
+    
+    @param v3a - 3d vector
+    @param v3b - 3d vector
+  */
+  v3v3similar(v3a: Float32Array, v3b: Float32Array): boolean {
+    const epsilon = 1e-6;
+    return Math.abs(v3a[0] - v3b[0]) < epsilon &&
+           Math.abs(v3a[1] - v3b[1]) < epsilon &&
+           Math.abs(v3a[2] - v3b[2]) < epsilon;
   }
 }
