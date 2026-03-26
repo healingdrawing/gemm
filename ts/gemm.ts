@@ -78,20 +78,20 @@ export class GEMM {
   }
 
   /**
-     return cos between vectors
-     @param vecXDa - vector
-     @param vecXDb - vector
-    */
-     vecXDcos(
-      vecXDa:Array<number>,
-      vecXDb:Array<number>
-      ){
-      var rez = 0
-      var la = this.vecXDnorm(vecXDa);
-      var lb = this.vecXDnorm(vecXDb);
-      if (la > 0 && lb > 0){
-          rez = this.sin_cos_cut( this.vecXDscalar(vecXDa,vecXDb) / (la * lb) );
-      }return rez;
+   return cos between vectors
+    @param vecXDa - vector
+    @param vecXDb - vector
+  */
+  vecXDcos(
+  vecXDa:Array<number>,
+  vecXDb:Array<number>
+  ){
+    var rez = 0
+    var la = this.vecXDnorm(vecXDa);
+    var lb = this.vecXDnorm(vecXDb);
+    if (la > 0 && lb > 0){
+        rez = this.sin_cos_cut( this.vecXDscalar(vecXDa,vecXDb) / (la * lb) );
+    }return rez;
   }
 
   /**
@@ -687,11 +687,11 @@ dot3Dline3D_x_plane3D(
    * @param v3 - sanitized incoming 3d vector
    */
   v3one(v3:Float32Array){
-    const lv = this.v3mag(v3);
-    if (lv){
-      v3[0] /= lv
-      v3[1] /= lv
-      v3[2] /= lv
+    const mag = Math.sqrt(v3[0]*v3[0] + v3[1]*v3[1] + v3[2]*v3[2])
+    if (mag){
+      v3[0] /= mag
+      v3[1] /= mag
+      v3[2] /= mag
     }
   }
 
@@ -707,7 +707,7 @@ dot3Dline3D_x_plane3D(
     t:number
   ){
     if (!t || d3.length !== 3 || v3.length !== 3) return
-    const mag = this.v3mag(v3);
+    const mag = Math.sqrt(v3[0]*v3[0] + v3[1]*v3[1] + v3[2]*v3[2])
     if (!mag) return
     t /= mag
     d3[0] += v3[0] * t
@@ -727,7 +727,7 @@ dot3Dline3D_x_plane3D(
     v3:Float32Array,
     t:number
   ){
-    const mag = this.v3mag(v3);
+    const mag = Math.sqrt(v3[0]*v3[0] + v3[1]*v3[1] + v3[2]*v3[2])
     if (!t || !mag) return
     t /= mag
     d3[0] += v3[0] * t
@@ -772,10 +772,18 @@ dot3Dline3D_x_plane3D(
     v3b:Float32Array,
     v3n:Float32Array,
   ){
-    v3n[0] = v3a[1] * v3b[2] - v3a[2] * v3b[1];
-    v3n[1] = -v3a[0] * v3b[2] + v3a[2] * v3b[0];
-    v3n[2] = v3a[0] * v3b[1] - v3a[1] * v3b[0];
-    this.v3one(v3n)
+    const v3ax = v3a[0], v3ay = v3a[1], v3az = v3a[2];
+    const v3bx = v3b[0], v3by = v3b[1], v3bz = v3b[2];
+
+    const v3x = v3ay * v3bz - v3az * v3by;
+    const v3y = -v3ax * v3bz + v3az * v3bx;
+    const v3z = v3ax * v3by - v3ay * v3bx;
+    /* hardcoded this.v3one */
+    const mag = Math.sqrt(v3x*v3x + v3y*v3y + v3z*v3z)
+    v3n[0] = v3x / mag
+    v3n[1] = v3y / mag
+    v3n[2] = v3z / mag
+    
   }
 
   /**
@@ -793,10 +801,7 @@ dot3Dline3D_x_plane3D(
     v3b:Float32Array
   ){
     const v3n = new Float32Array(3)
-    v3n[0] = v3a[1] * v3b[2] - v3a[2] * v3b[1];
-    v3n[1] = -v3a[0] * v3b[2] + v3a[2] * v3b[0];
-    v3n[2] = v3a[0] * v3b[1] - v3a[1] * v3b[0];
-    this.v3one(v3n)
+    this.v3normal(v3a, v3b, v3n)
     return v3n
   }
 
@@ -815,7 +820,17 @@ dot3Dline3D_x_plane3D(
     @param v3b - 3d vector
   */
   v3v3cos( v3a:Float32Array, v3b:Float32Array ){
-    return this.sin_cos_cut(this.v3v3scalar(v3a,v3b)/(this.v3mag(v3a)*this.v3mag(v3b)))
+    // return this.sin_cos_cut(this.v3v3scalar(v3a,v3b)/(this.v3mag(v3a)*this.v3mag(v3b)))
+
+    const v3ax = v3a[0], v3ay = v3a[1], v3az = v3a[2];
+    const v3bx = v3b[0], v3by = v3b[1], v3bz = v3b[2];
+    return this.sin_cos_cut(
+      (v3ax * v3bx + v3ay * v3by + v3az * v3bz)/
+      (
+        Math.sqrt(v3ax*v3ax + v3ay*v3ay + v3az*v3az)*
+        Math.sqrt(v3bx*v3bx + v3by*v3by + v3bz*v3bz)
+      )
+    )
   }
   
   /**
@@ -831,7 +846,7 @@ dot3Dline3D_x_plane3D(
     INCOMINGS MUST BE SANITIZED. mutate 3d vector to opposite 3d vector. [1, 2, -4] return [-1, -2, 4]
     @param v3 - 3d vector
   */
-    v3back_mut(v3:Float32Array){
+  v3back_mut(v3:Float32Array){
     if(v3.length === 3){
       v3[0] *= -1
       v3[1] *= -1
@@ -1083,7 +1098,7 @@ dot3Dline3D_x_plane3D(
     p3[3] = -(v3x*d3x+v3y*d3y+v3z*d3z)
   }
 
-  /* todo maybe consider to refactor all d3* v3* p3* and distance_d3_p3 to code duplication approach to shorten calcs flow. Also some 3d specific new stuff not covered by test and benchmarks vs multidimentional stable versions.
+  /* todo some 3d specific new stuff not covered by test and benchmarks vs multidimentional stable versions.
   Safe versions not implemented for several methods. After that consider to refactor space-sphere-shooter etc. Since it will be less or more ready. ... but i do not think so :) */
 
 }
