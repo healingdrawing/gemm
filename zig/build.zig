@@ -55,4 +55,29 @@ pub fn build(b: *std.Build) void {
     });
     wasm.step.dependOn(&concat_step.step);
     b.installArtifact(wasm);
+
+    // === WASM binary ===
+    const wasm_bin = b.addExecutable(.{
+        .name = "gemm",
+        .root_module = wasm_mod,
+    });
+    wasm_bin.step.dependOn(&concat_step.step);
+    wasm_bin.entry = .disabled;
+    wasm_bin.rdynamic = true;
+    b.installArtifact(wasm_bin);
+
+    // === FFI Shared Library (for Bun FFI) ===
+    const ffi_mod = b.createModule(.{
+        .root_source_file = b.path("gemm.zig"),
+        .target = target,
+        .optimize = optimize,
+    });
+
+    const ffi = b.addLibrary(.{
+        .name = "gemm",
+        .linkage = .dynamic,
+        .root_module = ffi_mod,
+    });
+    ffi.step.dependOn(&concat_step.step);
+    b.installArtifact(ffi);
 }
