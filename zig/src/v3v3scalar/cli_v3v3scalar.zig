@@ -28,5 +28,10 @@ pub fn main(init: std.process.Init) !void {
     const result = v3v3scalar(&v3a, &v3b);
 
     // Use debug.print to avoid any io issues
-    std.debug.print("{d:.12}\n", .{result});
+    // std.debug.print("{d:.12}\n", .{result}); // this looks like prints in errlog. Writes to stderr, ignoring errors.
+    var buffer: [64]u8 = undefined;
+    const formatted = try std.fmt.bufPrint(&buffer, "{d:.12}\n", .{result});
+
+    try std.Io.File.stdout().writeStreamingAll(init.io, formatted);
+    // it is so ugly... just to print number into terminal output, facepalm. Let is hope later API will be not so ... supreme
 }
