@@ -70,3 +70,5 @@ inline fn v3v3scalar_named(a: *const Vec3, b: *const Vec3, result: *f32) void {
 inline fn v3v3scalar_raw(a: *const @Vector(4, f32), b: *const @Vector(4, f32), result: *f32) void {
     result.* = a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
 }
+
+// zig run bench_vec3novec3.zig -OReleaseFast
