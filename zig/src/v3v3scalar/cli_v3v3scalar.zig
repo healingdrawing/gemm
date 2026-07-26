@@ -25,7 +25,7 @@ pub fn main(init: std.process.Init) !void {
         };
     }
 
-    const result = v3v3scalar(&v3a, &v3b);
+    const result = v3v3scalar(v3a, v3b);
 
     // Use debug.print to avoid any io issues
     // std.debug.print("{d:.12}\n", .{result}); // this looks like prints in errlog. Writes to stderr, ignoring errors.

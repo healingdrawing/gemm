@@ -5,6 +5,6 @@ const std = @import("std");
 //-concat marker
 
 /// Dot product of two 3D vectors (last component is ignored).
-pub inline fn v3v3scalar(a: *const @Vector(4, f32), b: *const @Vector(4, f32), result: *f32) void {
-    result.* = a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+pub inline fn v3v3scalar(a: @Vector(3, f32), b: @Vector(3, f32)) f32 {
+    return @mulAdd(f32, a[2], b[2], @mulAdd(f32, a[1], b[1], @mulAdd(f32, a[0], b[0], 0)));
 }
