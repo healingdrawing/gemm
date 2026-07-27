@@ -5,7 +5,7 @@ test "v3v3scalar matches TS terminal bridge" {
     const a: @Vector(3, f32) = .{ 1, 2, 3 };
     const b: @Vector(3, f32) = .{ 4, 5, 6 };
     const zig_result = v3v3scalar(a, b);
-    std.debug.print("zigout: {any}\n", .{zig_result});
+    std.debug.print("zig: {any}\n", .{zig_result});
 
     const allocator = std.heap.page_allocator;
     const io = std.testing.io;
@@ -22,6 +22,6 @@ test "v3v3scalar matches TS terminal bridge" {
     defer allocator.free(result.stdout);
     defer allocator.free(result.stderr);
 
-    std.debug.print("stdout: {s}\n", .{result.stdout});
-    std.debug.print("stderr: {s}\n", .{result.stderr});
+    std.debug.print("bun: {s}\n", .{result.stdout});
+    std.debug.print("err: {s}\n", .{result.stderr});
 }
