@@ -13,19 +13,22 @@ pub fn main(init: std.process.Init) !void {
 
     var v3a: [3]f32 = undefined;
     var v3b: [3]f32 = undefined;
+    var result: f32 = undefined;
 
     for (0..3) |i| {
         v3a[i] = std.fmt.parseFloat(f32, args[i + 1]) catch {
             std.debug.print("Error parsing argument {d}\n", .{i + 1});
-            return;
+            result = std.math.nan(f32);
+            break;
         };
         v3b[i] = std.fmt.parseFloat(f32, args[i + 4]) catch {
             std.debug.print("Error parsing argument {d}\n", .{i + 4});
-            return;
+            result = std.math.nan(f32);
+            break;
         };
     }
 
-    const result = v3v3scalar(v3a, v3b);
+    if (result != std.math.nan(f32)) result = v3v3scalar(v3a, v3b);
 
     // Use debug.print to avoid any io issues
     // std.debug.print("{d:.12}\n", .{result}); // this looks like prints in errlog. Writes to stderr, ignoring errors.
