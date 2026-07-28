@@ -18,6 +18,14 @@ const methods: Record<string, Handler> = {
       new Float32Array([a[3], a[4], a[5]]),
     );
   },
+  v3one: (a) => {
+    if (a.length !== 3) throw new Error("v3one needs 3 numbers");
+    const v3 = new Float32Array([a[0], a[1], a[2]]);
+    gemm.v3one(
+      v3
+    );
+    return v3;
+  },
   // v3v3cross: (a) => { ... },
 };
 
@@ -46,16 +54,16 @@ const nums = rest.map((s) => {
 try {
   const out = fn(nums);
   if (typeof out === "number") {
-    console.log(floatToString(out));
+    console.log(float_to_string(out));
   } else {
-    console.log(Array.from(out).map(floatToString).join(" "));
+    console.log(Array.from(out).map(float_to_string).join(" "));
   }
 } catch (e) {
   console.error(e instanceof Error ? e.message : e);
   process.exit(1);
 }
 
-function floatToString(val: number): string {
+function float_to_string(val: number): string {
   if (Number.isNaN(val)) {
     return "NaN";
   } else if (!Number.isFinite(val)) {
