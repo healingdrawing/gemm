@@ -5,17 +5,19 @@ const std = @import("std");
 pub inline fn parse_float_result(allocator: std.mem.Allocator, output: []const u8) ![]f32 {
     const trimmed = std.mem.trim(u8, output, " \n\r\t");
 
-    var values = std.ArrayList(f32).init(allocator);
+    var values = try std.ArrayList(f32).initCapacity(allocator, 256);
+    defer values.deinit(allocator);
+
     var parts = std.mem.splitSequence(u8, trimmed, " ");
 
     while (parts.next()) |part| {
         const clean = std.mem.trim(u8, part, " \t");
         if (clean.len == 0) continue;
         const value = try std.fmt.parseFloat(f32, clean);
-        try values.append(value);
+        try values.append(allocator, value);
     }
 
-    return try values.toOwnedSlice();
+    return try values.toOwnedSlice(allocator);
 }
 
 /// Compare two f32 values with epsilon tolerance
@@ -33,7 +35,7 @@ pub inline fn floats_equal(a: f32, b: f32, epsilon: f32) bool {
 /// Compare two f32 arrays with epsilon tolerance
 pub inline fn arrays_equal(a: []const f32, b: []const f32, epsilon: f32) !bool {
     if (a.len != b.len) {
-        std.debug.print("length mismatch: {d} vs {d}\n", .{ a.len, b.len });
+        std.debug.print("length mismatch: {d} vs {d}\na={any} b={any}", .{ a.len, b.len, a, b });
         return false;
     }
 
@@ -53,20 +55,20 @@ pub inline fn to_array(allocator: std.mem.Allocator, value: anytype) ![]f32 {
     const type_info = @typeInfo(T);
 
     return switch (type_info) {
-        .Float => blk: {
+        .float => blk: {
             const arr = try allocator.alloc(f32, 1);
             arr[0] = @floatCast(value);
             break :blk arr;
         },
-        .Vector => |vec_info| blk: {
+        .vector => |vec_info| blk: {
             const arr = try allocator.alloc(f32, vec_info.len);
             inline for (0..vec_info.len) |i| {
                 arr[i] = @floatCast(value[i]);
             }
             break :blk arr;
         },
-        .Pointer => |ptr_info| blk: {
-            if (ptr_info.size == .Slice or ptr_info.size == .Many) {
+        .pointer => |ptr_info| blk: {
+            if (ptr_info.size == .slice or ptr_info.size == .many) {
                 // Already a slice/array—just cast if needed
                 if (ptr_info.child == f32) {
                     break :blk value;
@@ -81,7 +83,7 @@ pub inline fn to_array(allocator: std.mem.Allocator, value: anytype) ![]f32 {
                 @compileError("Unsupported pointer type");
             }
         },
-        .Array => |arr_info| blk: {
+        .array => |arr_info| blk: {
             const arr = try allocator.alloc(f32, arr_info.len);
             inline for (0..arr_info.len) |i| {
                 arr[i] = @floatCast(value[i]);
@@ -90,4 +92,36 @@ pub inline fn to_array(allocator: std.mem.Allocator, value: anytype) ![]f32 {
         },
         else => @compileError("Unsupported type for to_array"),
     };
+}
+
+pub fn vectors_to_string(allocator: std.mem.Allocator, inputs: anytype) ![]u8 {
+    var result = try std.ArrayList(u8).initCapacity(allocator, 256);
+    defer result.deinit(allocator);
+
+    inline for (inputs, 0..) |item, idx| {
+        if (idx > 0) try result.appendSlice(allocator, " ");
+
+        const T = @TypeOf(item);
+        const type_info = @typeInfo(T);
+
+        if (type_info == .vector) {
+            const len = type_info.vector.len;
+            inline for (0..len) |i| {
+                if (i > 0) try result.appendSlice(allocator, " ");
+                var buf: [32]u8 = undefined;
+                const str = try std.fmt.bufPrint(&buf, "{d}", .{item[i]});
+                try result.appendSlice(allocator, str);
+            }
+        } else if (type_info == .array) {
+            const len = type_info.array.len;
+            inline for (0..len) |i| {
+                if (i > 0) try result.appendSlice(allocator, " ");
+                var buf: [32]u8 = undefined;
+                const str = try std.fmt.bufPrint(&buf, "{d}", .{item[i]});
+                try result.appendSlice(allocator, str);
+            }
+        }
+    }
+
+    return result.toOwnedSlice(allocator);
 }

@@ -7,10 +7,9 @@ pub const GEMM = struct {
 
 // --- FROM v3v3scalar/v3v3scalar.zig ---
 
-// todo check at least two methods, with similar name imports. Then if it is ok consider to refactor to vectors and simd
-pub fn v3v3scalar(v3a: []const f32, v3b: []const f32) f32 {
-    std.debug.assert(v3a.len == 3 and v3b.len == 3);
-    return v3a[0] * v3b[0] + v3a[1] * v3b[1] + v3a[2] * v3b[2];
+/// Dot product of two 3D vectors (last component is ignored).
+pub inline fn v3v3scalar(a: @Vector(3, f32), b: @Vector(3, f32)) f32 {
+    return @mulAdd(f32, a[2], b[2], @mulAdd(f32, a[1], b[1], @mulAdd(f32, a[0], b[0], 0)));
 }
 
 
