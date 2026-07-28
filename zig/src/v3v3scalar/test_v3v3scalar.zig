@@ -4,6 +4,8 @@ const floatUtils = @import("float.zig"); // todo can not import from outside mod
 
 //warning to run from gemm folder level , remove hardcoded ../../../ from ts/terminal ...ugly ugly shit, maybe later polish
 
+//warning zig run test_v3v3scalar.zig
+
 pub fn main() !void {
     const allocator = std.heap.page_allocator;
     const a: @Vector(3, f32) = .{ 1, 2, 3 };
