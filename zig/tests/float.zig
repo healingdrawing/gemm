@@ -22,12 +22,17 @@ pub inline fn parse_float_result(allocator: std.mem.Allocator, output: []const u
 
 /// Compare two f32 values with epsilon tolerance
 /// Treats NaN == NaN as true
+/// Treats +Inf == +Inf and -Inf == -Inf as true
 pub inline fn floats_equal(a: f32, b: f32, epsilon: f32) bool {
     if (std.math.isNan(a) and std.math.isNan(b)) {
         return true;
     }
     if (std.math.isNan(a) or std.math.isNan(b)) {
         return false;
+    }
+    // Infinity must have the same sign to be equal
+    if (std.math.isInf(a) or std.math.isInf(b)) {
+        return a == b; // +Inf == +Inf, -Inf == -Inf, but +Inf != -Inf
     }
     return @abs(a - b) <= epsilon;
 }
@@ -108,20 +113,34 @@ pub fn vectors_to_string(allocator: std.mem.Allocator, inputs: anytype) ![]u8 {
             const len = type_info.vector.len;
             inline for (0..len) |i| {
                 if (i > 0) try result.appendSlice(allocator, " ");
-                var buf: [32]u8 = undefined;
-                const str = try std.fmt.bufPrint(&buf, "{d}", .{item[i]});
-                try result.appendSlice(allocator, str);
+                const val = item[i];
+                try appendFloatString(allocator, &result, val);
             }
         } else if (type_info == .array) {
             const len = type_info.array.len;
             inline for (0..len) |i| {
                 if (i > 0) try result.appendSlice(allocator, " ");
-                var buf: [32]u8 = undefined;
-                const str = try std.fmt.bufPrint(&buf, "{d}", .{item[i]});
-                try result.appendSlice(allocator, str);
+                const val = item[i];
+                try appendFloatString(allocator, &result, val);
             }
         }
     }
 
     return result.toOwnedSlice(allocator);
+}
+
+fn appendFloatString(allocator: std.mem.Allocator, result: *std.ArrayList(u8), val: f32) !void {
+    if (std.math.isNan(val)) {
+        try result.appendSlice(allocator, "NaN");
+    } else if (std.math.isInf(val)) {
+        if (val > 0) {
+            try result.appendSlice(allocator, "Infinity");
+        } else {
+            try result.appendSlice(allocator, "-Infinity");
+        }
+    } else {
+        var buf: [32]u8 = undefined;
+        const str = try std.fmt.bufPrint(&buf, "{d}", .{val});
+        try result.appendSlice(allocator, str);
+    }
 }

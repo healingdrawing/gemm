@@ -35,6 +35,9 @@ if (!fn) {
 }
 
 const nums = rest.map((s) => {
+  if (s === "NaN") return NaN;
+  if (s === "Infinity") return Infinity;
+  if (s === "-Infinity") return -Infinity;
   const n = Number(s);
   if (Number.isNaN(n)) throw new Error(`not a number: ${s}`);
   return n;
@@ -43,11 +46,21 @@ const nums = rest.map((s) => {
 try {
   const out = fn(nums);
   if (typeof out === "number") {
-    console.log(String(out));
+    console.log(floatToString(out));
   } else {
-    console.log(out.join(" "));
+    console.log(Array.from(out).map(floatToString).join(" "));
   }
 } catch (e) {
   console.error(e instanceof Error ? e.message : e);
   process.exit(1);
+}
+
+function floatToString(val: number): string {
+  if (Number.isNaN(val)) {
+    return "NaN";
+  } else if (!Number.isFinite(val)) {
+    return val > 0 ? "Infinity" : "-Infinity";
+  } else {
+    return String(val);
+  }
 }

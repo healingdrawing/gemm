@@ -15,7 +15,31 @@ pub const cases = [_]TestCase{
     .{
         .a = .{ 1, 2, 3 },
         .b = .{ 4, 5, std.math.nan(f32) },
-        .outarr = .{std.math.nan(f32)}, // dot product: 1*4 + 2*5 + 3*6 = 32
+        .outarr = .{std.math.nan(f32)}, // NaN propagates
     },
-    // Add more test cases
+    .{
+        .a = .{ 1, 2, 3 },
+        .b = .{ std.math.inf(f32), 5, 6 },
+        .outarr = .{std.math.inf(f32)}, // +inf propagates
+    },
+    .{
+        .a = .{ 1, 2, 3 },
+        .b = .{ -std.math.inf(f32), 5, 6 },
+        .outarr = .{-std.math.inf(f32)}, // -inf propagates
+    },
+    .{
+        .a = .{ std.math.inf(f32), std.math.inf(f32), std.math.inf(f32) },
+        .b = .{ 1, 1, 1 },
+        .outarr = .{std.math.inf(f32)}, // +inf * positive = +inf
+    },
+    .{
+        .a = .{ -std.math.inf(f32), -std.math.inf(f32), -std.math.inf(f32) },
+        .b = .{ 1, 1, 1 },
+        .outarr = .{-std.math.inf(f32)}, // -inf * positive = -inf
+    },
+    .{
+        .a = .{ std.math.inf(f32), -std.math.inf(f32), 0 },
+        .b = .{ 1, 1, 1 },
+        .outarr = .{std.math.nan(f32)}, // inf + (-inf) = NaN
+    },
 };
