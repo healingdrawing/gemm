@@ -688,7 +688,7 @@ dot3Dline3D_x_plane3D(
    */
   v3one(v3:Float32Array){
     const mag = Math.sqrt(v3[0]*v3[0] + v3[1]*v3[1] + v3[2]*v3[2])
-    if (mag){
+    if (mag > 0){
       v3[0] /= mag
       v3[1] /= mag
       v3[2] /= mag
