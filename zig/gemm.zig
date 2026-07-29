@@ -7,18 +7,21 @@ pub const GEMM = struct {
 
 // --- FROM v3one/v3one.zig ---
 
-/// Normalize a 3D vector to unit length.
-/// If magnitude is zero, vector remains unchanged.
+/// Normalize a 3D vector to unit length if magnitude > 0.
+/// Otherwise, return unchanged vector.
 pub inline fn v3one(v3: @Vector(3, f32)) @Vector(3, f32) {
-    const x = v3[0];
-    const y = v3[1];
-    const z = v3[2];
+    var x = v3[0];
+    var y = v3[1];
+    var z = v3[2];
 
-    const mag_squared = x * x + y * y + z * z;
-    const mag = std.math.sqrt(mag_squared);
+    const mag = std.math.sqrt(x * x + y * y + z * z);
+
+    x /= mag;
+    y /= mag;
+    z /= mag;
 
     if (mag > 0) {
-        return .{ x / mag, y / mag, z / mag };
+        return .{ x, y, z };
     }
     return v3;
 }
@@ -27,7 +30,7 @@ pub inline fn v3one(v3: @Vector(3, f32)) @Vector(3, f32) {
 
 // --- FROM v3v3scalar/v3v3scalar.zig ---
 
-/// Dot product of two 3D vectors (last component is ignored).
+/// Dot product of two 3D vectors.
 pub inline fn v3v3scalar(a: @Vector(3, f32), b: @Vector(3, f32)) f32 {
     return @mulAdd(f32, a[2], b[2], @mulAdd(f32, a[1], b[1], @mulAdd(f32, a[0], b[0], 0)));
 }
