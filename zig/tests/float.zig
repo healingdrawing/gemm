@@ -114,22 +114,25 @@ pub fn vectors_to_string(allocator: std.mem.Allocator, inputs: anytype) ![]u8 {
             inline for (0..len) |i| {
                 if (i > 0) try result.appendSlice(allocator, " ");
                 const val = item[i];
-                try appendFloatString(allocator, &result, val);
+                try append_float_string(allocator, &result, val);
             }
         } else if (type_info == .array) {
             const len = type_info.array.len;
             inline for (0..len) |i| {
                 if (i > 0) try result.appendSlice(allocator, " ");
                 const val = item[i];
-                try appendFloatString(allocator, &result, val);
+                try append_float_string(allocator, &result, val);
             }
+        } else if (type_info == .float or type_info == .int) {
+            const val = item;
+            try append_float_string(allocator, &result, val);
         }
     }
 
     return result.toOwnedSlice(allocator);
 }
 
-fn appendFloatString(allocator: std.mem.Allocator, result: *std.ArrayList(u8), val: f32) !void {
+fn append_float_string(allocator: std.mem.Allocator, result: *std.ArrayList(u8), val: f32) !void {
     if (std.math.isNan(val)) {
         try result.appendSlice(allocator, "NaN");
     } else if (std.math.isInf(val)) {
