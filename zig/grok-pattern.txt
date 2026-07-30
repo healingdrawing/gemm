@@ -7,44 +7,58 @@ at least use zig's @vector + simd + pointers(objects to be filled/mutated by cal
 
 Optional implement slice to vectors wrapper, that has incoming slice but uses fastest vector implementation uses overloading f.e.: fn a(x:vector){fastest code}, fn a(x:slice){more user friendly call, but internally calls the fastest code}. Optional will be desided for each method personally.
 ---
-origin: https://github.com/healingdrawing/gemm/tree/zig-concat-discovering/ts
+origin:
 
-includes ts lib code in "gemm.ts" file.
+https://github.com/healingdrawing/gemm/tree/zig-concat-discovering/ts/gemm.ts
+battle tested typescript version of the math lib i develop
 
-includes ts lib test in "tests" folder.
+target:
 
-includes ts lib simple benchmarks in "bench" folder.
----
-destination: https://github.com/healingdrawing/gemm/tree/zig-concat-discovering/zig
+https://github.com/healingdrawing/gemm/tree/zig-concat-discovering/ts/terminal.test.ts
+used in test.zig to test ts vs zig version output
 
-includes zig lib skeleton for transcode result.
+https://github.com/healingdrawing/gemm/tree/zig-concat-discovering/zig
+skeleton for zig version
+ONLY 3D SPECIFIC VERSIONS PLAN TO TRANSCODE TO ZIG FROM gemm.ts(there is comment)
 
-includes lib future code "src" folder, with already implemented methods(start point for continue).
+https://github.com/healingdrawing/gemm/tree/zig-concat-discovering/zig/src/(method)/(method).zig
+file for zig implementation of the method from gemm.ts . The "//-concat marker" is IMPORTANT.
 
-includes concat.sh script to collect methods into gemm.zig file before build *.a libs in folder zig-out/lib.
+https://github.com/healingdrawing/gemm/tree/zig-concat-discovering/zig/src/(method)/bench_(method).zig
+benchmark file to test the fastest and/or most stable time method in noise environment(desktop with browser in tray/deploy onrender.com free tier)
 
-includes "test_libs.zig" file to test compiled *.a files. This file must be extended during transcoding for every method transcoded.
+https://github.com/healingdrawing/gemm/tree/zig-concat-discovering/zig/test.zig
+manages zig tests
 
-includes "test_libs.sh" file to execute test for compiled *.a files.
+https://github.com/healingdrawing/gemm/tree/zig-concat-discovering/zig/tests/data_(method).zig
+the input/output data for tests uses test.zig
 
-every method from gemm.ts in zig case placed in separate folder with same name for folder and file f.e.
-ts method v3v3scalar() has zig pattern:
-- src/v3v3scalar/v3v3scalar.zig
-- src/v3v3scalar/test_v3v3scalar.zig
+https://github.com/healingdrawing/gemm/tree/zig-concat-discovering/zig/tests/test_(method).zig
+the zig test for (method)
 
----
-ai workflow steps:
-- analyze the gemm.ts file, and collect list of the methods under 3d specific implementation marker "/* 3D specific below, for performant calcs */".
-- only methods below this marker should be implemented
-- create a list of available method names to implement
-- analyze already implemented names from "gemm.zig" file
-- offer to user to continue from one of the still not transcoded properly methods.
-- always follow skeleton src/module/module.zig etc
-- in response separated file stuff always must be marked with target file name
-- transcode method from ts to zig respectively follow the skeleton (and follow the structure of the file f.e. v3v3scalar.zig where imports are on the top before concat marker, since they will be cut later)
-- write test for transcoded to zig method follow test_module.zig pattern see test_v3v3scalar.zig etc
-- after check and pass tests by user, write tests for generated *.a files, at this time use the tests for methods from "ts/tests" folder. They are implemented uses bun runtime, so continue if possible use bun tests approach(way) , to test *.a files
+At the moment this skeleton works, with rare fix needed in custom case.
+Always follow skeleton above.
 
-ok, looks like testing need refactoring, really to json approach or so. To provide both ts and zig-to-lib test uses one input data for tests.
+AI TASK
 
-oh shit. discovering of the wasm etc shows that it is like a very fast flying dog. but this dog is one leg, with cut groin and can fly only from top to down. So testing with one source of truth can be overhelming. parallel testing does not look nice, it is two test branchs. zig and ts separately. does not look good.
+For new chat always:
+
+- discover repository https://github.com/healingdrawing/gemm/tree/zig-concat-discovering
+- analyze 3d specific methods in gemm.ts
+- analyze already implemented zig methods with the same name/folder name respectively
+- offer/advice to me implement the next not implemented in zig method from gemm.ts file. Maybe i will choose what method next. Prefer focus the simpliest one first
+
+For new method request, sequently, step by step:
+
+1 - transcode/generate (method).zig file. Consider to add possible imlementation with fastest calculation approach, then stability also will be discovered in bench. i will modify/experiment with code manually also, based on generated by you versions.
+
+2 - generate bench_(method).zig file. Benchmark will show what is what. use 20 000 000 iterations first. Later with advanced versions i will manually increase iterations up to 1 000 000 000, to decrease the noise impact.
+
+3 - generate data_(method).zig . to sufficiently cover test cases for implemented method
+
+4 - generate test_(method).zig .
+
+ALWAYS FOLLOW SKELETON.
+Skeleton is already tested and works, and looks like can be extended without big obstacles for common cases.
+
+If you have any suggestions, shortly inform/ask me, but by default always try to follow the skeleton and context described above.
