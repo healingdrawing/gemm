@@ -40,7 +40,7 @@ pub inline fn floats_equal(a: f32, b: f32, epsilon: f32) bool {
 /// Compare two f32 arrays with epsilon tolerance
 pub inline fn arrays_equal(a: []const f32, b: []const f32, epsilon: f32) !bool {
     if (a.len != b.len) {
-        std.debug.print("length mismatch: {d} vs {d}\na={any} b={any}", .{ a.len, b.len, a, b });
+        std.debug.print("\nlength mismatch: {d} vs {d}\na={any}\nb={any}\n", .{ a.len, b.len, a, b });
         return false;
     }
 

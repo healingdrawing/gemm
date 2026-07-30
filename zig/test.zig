@@ -1,5 +1,6 @@
 const std = @import("std");
 const gemm = @import("gemm.zig").GEMM;
+const dp = @import("utils/debug.zig");
 const floatUtils = @import("tests/float.zig");
 const data_v3v3scalar = @import("tests/data_v3v3scalar.zig");
 const data_v3one = @import("tests/data_v3one.zig");
@@ -14,6 +15,7 @@ pub fn main() !void {
     for (data_v3v3scalar.cases) |case| {
         // Call Zig method
         const zig_result = try floatUtils.to_array(allocator, gemm.v3v3scalar(case.a, case.b));
+        defer allocator.free(zig_result);
 
         // Call TS bridge
         const data_str = try floatUtils.vectors_to_string(allocator, .{ case.a, case.b });
@@ -111,9 +113,9 @@ pub fn main() !void {
 
         // Compare
         if (try floatUtils.arrays_equal(zig_result, ts_result, epsilon)) {
-            std.debug.print("✓ v3rotmut({any}, {any}, {any}): Zig={any}, TS={any}\n", .{ case.v, case.naxis, case.angle, zig_result, ts_result });
+            std.debug.print("✓ v3rotmut({any}, {any}, {any}):\nZig={any},\n TS={any}\n\n", .{ case.v, case.naxis, case.angle, zig_result, ts_result });
         } else {
-            std.debug.print("✗ v3rotmut({any}, {any}, {any}): Zig={any}, TS={any} data_str={s}\n", .{ case.v, case.naxis, case.angle, zig_result, ts_result, data_str });
+            dp.errlog(.{ "✗ v3rotmut", "v", case.v, "naxis", case.naxis, "angle", case.angle, "zig_result", zig_result, "ts_result", ts_result, "data_str", data_str });
         }
     }
 }
