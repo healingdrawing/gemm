@@ -5,4 +5,4 @@ echo "Generating gemm.zig..."
 ./concat.sh
 
 echo "Running tests..."
-zig run test.zig
+DEVLOG=true zig run test.zig
