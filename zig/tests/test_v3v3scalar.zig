@@ -3,9 +3,11 @@ const dp = @import("../utils/debug.zig");
 const data_v3v3scalar = @import("data_v3v3scalar.zig");
 const floatUtils = @import("float.zig");
 const gemm = @import("../gemm.zig").GEMM;
+const report = @import("report.zig");
 
-pub fn test_v3v3scalar(epsilon: f32) !void {
+pub fn test_v3v3scalar(epsilon: f32) !report.MethodResult {
     const allocator = std.heap.page_allocator;
+    var failed: usize = 0;
 
     dp.devlog(.{"Running v3v3scalar tests..."});
 
@@ -47,6 +49,7 @@ pub fn test_v3v3scalar(epsilon: f32) !void {
         if (ok_zig_ts and ok_zig_exp and ok_ts_exp) {
             std.debug.print("✓ v3v3scalar({any}, {any}) = {any}\n", .{ case.a, case.b, zig_result });
         } else {
+            failed += 1;
             dp.errlog(.{
                 "✗ v3v3scalar",
                 "a",
@@ -64,4 +67,9 @@ pub fn test_v3v3scalar(epsilon: f32) !void {
             });
         }
     }
+    return .{
+        .name = "v3v3scalar",
+        .total = data_v3v3scalar.cases.len,
+        .failed = failed,
+    };
 }

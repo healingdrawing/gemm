@@ -3,9 +3,11 @@ const dp = @import("../utils/debug.zig");
 const data_v3rot = @import("data_v3rot.zig");
 const floatUtils = @import("float.zig");
 const gemm = @import("../gemm.zig").GEMM;
+const report = @import("report.zig");
 
-pub fn test_v3rot(epsilon: f32) !void {
+pub fn test_v3rot(epsilon: f32) !report.MethodResult {
     const allocator = std.heap.page_allocator;
+    var failed: usize = 0;
 
     dp.devlog(.{"Running v3rot tests..."});
 
@@ -47,6 +49,7 @@ pub fn test_v3rot(epsilon: f32) !void {
         if (ok_zig_ts and ok_zig_exp and ok_ts_exp) {
             std.debug.print("✓ v3rot({any}, {any}, {any}):\nZig={any},\n TS={any}\n\n", .{ case.v, case.naxis, case.angle, zig_result, ts_result });
         } else {
+            failed += 1;
             dp.errlog(.{
                 "✗ v3rot",
                 "v",
@@ -66,4 +69,9 @@ pub fn test_v3rot(epsilon: f32) !void {
             });
         }
     }
+    return .{
+        .name = "v3rot",
+        .total = data_v3rot.cases.len,
+        .failed = failed,
+    };
 }

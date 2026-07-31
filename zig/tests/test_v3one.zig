@@ -3,9 +3,11 @@ const dp = @import("../utils/debug.zig");
 const data_v3one = @import("data_v3one.zig");
 const floatUtils = @import("float.zig");
 const gemm = @import("../gemm.zig").GEMM;
+const report = @import("report.zig");
 
-pub fn test_v3one(epsilon: f32) !void {
+pub fn test_v3one(epsilon: f32) !report.MethodResult {
     const allocator = std.heap.page_allocator;
+    var failed: usize = 0;
 
     dp.devlog(.{"Running v3one tests..."});
 
@@ -47,6 +49,7 @@ pub fn test_v3one(epsilon: f32) !void {
         if (ok_zig_ts and ok_zig_exp and ok_ts_exp) {
             std.debug.print("✓ v3one({any}): Zig={any}, TS={any}\n", .{ case.v, zig_result, ts_result });
         } else {
+            failed += 1;
             dp.errlog(.{
                 "✗ v3one",
                 "v",
@@ -62,4 +65,9 @@ pub fn test_v3one(epsilon: f32) !void {
             });
         }
     }
+    return .{
+        .name = "v3one",
+        .total = data_v3one.cases.len,
+        .failed = failed,
+    };
 }

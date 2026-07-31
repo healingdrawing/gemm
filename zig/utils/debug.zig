@@ -12,7 +12,27 @@ pub fn init_from_env_map(map: *const std.process.Environ.Map) void {
     if (map.get("ERRLOG")) |v| enable_err = std.mem.eql(u8, v, "true");
 }
 
-/// Magenta framed error log.
+/// x16 terminal color pointers for debug.rawlog method
+pub const Tcolor = enum {
+    black,
+    red,
+    green,
+    yellow,
+    blue,
+    magenta,
+    cyan,
+    white,
+    bright_black,
+    bright_red,
+    bright_green,
+    bright_yellow,
+    bright_blue,
+    bright_magenta,
+    bright_cyan,
+    bright_white,
+};
+
+/// Magenta framed error log.  ERRLOG env var dependent.
 /// Each argument becomes its own framed row (exactly like the TS version).
 /// Usage: errlog(.{"msg", value, err})
 pub fn errlog(args: anytype) void {
@@ -27,7 +47,7 @@ pub fn errlog(args: anytype) void {
     std.debug.print("\x1b[35m{s}\x1b[0m\n", .{framed});
 }
 
-/// Yellow framed development log.
+/// Yellow framed development log. DEVLOG env var dependent.
 /// Each argument becomes its own framed row.
 pub fn devlog(args: anytype) void {
     if (!enable_dev) return;
@@ -41,8 +61,38 @@ pub fn devlog(args: anytype) void {
     std.debug.print("\x1b[33m{s}\x1b[0m\n", .{framed});
 }
 
-/// Yellow plain log (no frame).
-pub fn rawlog(args: anytype) void {
+/// Slow colored plain log (no frame). Requires "const Tcolor = dp.Tcolor;" first
+pub fn rawlog(args: anytype, paintto: Tcolor) void {
+    if (comptime @typeInfo(@TypeOf(args)) != .@"struct") {
+        @compileError("rawlog expects a tuple: rawlog(.{\"a\", 1})");
+    }
+    if (comptime args.len == 0) return;
+
+    const msg = join_args(args) catch return;
+    defer std.heap.page_allocator.free(msg);
+
+    _ = switch (paintto) {
+        .black => std.debug.print("\x1b[30m{s}\x1b[0m\n", .{msg}),
+        .red => std.debug.print("\x1b[31m{s}\x1b[0m\n", .{msg}),
+        .green => std.debug.print("\x1b[32m{s}\x1b[0m\n", .{msg}),
+        .yellow => std.debug.print("\x1b[33m{s}\x1b[0m\n", .{msg}),
+        .blue => std.debug.print("\x1b[34m{s}\x1b[0m\n", .{msg}),
+        .magenta => std.debug.print("\x1b[35m{s}\x1b[0m\n", .{msg}),
+        .cyan => std.debug.print("\x1b[36m{s}\x1b[0m\n", .{msg}),
+        .white => std.debug.print("\x1b[37m{s}\x1b[0m\n", .{msg}),
+        .bright_black => std.debug.print("\x1b[90m{s}\x1b[0m\n", .{msg}),
+        .bright_red => std.debug.print("\x1b[91m{s}\x1b[0m\n", .{msg}),
+        .bright_green => std.debug.print("\x1b[92m{s}\x1b[0m\n", .{msg}),
+        .bright_yellow => std.debug.print("\x1b[93m{s}\x1b[0m\n", .{msg}),
+        .bright_blue => std.debug.print("\x1b[94m{s}\x1b[0m\n", .{msg}),
+        .bright_magenta => std.debug.print("\x1b[95m{s}\x1b[0m\n", .{msg}),
+        .bright_cyan => std.debug.print("\x1b[96m{s}\x1b[0m\n", .{msg}),
+        .bright_white => std.debug.print("\x1b[97m{s}\x1b[0m\n", .{msg}),
+    };
+}
+
+/// Yellow plain log (no frame). DEVLOG env var dependent.
+pub fn rawdevlog(args: anytype) void {
     if (!enable_dev) return;
     if (comptime @typeInfo(@TypeOf(args)) != .@"struct") {
         @compileError("rawlog expects a tuple: rawlog(.{\"a\", 1})");
@@ -52,6 +102,19 @@ pub fn rawlog(args: anytype) void {
     const msg = join_args(args) catch return;
     defer std.heap.page_allocator.free(msg);
     std.debug.print("\x1b[33m{s}\x1b[0m\n", .{msg});
+}
+
+/// Magenta plain log (no frame).  ERRLOG env var dependent.
+pub fn rawerrlog(args: anytype) void {
+    if (!enable_err) return;
+    if (comptime @typeInfo(@TypeOf(args)) != .@"struct") {
+        @compileError("rawlog expects a tuple: rawlog(.{\"a\", 1})");
+    }
+    if (comptime args.len == 0) return;
+
+    const msg = join_args(args) catch return;
+    defer std.heap.page_allocator.free(msg);
+    std.debug.print("\x1b[35m{s}\x1b[0m\n", .{msg});
 }
 
 /// Always-on framed log (no color gate).

@@ -10,10 +10,10 @@ pub fn main(init: std.process.Init) !void {
     // not nice, but at the moment found only this solution for flags:
     debug.init_from_env_map(init.environ_map);
 
-    debug.rawlog(.{"=== debug.zig demo (Zig 0.16) ===\n\n"});
+    debug.rawlog(.{"=== debug.zig demo (Zig 0.16) ===\n\n"}, debug.Tcolor.cyan);
 
     // plain yellow, no frame
-    debug.rawlog(.{"This is a raw yellow log (no frame)"});
+    debug.rawdevlog(.{"This is a raw yellow log (no frame)"});
 
     // framed yellow development log
     debug.devlog(.{ "Hello from", "devlog", "- framed yellow development log" });
@@ -47,5 +47,5 @@ pub fn main(init: std.process.Init) !void {
     // numbers, bool, float
     debug.devlog(.{ "numbers:", 1, 2.5, true, false });
 
-    debug.rawlog(.{"\n=== end of demo ===\n"});
+    debug.rawlog(.{"\n=== end of demo ===\n"}, debug.Tcolor.bright_cyan);
 }

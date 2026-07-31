@@ -3,9 +3,11 @@ const dp = @import("../utils/debug.zig");
 const data_v3mag2 = @import("data_v3mag2.zig");
 const floatUtils = @import("float.zig");
 const gemm = @import("../gemm.zig").GEMM;
+const report = @import("report.zig");
 
-pub fn test_v3mag2(epsilon: f32) !void {
+pub fn test_v3mag2(epsilon: f32) !report.MethodResult {
     const allocator = std.heap.page_allocator;
+    var failed: usize = 0;
 
     dp.devlog(.{"Running v3mag2 tests..."});
 
@@ -47,6 +49,7 @@ pub fn test_v3mag2(epsilon: f32) !void {
         if (ok_zig_ts and ok_zig_exp and ok_ts_exp) {
             std.debug.print("✓ v3mag2({any}) = {any}\n", .{ case.v, zig_result });
         } else {
+            failed += 1;
             dp.errlog(.{
                 "✗ v3mag2",
                 "v",
@@ -62,4 +65,9 @@ pub fn test_v3mag2(epsilon: f32) !void {
             });
         }
     }
+    return .{
+        .name = "v3mag2",
+        .total = data_v3mag2.cases.len,
+        .failed = failed,
+    };
 }
