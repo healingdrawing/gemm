@@ -35,12 +35,31 @@ pub fn test_v3mag2(epsilon: f32) !void {
 
         // Parse TS result
         const ts_result = try floatUtils.parse_float_result(allocator, result.stdout);
+        defer allocator.free(ts_result);
 
-        // Compare
-        if (try floatUtils.arrays_equal(zig_result, ts_result, epsilon)) {
+        // expected from data file (zero-cost)
+        const expected: []const f32 = &case.outarr;
+
+        const ok_zig_ts = try floatUtils.arrays_equal(zig_result, ts_result, epsilon);
+        const ok_zig_exp = try floatUtils.arrays_equal(zig_result, expected, epsilon);
+        const ok_ts_exp = try floatUtils.arrays_equal(ts_result, expected, epsilon);
+
+        if (ok_zig_ts and ok_zig_exp and ok_ts_exp) {
             std.debug.print("✓ v3mag2({any}) = {any}\n", .{ case.v, zig_result });
         } else {
-            dp.errlog(.{ "✗ v3mag2", "v", case.v, "zig_result", zig_result, "ts_result", ts_result, "data_str", data_str });
+            dp.errlog(.{
+                "✗ v3mag2",
+                "v",
+                case.v,
+                "zig_result",
+                zig_result,
+                "ts_result",
+                ts_result,
+                "expected",
+                expected,
+                "data_str",
+                data_str,
+            });
         }
     }
 }
