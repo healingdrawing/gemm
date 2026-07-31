@@ -1,7 +1,7 @@
 // @ts-nocheck
-// ts/terminal.test.ts — CLI bridge for Zig cross-checks
-// Usage: bun ts/terminal.test.ts <method> <args...>
-// Example: bun ts/terminal.test.ts v3v3scalar 1 2 3 4 5 6
+// ts/terminalcall.ts — CLI bridge for Zig cross-checks
+// Usage: bun ts/terminalcall.ts <method> <args...>
+// Example: bun ts/terminalcall.ts v3v3scalar 1 2 3 4 5 6
 // stdout: one result line only
 
 import { GEMM } from "./gemm";
@@ -42,7 +42,7 @@ const methods: Record<string, Handler> = {
 const [method, ...rest] = process.argv.slice(2);
 
 if (!method) {
-  console.error("Usage: bun ts/terminal.test.ts <method> <args...>");
+  console.error("Usage: bun ts/terminalcall.ts <method> <args...>");
   process.exit(2);
 }
 

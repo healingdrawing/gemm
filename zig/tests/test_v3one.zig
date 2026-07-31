@@ -21,7 +21,7 @@ pub fn test_v3one(epsilon: f32) !void {
         defer t_io.deinit();
         const io = t_io.io();
 
-        const cmd = try std.fmt.allocPrint(allocator, "/home/user/.bun/bin/bun ../ts/terminal.test.ts v3one {s}", .{data_str});
+        const cmd = try std.fmt.allocPrint(allocator, "/home/user/.bun/bin/bun ../ts/terminalcall.ts v3one {s}", .{data_str});
         defer allocator.free(cmd);
 
         const result = try std.process.run(allocator, io, .{

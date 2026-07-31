@@ -14,7 +14,7 @@ battle tested typescript version of the math lib i develop
 
 target:
 
-https://github.com/healingdrawing/gemm/tree/zig-concat-discovering/ts/terminal.test.ts
+https://github.com/healingdrawing/gemm/tree/zig-concat-discovering/ts/terminalcall.ts
 used in test.zig to test ts vs zig version output
 
 https://github.com/healingdrawing/gemm/tree/zig-concat-discovering/zig
