@@ -28,7 +28,7 @@ pub inline fn v3one(v3: @Vector(3, f32)) @Vector(3, f32) {
 
 
 
-// --- FROM v3rotmut/v3rotmut.zig ---
+// --- FROM v3rot/v3rot.zig ---
 
 /// Rotate 3D vector `v` around normalized axis `naxis` by `angle` (radians).
 /// Returns new vector. Axis must already be unit length.
