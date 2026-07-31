@@ -4,7 +4,7 @@ pub const TestCase = struct {
     v: @Vector(3, f32),
     naxis: @Vector(3, f32),
     angle: f32,
-    outarr: @Vector(3, f32),
+    outarr: [3]f32,
 };
 
 pub const cases = [_]TestCase{
@@ -90,14 +90,14 @@ pub const cases = [_]TestCase{
         .v = .{ std.math.inf(f32), 2, 3 },
         .naxis = .{ 0, 0, 1 },
         .angle = std.math.pi / 4.0,
-        .outarr = .{ std.math.nan(f32), std.math.inf(f32), std.math.nan(f32) },
+        .outarr = .{ std.math.nan(f32), std.math.nan(f32), std.math.nan(f32) },
     },
     // -inf in vector
     .{
         .v = .{ -std.math.inf(f32), 2, 3 },
         .naxis = .{ 0, 0, 1 },
         .angle = std.math.pi / 4.0,
-        .outarr = .{ std.math.nan(f32), -std.math.inf(f32), std.math.nan(f32) },
+        .outarr = .{ std.math.nan(f32), -std.math.nan(f32), std.math.nan(f32) },
     },
     // Zero vector (should remain zero)
     .{
@@ -111,6 +111,6 @@ pub const cases = [_]TestCase{
         .v = .{ 1, 0, 0 },
         .naxis = .{ 1.0 / @sqrt(3.0), 1.0 / @sqrt(3.0), 1.0 / @sqrt(3.0) },
         .angle = std.math.pi / 4.0,
-        .outarr = .{ 0.9238796, 0.3826834, -0.3061862 },
+        .outarr = .{ 0.8047378, 0.5058794, -0.3106172 },
     },
 };
