@@ -26,12 +26,12 @@ const methods: Record<string, Handler> = {
     );
     return v3;
   },
-  v3rotmut: (a) => {
-    if (a.length !== 7) throw new Error("v3rotmut needs 7 numbers");
+  v3rot: (a) => {
+    if (a.length !== 7) throw new Error("v3rot needs 7 numbers");
     const v3 = new Float32Array([a[0], a[1], a[2]]);
     const naxis = new Float32Array([a[3], a[4], a[5]]);
     const angle = a[6]
-    gemm.v3rotmut(
+    gemm.v3rot(
       v3, naxis, angle
     );
     return v3;

@@ -33,7 +33,7 @@ pub inline fn v3one(v3: @Vector(3, f32)) @Vector(3, f32) {
 /// Rotate 3D vector `v` around normalized axis `naxis` by `angle` (radians).
 /// Returns new vector. Axis must already be unit length.
 /// Uses Rodrigues' rotation formula.
-pub inline fn v3rotmut(v: @Vector(3, f32), naxis: @Vector(3, f32), angle: f32) @Vector(3, f32) {
+pub inline fn v3rot(v: @Vector(3, f32), naxis: @Vector(3, f32), angle: f32) @Vector(3, f32) {
     const nax = naxis[0];
     const nay = naxis[1];
     const naz = naxis[2];

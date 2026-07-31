@@ -1,11 +1,11 @@
-// src/v3rotmut/v3rotmut.zig
+// src/v3rot/v3rot.zig
 const std = @import("std");
 
 // bench section: fastest and/or more stable (less noise)
 // Rodrigues rotation. naxis must be unit length.
 
 /// Same math, cross product temps explicit
-pub inline fn v3rotmut_cross_temps(v: @Vector(3, f32), naxis: @Vector(3, f32), angle: f32) @Vector(3, f32) {
+pub inline fn v3rot_cross_temps(v: @Vector(3, f32), naxis: @Vector(3, f32), angle: f32) @Vector(3, f32) {
     const nax = naxis[0];
     const nay = naxis[1];
     const naz = naxis[2];
@@ -30,7 +30,7 @@ pub inline fn v3rotmut_cross_temps(v: @Vector(3, f32), naxis: @Vector(3, f32), a
     };
 }
 
-pub inline fn v3rotmut_cross_temps_dott(v: @Vector(3, f32), naxis: @Vector(3, f32), angle: f32) @Vector(3, f32) {
+pub inline fn v3rot_cross_temps_dott(v: @Vector(3, f32), naxis: @Vector(3, f32), angle: f32) @Vector(3, f32) {
     const nax = naxis[0];
     const nay = naxis[1];
     const naz = naxis[2];
@@ -56,7 +56,7 @@ pub inline fn v3rotmut_cross_temps_dott(v: @Vector(3, f32), naxis: @Vector(3, f3
 }
 
 /// FMA-friendly chain (may reduce noise on some CPUs)
-pub inline fn v3rotmut_fma(v: @Vector(3, f32), naxis: @Vector(3, f32), angle: f32) @Vector(3, f32) {
+pub inline fn v3rot_fma(v: @Vector(3, f32), naxis: @Vector(3, f32), angle: f32) @Vector(3, f32) {
     const nax = naxis[0];
     const nay = naxis[1];
     const naz = naxis[2];
@@ -81,7 +81,7 @@ pub inline fn v3rotmut_fma(v: @Vector(3, f32), naxis: @Vector(3, f32), angle: f3
     };
 }
 
-pub inline fn v3rotmut_fma_dott(v: @Vector(3, f32), naxis: @Vector(3, f32), angle: f32) @Vector(3, f32) {
+pub inline fn v3rot_fma_dott(v: @Vector(3, f32), naxis: @Vector(3, f32), angle: f32) @Vector(3, f32) {
     const nax = naxis[0];
     const nay = naxis[1];
     const naz = naxis[2];
@@ -112,7 +112,7 @@ pub inline fn v3rotmut_fma_dott(v: @Vector(3, f32), naxis: @Vector(3, f32), angl
 /// Rotate 3D vector `v` around normalized axis `naxis` by `angle` (radians).
 /// Returns new vector. Axis must already be unit length.
 /// Uses Rodrigues' rotation formula.
-pub inline fn v3rotmut(v: @Vector(3, f32), naxis: @Vector(3, f32), angle: f32) @Vector(3, f32) {
+pub inline fn v3rot(v: @Vector(3, f32), naxis: @Vector(3, f32), angle: f32) @Vector(3, f32) {
     const nax = naxis[0];
     const nay = naxis[1];
     const naz = naxis[2];

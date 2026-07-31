@@ -554,7 +554,7 @@ dot3Dline3D_x_plane3D(
    * @param naxis normalized (length ≈ 1) axis [nax,nay,naz] of rotation(3d vector)
    * @param angle in radians to rotate v
    */
-  v3rotmut(
+  v3rot(
     v:     Float32Array,
     naxis:  Float32Array,
     angle: number
@@ -605,7 +605,7 @@ dot3Dline3D_x_plane3D(
   ): Float32Array {
     const out = new Float32Array(3);
     out.set(v);
-    this.v3rotmut(out, naxis, angle);
+    this.v3rot(out, naxis, angle);
     return out
   }
 
@@ -615,7 +615,7 @@ dot3Dline3D_x_plane3D(
    * @param naxis normalized (length ≈ 1) axis [nax,nay,naz] of rotation(3d vector)
    * @param angle in radians to rotate v
    */
-  v3rotmut_safe(
+  v3rot_safe(
     v:     Float32Array,
     naxis:  Float32Array,
     angle: number
@@ -623,9 +623,9 @@ dot3Dline3D_x_plane3D(
     /* checks */
     if( this.v3_ok(v) && this.v3_ok(naxis) && isFinite(angle) ){
       this.v3one(naxis)
-      this.v3rotmut(v, naxis, angle)
+      this.v3rot(v, naxis, angle)
     }else{
-      // console.log("CHECK FAILED v3rotmut_safe", v, naxis, angle )
+      // console.log("CHECK FAILED v3rot_safe", v, naxis, angle )
       // console.log("this.v3_ok(v)", this.v3_ok(v), v)
       // console.log("this.v3_ok(naxis)", this.v3_ok(naxis), naxis)
       return
@@ -646,7 +646,7 @@ dot3Dline3D_x_plane3D(
   ): Float32Array {
     const out = new Float32Array(v.length);
     out.set(v);
-    this.v3rotmut_safe(out, naxis, angle);
+    this.v3rot_safe(out, naxis, angle);
     return out
   }
 
