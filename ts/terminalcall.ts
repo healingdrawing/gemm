@@ -21,9 +21,7 @@ const methods: Record<string, Handler> = {
   v3one: (a) => {
     if (a.length !== 3) throw new Error("v3one needs 3 numbers");
     const v3 = new Float32Array([a[0], a[1], a[2]]);
-    gemm.v3one(
-      v3
-    );
+    gemm.v3one( v3 );
     return v3;
   },
   v3rot: (a) => {
@@ -31,10 +29,12 @@ const methods: Record<string, Handler> = {
     const v3 = new Float32Array([a[0], a[1], a[2]]);
     const naxis = new Float32Array([a[3], a[4], a[5]]);
     const angle = a[6]
-    gemm.v3rot(
-      v3, naxis, angle
-    );
+    gemm.v3rot( v3, naxis, angle );
     return v3;
+  },
+  v3mag2: (a) => {
+    if (a.length !== 3) throw new Error("v3mag2 needs 3 numbers");
+    return gemm.v3mag2(new Float32Array([a[0], a[1], a[2]]));
   },
   // v3v3cross: (a) => { ... },
 };
