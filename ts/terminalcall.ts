@@ -36,6 +36,10 @@ const methods: Record<string, Handler> = {
     if (a.length !== 3) throw new Error("v3mag2 needs 3 numbers");
     return gemm.v3mag2(new Float32Array([a[0], a[1], a[2]]));
   },
+  v3mag: (a) => {
+    if (a.length !== 3) throw new Error("v3mag needs 3 numbers");
+    return gemm.v3mag(new Float32Array([a[0], a[1], a[2]]));
+  },
   // v3v3cross: (a) => { ... },
 };
 

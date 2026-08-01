@@ -5,6 +5,17 @@ const std = @import("std");
 
 pub const GEMM = struct {
 
+// --- FROM v3mag/v3mag.zig ---
+
+/// Magnitude (length / norm) of a 3D vector.
+/// sqrt(v3[0]*v3[0] + v3[1]*v3[1] + v3[2]*v3[2])
+/// INCOMINGS MUST BE SANITIZED. NaN raises NaN.
+pub inline fn v3mag(v3: @Vector(3, f32)) f32 {
+    return @sqrt(@mulAdd(f32, v3[0], v3[0], @mulAdd(f32, v3[1], v3[1], v3[2] * v3[2])));
+}
+
+
+
 // --- FROM v3mag2/v3mag2.zig ---
 
 /// Squared magnitude of a 3D vector.
