@@ -621,13 +621,13 @@ dot3Dline3D_x_plane3D(
     angle: number
   ) {
     /* checks */
-    if( this.v3_ok(v) && this.v3_ok(naxis) && isFinite(angle) ){
+    if( this.v3ok(v) && this.v3ok(naxis) && isFinite(angle) ){
       this.v3one(naxis)
       this.v3rot(v, naxis, angle)
     }else{
       // console.log("CHECK FAILED v3rot_safe", v, naxis, angle )
-      // console.log("this.v3_ok(v)", this.v3_ok(v), v)
-      // console.log("this.v3_ok(naxis)", this.v3_ok(naxis), naxis)
+      // console.log("this.v3ok(v)", this.v3ok(v), v)
+      // console.log("this.v3ok(naxis)", this.v3ok(naxis), naxis)
       return
     }
   }
@@ -673,7 +673,7 @@ dot3Dline3D_x_plane3D(
    * @param v3 3d vector
    * @returns true if all components are finite and vector is non-zero
    */
-  v3_ok(v3: Float32Array): boolean {
+  v3ok(v3: Float32Array): boolean {
     if (v3.length !== 3) return false
     const x = v3[0]
     const y = v3[1]
@@ -749,7 +749,7 @@ dot3Dline3D_x_plane3D(
     v3b:Float32Array,
     v3n:Float32Array,
   ){
-    if (this.v3_ok(v3a) && this.v3_ok(v3b)){
+    if (this.v3ok(v3a) && this.v3ok(v3b)){
       v3n[0] = v3a[1] * v3b[2] - v3a[2] * v3b[1];
       v3n[1] = -v3a[0] * v3b[2] + v3a[2] * v3b[0];
       v3n[2] = v3a[0] * v3b[1] - v3a[1] * v3b[0];
