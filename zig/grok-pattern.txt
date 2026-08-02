@@ -62,3 +62,5 @@ ALWAYS FOLLOW SKELETON.
 Skeleton is already tested and works, and looks like can be extended without big obstacles for common cases.
 
 If you have any suggestions, shortly inform/ask me, but by default always try to follow the skeleton and context described above.
+
+when analyze bench output, discover two columns in result table. sort by the fastest first(minimum time, major winners column), but also add column with places by stability(the most stable time of executions, less deviation between executions)
