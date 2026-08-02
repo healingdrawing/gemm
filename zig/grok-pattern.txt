@@ -63,4 +63,6 @@ Skeleton is already tested and works, and looks like can be extended without big
 
 If you have any suggestions, shortly inform/ask me, but by default always try to follow the skeleton and context described above.
 
-when analyze bench output, discover two columns in result table. sort by the fastest first(minimum time, major winners column), but also add column with places by stability(the most stable time of executions, less deviation between executions)
+when analyze bench output, show me the TWO SEPARATED TABLES each sorted by positions with the full method name:
+- first table sorted by the balanced fastest time of execution (sum of all times devided by number of the executions for the same method from each execution)
+- second table sorted by the most stable executions time (max_time - min_time), f.e. (0.8 - 0.08) = 0.72 then sort the smallest on top as winner
