@@ -27,6 +27,19 @@ pub inline fn v3mag2(v3: @Vector(3, f32)) f32 {
 
 
 
+// --- FROM v3ok/v3ok.zig ---
+
+/// Returns true if the 3D vector is finite AND non-zero.
+/// Matches current TS: (x != 0 || y != 0 || z != 0) && isFinite(x*x+y*y+z*z)
+pub inline fn v3ok(v3: @Vector(3, f32)) bool {
+    const x = v3[0];
+    const y = v3[1];
+    const z = v3[2];
+    return (x != 0 or y != 0 or z != 0) and std.math.isFinite(@mulAdd(f32, x, x, @mulAdd(f32, y, y, z * z)));
+}
+
+
+
 // --- FROM v3one/v3one.zig ---
 
 /// Normalize a 3D vector to unit length if magnitude > 0.

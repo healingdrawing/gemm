@@ -40,6 +40,10 @@ const methods: Record<string, Handler> = {
     if (a.length !== 3) throw new Error("v3mag needs 3 numbers");
     return gemm.v3mag(new Float32Array([a[0], a[1], a[2]]));
   },
+  v3ok: (a) => {
+    if (a.length !== 3) throw new Error("v3ok needs 3 numbers");
+    return gemm.v3ok(new Float32Array([a[0], a[1], a[2]]));
+  },
   // v3v3cross: (a) => { ... },
 };
 
@@ -67,7 +71,9 @@ const nums = rest.map((s) => {
 
 try {
   const out = fn(nums);
-  if (typeof out === "number") {
+  // patch for boolean result true false -> 1 0 between ts and zig to solidify to numbers only
+  if ( typeof out === "boolean") console.log(out?1:0)
+  else if (typeof out === "number") {
     console.log(float_to_string(out));
   } else {
     console.log(Array.from(out).map(float_to_string).join(" "));

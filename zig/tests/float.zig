@@ -16,7 +16,6 @@ pub inline fn parse_float_result(allocator: std.mem.Allocator, output: []const u
         const value = try std.fmt.parseFloat(f32, clean);
         try values.append(allocator, value);
     }
-
     return try values.toOwnedSlice(allocator);
 }
 
@@ -142,7 +141,7 @@ fn append_float_string(allocator: std.mem.Allocator, result: *std.ArrayList(u8),
             try result.appendSlice(allocator, "-Infinity");
         }
     } else {
-        var buf: [32]u8 = undefined;
+        var buf: [64]u8 = undefined; //warning input length affects buf size 64 vs 32
         const str = try std.fmt.bufPrint(&buf, "{d}", .{val});
         try result.appendSlice(allocator, str);
     }
