@@ -671,15 +671,14 @@ dot3Dline3D_x_plane3D(
   /**
    * check if 3d vector is correct (finite AND non-zero)
    * @param v3 3d vector
-   * @returns true if all components are finite and vector is non-zero
+   * @returns true if one component is non-zero and mag2 isFinite(x * x + y * y + z * z)
    */
   v3ok(v3: Float32Array): boolean {
     if (v3.length !== 3) return false
     const x = v3[0]
     const y = v3[1]
     const z = v3[2]
-    const mag2 = x*x+y*y+z*z
-    return mag2 !== 0 && isFinite(mag2)    
+    return (x !== 0 || y !== 0 || z !== 0) && isFinite(x*x+y*y+z*z)
   }
 
   /**
