@@ -6,7 +6,7 @@ pub fn main(init: std.process.Init) !void {
     const argv = [_][]const u8{
         "bun",
         "test",
-        "../../../ts/tests/v3v3scalar.test.ts",
+        "../../ts/tests/v3v3scalar.test.ts",
     };
 
     var child = try std.process.spawn(init.io, .{
