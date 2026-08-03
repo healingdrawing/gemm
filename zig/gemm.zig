@@ -5,6 +5,16 @@ const std = @import("std");
 
 pub const GEMM = struct {
 
+// --- FROM v3back/v3back.zig ---
+
+/// Opposite of a 3D vector. [1, 2, -4] → [-1, -2, 4]
+/// INCOMINGS MUST BE SANITIZED. NaN / Inf propagate.
+pub inline fn v3back(v3: @Vector(3, f32)) @Vector(3, f32) {
+    return .{ -v3[0], -v3[1], -v3[2] };
+}
+
+
+
 // --- FROM v3mag/v3mag.zig ---
 
 /// Magnitude (length / norm) of a 3D vector.

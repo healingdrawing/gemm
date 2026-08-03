@@ -8,6 +8,7 @@ const test_v3rot = @import("tests/test_v3rot.zig").test_v3rot;
 const test_v3mag2 = @import("tests/test_v3mag2.zig").test_v3mag2;
 const test_v3mag = @import("tests/test_v3mag.zig").test_v3mag;
 const test_v3ok = @import("tests/test_v3ok.zig").test_v3ok;
+const test_v3back = @import("tests/test_v3back.zig").test_v3back;
 
 pub fn main(init: std.process.Init) !void {
     dp.init_from_env_map(init.environ_map);
@@ -21,6 +22,7 @@ pub fn main(init: std.process.Init) !void {
         try test_v3mag2(epsilon),
         try test_v3mag(epsilon),
         try test_v3ok(epsilon),
+        try test_v3back(epsilon),
     };
 
     report.print_test_sum_report(&results);

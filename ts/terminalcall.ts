@@ -44,6 +44,12 @@ const methods: Record<string, Handler> = {
     if (a.length !== 3) throw new Error("v3ok needs 3 numbers");
     return gemm.v3ok(new Float32Array([a[0], a[1], a[2]]));
   },
+  v3back: (a) => {
+    if (a.length !== 3) throw new Error("v3back needs 3 numbers");
+    const v3 = new Float32Array([a[0], a[1], a[2]]);
+    gemm.v3back(v3);
+    return v3;
+  },
   // v3v3cross: (a) => { ... },
 };
 
