@@ -845,7 +845,7 @@ dot3Dline3D_x_plane3D(
     INCOMINGS MUST BE SANITIZED. mutate 3d vector to opposite 3d vector. [1, 2, -4] return [-1, -2, 4]
     @param v3 - 3d vector
   */
-  v3back_mut(v3:Float32Array){
+  v3back(v3:Float32Array){
     if(v3.length === 3){
       v3[0] *= -1
       v3[1] *= -1
