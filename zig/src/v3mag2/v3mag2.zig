@@ -34,5 +34,5 @@ pub inline fn v3mag2_hybrid(v3: @Vector(3, f32)) f32 {
 /// v3[0]*v3[0] + v3[1]*v3[1] + v3[2]*v3[2]
 /// INCOMINGS MUST BE SANITIZED. NaN raises NaN.
 pub inline fn v3mag2(v3: @Vector(3, f32)) f32 {
-    return @mulAdd(f32, v3[0], v3[0], @mulAdd(f32, v3[1], v3[1], v3[2] * v3[2]));
+    return v3[0] * v3[0] + v3[1] * v3[1] + v3[2] * v3[2];
 }
