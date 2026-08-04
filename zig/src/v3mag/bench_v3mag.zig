@@ -15,19 +15,35 @@ pub fn main(init: std.process.Init) !void {
     var volatile_sum: f32 = 0;
     var result: f32 = undefined;
 
+    // --- warmup (unmeasured) ---
+    {
+        var sum: f32 = 0;
+        var v: @Vector(3, f32) = .{ 1, 2, 3 };
+        for (0..2_000_000) |_| {
+            v = .{ rand.float(f32) * 10 - 5, rand.float(f32) * 10 - 5, rand.float(f32) * 10 - 5 };
+            sum += v3mag.v3mag_locals(v);
+            sum += v3mag.v3mag_fma_chain(v);
+            sum += v3mag.v3mag_hybrid(v);
+            sum += v3mag.v3mag_sequent(v);
+            sum += v3mag.v3mag_reduce(v);
+            sum += v3mag.v3mag_std_sqrt(v);
+        }
+        volatile_sum += sum;
+    }
+
     // 1. sequent
-    // {
-    //     const start = std.Io.Clock.real.now(init.io);
-    //     var sum: f32 = 0;
-    //     for (0..iterations) |_| {
-    //         v3 = .{ rand.float(f32) * 10 - 5, rand.float(f32) * 10 - 5, rand.float(f32) * 10 - 5 };
-    //         result = v3mag.v3mag_sequent(v3);
-    //         sum += result;
-    //     }
-    //     volatile_sum += sum;
-    //     const elapsed = start.durationTo(std.Io.Clock.real.now(init.io)).toNanoseconds();
-    //     std.debug.print("{d:>12} ns  ({d:.3} ns/op) v3mag_sequent\n", .{ elapsed, @as(f64, @floatFromInt(elapsed)) / iterations });
-    // }
+    {
+        const start = std.Io.Clock.real.now(init.io);
+        var sum: f32 = 0;
+        for (0..iterations) |_| {
+            v3 = .{ rand.float(f32) * 10 - 5, rand.float(f32) * 10 - 5, rand.float(f32) * 10 - 5 };
+            result = v3mag.v3mag_sequent(v3);
+            sum += result;
+        }
+        volatile_sum += sum;
+        const elapsed = start.durationTo(std.Io.Clock.real.now(init.io)).toNanoseconds();
+        std.debug.print("{d:>12} ns  ({d:.3} ns/op) v3mag_sequent\n", .{ elapsed, @as(f64, @floatFromInt(elapsed)) / iterations });
+    }
 
     // 2. locals
     {
@@ -44,18 +60,18 @@ pub fn main(init: std.process.Init) !void {
     }
 
     // 3. reduce
-    // {
-    //     const start = std.Io.Clock.real.now(init.io);
-    //     var sum: f32 = 0;
-    //     for (0..iterations) |_| {
-    //         v3 = .{ rand.float(f32) * 10 - 5, rand.float(f32) * 10 - 5, rand.float(f32) * 10 - 5 };
-    //         result = v3mag.v3mag_reduce(v3);
-    //         sum += result;
-    //     }
-    //     volatile_sum += sum;
-    //     const elapsed = start.durationTo(std.Io.Clock.real.now(init.io)).toNanoseconds();
-    //     std.debug.print("{d:>12} ns  ({d:.3} ns/op) v3mag_reduce\n", .{ elapsed, @as(f64, @floatFromInt(elapsed)) / iterations });
-    // }
+    {
+        const start = std.Io.Clock.real.now(init.io);
+        var sum: f32 = 0;
+        for (0..iterations) |_| {
+            v3 = .{ rand.float(f32) * 10 - 5, rand.float(f32) * 10 - 5, rand.float(f32) * 10 - 5 };
+            result = v3mag.v3mag_reduce(v3);
+            sum += result;
+        }
+        volatile_sum += sum;
+        const elapsed = start.durationTo(std.Io.Clock.real.now(init.io)).toNanoseconds();
+        std.debug.print("{d:>12} ns  ({d:.3} ns/op) v3mag_reduce\n", .{ elapsed, @as(f64, @floatFromInt(elapsed)) / iterations });
+    }
 
     // 4. fma_chain
     {
@@ -86,18 +102,18 @@ pub fn main(init: std.process.Init) !void {
     }
 
     // 6. std.math.sqrt (for comparison vs @sqrt)
-    // {
-    //     const start = std.Io.Clock.real.now(init.io);
-    //     var sum: f32 = 0;
-    //     for (0..iterations) |_| {
-    //         v3 = .{ rand.float(f32) * 10 - 5, rand.float(f32) * 10 - 5, rand.float(f32) * 10 - 5 };
-    //         result = v3mag.v3mag_std_sqrt(v3);
-    //         sum += result;
-    //     }
-    //     volatile_sum += sum;
-    //     const elapsed = start.durationTo(std.Io.Clock.real.now(init.io)).toNanoseconds();
-    //     std.debug.print("{d:>12} ns  ({d:.3} ns/op) v3mag_std_sqrt\n", .{ elapsed, @as(f64, @floatFromInt(elapsed)) / iterations });
-    // }
+    {
+        const start = std.Io.Clock.real.now(init.io);
+        var sum: f32 = 0;
+        for (0..iterations) |_| {
+            v3 = .{ rand.float(f32) * 10 - 5, rand.float(f32) * 10 - 5, rand.float(f32) * 10 - 5 };
+            result = v3mag.v3mag_std_sqrt(v3);
+            sum += result;
+        }
+        volatile_sum += sum;
+        const elapsed = start.durationTo(std.Io.Clock.real.now(init.io)).toNanoseconds();
+        std.debug.print("{d:>12} ns  ({d:.3} ns/op) v3mag_std_sqrt\n", .{ elapsed, @as(f64, @floatFromInt(elapsed)) / iterations });
+    }
 
     std.debug.print("\nFinal volatile sum: {d:.4}\n", .{volatile_sum});
 }
