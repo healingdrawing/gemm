@@ -15,10 +15,22 @@ fi
 echo "=== Running $bench_file  ${runs} times ==="
 echo
 
+# wall-clock start of the whole session
+start_ns=$(date +%s%N)
+
 for i in $(seq 1 "$runs"); do
     echo "----- run $i / $runs -----"
     zig run "$bench_file" -OReleaseFast
     echo
 done
 
+# wall-clock end
+end_ns=$(date +%s%N)
+elapsed_ns=$((end_ns - start_ns))
+
+# human-readable breakdown
+elapsed_s=$((elapsed_ns / 1000000000))
+elapsed_m=$((elapsed_s / 60 ))
+
+echo "Total wall time: ${elapsed_s} seconds or about ${elapsed_m} minutes"
 echo "=== done ==="
