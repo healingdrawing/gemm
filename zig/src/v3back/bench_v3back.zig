@@ -15,19 +15,43 @@ pub fn main(init: std.process.Init) !void {
     var volatile_sum: f32 = 0;
     var result: @Vector(3, f32) = undefined;
 
+    // --- warmup (unmeasured) ---
+    {
+        var sum: f32 = 0;
+        for (0..2_000_000) |_| {
+            v3 = .{ rand.float(f32) * 10 - 5, rand.float(f32) * 10 - 5, rand.float(f32) * 10 - 5 };
+
+            result = v3back.v3back_mul_neg1(v3);
+            sum += result[0] + result[1] + result[2];
+
+            result = v3back.v3back_locals(v3);
+            sum += result[0] + result[1] + result[2];
+
+            result = v3back.v3back_vector_neg(v3);
+            sum += result[0] + result[1] + result[2];
+
+            v3back.v3back_mut_components(&v3);
+            sum += v3[0] + v3[1] + v3[2];
+
+            v3back.v3back_mut(&v3);
+            sum += v3[0] + v3[1] + v3[2];
+        }
+        volatile_sum += sum;
+    }
+
     // 1. vector_neg (return)
-    // {
-    //     const start = std.Io.Clock.real.now(init.io);
-    //     var sum: f32 = 0;
-    //     for (0..iterations) |_| {
-    //         v3 = .{ rand.float(f32) * 10 - 5, rand.float(f32) * 10 - 5, rand.float(f32) * 10 - 5 };
-    //         result = v3back.v3back_vector_neg(v3);
-    //         sum += result[0] + result[1] + result[2];
-    //     }
-    //     volatile_sum += sum;
-    //     const elapsed = start.durationTo(std.Io.Clock.real.now(init.io)).toNanoseconds();
-    //     std.debug.print("{d:>12} ns  ({d:.3} ns/op) v3back_vector_neg\n", .{ elapsed, @as(f64, @floatFromInt(elapsed)) / iterations });
-    // }
+    {
+        const start = std.Io.Clock.real.now(init.io);
+        var sum: f32 = 0;
+        for (0..iterations) |_| {
+            v3 = .{ rand.float(f32) * 10 - 5, rand.float(f32) * 10 - 5, rand.float(f32) * 10 - 5 };
+            result = v3back.v3back_vector_neg(v3);
+            sum += result[0] + result[1] + result[2];
+        }
+        volatile_sum += sum;
+        const elapsed = start.durationTo(std.Io.Clock.real.now(init.io)).toNanoseconds();
+        std.debug.print("{d:>12} ns  ({d:.3} ns/op) v3back_vector_neg\n", .{ elapsed, @as(f64, @floatFromInt(elapsed)) / iterations });
+    }
 
     // 2. mul_neg1 (return)
     {
@@ -58,18 +82,18 @@ pub fn main(init: std.process.Init) !void {
     }
 
     // 4. mut (pointer)
-    // {
-    //     const start = std.Io.Clock.real.now(init.io);
-    //     var sum: f32 = 0;
-    //     for (0..iterations) |_| {
-    //         v3 = .{ rand.float(f32) * 10 - 5, rand.float(f32) * 10 - 5, rand.float(f32) * 10 - 5 };
-    //         v3back.v3back_mut(&v3);
-    //         sum += v3[0] + v3[1] + v3[2];
-    //     }
-    //     volatile_sum += sum;
-    //     const elapsed = start.durationTo(std.Io.Clock.real.now(init.io)).toNanoseconds();
-    //     std.debug.print("{d:>12} ns  ({d:.3} ns/op) v3back_mut\n", .{ elapsed, @as(f64, @floatFromInt(elapsed)) / iterations });
-    // }
+    {
+        const start = std.Io.Clock.real.now(init.io);
+        var sum: f32 = 0;
+        for (0..iterations) |_| {
+            v3 = .{ rand.float(f32) * 10 - 5, rand.float(f32) * 10 - 5, rand.float(f32) * 10 - 5 };
+            v3back.v3back_mut(&v3);
+            sum += v3[0] + v3[1] + v3[2];
+        }
+        volatile_sum += sum;
+        const elapsed = start.durationTo(std.Io.Clock.real.now(init.io)).toNanoseconds();
+        std.debug.print("{d:>12} ns  ({d:.3} ns/op) v3back_mut\n", .{ elapsed, @as(f64, @floatFromInt(elapsed)) / iterations });
+    }
 
     // 5. mut_components (pointer)
     {
