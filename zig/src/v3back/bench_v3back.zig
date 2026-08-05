@@ -1,9 +1,10 @@
 // bench_v3back.zig
 const std = @import("std");
 const v3back = @import("v3back.zig");
+const save_to_file = @import("b/dumper.zig").save_to_file;
 
 pub fn main(init: std.process.Init) !void {
-    const iterations = 1_000_000_000;
+    const iterations = 100_000_000;
 
     var rng = std.Random.DefaultPrng.init(42);
     const rand = rng.random();
@@ -51,6 +52,7 @@ pub fn main(init: std.process.Init) !void {
         volatile_sum += sum;
         const elapsed = start.durationTo(std.Io.Clock.real.now(init.io)).toNanoseconds();
         std.debug.print("{d:>12} ns  ({d:.3} ns/op) v3back_vector_neg\n", .{ elapsed, @as(f64, @floatFromInt(elapsed)) / iterations });
+        try save_to_file(init, "v3back_vector_neg", elapsed);
     }
 
     // 2. mul_neg1 (return)
@@ -65,6 +67,7 @@ pub fn main(init: std.process.Init) !void {
         volatile_sum += sum;
         const elapsed = start.durationTo(std.Io.Clock.real.now(init.io)).toNanoseconds();
         std.debug.print("{d:>12} ns  ({d:.3} ns/op) v3back_mul_neg1\n", .{ elapsed, @as(f64, @floatFromInt(elapsed)) / iterations });
+        try save_to_file(init, "v3back_mul_neg1", elapsed);
     }
 
     // 3. locals (return)
@@ -79,6 +82,7 @@ pub fn main(init: std.process.Init) !void {
         volatile_sum += sum;
         const elapsed = start.durationTo(std.Io.Clock.real.now(init.io)).toNanoseconds();
         std.debug.print("{d:>12} ns  ({d:.3} ns/op) v3back_locals\n", .{ elapsed, @as(f64, @floatFromInt(elapsed)) / iterations });
+        try save_to_file(init, "v3back_locals", elapsed);
     }
 
     // 4. mut (pointer)
@@ -93,6 +97,7 @@ pub fn main(init: std.process.Init) !void {
         volatile_sum += sum;
         const elapsed = start.durationTo(std.Io.Clock.real.now(init.io)).toNanoseconds();
         std.debug.print("{d:>12} ns  ({d:.3} ns/op) v3back_mut\n", .{ elapsed, @as(f64, @floatFromInt(elapsed)) / iterations });
+        try save_to_file(init, "v3back_mut", elapsed);
     }
 
     // 5. mut_components (pointer)
@@ -107,6 +112,7 @@ pub fn main(init: std.process.Init) !void {
         volatile_sum += sum;
         const elapsed = start.durationTo(std.Io.Clock.real.now(init.io)).toNanoseconds();
         std.debug.print("{d:>12} ns  ({d:.3} ns/op) v3back_mut_components\n", .{ elapsed, @as(f64, @floatFromInt(elapsed)) / iterations });
+        try save_to_file(init, "v3back_mut_components", elapsed);
     }
 
     std.debug.print("\nFinal volatile sum: {d:.4}\n", .{volatile_sum});

@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# number of runs (default 11)
-runs=${1:-11}
+# remove old outputs
+rm -f _*
 
-# find first file that starts with "bench_" and ends with ".zig"
-bench_file=$(ls bench_*.zig 2>/dev/null | head -n 1)
+# number of runs (default 11)
+runs=${1:-51}
+
+# find one folder up the first file that starts with "bench_" and ends with ".zig"
+bench_file=$(ls ../bench_*.zig 2>/dev/null | head -n 1)
 
 if [[ -z "$bench_file" ]]; then
     echo "No file matching 'bench_*.zig' found in $(pwd)"
@@ -28,9 +31,12 @@ done
 end_ns=$(date +%s%N)
 elapsed_ns=$((end_ns - start_ns))
 
-# human-readable breakdown
+# show elapsed for information
 elapsed_s=$((elapsed_ns / 1000000000))
-elapsed_m=$((elapsed_s / 60 ))
+elapsed_m=$((elapsed_s / 60))
 
 echo "Total wall time: ${elapsed_s} seconds or about ${elapsed_m} minutes"
 echo "=== done ==="
+echo
+echo "=== analyze ==="
+zig run report.zig
