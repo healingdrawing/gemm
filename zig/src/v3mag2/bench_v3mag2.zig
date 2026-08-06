@@ -1,9 +1,10 @@
 // bench_v3mag2.zig
 const std = @import("std");
 const v3mag2 = @import("v3mag2.zig");
+const save_to_file = @import("b/dumper.zig").save_to_file;
 
 pub fn main(init: std.process.Init) !void {
-    const iterations = 1_000_000_000;
+    const iterations = 100_000_000;
 
     var rng = std.Random.DefaultPrng.init(42);
     const rand = rng.random();
@@ -42,6 +43,7 @@ pub fn main(init: std.process.Init) !void {
         volatile_sum += sum;
         const elapsed = start.durationTo(std.Io.Clock.real.now(init.io)).toNanoseconds();
         std.debug.print("{d:>12} ns  ({d:.3} ns/op) v3mag2_sequent\n", .{ elapsed, @as(f64, @floatFromInt(elapsed)) / iterations });
+        try save_to_file(init, "v3mag2_sequent", elapsed);
     }
 
     // 2. locals
@@ -56,6 +58,7 @@ pub fn main(init: std.process.Init) !void {
         volatile_sum += sum;
         const elapsed = start.durationTo(std.Io.Clock.real.now(init.io)).toNanoseconds();
         std.debug.print("{d:>12} ns  ({d:.3} ns/op) v3mag2_locals\n", .{ elapsed, @as(f64, @floatFromInt(elapsed)) / iterations });
+        try save_to_file(init, "v3mag2_locals", elapsed);
     }
 
     // 3. reduce
@@ -70,6 +73,7 @@ pub fn main(init: std.process.Init) !void {
         volatile_sum += sum;
         const elapsed = start.durationTo(std.Io.Clock.real.now(init.io)).toNanoseconds();
         std.debug.print("{d:>12} ns  ({d:.3} ns/op) v3mag2_reduce\n", .{ elapsed, @as(f64, @floatFromInt(elapsed)) / iterations });
+        try save_to_file(init, "v3mag2_reduce", elapsed);
     }
 
     // 4. fma_chain
@@ -84,6 +88,7 @@ pub fn main(init: std.process.Init) !void {
         volatile_sum += sum;
         const elapsed = start.durationTo(std.Io.Clock.real.now(init.io)).toNanoseconds();
         std.debug.print("{d:>12} ns  ({d:.3} ns/op) v3mag2_fma_chain\n", .{ elapsed, @as(f64, @floatFromInt(elapsed)) / iterations });
+        try save_to_file(init, "v3mag2_fma_chain", elapsed);
     }
 
     // 5. hybrid
@@ -98,6 +103,7 @@ pub fn main(init: std.process.Init) !void {
         volatile_sum += sum;
         const elapsed = start.durationTo(std.Io.Clock.real.now(init.io)).toNanoseconds();
         std.debug.print("{d:>12} ns  ({d:.3} ns/op) v3mag2_hybrid\n", .{ elapsed, @as(f64, @floatFromInt(elapsed)) / iterations });
+        try save_to_file(init, "v3mag2_hybrid", elapsed);
     }
 
     std.debug.print("\nFinal volatile sum: {d:.4}\n", .{volatile_sum});
