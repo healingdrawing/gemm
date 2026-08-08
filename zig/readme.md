@@ -11,3 +11,7 @@ terminal: `./test.sh`
 Execute from inside **zig** folder, to reconcat **gemm.zig** file and then run tests in terminal
 
 Tests compare **gemm.zig** (transcoded) vs **gemm.ts** (battle tested) results.
+
+## Artefacts
+
+The **bench.sh** is artificial bench executor, implemented only for v3back, v3one, and finally not developed based on useless results of these two (different approach based) implementations.
