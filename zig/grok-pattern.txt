@@ -59,3 +59,5 @@ ALWAYS FOLLOW SKELETON.
 Skeleton is already tested and works, and looks like can be extended without big obstacles for common cases.
 
 If you have any suggestions, shortly inform/ask me, but by default always try to follow the skeleton and context described above.
+
+Remember, idiot, when i say that you generate the file (method).zig, data_(method).zig, test_(method.zig), this means you generate code for the file, but not fucking advice what should be inside file and what it looks like. i made this note because you already failed the way i described in this paragraph. i do not need that any part of response included your opinion about this paragraph. Just follow the pattern above, creature.
