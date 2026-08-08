@@ -50,6 +50,13 @@ const methods: Record<string, Handler> = {
     gemm.v3back(v3);
     return v3;
   },
+  v3v3same: (a) => {
+    if (a.length !== 6) throw new Error("v3v3same needs 6 numbers");
+    return gemm.v3v3same(
+      new Float32Array([a[0], a[1], a[2]]),
+      new Float32Array([a[3], a[4], a[5]]),
+    );
+  },
   // v3v3cross: (a) => { ... },
 };
 

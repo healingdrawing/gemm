@@ -669,7 +669,7 @@ dot3Dline3D_x_plane3D(
   v3mag2(v3:Float32Array){ return v3[0]*v3[0] + v3[1]*v3[1] + v3[2]*v3[2] }
 
   /**
-   * check if 3d vector is correct (finite AND non-zero)
+   * check if 3d vector is correct (finite AND non-zero mag2:f32)
    * @param v3 3d vector
    * @returns true if one component is non-zero and mag2 isFinite(x * x + y * y + z * z)
    */
@@ -678,7 +678,8 @@ dot3Dline3D_x_plane3D(
     const x = v3[0]
     const y = v3[1]
     const z = v3[2]
-    return (x !== 0 || y !== 0 || z !== 0) && isFinite(x*x+y*y+z*z)
+    const mag2 = Math.fround(x * x + y * y + z * z)
+    return mag2 > 0 && mag2 < Infinity
   }
 
   /**

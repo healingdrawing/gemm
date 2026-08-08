@@ -5,13 +5,23 @@ const std = @import("std");
 // Negate a 3D vector (opposite direction). INCOMINGS MUST BE SANITIZED.
 
 /// Pure vector unary minus (compiler usually turns this into a single SIMD instruction)
-pub inline fn v3back_vector_neg(v3: @Vector(3, f32)) @Vector(3, f32) {
+pub inline fn v3back_machine_1(v3: @Vector(3, f32)) @Vector(3, f32) {
     return -v3;
 }
 
 /// Explicit component multiply by -1
-pub inline fn v3back_mul_neg1(v3: @Vector(3, f32)) @Vector(3, f32) {
+pub inline fn v3back_machine_2(v3: @Vector(3, f32)) @Vector(3, f32) {
     return .{ -v3[0], -v3[1], -v3[2] };
+}
+
+/// In-place mutation via pointer (lowest allocation / no return copy)
+pub inline fn v3back_machine_3(v3: *@Vector(3, f32)) void {
+    v3.* = -v3.*;
+}
+
+/// use multiplication by internal vector (-1, -1, -1)
+pub inline fn v3back_machine_4(v3: *@Vector(3, f32)) void {
+    v3.* = v3.* * @as(@Vector(3, f32), .{ -1, -1, -1 });
 }
 
 /// Locals + manual negate
@@ -20,11 +30,6 @@ pub inline fn v3back_locals(v3: @Vector(3, f32)) @Vector(3, f32) {
     const y = v3[1];
     const z = v3[2];
     return .{ -x, -y, -z };
-}
-
-/// In-place mutation via pointer (lowest allocation / no return copy)
-pub inline fn v3back_mut(v3: *@Vector(3, f32)) void {
-    v3.* = -v3.*;
 }
 
 /// In-place component-wise
@@ -38,7 +43,11 @@ pub inline fn v3back_mut_components(v3: *@Vector(3, f32)) void {
 //-concat marker
 
 /// Opposite of a 3D vector. [1, 2, -4] → [-1, -2, 4]
-/// INCOMINGS MUST BE SANITIZED. NaN / Inf propagate.
+/// INCOMINGS MUST BE SANITIZED.
 pub inline fn v3back(v3: @Vector(3, f32)) @Vector(3, f32) {
-    return -v3;
+    const x = -v3[0];
+    const y = -v3[1];
+    const z = -v3[2];
+
+    return .{ x, y, z };
 }

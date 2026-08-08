@@ -8,9 +8,13 @@ pub const GEMM = struct {
 // --- FROM v3back/v3back.zig ---
 
 /// Opposite of a 3D vector. [1, 2, -4] → [-1, -2, 4]
-/// INCOMINGS MUST BE SANITIZED. NaN / Inf propagate.
+/// INCOMINGS MUST BE SANITIZED.
 pub inline fn v3back(v3: @Vector(3, f32)) @Vector(3, f32) {
-    return .{ -v3[0], -v3[1], -v3[2] };
+    const x = -v3[0];
+    const y = -v3[1];
+    const z = -v3[2];
+
+    return .{ x, y, z };
 }
 
 
@@ -21,7 +25,11 @@ pub inline fn v3back(v3: @Vector(3, f32)) @Vector(3, f32) {
 /// sqrt(v3[0]*v3[0] + v3[1]*v3[1] + v3[2]*v3[2])
 /// INCOMINGS MUST BE SANITIZED. NaN raises NaN.
 pub inline fn v3mag(v3: @Vector(3, f32)) f32 {
-    return @sqrt(@mulAdd(f32, v3[0], v3[0], @mulAdd(f32, v3[1], v3[1], v3[2] * v3[2])));
+    const x = v3[0];
+    const y = v3[1];
+    const z = v3[2];
+
+    return @sqrt(x * x + y * y + z * z);
 }
 
 
@@ -30,9 +38,12 @@ pub inline fn v3mag(v3: @Vector(3, f32)) f32 {
 
 /// Squared magnitude of a 3D vector.
 /// v3[0]*v3[0] + v3[1]*v3[1] + v3[2]*v3[2]
-/// INCOMINGS MUST BE SANITIZED. NaN raises NaN.
+/// INCOMINGS MUST BE SANITIZED.
 pub inline fn v3mag2(v3: @Vector(3, f32)) f32 {
-    return @mulAdd(f32, v3[0], v3[0], @mulAdd(f32, v3[1], v3[1], v3[2] * v3[2]));
+    const x = v3[0];
+    const y = v3[1];
+    const z = v3[2];
+    return x * x + y * y + z * z;
 }
 
 
@@ -42,10 +53,8 @@ pub inline fn v3mag2(v3: @Vector(3, f32)) f32 {
 /// Returns true if the 3D vector is finite AND non-zero.
 /// Matches current TS: (x != 0 || y != 0 || z != 0) && isFinite(x*x+y*y+z*z)
 pub inline fn v3ok(v3: @Vector(3, f32)) bool {
-    const x = v3[0];
-    const y = v3[1];
-    const z = v3[2];
-    return (x != 0 or y != 0 or z != 0) and std.math.isFinite(@mulAdd(f32, x, x, @mulAdd(f32, y, y, z * z)));
+    const mag2 = v3[0] * v3[0] + v3[1] * v3[1] + v3[2] * v3[2];
+    return mag2 > 0 and !std.math.isPositiveInf(mag2);
 }
 
 
@@ -55,19 +64,18 @@ pub inline fn v3ok(v3: @Vector(3, f32)) bool {
 /// Normalize a 3D vector to unit length if magnitude > 0.
 /// Otherwise, return unchanged vector.
 pub inline fn v3one(v3: @Vector(3, f32)) @Vector(3, f32) {
-    var x = v3[0];
-    var y = v3[1];
-    var z = v3[2];
+    const x = v3[0];
+    const y = v3[1];
+    const z = v3[2];
 
-    const mag = @sqrt(x * x + y * y + z * z);
+    const mag2 = x * x + y * y + z * z;
 
-    x /= mag;
-    y /= mag;
-    z /= mag;
-
-    if (mag > 0) {
-        return .{ x, y, z };
+    if (mag2 > 0.0) {
+        const mag = @sqrt(mag2);
+        const inv = 1.0 / mag;
+        return .{ x * inv, y * inv, z * inv };
     }
+
     return v3;
 }
 
@@ -88,18 +96,30 @@ pub inline fn v3rot(v: @Vector(3, f32), naxis: @Vector(3, f32), angle: f32) @Vec
 
     const cos = @cos(angle);
     const sin = @sin(angle);
+    // const t = 1.0 - cos;
 
-    const dott = @mulAdd(f32, nax, vx, @mulAdd(f32, nay, vy, naz * vz)) * (1.0 - cos);
+    const dott = (nax * vx + nay * vy + naz * vz) * (1.0 - cos);
 
     const cx = nay * vz - naz * vy;
     const cy = naz * vx - nax * vz;
     const cz = nax * vy - nay * vx;
 
     return .{
-        @mulAdd(f32, vx, cos, @mulAdd(f32, cx, sin, nax * dott)),
-        @mulAdd(f32, vy, cos, @mulAdd(f32, cy, sin, nay * dott)),
-        @mulAdd(f32, vz, cos, @mulAdd(f32, cz, sin, naz * dott)),
+        vx * cos + cx * sin + nax * dott,
+        vy * cos + cy * sin + nay * dott,
+        vz * cos + cz * sin + naz * dott,
     };
+}
+
+
+
+// --- FROM v3v3same/v3v3same.zig ---
+
+/// Exact equality of two 3D vectors.
+/// a[0]==b[0] && a[1]==b[1] && a[2]==b[2]
+/// INCOMINGS MUST BE SANITIZED. NaN !== NaN (IEEE).
+pub inline fn v3v3same(a: @Vector(3, f32), b: @Vector(3, f32)) bool {
+    return a[0] == b[0] and a[1] == b[1] and a[2] == b[2];
 }
 
 
@@ -108,7 +128,7 @@ pub inline fn v3rot(v: @Vector(3, f32), naxis: @Vector(3, f32), angle: f32) @Vec
 
 /// Dot product of two 3D vectors. a[0]*b[0] + a[1]*b[1] + a[2]*b[2]
 pub inline fn v3v3scalar(a: @Vector(3, f32), b: @Vector(3, f32)) f32 {
-    return @mulAdd(f32, a[0], b[0], @mulAdd(f32, a[1], b[1], a[2] * b[2]));
+    return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
 }
 
 

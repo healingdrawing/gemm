@@ -122,16 +122,17 @@ pub inline fn v3rot(v: @Vector(3, f32), naxis: @Vector(3, f32), angle: f32) @Vec
 
     const cos = @cos(angle);
     const sin = @sin(angle);
+    // const t = 1.0 - cos;
 
-    const dott = @mulAdd(f32, nax, vx, @mulAdd(f32, nay, vy, naz * vz)) * (1.0 - cos);
+    const dott = (nax * vx + nay * vy + naz * vz) * (1.0 - cos);
 
     const cx = nay * vz - naz * vy;
     const cy = naz * vx - nax * vz;
     const cz = nax * vy - nay * vx;
 
     return .{
-        @mulAdd(f32, vx, cos, @mulAdd(f32, cx, sin, nax * dott)),
-        @mulAdd(f32, vy, cos, @mulAdd(f32, cy, sin, nay * dott)),
-        @mulAdd(f32, vz, cos, @mulAdd(f32, cz, sin, naz * dott)),
+        vx * cos + cx * sin + nax * dott,
+        vy * cos + cy * sin + nay * dott,
+        vz * cos + cz * sin + naz * dott,
     };
 }

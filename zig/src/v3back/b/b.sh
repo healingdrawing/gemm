@@ -4,8 +4,8 @@ set -euo pipefail
 # remove old outputs
 rm -f _*
 
-# number of runs (default 11)
-runs=${1:-51}
+# number of runs (default 22 executions , minus 2 egde case, so 20. 50+ was too long)
+runs=${1:-22}
 
 # find one folder up the first file that starts with "bench_" and ends with ".zig"
 bench_file=$(ls ../bench_*.zig 2>/dev/null | head -n 1)

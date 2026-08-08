@@ -51,7 +51,7 @@ pub const cases = [_]TestCase{
         .outarr = .{0},
     },
     .{
-        .v = .{ 1e-40, 0, 0 }, // very small but non-zero
-        .outarr = .{1},
+        .v = .{ 1e-40, 0, 0 }, // too small(out of f32) but non-zero
+        .outarr = .{0},
     },
 };
