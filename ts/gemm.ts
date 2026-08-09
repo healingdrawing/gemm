@@ -59,7 +59,7 @@ export class GEMM {
      For example 1.00000000001 etc. Just tiny correction, just for case. Precision is 1e-6
      @param x - incoming sin cos value for check
     */
-  sin_cos_cut(x:number) { return (x >= 1 - 1e-6)?1:(x <= -1 + 1e-6)?-1:x; }
+  sin_cos_cut(x:number) { return (x > 1 - 1e-6)?1:(x < -1 + 1e-6)?-1:x; }
 
   /**
      return scalar product of vectors

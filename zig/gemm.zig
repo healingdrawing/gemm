@@ -132,7 +132,7 @@ pub inline fn v3v3angle(a: @Vector(3, f32), b: @Vector(3, f32)) f32 {
     const rawc = dot / (maga * magb);
 
     // sin_cos_cut hardcoded vs gemm.ts separated. In the past was detected outside bounds [-1,1] result in the very first python3 origin code, then was haxe version geometryXD.hx and so on.
-    const c = if (rawc >= 1.0 - 1e-6) 1.0 else if (rawc <= -1.0 + 1e-6) -1.0 else rawc;
+    const c = if (rawc > 1.0 - 1e-6) 1.0 else if (rawc < -1.0 + 1e-6) -1.0 else rawc;
     return std.math.acos(c);
 }
 
@@ -157,7 +157,7 @@ pub inline fn v3v3cos(a: @Vector(3, f32), b: @Vector(3, f32)) f32 {
     const c = dot / (maga * magb);
 
     // sin_cos_cut hardcoded vs gemm.ts separated. In the past was detected outside bounds [-1,1] result in the very first python3 origin code, then was haxe version geometryXD.hx and so on.
-    return if (c >= 1.0 - 1e-6) 1.0 else if (c <= -1.0 + 1e-6) -1.0 else c;
+    return if (c > 1.0 - 1e-6) 1.0 else if (c < -1.0 + 1e-6) -1.0 else c;
 }
 
 
