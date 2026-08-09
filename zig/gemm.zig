@@ -113,6 +113,30 @@ pub inline fn v3rot(v: @Vector(3, f32), naxis: @Vector(3, f32), angle: f32) @Vec
 
 
 
+// --- FROM v3v3cos/v3v3cos.zig ---
+
+/// Cosine of angle between two 3D vectors.
+/// sin_cos_cut( (a·b) / (|a| * |b|) )
+/// INCOMINGS MUST BE SANITIZED. NaN raises NaN.
+pub inline fn v3v3cos(a: @Vector(3, f32), b: @Vector(3, f32)) f32 {
+    const ax = a[0];
+    const ay = a[1];
+    const az = a[2];
+    const bx = b[0];
+    const by = b[1];
+    const bz = b[2];
+
+    const dot = ax * bx + ay * by + az * bz;
+    const maga = @sqrt(ax * ax + ay * ay + az * az);
+    const magb = @sqrt(bx * bx + by * by + bz * bz);
+    const c = dot / (maga * magb);
+
+    // sin_cos_cut
+    return if (c > 1.0) 1.0 else if (c < -1.0) -1.0 else c;
+}
+
+
+
 // --- FROM v3v3same/v3v3same.zig ---
 
 /// Exact equality of two 3D vectors.
