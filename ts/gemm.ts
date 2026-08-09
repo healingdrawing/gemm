@@ -56,10 +56,10 @@ export class GEMM {
      sin cos bonus function. Normalise sin cos, counted use vectors to -1...1 include boders.
      Need because sometimes (detected on python3 in the past) result of calculating sin cos
      uses vectors can be more then 1, or less then -1.
-     For example 1.00000000001 etc. Just tiny correction, just for case.
+     For example 1.00000000001 etc. Just tiny correction, just for case. Precision is 1e-6
      @param x - incoming sin cos value for check
     */
-  sin_cos_cut(x:number) { return (x>1)?1:(x<-1)?-1:x; }
+  sin_cos_cut(x:number) { return (x >= 1 - 1e-6)?1:(x <= -1 + 1e-6)?-1:x; }
 
   /**
      return scalar product of vectors
