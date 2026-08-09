@@ -12,6 +12,7 @@ const test_v3back = @import("tests/test_v3back.zig").test_v3back;
 const test_v3v3same = @import("tests/test_v3v3same.zig").test_v3v3same;
 const test_v3v3similar = @import("tests/test_v3v3similar.zig").test_v3v3similar;
 const test_v3v3cos = @import("tests/test_v3v3cos.zig").test_v3v3cos;
+const test_v3v3angle = @import("tests/test_v3v3angle.zig").test_v3v3angle;
 
 pub fn main(init: std.process.Init) !void {
     dp.init_from_env_map(init.environ_map);
@@ -29,6 +30,7 @@ pub fn main(init: std.process.Init) !void {
         try test_v3v3same(epsilon),
         try test_v3v3similar(epsilon),
         try test_v3v3cos(epsilon),
+        try test_v3v3angle(epsilon),
     };
 
     report.print_test_sum_report(&results);

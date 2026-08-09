@@ -71,6 +71,13 @@ const methods: Record<string, Handler> = {
       new Float32Array([a[3], a[4], a[5]]),
     );
   },
+  v3v3angle: (a) => {
+    if (a.length !== 6) throw new Error("v3v3angle needs 6 numbers");
+    return gemm.v3v3angle(
+      new Float32Array([a[0], a[1], a[2]]),
+      new Float32Array([a[3], a[4], a[5]]),
+    );
+  },
   // v3v3cross: (a) => { ... },
 };
 
