@@ -55,6 +55,8 @@ For new method request, sequently, step by step:
 
 4 - generate test_(method).zig .
 
+5 - generate pattern based injection for file ts/terminalcall.ts
+
 ALWAYS FOLLOW SKELETON.
 Skeleton is already tested and works, and looks like can be extended without big obstacles for common cases.
 
