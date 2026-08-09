@@ -162,6 +162,81 @@ pub inline fn v3v3cos(a: @Vector(3, f32), b: @Vector(3, f32)) f32 {
 
 
 
+// --- FROM v3v3paralleled/v3v3paralleled.zig ---
+
+/// Returns true if two 3D vectors are parallel (same or opposite direction).
+/// Precision: 0.000001 (1e-6) → cos > 0.999999 || cos < -0.999999
+/// INCOMINGS MUST BE SANITIZED.
+pub inline fn v3v3paralleled(a: @Vector(3, f32), b: @Vector(3, f32)) bool {
+    const ax = a[0];
+    const ay = a[1];
+    const az = a[2];
+    const bx = b[0];
+    const by = b[1];
+    const bz = b[2];
+
+    const dot = ax * bx + ay * by + az * bz;
+    const maga = @sqrt(ax * ax + ay * ay + az * az);
+    const magb = @sqrt(bx * bx + by * by + bz * bz);
+    const rawc = dot / (maga * magb);
+
+    // sin_cos_cut
+    const c = if (rawc > 1.0) 1.0 else if (rawc < -1.0) -1.0 else rawc;
+    return c > 0.999999 or c < -0.999999;
+}
+
+
+
+// --- FROM v3v3paralleled_opposite/v3v3paralleled_opposite.zig ---
+
+/// Returns true if two 3D vectors are parallel and point in opposite directions.
+/// Precision: 0.000001 (1e-6) → cos < -0.999999
+/// INCOMINGS MUST BE SANITIZED.
+pub inline fn v3v3paralleled_opposite(a: @Vector(3, f32), b: @Vector(3, f32)) bool {
+    const ax = a[0];
+    const ay = a[1];
+    const az = a[2];
+    const bx = b[0];
+    const by = b[1];
+    const bz = b[2];
+
+    const dot = ax * bx + ay * by + az * bz;
+    const maga = @sqrt(ax * ax + ay * ay + az * az);
+    const magb = @sqrt(bx * bx + by * by + bz * bz);
+    const rawc = dot / (maga * magb);
+
+    // sin_cos_cut
+    const c = if (rawc > 1.0) 1.0 else if (rawc < -1.0) -1.0 else rawc;
+    return c < -0.999999;
+}
+
+
+
+// --- FROM v3v3paralleled_sameside/v3v3paralleled_sameside.zig ---
+
+/// Returns true if two 3D vectors are parallel and point in the same direction.
+/// Precision: 0.000001 (1e-6) → cos > 0.999999
+/// INCOMINGS MUST BE SANITIZED.
+pub inline fn v3v3paralleled_sameside(a: @Vector(3, f32), b: @Vector(3, f32)) bool {
+    const ax = a[0];
+    const ay = a[1];
+    const az = a[2];
+    const bx = b[0];
+    const by = b[1];
+    const bz = b[2];
+
+    const dot = ax * bx + ay * by + az * bz;
+    const maga = @sqrt(ax * ax + ay * ay + az * az);
+    const magb = @sqrt(bx * bx + by * by + bz * bz);
+    const rawc = dot / (maga * magb);
+
+    // sin_cos_cut
+    const c = if (rawc > 1.0) 1.0 else if (rawc < -1.0) -1.0 else rawc;
+    return c > 0.999999;
+}
+
+
+
 // --- FROM v3v3same/v3v3same.zig ---
 
 /// Exact equality of two 3D vectors.

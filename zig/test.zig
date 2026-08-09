@@ -13,6 +13,9 @@ const test_v3v3same = @import("tests/test_v3v3same.zig").test_v3v3same;
 const test_v3v3similar = @import("tests/test_v3v3similar.zig").test_v3v3similar;
 const test_v3v3cos = @import("tests/test_v3v3cos.zig").test_v3v3cos;
 const test_v3v3angle = @import("tests/test_v3v3angle.zig").test_v3v3angle;
+const test_v3v3paralleled_sameside = @import("tests/test_v3v3paralleled_sameside.zig").test_v3v3paralleled_sameside;
+const test_v3v3paralleled_opposite = @import("tests/test_v3v3paralleled_opposite.zig").test_v3v3paralleled_opposite;
+const test_v3v3paralleled = @import("tests/test_v3v3paralleled.zig").test_v3v3paralleled;
 
 pub fn main(init: std.process.Init) !void {
     dp.init_from_env_map(init.environ_map);
@@ -31,6 +34,9 @@ pub fn main(init: std.process.Init) !void {
         try test_v3v3similar(epsilon),
         try test_v3v3cos(epsilon),
         try test_v3v3angle(epsilon),
+        try test_v3v3paralleled_sameside(epsilon),
+        try test_v3v3paralleled_opposite(epsilon),
+        try test_v3v3paralleled(epsilon),
     };
 
     report.print_test_sum_report(&results);

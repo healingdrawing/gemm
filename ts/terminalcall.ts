@@ -78,6 +78,27 @@ const methods: Record<string, Handler> = {
       new Float32Array([a[3], a[4], a[5]]),
     );
   },
+  v3v3paralleled_sameside: (a) => {
+    if (a.length !== 6) throw new Error("v3v3paralleled_sameside needs 6 numbers");
+    return gemm.v3v3paralleled_sameside(
+      new Float32Array([a[0], a[1], a[2]]),
+      new Float32Array([a[3], a[4], a[5]]),
+    );
+  },
+  v3v3paralleled_opposite: (a) => {
+    if (a.length !== 6) throw new Error("v3v3paralleled_opposite needs 6 numbers");
+    return gemm.v3v3paralleled_opposite(
+      new Float32Array([a[0], a[1], a[2]]),
+      new Float32Array([a[3], a[4], a[5]]),
+    );
+  },
+  v3v3paralleled: (a) => {
+    if (a.length !== 6) throw new Error("v3v3paralleled needs 6 numbers");
+    return gemm.v3v3paralleled(
+      new Float32Array([a[0], a[1], a[2]]),
+      new Float32Array([a[3], a[4], a[5]]),
+    );
+  },
   // v3v3cross: (a) => { ... },
 };
 
