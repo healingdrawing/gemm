@@ -9,6 +9,5 @@ const std = @import("std");
 /// INCOMINGS MUST BE SANITIZED. Precision: 0.000001 (1e-6).
 /// NaN differences → false.
 pub inline fn v3v3similar(a: @Vector(3, f32), b: @Vector(3, f32)) bool {
-    const eps: f32 = 1e-6;
-    return (a[0] == b[0] or @abs(a[0] - b[0]) < eps) and (a[1] == b[1] or @abs(a[1] - b[1]) < eps) and (a[2] == b[2] or @abs(a[2] - b[2]) < eps);
+    return (a[0] == b[0] or @abs(a[0] - b[0]) < 1e-6) and (a[1] == b[1] or @abs(a[1] - b[1]) < 1e-6) and (a[2] == b[2] or @abs(a[2] - b[2]) < 1e-6);
 }
