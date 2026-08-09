@@ -912,10 +912,10 @@ dot3Dline3D_x_plane3D(
     @param v3b - 3d vector
   */
   v3v3similar(v3a: Float32Array, v3b: Float32Array): boolean {
-    const epsilon = 1e-6;
-    return Math.abs(v3a[0] - v3b[0]) < epsilon &&
-           Math.abs(v3a[1] - v3b[1]) < epsilon &&
-           Math.abs(v3a[2] - v3b[2]) < epsilon;
+    const eps = 1e-6;
+    return (v3a[0] === v3b[0] || Math.abs(v3a[0] - v3b[0]) < eps) &&
+           (v3a[1] === v3b[1] || Math.abs(v3a[1] - v3b[1]) < eps) &&
+           (v3a[2] === v3b[2] || Math.abs(v3a[2] - v3b[2]) < eps);
   }
 
   /**

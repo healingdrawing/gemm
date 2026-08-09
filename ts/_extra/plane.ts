@@ -18,3 +18,10 @@ console.log(fv);
 let vok2 = [0.0000000000000000000000000000000000000001, 0, 0] as unknown as Float32Array;
 const fv2 = gemm.v3ok(vok2);
 console.log(fv2);
+
+let v3a = [Infinity, NaN, 0] as unknown as Float32Array;
+let v3b = [Infinity, NaN, 0] as unknown as Float32Array;
+const r3 = gemm.v3v3similar(v3a, v3b);
+console.log("Math.abs(v3a[1] - v3b[1])", Math.abs(v3a[1] - v3b[1]))
+console.log("wtf NaN === NaN", v3a[1], v3b[1], v3a[1] === v3b[1])
+console.log(v3a, v3b, r3)

@@ -10,11 +10,12 @@ const test_v3mag = @import("tests/test_v3mag.zig").test_v3mag;
 const test_v3ok = @import("tests/test_v3ok.zig").test_v3ok;
 const test_v3back = @import("tests/test_v3back.zig").test_v3back;
 const test_v3v3same = @import("tests/test_v3v3same.zig").test_v3v3same;
+const test_v3v3similar = @import("tests/test_v3v3similar.zig").test_v3v3similar;
 
 pub fn main(init: std.process.Init) !void {
     dp.init_from_env_map(init.environ_map);
 
-    const epsilon: f32 = 1e-5;
+    const epsilon: f32 = 1e-6;
 
     const results = [_]report.MethodResult{
         try test_v3v3scalar(epsilon),
@@ -25,6 +26,7 @@ pub fn main(init: std.process.Init) !void {
         try test_v3ok(epsilon),
         try test_v3back(epsilon),
         try test_v3v3same(epsilon),
+        try test_v3v3similar(epsilon),
     };
 
     report.print_test_sum_report(&results);

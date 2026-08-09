@@ -57,6 +57,13 @@ const methods: Record<string, Handler> = {
       new Float32Array([a[3], a[4], a[5]]),
     );
   },
+  v3v3similar: (a) => {
+    if (a.length !== 6) throw new Error("v3v3similar needs 6 numbers");
+    return gemm.v3v3similar(
+      new Float32Array([a[0], a[1], a[2]]),
+      new Float32Array([a[3], a[4], a[5]]),
+    );
+  },
   // v3v3cross: (a) => { ... },
 };
 
