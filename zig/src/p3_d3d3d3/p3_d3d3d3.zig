@@ -4,12 +4,9 @@ const std = @import("std");
 // Everything below concat marker line will be copied into gemm.zig
 //-concat marker
 
-/// Build 3D plane from three points.
 /// INCOMINGS MUST BE SANITIZED.
-/// Returns plane [a,b,c,d] where [a,b,c] is plane normal vector
-/// based on cross of v(d3a-d3) x v(d3b-d3). Oriented CCW from d3→d3a→d3b.
-/// And d is responsible for plane displacement from (0, 0, 0) along [a,b,c].
-/// Matches TS p3_d3d3d3 exactly (no zero-length guard on cross).
+/// Returns plane [a,b,c,d] built from cross of v(`d3a`-`d3`) x v(`d3b`-`d3`). Oriented CCW from d3→d3a→d3b.
+/// Where [a, b, c] is 3d plane normal vector, and (d) is responsible for displacement of the plane from (0, 0, 0) along [a, b, c].
 pub inline fn p3_d3d3d3(
     d3: @Vector(3, f32),
     d3a: @Vector(3, f32),
