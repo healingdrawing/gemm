@@ -778,12 +778,17 @@ dot3Dline3D_x_plane3D(
     const v3x = v3ay * v3bz - v3az * v3by;
     const v3y = -v3ax * v3bz + v3az * v3bx;
     const v3z = v3ax * v3by - v3ay * v3bx;
-    /* hardcoded this.v3one */
+    /* hardcoded this.v3one + extended else, since v3n is container */
     const mag = Math.sqrt(v3x*v3x + v3y*v3y + v3z*v3z)
-    v3n[0] = v3x / mag
-    v3n[1] = v3y / mag
-    v3n[2] = v3z / mag
-    
+    if (mag > 0){
+      v3n[0] = v3x / mag
+      v3n[1] = v3y / mag
+      v3n[2] = v3z / mag
+    } else {
+      v3n[0] = v3x
+      v3n[1] = v3y
+      v3n[2] = v3z
+    }    
   }
 
   /**

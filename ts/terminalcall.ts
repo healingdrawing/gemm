@@ -99,6 +99,14 @@ const methods: Record<string, Handler> = {
       new Float32Array([a[3], a[4], a[5]]),
     );
   },
+  v3normal: (a) => {
+    if (a.length !== 6) throw new Error("v3normal needs 6 numbers");
+    const v3a = new Float32Array([a[0], a[1], a[2]]);
+    const v3b = new Float32Array([a[3], a[4], a[5]]);
+    const v3n = new Float32Array(3);
+    gemm.v3normal(v3a, v3b, v3n);
+    return v3n;
+  },
   // v3v3cross: (a) => { ... },
 };
 
