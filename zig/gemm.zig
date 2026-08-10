@@ -104,20 +104,22 @@ pub inline fn distance_d3_p3(d3: @Vector(3, f32), p3: @Vector(4, f32)) f32 {
 // --- FROM p3_d3d3/p3_d3d3.zig ---
 
 /// INCOMINGS MUST BE SANITIZED.
-/// Build 3D plane [a,b,c,d] from point `d3` and point `d3n` (end of normal).
+/// Build 3D plane from two points.
+/// Returns 3D plane [a,b,c,d] from point `d3` and point `d3n` (end of normal).
+/// Where [a, b, c] is 3d plane normal vector, and (d) is responsible for displacement of the plane from (0, 0, 0) along [a, b, c].
 pub inline fn p3_d3d3(d3: @Vector(3, f32), d3n: @Vector(3, f32)) @Vector(4, f32) {
-    const d3x = d3[0]; // 0
+    const d3x = d3[0];
     const d3y = d3[1];
     const d3z = d3[2];
 
-    var v3x = d3n[0] - d3x; //nan
-    var v3y = d3n[1] - d3y; // 0
+    var v3x = d3n[0] - d3x;
+    var v3y = d3n[1] - d3y;
     var v3z = d3n[2] - d3z;
 
     // hardcoded v3one
     const lv = @sqrt(v3x * v3x + v3y * v3y + v3z * v3z);
-    v3x /= lv; // nan
-    v3y /= lv; // nan
+    v3x /= lv;
+    v3y /= lv;
     v3z /= lv;
 
     return .{
@@ -132,11 +134,11 @@ pub inline fn p3_d3d3(d3: @Vector(3, f32), d3n: @Vector(3, f32)) @Vector(4, f32)
 
 // --- FROM p3_d3d3d3/p3_d3d3d3.zig ---
 
-/// Build 3D plane from three points.
 /// INCOMINGS MUST BE SANITIZED.
-/// Returns plane [a,b,c,d] where [a,b,c] is plane normal vector
+/// Build 3D plane from three points.
 /// based on cross of v(d3a-d3) x v(d3b-d3). Oriented CCW from d3→d3a→d3b.
-/// And d is responsible for plane displacement from (0, 0, 0) along [a,b,c].
+/// Returns plane [a,b,c,d] where [a,b,c] is plane normal vector
+/// Where [a, b, c] is 3d plane normal vector, and (d) is responsible for displacement of the plane from (0, 0, 0) along [a, b, c].
 /// Matches TS p3_d3d3d3 exactly (no zero-length guard on cross).
 pub inline fn p3_d3d3d3(
     d3: @Vector(3, f32),
@@ -170,6 +172,42 @@ pub inline fn p3_d3d3d3(
         v3y,
         v3z,
         -(v3x * d3x + v3y * d3y + v3z * d3z),
+    };
+}
+
+
+
+// --- FROM p3_d3v3v3/p3_d3v3v3.zig ---
+
+/// INCOMINGS MUST BE SANITIZED.
+/// Plane from point `d3` and two vectors `v3a` → `v3b` (CCW normal).
+/// Returns [a,b,c,d] where (a,b,c) is unit normal and d = -dot(n, d3).
+/// Where [a, b, c] is 3d plane normal vector, and (d) is responsible for displacement of the plane from (0, 0, 0) along [a, b, c].
+pub inline fn p3_d3v3v3(d3: @Vector(3, f32), v3a: @Vector(3, f32), v3b: @Vector(3, f32)) @Vector(4, f32) {
+    const ax = v3a[0];
+    const ay = v3a[1];
+    const az = v3a[2];
+    const bx = v3b[0];
+    const by = v3b[1];
+    const bz = v3b[2];
+
+    // hardcoded v3normal (a × b)
+    var nx = ay * bz - az * by;
+    var ny = az * bx - ax * bz;
+    var nz = ax * by - ay * bx;
+
+    // hardcoded v3one
+    const mag = @sqrt(nx * nx + ny * ny + nz * nz);
+
+    nx /= mag;
+    ny /= mag;
+    nz /= mag;
+
+    return .{
+        nx,
+        ny,
+        nz,
+        -(nx * d3[0] + ny * d3[1] + nz * d3[2]),
     };
 }
 

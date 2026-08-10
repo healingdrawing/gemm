@@ -154,6 +154,15 @@ const methods: Record<string, Handler> = {
     gemm.p3_d3d3(d3, d3n, p3);
     return p3;
   },
+  p3_d3v3v3: (a) => {
+    if (a.length !== 9) throw new Error("p3_d3v3v3 needs 9 numbers");
+    const d3 = new Float32Array([a[0], a[1], a[2]]);
+    const v3a = new Float32Array([a[3], a[4], a[5]]);
+    const v3b = new Float32Array([a[6], a[7], a[8]]);
+    const p3 = new Float32Array(4);
+    gemm.p3_d3v3v3(d3, v3a, v3b, p3);
+    return p3;
+  },
   // v3v3cross: (a) => { ... },
 };
 
