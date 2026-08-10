@@ -929,7 +929,7 @@ dot3Dline3D_x_plane3D(
 
   /**
     INCOMINGS MUST BE SANITIZED.
-    mutates d3 dot, to position of the intersection for 3d line(d3, v3) and 3d plane(p3)
+    mutates `d3` dot, to position of the intersection for 3d line(`d3`, `v3`) and 3d plane `p3`
     @param d3 - 3d dot of start of line [x,y,z]
     @param v3 - 3d vector of line direction [vx,vy,vz]
     @param p3 - 3d plane [a,b,c,d]. d - displacement of plane 3D from [0,0,0] along plane normal vector [a,b,c].
@@ -941,9 +941,9 @@ dot3Dline3D_x_plane3D(
   ){
     const d3x = d3[0], d3y = d3[1], d3z = d3[2];
     const v3x = v3[0], v3y = v3[1], v3z = v3[2];
-    const p3a = p3[0], p3b = p3[1], p3c = p3[2], p3d = p3[3];
+    const p3a = p3[0], p3b = p3[1], p3c = p3[2];
 
-    const t = -(p3a*d3x + p3b*d3y + p3c*d3z + p3d) / (p3a*v3x + p3b*v3y + p3c*v3z);
+    const t = -(p3a*d3x + p3b*d3y + p3c*d3z + p3[3]) / (p3a*v3x + p3b*v3y + p3c*v3z);
 
     d3[0] = d3x + v3x * t;
     d3[1] = d3y + v3y * t;
@@ -952,9 +952,9 @@ dot3Dline3D_x_plane3D(
 
   /**
     INCOMINGS MUST BE SANITIZED.
-    mutates d3 to position of the projection of 3d dot (d3) on 3d plane (p3)
+    mutates `d3` to position of the projection of 3d dot `d3` on 3d plane `p3`
     @param d3 - 3d dot of start of line [x,y,z]
-    @param p3 - 3d plane [a,b,c,d]. d - displacement of plane 3D from [0,0,0] along plane normal vector [a,b,c].
+    @param p3 - 3d plane [a,b,c,d]. d is responsible for displacement of plane 3D from [0,0,0] along plane normal vector [a,b,c].
   */
   d3_projection_on_p3(
     d3:Float32Array,

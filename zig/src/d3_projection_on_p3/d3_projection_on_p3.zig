@@ -4,9 +4,9 @@ const std = @import("std");
 // Everything below concat marker line will be copied into gemm.zig
 //-concat marker
 
-/// Project 3D point `d3` onto plane `p3` = [a,b,c,d].
+/// Project 3D dot `d3` onto plane `p3` = [a,b,c,d].
 /// INCOMINGS MUST BE SANITIZED.
-/// Returns the projected point. Plane normal (a,b,c) must be non-zero.
+/// Returns the projected dot.
 pub inline fn d3_projection_on_p3(d3: @Vector(3, f32), p3: @Vector(4, f32)) @Vector(3, f32) {
     const d3x = d3[0];
     const d3y = d3[1];

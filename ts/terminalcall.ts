@@ -129,6 +129,14 @@ const methods: Record<string, Handler> = {
     gemm.d3_projection_on_p3(d3, p3);
     return d3;
   },
+  d3_line_x_plane: (a) => {
+    if (a.length !== 10) throw new Error("d3_line_x_plane needs 10 numbers");
+    const d3 = new Float32Array([a[0], a[1], a[2]]);
+    const v3 = new Float32Array([a[3], a[4], a[5]]);
+    const p3 = new Float32Array([a[6], a[7], a[8], a[9]]);
+    gemm.d3_line_x_plane(d3, v3, p3);
+    return d3;
+  },
   // v3v3cross: (a) => { ... },
 };
 

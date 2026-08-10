@@ -5,6 +5,33 @@ const std = @import("std");
 
 pub const GEMM = struct {
 
+// --- FROM d3_line_x_plane/d3_line_x_plane.zig ---
+
+/// Intersection of 3D line (from `d3` along `v3`) with plane `p3`=[a,b,c,d].
+/// Returns the intersection point.
+/// INCOMINGS MUST BE SANITIZED. Parallel → Inf/NaN (matches TS).
+pub inline fn d3_line_x_plane(d3: @Vector(3, f32), v3: @Vector(3, f32), p3: @Vector(4, f32)) @Vector(3, f32) {
+    const dx = d3[0];
+    const dy = d3[1];
+    const dz = d3[2];
+    const vx = v3[0];
+    const vy = v3[1];
+    const vz = v3[2];
+    const a = p3[0];
+    const b = p3[1];
+    const c = p3[2];
+
+    const t = -(a * dx + b * dy + c * dz + p3[3]) / (a * vx + b * vy + c * vz);
+
+    return .{
+        dx + vx * t,
+        dy + vy * t,
+        dz + vz * t,
+    };
+}
+
+
+
 // --- FROM d3offset/d3offset.zig ---
 
 /// Offset 3D dot `d3` along vector `v3` by distance `t`.
@@ -30,9 +57,9 @@ pub inline fn d3offset(d3: @Vector(3, f32), v3: @Vector(3, f32), t: f32) @Vector
 
 // --- FROM d3_projection_on_p3/d3_projection_on_p3.zig ---
 
-/// Project 3D point `d3` onto plane `p3` = [a,b,c,d].
+/// Project 3D dot `d3` onto plane `p3` = [a,b,c,d].
 /// INCOMINGS MUST BE SANITIZED.
-/// Returns the projected point. Plane normal (a,b,c) must be non-zero.
+/// Returns the projected dot.
 pub inline fn d3_projection_on_p3(d3: @Vector(3, f32), p3: @Vector(4, f32)) @Vector(3, f32) {
     const d3x = d3[0];
     const d3y = d3[1];
