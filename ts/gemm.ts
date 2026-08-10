@@ -984,13 +984,13 @@ dot3Dline3D_x_plane3D(
 
   /**
     INCOMINGS MUST BE SANITIZED. The FASTEST version.
-    mutates 3d plane, determined by 3d dot and 3d vector.
-    Where [a, b, c] is 3d plane normal vector, and (d) is plane displacement plane from (0, 0, 0) along [a, b, c]
+    mutates `p3` container [a, b, c, d] to 3d plane, determined by 3d dot `d3` and 3d vector `v3`.
+    Where [a, b, c] is 3d plane normal vector, and (d) is responsible for displacement of the plane from (0, 0, 0) along [a, b, c]. 
     @param d3 3d dot on result 3d plane
     @param v3 normal vector of result 3d plane
-    @param p3 container to resulted 3d plane [a,b,c,d] . d - displacement of plane 3D from [0,0,0] along plane normal vector [a,b,c]. Will be filled
+    @param p3 container to resulted 3d plane [a,b,c,d] . Will be filled
   */
-  p3_d3v3_mut(
+  p3_d3v3(
     d3:Float32Array,
     v3:Float32Array,
     p3:Float32Array
