@@ -107,6 +107,14 @@ const methods: Record<string, Handler> = {
     gemm.v3normal(v3a, v3b, v3n);
     return v3n;
   },
+  d3offset: (a) => {
+    if (a.length !== 7) throw new Error("d3offset needs 7 numbers");
+    const d3 = new Float32Array([a[0], a[1], a[2]]);
+    const v3 = new Float32Array([a[3], a[4], a[5]]);
+    const t = a[6];
+    gemm.d3offset(d3, v3, t);
+    return d3;
+  },
   // v3v3cross: (a) => { ... },
 };
 

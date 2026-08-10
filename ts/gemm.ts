@@ -727,9 +727,14 @@ dot3Dline3D_x_plane3D(
     v3:Float32Array,
     t:number
   ){
-    const mag = Math.sqrt(v3[0]*v3[0] + v3[1]*v3[1] + v3[2]*v3[2])
-    if (!t || !mag) return
-    t /= mag
+    const x = v3[0];
+    const y = v3[1];
+    const z = v3[2];
+    const mag2 = x*x+y*y+z*z
+    
+    if(t === 0 || mag2 === 0) return
+    
+    t /= Math.sqrt(mag2)
     d3[0] += v3[0] * t
     d3[1] += v3[1] * t
     d3[2] += v3[2] * t
