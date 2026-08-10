@@ -984,7 +984,7 @@ dot3Dline3D_x_plane3D(
 
   /**
     INCOMINGS MUST BE SANITIZED. The FASTEST version.
-    mutates `p3` container [a, b, c, d] to 3d plane, determined by 3d dot `d3` and 3d vector `v3`.
+    mutates 3d plane container `p3` [a,b,c,d] , determined by 3d dot `d3` and 3d vector `v3`.
     Where [a, b, c] is 3d plane normal vector, and (d) is responsible for displacement of the plane from (0, 0, 0) along [a, b, c]. 
     @param d3 3d dot on result 3d plane
     @param v3 normal vector of result 3d plane
@@ -1012,7 +1012,7 @@ dot3Dline3D_x_plane3D(
 
   /**
     INCOMINGS MUST BE SANITIZED. Plane normal vector from v3a to v3b CCW.
-    mutates container `p3` [a,b,c,d] of 3d plane, determined by 3d dot and two 3d vectors.
+    mutates 3d plane container `p3` [a,b,c,d] , determined by 3d dot and two 3d vectors.
     @param d3 3d dot on result 3d plane
     @param v3a 3d vector to calculate plane normal vector FROM (CCW)
     @param v3b 3d vector to calculate plane normal vector TO (CCW)
@@ -1043,12 +1043,12 @@ dot3Dline3D_x_plane3D(
 
   /**
     INCOMINGS MUST BE SANITIZED. Wrapper of this.p3_d3v3 (with prebuilt normal vector from d3 to d3n).
-    mutates 3d plane, determined by two 3d dots.
+    mutates 3d plane container `p3` [a,b,c,d] , determined by two 3d dots.
     @param d3 3d dot on result 3d plane
     @param d3n 3d dot at the end of the normal of the result 3d plane
-    @param p3 container to resulted 3d plane [a,b,c,d] . d - displacement of plane 3D from [0,0,0] along plane normal vector [a,b,c]. Will be filled
+    @param p3 container to resulted 3d plane [a,b,c,d] . Will be filled
   */
-  p3_d3d3_mut(
+  p3_d3d3(
     d3:Float32Array,
     d3n:Float32Array,
     p3:Float32Array
