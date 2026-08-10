@@ -1012,13 +1012,13 @@ dot3Dline3D_x_plane3D(
 
   /**
     INCOMINGS MUST BE SANITIZED. Plane normal vector from v3a to v3b CCW.
-    mutates 3d plane, determined by 3d dot and two 3d vectors.
+    mutates container `p3` [a,b,c,d] of 3d plane, determined by 3d dot and two 3d vectors.
     @param d3 3d dot on result 3d plane
     @param v3a 3d vector to calculate plane normal vector FROM (CCW)
     @param v3b 3d vector to calculate plane normal vector TO (CCW)
-    @param p3 container to resulted 3d plane [a,b,c,d] . d - displacement of plane 3D from [0,0,0] along plane normal vector [a,b,c]. Will be filled
+    @param p3 container to resulted 3d plane [a,b,c,d] . Will be filled
   */
-  p3_d3v3v3_mut(
+  p3_d3v3v3(
     d3:Float32Array,
     v3a:Float32Array,
     v3b:Float32Array,
