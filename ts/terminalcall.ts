@@ -115,6 +115,13 @@ const methods: Record<string, Handler> = {
     gemm.d3offset(d3, v3, t);
     return d3;
   },
+  distance_d3_p3: (a) => {
+    if (a.length !== 7) throw new Error("distance_d3_p3 needs 7 numbers");
+    return gemm.distance_d3_p3(
+      new Float32Array([a[0], a[1], a[2]]),
+      new Float32Array([a[3], a[4], a[5], a[6]]),
+    );
+  },
   // v3v3cross: (a) => { ... },
 };
 
