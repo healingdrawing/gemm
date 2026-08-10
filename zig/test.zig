@@ -19,6 +19,7 @@ const test_v3v3paralleled = @import("tests/test_v3v3paralleled.zig").test_v3v3pa
 const test_v3normal = @import("tests/test_v3normal.zig").test_v3normal;
 const test_d3offset = @import("tests/test_d3offset.zig").test_d3offset;
 const test_distance_d3_p3 = @import("tests/test_distance_d3_p3.zig").test_distance_d3_p3;
+const test_d3_projection_on_p3 = @import("tests/test_d3_projection_on_p3.zig").test_d3_projection_on_p3;
 
 pub fn main(init: std.process.Init) !void {
     dp.init_from_env_map(init.environ_map);
@@ -43,6 +44,7 @@ pub fn main(init: std.process.Init) !void {
         try test_v3normal(epsilon),
         try test_d3offset(epsilon),
         try test_distance_d3_p3(epsilon),
+        try test_d3_projection_on_p3(epsilon),
     };
 
     report.print_test_sum_report(&results);

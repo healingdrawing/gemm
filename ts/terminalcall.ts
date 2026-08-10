@@ -122,6 +122,13 @@ const methods: Record<string, Handler> = {
       new Float32Array([a[3], a[4], a[5], a[6]]),
     );
   },
+  d3_projection_on_p3: (a) => {
+    if (a.length !== 7) throw new Error("d3_projection_on_p3 needs 7 numbers");
+    const d3 = new Float32Array([a[0], a[1], a[2]]);
+    const p3 = new Float32Array([a[3], a[4], a[5], a[6]]);
+    gemm.d3_projection_on_p3(d3, p3);
+    return d3;
+  },
   // v3v3cross: (a) => { ... },
 };
 
