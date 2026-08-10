@@ -701,7 +701,7 @@ dot3Dline3D_x_plane3D(
     @param v3 - vector [vx,vy,vz]
     @param t - distance
   **/
-  d3offset_mut_safe(
+  d3offset_safe(
     d3:Float32Array,
     v3:Float32Array,
     t:number
@@ -722,7 +722,7 @@ dot3Dline3D_x_plane3D(
     @param v3 - vector [vx,vy,vz]
     @param t - distance
   **/
-  d3offset_mut(
+  d3offset(
     d3:Float32Array,
     v3:Float32Array,
     t:number

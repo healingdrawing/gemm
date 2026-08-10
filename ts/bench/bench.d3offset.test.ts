@@ -22,7 +22,7 @@ describe("offset functions benchmark & equivalence", () => {
     // warmup
     for (let i = 0; i < WARMUP; i++) {
       gemm.dotXDoffset(dot, vec, t);
-      gemm.d3offset_mut(d3, v3, t);
+      gemm.d3offset(d3, v3, t);
     }
 
     // dotXDoffset
@@ -35,7 +35,7 @@ describe("offset functions benchmark & equivalence", () => {
     // d3offset_mut
     const t2 = performance.now();
     for (let i = 0; i < N; i++) {
-      gemm.d3offset_mut(d3, v3, t);
+      gemm.d3offset(d3, v3, t);
     }
     const ms2 = performance.now() - t2;
 
@@ -64,7 +64,7 @@ describe("offset functions benchmark & equivalence", () => {
 
         const d3 = new Float32Array(c.d);
         const v3 = new Float32Array(c.v);
-        gemm.d3offset_mut(d3, v3, c.t);
+        gemm.d3offset(d3, v3, c.t);
         // console.log("new",d3)
         // console.log("old",old)
 
