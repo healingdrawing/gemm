@@ -146,6 +146,14 @@ const methods: Record<string, Handler> = {
     gemm.p3_d3d3d3(d3, d3a, d3b, p3);
     return p3;
   },
+  p3_d3d3: (a) => {
+    if (a.length !== 6) throw new Error("p3_d3d3 needs 6 numbers");
+    const d3 = new Float32Array([a[0], a[1], a[2]]);
+    const d3n = new Float32Array([a[3], a[4], a[5]]);
+    const p3 = new Float32Array(4);
+    gemm.p3_d3d3(d3, d3n, p3);
+    return p3;
+  },
   // v3v3cross: (a) => { ... },
 };
 
