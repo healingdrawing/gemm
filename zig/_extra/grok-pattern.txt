@@ -1,0 +1,65 @@
+pattern to initiate new chat, since free tier chat limited in length.
+---
+task: transcode(source+test) custom battle tested math lib from ts code into zig code.
+---
+context: fastest calculation + smallest ram usage.
+at least use zig's @vector + simd. Ignore pointers(objects to be filled/mutated by calculation/result of function, send by reference instead of value).
+
+---
+
+origin:
+
+https://github.com/healingdrawing/gemm/tree/zig-concat-discovering/ts/gemm.ts
+battle tested typescript version of the math lib i develop
+
+target:
+
+https://github.com/healingdrawing/gemm/tree/zig-concat-discovering/ts/terminalcall.ts
+used in test.zig to test ts vs zig version output
+
+https://github.com/healingdrawing/gemm/tree/zig-concat-discovering/zig
+skeleton for zig version
+ONLY 3D SPECIFIC VERSIONS PLAN TO TRANSCODE TO ZIG FROM gemm.ts(there is comment)
+
+https://github.com/healingdrawing/gemm/tree/zig-concat-discovering/zig/src/(method)/(method).zig
+file for zig implementation of the method from gemm.ts . The "//-concat marker" is IMPORTANT.
+
+https://github.com/healingdrawing/gemm/tree/zig-concat-discovering/zig/test.zig
+manages zig tests
+
+https://github.com/healingdrawing/gemm/tree/zig-concat-discovering/zig/tests/data_(method).zig
+the input/output data for tests uses test.zig
+
+https://github.com/healingdrawing/gemm/tree/zig-concat-discovering/zig/tests/test_(method).zig
+the zig test for (method)
+
+At the moment this skeleton works, with rare fix needed in custom case.
+Always follow skeleton above.
+
+AI TASK
+
+For new chat always:
+
+- discover repository branch https://github.com/healingdrawing/gemm/tree/zig-concat-discovering
+- analyze 3d specific methods in gemm.ts
+- analyze already implemented zig methods with the same name/folder name respectively
+- offer/advice to me implement the next not implemented in zig method from gemm.ts file. Maybe i will choose what method next. Prefer focus on simpliest one first
+
+For new method request, sequently, step by step:
+
+1 - transcode/generate (method).zig file. Consider to add possible imlementation with fastest calculation approach,
+
+2 - IGNORE bench_(method).zig files in folders v3one, v3back, ignore b folders respectively . Benchmarks are deprecated, and not used anymore as part of approach.
+
+3 - generate data_(method).zig . to sufficiently cover test cases for implemented method
+
+4 - generate test_(method).zig .
+
+5 - generate pattern based injection for file ts/terminalcall.ts
+
+ALWAYS FOLLOW SKELETON.
+Skeleton is already tested and works, and looks like can be extended without big obstacles for common cases.
+
+If you have any suggestions, shortly inform/ask me, but by default always try to follow the skeleton and context described above.
+
+Remember, idiot, when i say that you generate the file (method).zig, data_(method).zig, test_(method.zig), this means you generate code for the file, but not fucking advice what should be inside file and what it looks like. i made this note because you already failed the way i described in this paragraph. i do not need that any part of response included your opinion about this paragraph. Just follow the pattern above, creature.

@@ -1,0 +1,39 @@
+Zig Pass-by-Value Rule
+
+≤ 64 bytes: pass by value.
+
+@Vector(16, f32) (64B)
+@Vector(3, f32) (12B)
+struct { x: f32, y: f32, z: f32 } (12B)
+
+> 64 bytes: pass by pointer.
+
+[17]f32 (68B)
+[100]u8 (100B)
+
+Zig Function Signature (x64 System V ABI)
+
+≤ 6 register parameters: No stack spill.
+
+fn(v1: @Vector(3, f32), v2: @Vector(3, f32), scalar: f32) → 3 parameters, all in registers.
+fn(a: f32, b: f32, c: f32, d: f32, e: f32, f: f32) → 6 parameters, no spill.
+> 6 register parameters: 7th onwards spill to stack.
+
+fn(a: f32, b: f32, c: f32, d: f32, e: f32, f: f32, g: f32) → g spills to stack.
+`fn(v1: @Vector(3, f32), v2: @Vector(3, f32), v3: @Vector(3, f32), v4: @Vector(3, f32), v5: @Vector(3, f32), v6: @Vector(3, f32), v7: @Vector(3, f32))` → v7 spills to stack.
+
+TypeScript Pass-by-Reference Rule
+Always by reference for complex types.
+
+function dot(v1: Float32Array, v2: Float32Array) → both passed by reference.
+function process(arr: Array<number>) → arr passed by reference.
+Primitives pass by value.
+
+function scale(n: number) → n passed by value.
+function name(s: string) → s passed by value.
+
+so zig theoretically optimizable, according to ai words
+Also
+- zig sequenced mulAdd(mulAdd) looks like works more stable in noise docker deployment with free tier.
+- zig small data nested return, can slightly beat the nested pointer approach
+- zig small data both return based, pointer and nopointer(by value) looks equal with some noise.

@@ -56,10 +56,10 @@ export class GEMM {
      sin cos bonus function. Normalise sin cos, counted use vectors to -1...1 include boders.
      Need because sometimes (detected on python3 in the past) result of calculating sin cos
      uses vectors can be more then 1, or less then -1.
-     For example 1.00000000001 etc. Just tiny correction, just for case.
+     For example 1.00000000001 etc. Just tiny correction, just for case. Precision is 1e-6
      @param x - incoming sin cos value for check
     */
-  sin_cos_cut(x:number) { return (x>1)?1:(x<-1)?-1:x; }
+  sin_cos_cut(x:number) { return (x > 1 - 1e-6)?1:(x < -1 + 1e-6)?-1:x; }
 
   /**
      return scalar product of vectors
@@ -277,7 +277,7 @@ export class GEMM {
   /**
      returns vector 3D, rotated around axis vector to angle
      @param vec3D - vector 3D
-     @param vec3Daxis - axis of rotation . vector 3D
+     @param vec3Daxis - axis of rotation. Vector 3D
      @param angle - angle of rotation
      @param rad - it true then radians angle, default false (degrees angle)
     */
@@ -554,7 +554,7 @@ dot3Dline3D_x_plane3D(
    * @param naxis normalized (length ≈ 1) axis [nax,nay,naz] of rotation(3d vector)
    * @param angle in radians to rotate v
    */
-  v3rotmut(
+  v3rot(
     v:     Float32Array,
     naxis:  Float32Array,
     angle: number
@@ -605,7 +605,7 @@ dot3Dline3D_x_plane3D(
   ): Float32Array {
     const out = new Float32Array(3);
     out.set(v);
-    this.v3rotmut(out, naxis, angle);
+    this.v3rot(out, naxis, angle);
     return out
   }
 
@@ -615,19 +615,19 @@ dot3Dline3D_x_plane3D(
    * @param naxis normalized (length ≈ 1) axis [nax,nay,naz] of rotation(3d vector)
    * @param angle in radians to rotate v
    */
-  v3rotmut_safe(
+  v3rot_safe(
     v:     Float32Array,
     naxis:  Float32Array,
     angle: number
   ) {
     /* checks */
-    if( this.v3_ok(v) && this.v3_ok(naxis) && isFinite(angle) ){
+    if( this.v3ok(v) && this.v3ok(naxis) && isFinite(angle) ){
       this.v3one(naxis)
-      this.v3rotmut(v, naxis, angle)
+      this.v3rot(v, naxis, angle)
     }else{
-      // console.log("CHECK FAILED v3rotmut_safe", v, naxis, angle )
-      // console.log("this.v3_ok(v)", this.v3_ok(v), v)
-      // console.log("this.v3_ok(naxis)", this.v3_ok(naxis), naxis)
+      // console.log("CHECK FAILED v3rot_safe", v, naxis, angle )
+      // console.log("this.v3ok(v)", this.v3ok(v), v)
+      // console.log("this.v3ok(naxis)", this.v3ok(naxis), naxis)
       return
     }
   }
@@ -646,7 +646,7 @@ dot3Dline3D_x_plane3D(
   ): Float32Array {
     const out = new Float32Array(v.length);
     out.set(v);
-    this.v3rotmut_safe(out, naxis, angle);
+    this.v3rot_safe(out, naxis, angle);
     return out
   }
 
@@ -669,17 +669,17 @@ dot3Dline3D_x_plane3D(
   v3mag2(v3:Float32Array){ return v3[0]*v3[0] + v3[1]*v3[1] + v3[2]*v3[2] }
 
   /**
-   * check if 3d vector is correct (finite AND non-zero)
+   * check if 3d vector is correct (finite AND non-zero mag2:f32)
    * @param v3 3d vector
-   * @returns true if all components are finite and vector is non-zero
+   * @returns true if one component is non-zero and mag2 isFinite(x * x + y * y + z * z)
    */
-  v3_ok(v3: Float32Array): boolean {
+  v3ok(v3: Float32Array): boolean {
     if (v3.length !== 3) return false
     const x = v3[0]
     const y = v3[1]
     const z = v3[2]
-    const mag2 = x*x+y*y+z*z
-    return mag2 !== 0 && isFinite(mag2)    
+    const mag2 = Math.fround(x * x + y * y + z * z)
+    return mag2 > 0 && mag2 < Infinity
   }
 
   /**
@@ -688,7 +688,7 @@ dot3Dline3D_x_plane3D(
    */
   v3one(v3:Float32Array){
     const mag = Math.sqrt(v3[0]*v3[0] + v3[1]*v3[1] + v3[2]*v3[2])
-    if (mag){
+    if (mag > 0){
       v3[0] /= mag
       v3[1] /= mag
       v3[2] /= mag
@@ -701,7 +701,7 @@ dot3Dline3D_x_plane3D(
     @param v3 - vector [vx,vy,vz]
     @param t - distance
   **/
-  d3offset_mut_safe(
+  d3offset_safe(
     d3:Float32Array,
     v3:Float32Array,
     t:number
@@ -722,14 +722,19 @@ dot3Dline3D_x_plane3D(
     @param v3 - vector [vx,vy,vz]
     @param t - distance
   **/
-  d3offset_mut(
+  d3offset(
     d3:Float32Array,
     v3:Float32Array,
     t:number
   ){
-    const mag = Math.sqrt(v3[0]*v3[0] + v3[1]*v3[1] + v3[2]*v3[2])
-    if (!t || !mag) return
-    t /= mag
+    const x = v3[0];
+    const y = v3[1];
+    const z = v3[2];
+    const mag2 = x*x+y*y+z*z
+    
+    if(t === 0 || mag2 === 0) return
+    
+    t /= Math.sqrt(mag2)
     d3[0] += v3[0] * t
     d3[1] += v3[1] * t
     d3[2] += v3[2] * t
@@ -749,7 +754,7 @@ dot3Dline3D_x_plane3D(
     v3b:Float32Array,
     v3n:Float32Array,
   ){
-    if (this.v3_ok(v3a) && this.v3_ok(v3b)){
+    if (this.v3ok(v3a) && this.v3ok(v3b)){
       v3n[0] = v3a[1] * v3b[2] - v3a[2] * v3b[1];
       v3n[1] = -v3a[0] * v3b[2] + v3a[2] * v3b[0];
       v3n[2] = v3a[0] * v3b[1] - v3a[1] * v3b[0];
@@ -778,12 +783,17 @@ dot3Dline3D_x_plane3D(
     const v3x = v3ay * v3bz - v3az * v3by;
     const v3y = -v3ax * v3bz + v3az * v3bx;
     const v3z = v3ax * v3by - v3ay * v3bx;
-    /* hardcoded this.v3one */
+    /* hardcoded this.v3one + extended else, since v3n is container */
     const mag = Math.sqrt(v3x*v3x + v3y*v3y + v3z*v3z)
-    v3n[0] = v3x / mag
-    v3n[1] = v3y / mag
-    v3n[2] = v3z / mag
-    
+    if (mag > 0){
+      v3n[0] = v3x / mag
+      v3n[1] = v3y / mag
+      v3n[2] = v3z / mag
+    } else {
+      v3n[0] = v3x
+      v3n[1] = v3y
+      v3n[2] = v3z
+    }    
   }
 
   /**
@@ -846,7 +856,7 @@ dot3Dline3D_x_plane3D(
     INCOMINGS MUST BE SANITIZED. mutate 3d vector to opposite 3d vector. [1, 2, -4] return [-1, -2, 4]
     @param v3 - 3d vector
   */
-  v3back_mut(v3:Float32Array){
+  v3back(v3:Float32Array){
     if(v3.length === 3){
       v3[0] *= -1
       v3[1] *= -1
@@ -912,60 +922,59 @@ dot3Dline3D_x_plane3D(
     @param v3b - 3d vector
   */
   v3v3similar(v3a: Float32Array, v3b: Float32Array): boolean {
-    const epsilon = 1e-6;
-    return Math.abs(v3a[0] - v3b[0]) < epsilon &&
-           Math.abs(v3a[1] - v3b[1]) < epsilon &&
-           Math.abs(v3a[2] - v3b[2]) < epsilon;
+    return (v3a[0] === v3b[0] || Math.abs(v3a[0] - v3b[0]) < 1e-6) &&
+           (v3a[1] === v3b[1] || Math.abs(v3a[1] - v3b[1]) < 1e-6) &&
+           (v3a[2] === v3b[2] || Math.abs(v3a[2] - v3b[2]) < 1e-6);
   }
 
   /**
     INCOMINGS MUST BE SANITIZED.
-    mutates 3d dot, which is intersection dot for 3d line(d3, v3) and 3d plane(p3)
+    mutates `d3` dot, to position of the intersection for 3d line(`d3`, `v3`) and 3d plane `p3`
     @param d3 - 3d dot of start of line [x,y,z]
     @param v3 - 3d vector of line direction [vx,vy,vz]
-    @param p3 - 3d plane [a,b,c,d] . d - displacement of plane 3D from [0,0,0] along plane normal vector [a,b,c].
-    @param dot - result container to fill uses data of 3d intersection dot [x,y,z]
+    @param p3 - 3d plane [a,b,c,d]. d - displacement of plane 3D from [0,0,0] along plane normal vector [a,b,c].
   */
-  d3_line_x_plane_mut(
+  d3_line_x_plane(
     d3:Float32Array,
     v3:Float32Array,
     p3:Float32Array,
-    dot:Float32Array,
   ){
     const d3x = d3[0], d3y = d3[1], d3z = d3[2];
     const v3x = v3[0], v3y = v3[1], v3z = v3[2];
-    const p3a = p3[0], p3b = p3[1], p3c = p3[2], p3d = p3[3];
+    const p3a = p3[0], p3b = p3[1], p3c = p3[2];
 
-    const t = -(p3a*d3x + p3b*d3y + p3c*d3z + p3d) / (p3a*v3x + p3b*v3y + p3c*v3z);
+    const t = -(p3a*d3x + p3b*d3y + p3c*d3z + p3[3]) / (p3a*v3x + p3b*v3y + p3c*v3z);
 
-    dot[0] = d3x + v3x * t;
-    dot[1] = d3y + v3y * t;
-    dot[2] = d3z + v3z * t;
+    d3[0] = d3x + v3x * t;
+    d3[1] = d3y + v3y * t;
+    d3[2] = d3z + v3z * t;
   }
 
   /**
     INCOMINGS MUST BE SANITIZED.
-    mutates 3d dot, which is projection of 3d dot (d3) on 3d plane (p3)
+    mutates `d3` to position of the projection of 3d dot `d3` on 3d plane `p3`
     @param d3 - 3d dot of start of line [x,y,z]
-    @param p3 - 3d plane [a,b,c,d] . d - displacement of plane 3D from [0,0,0] along plane normal vector [a,b,c].
-    @param dot - result container to fill uses data of 3d intersection dot [x,y,z]
+    @param p3 - 3d plane [a,b,c,d]. d is responsible for displacement of plane 3D from [0,0,0] along plane normal vector [a,b,c].
   */
-  d3_projection_on_p3_mut( d3:Float32Array, p3:Float32Array, dot:Float32Array ){
+  d3_projection_on_p3(
+    d3:Float32Array,
+    p3:Float32Array,
+  ){
     const d3x = d3[0], d3y = d3[1], d3z = d3[2];
     const p3a = p3[0], p3b = p3[1], p3c = p3[2], p3d = p3[3];
 
     const t = -(p3a*d3x + p3b*d3y + p3c*d3z + p3d) / (p3a*p3a + p3b*p3b + p3c*p3c);
 
-    dot[0] = d3x + p3a * t;
-    dot[1] = d3y + p3b * t;
-    dot[2] = d3z + p3c * t;
+    d3[0] = d3x + p3a * t;
+    d3[1] = d3y + p3b * t;
+    d3[2] = d3z + p3c * t;
   }
 
   /**
     INCOMINGS MUST BE SANITIZED.
     @param d3 3d dot of start of line [x,y,z]
-    @param p3 3d plane [a,b,c,d] . d - displacement of plane 3D from [0,0,0] along plane normal vector [a,b,c].
-    @returns distance from 3d dot (d3) to 3d plane (p3)
+    @param p3 3d plane [a,b,c,d]. Where d is responsible for displacement of plane 3D from [0,0,0] along plane normal vector [a,b,c].
+    @returns distance from 3d dot `d3` to 3d plane `p3`
   */
   distance_d3_p3( d3:Float32Array, p3:Float32Array ){
     const d3x = d3[0], d3y = d3[1], d3z = d3[2];
@@ -975,13 +984,13 @@ dot3Dline3D_x_plane3D(
 
   /**
     INCOMINGS MUST BE SANITIZED. The FASTEST version.
-    mutates 3d plane, determined by 3d dot and 3d vector.
-    Where [a, b, c] is 3d plane normal vector, and (d) is plane displacement plane from (0, 0, 0) along [a, b, c]
+    Mutates 3d plane container `p3` [a,b,c,d], determined by 3d dot `d3` and 3d vector `v3`.
+    Where [a, b, c] is 3d plane normal vector, and (d) is responsible for displacement of the plane from (0, 0, 0) along [a, b, c].
     @param d3 3d dot on result 3d plane
     @param v3 normal vector of result 3d plane
-    @param p3 container to resulted 3d plane [a,b,c,d] . d - displacement of plane 3D from [0,0,0] along plane normal vector [a,b,c]. Will be filled
+    @param p3 container to resulted 3d plane [a,b,c,d]. Will be filled
   */
-  p3_d3v3_mut(
+  p3_d3v3(
     d3:Float32Array,
     v3:Float32Array,
     p3:Float32Array
@@ -1003,13 +1012,14 @@ dot3Dline3D_x_plane3D(
 
   /**
     INCOMINGS MUST BE SANITIZED. Plane normal vector from v3a to v3b CCW.
-    mutates 3d plane, determined by 3d dot and two 3d vectors.
+    Mutates 3d plane container `p3` [a,b,c,d], determined by 3d dot and two 3d vectors.
+    Where [a, b, c] is 3d plane normal vector, and (d) is responsible for displacement of the plane from (0, 0, 0) along [a, b, c].
     @param d3 3d dot on result 3d plane
     @param v3a 3d vector to calculate plane normal vector FROM (CCW)
     @param v3b 3d vector to calculate plane normal vector TO (CCW)
-    @param p3 container to resulted 3d plane [a,b,c,d] . d - displacement of plane 3D from [0,0,0] along plane normal vector [a,b,c]. Will be filled
+    @param p3 container to resulted 3d plane [a,b,c,d]. Will be filled
   */
-  p3_d3v3v3_mut(
+  p3_d3v3v3(
     d3:Float32Array,
     v3a:Float32Array,
     v3b:Float32Array,
@@ -1033,13 +1043,14 @@ dot3Dline3D_x_plane3D(
   }
 
   /**
-    INCOMINGS MUST BE SANITIZED. Wrapper of this.p3_d3v3 (with prebuilt normal vector from d3 to d3n).
-    mutates 3d plane, determined by two 3d dots.
+    INCOMINGS MUST BE SANITIZED.
+    Mutates 3d plane container `p3` [a,b,c,d], determined by two 3d dots.
+    Where [a, b, c] is 3d plane normal vector, and (d) is responsible for displacement of the plane from (0, 0, 0) along [a, b, c].
     @param d3 3d dot on result 3d plane
     @param d3n 3d dot at the end of the normal of the result 3d plane
-    @param p3 container to resulted 3d plane [a,b,c,d] . d - displacement of plane 3D from [0,0,0] along plane normal vector [a,b,c]. Will be filled
+    @param p3 container to resulted 3d plane [a,b,c,d]. Will be filled
   */
-  p3_d3d3_mut(
+  p3_d3d3(
     d3:Float32Array,
     d3n:Float32Array,
     p3:Float32Array
@@ -1060,14 +1071,14 @@ dot3Dline3D_x_plane3D(
 
   /**
     INCOMINGS MUST BE SANITIZED.
-    mutates 3d plane, determined by 3d dot and 3d vector.
-    Where [a, b, c] is 3d plane normal vector, and (d) is plane displacement plane from (0, 0, 0) along [a, b, c]
+    mutates 3d plane container `p3` [a,b,c,d], determined by 3d dot and 3d vector.
+    Where [a, b, c] is 3d plane normal vector, and (d) is responsible for displacement of the plane from (0, 0, 0) along [a, b, c].
     @param d3 3d dot on result 3d plane(also start dot for plane normal and two vectors in plane)
     @param d3a 3d dot on result 3d plane
     @param d3b 3d dot on result 3d plane
-    @param p3 container to resulted 3d plane [a,b,c,d] . d - displacement of plane 3D from [0,0,0] along plane normal vector [a,b,c]. Will be filled
+    @param p3 container to resulted 3d plane [a,b,c,d]. d - displacement of plane 3D from [0,0,0] along plane normal vector [a,b,c]. Will be filled
   */
-  p3_d3d3d3_mut(
+  p3_d3d3d3(
     d3:Float32Array,
     d3a:Float32Array,
     d3b:Float32Array,

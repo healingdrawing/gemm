@@ -220,14 +220,14 @@ describe("v3rotnew", () => {
     });
   });
 
-  describe("Consistency with v3rotmut", () => {
-    test("should produce same result as v3rotmut", () => {
+  describe("Consistency with v3rot", () => {
+    test("should produce same result as v3rot", () => {
       const v1 = new Float32Array([1, 2, 3]);
       const v2 = new Float32Array([1, 2, 3]);
       const naxis = new Float32Array([0, 1, 0]);
       
       const result = gemm.v3rotnew(v1, naxis, Math.PI / 3);
-      gemm.v3rotmut(v2, naxis, Math.PI / 3);
+      gemm.v3rot(v2, naxis, Math.PI / 3);
       
       expect(result[0]).toBeCloseTo(v2[0], 5);
       expect(result[1]).toBeCloseTo(v2[1], 5);

@@ -1,0 +1,221 @@
+// @ts-nocheck
+// ts/terminalcall.ts — CLI bridge for Zig cross-checks
+// Usage: bun ts/terminalcall.ts <method> <args...>
+// Example: bun ts/terminalcall.ts v3v3scalar 1 2 3 4 5 6
+// stdout: one result line only
+
+import { GEMM } from "./gemm";
+
+const gemm = new GEMM();
+
+type Handler = (args: number[]) => number | number[];
+
+const methods: Record<string, Handler> = {
+  v3v3scalar: (a) => {
+    if (a.length !== 6) throw new Error("v3v3scalar needs 6 numbers");
+    return gemm.v3v3scalar(
+      new Float32Array([a[0], a[1], a[2]]),
+      new Float32Array([a[3], a[4], a[5]]),
+    );
+  },
+  v3one: (a) => {
+    if (a.length !== 3) throw new Error("v3one needs 3 numbers");
+    const v3 = new Float32Array([a[0], a[1], a[2]]);
+    gemm.v3one( v3 );
+    return v3;
+  },
+  v3rot: (a) => {
+    if (a.length !== 7) throw new Error("v3rot needs 7 numbers");
+    const v3 = new Float32Array([a[0], a[1], a[2]]);
+    const naxis = new Float32Array([a[3], a[4], a[5]]);
+    const angle = a[6]
+    gemm.v3rot( v3, naxis, angle );
+    return v3;
+  },
+  v3mag2: (a) => {
+    if (a.length !== 3) throw new Error("v3mag2 needs 3 numbers");
+    return gemm.v3mag2(new Float32Array([a[0], a[1], a[2]]));
+  },
+  v3mag: (a) => {
+    if (a.length !== 3) throw new Error("v3mag needs 3 numbers");
+    return gemm.v3mag(new Float32Array([a[0], a[1], a[2]]));
+  },
+  v3ok: (a) => {
+    if (a.length !== 3) throw new Error("v3ok needs 3 numbers");
+    return gemm.v3ok(new Float32Array([a[0], a[1], a[2]]));
+  },
+  v3back: (a) => {
+    if (a.length !== 3) throw new Error("v3back needs 3 numbers");
+    const v3 = new Float32Array([a[0], a[1], a[2]]);
+    gemm.v3back(v3);
+    return v3;
+  },
+  v3v3same: (a) => {
+    if (a.length !== 6) throw new Error("v3v3same needs 6 numbers");
+    return gemm.v3v3same(
+      new Float32Array([a[0], a[1], a[2]]),
+      new Float32Array([a[3], a[4], a[5]]),
+    );
+  },
+  v3v3similar: (a) => {
+    if (a.length !== 6) throw new Error("v3v3similar needs 6 numbers");
+    return gemm.v3v3similar(
+      new Float32Array([a[0], a[1], a[2]]),
+      new Float32Array([a[3], a[4], a[5]]),
+    );
+  },
+  v3v3cos: (a) => {
+    if (a.length !== 6) throw new Error("v3v3cos needs 6 numbers");
+    return gemm.v3v3cos(
+      new Float32Array([a[0], a[1], a[2]]),
+      new Float32Array([a[3], a[4], a[5]]),
+    );
+  },
+  v3v3angle: (a) => {
+    if (a.length !== 6) throw new Error("v3v3angle needs 6 numbers");
+    return gemm.v3v3angle(
+      new Float32Array([a[0], a[1], a[2]]),
+      new Float32Array([a[3], a[4], a[5]]),
+    );
+  },
+  v3v3paralleled_sameside: (a) => {
+    if (a.length !== 6) throw new Error("v3v3paralleled_sameside needs 6 numbers");
+    return gemm.v3v3paralleled_sameside(
+      new Float32Array([a[0], a[1], a[2]]),
+      new Float32Array([a[3], a[4], a[5]]),
+    );
+  },
+  v3v3paralleled_opposite: (a) => {
+    if (a.length !== 6) throw new Error("v3v3paralleled_opposite needs 6 numbers");
+    return gemm.v3v3paralleled_opposite(
+      new Float32Array([a[0], a[1], a[2]]),
+      new Float32Array([a[3], a[4], a[5]]),
+    );
+  },
+  v3v3paralleled: (a) => {
+    if (a.length !== 6) throw new Error("v3v3paralleled needs 6 numbers");
+    return gemm.v3v3paralleled(
+      new Float32Array([a[0], a[1], a[2]]),
+      new Float32Array([a[3], a[4], a[5]]),
+    );
+  },
+  v3normal: (a) => {
+    if (a.length !== 6) throw new Error("v3normal needs 6 numbers");
+    const v3a = new Float32Array([a[0], a[1], a[2]]);
+    const v3b = new Float32Array([a[3], a[4], a[5]]);
+    const v3n = new Float32Array(3);
+    gemm.v3normal(v3a, v3b, v3n);
+    return v3n;
+  },
+  d3offset: (a) => {
+    if (a.length !== 7) throw new Error("d3offset needs 7 numbers");
+    const d3 = new Float32Array([a[0], a[1], a[2]]);
+    const v3 = new Float32Array([a[3], a[4], a[5]]);
+    const t = a[6];
+    gemm.d3offset(d3, v3, t);
+    return d3;
+  },
+  distance_d3_p3: (a) => {
+    if (a.length !== 7) throw new Error("distance_d3_p3 needs 7 numbers");
+    return gemm.distance_d3_p3(
+      new Float32Array([a[0], a[1], a[2]]),
+      new Float32Array([a[3], a[4], a[5], a[6]]),
+    );
+  },
+  d3_projection_on_p3: (a) => {
+    if (a.length !== 7) throw new Error("d3_projection_on_p3 needs 7 numbers");
+    const d3 = new Float32Array([a[0], a[1], a[2]]);
+    const p3 = new Float32Array([a[3], a[4], a[5], a[6]]);
+    gemm.d3_projection_on_p3(d3, p3);
+    return d3;
+  },
+  d3_line_x_plane: (a) => {
+    if (a.length !== 10) throw new Error("d3_line_x_plane needs 10 numbers");
+    const d3 = new Float32Array([a[0], a[1], a[2]]);
+    const v3 = new Float32Array([a[3], a[4], a[5]]);
+    const p3 = new Float32Array([a[6], a[7], a[8], a[9]]);
+    gemm.d3_line_x_plane(d3, v3, p3);
+    return d3;
+  },
+  p3_d3d3d3: (a) => {
+    if (a.length !== 9) throw new Error("p3_d3d3d3 needs 9 numbers");
+    const d3 = new Float32Array([a[0], a[1], a[2]]);
+    const d3a = new Float32Array([a[3], a[4], a[5]]);
+    const d3b = new Float32Array([a[6], a[7], a[8]]);
+    const p3 = new Float32Array(4);
+    gemm.p3_d3d3d3(d3, d3a, d3b, p3);
+    return p3;
+  },
+  p3_d3d3: (a) => {
+    if (a.length !== 6) throw new Error("p3_d3d3 needs 6 numbers");
+    const d3 = new Float32Array([a[0], a[1], a[2]]);
+    const d3n = new Float32Array([a[3], a[4], a[5]]);
+    const p3 = new Float32Array(4);
+    gemm.p3_d3d3(d3, d3n, p3);
+    return p3;
+  },
+  p3_d3v3v3: (a) => {
+    if (a.length !== 9) throw new Error("p3_d3v3v3 needs 9 numbers");
+    const d3 = new Float32Array([a[0], a[1], a[2]]);
+    const v3a = new Float32Array([a[3], a[4], a[5]]);
+    const v3b = new Float32Array([a[6], a[7], a[8]]);
+    const p3 = new Float32Array(4);
+    gemm.p3_d3v3v3(d3, v3a, v3b, p3);
+    return p3;
+  },
+  p3_d3v3: (a) => {
+    if (a.length !== 6) throw new Error("p3_d3v3 needs 6 numbers");
+    const d3 = new Float32Array([a[0], a[1], a[2]]);
+    const v3 = new Float32Array([a[3], a[4], a[5]]);
+    const p3 = new Float32Array(4);
+    gemm.p3_d3v3(d3, v3, p3);
+    return p3;
+  },
+  // v3v3cross: (a) => { ... },
+};
+
+const [method, ...rest] = process.argv.slice(2);
+
+if (!method) {
+  console.error("Usage: bun ts/terminalcall.ts <method> <args...>");
+  process.exit(2);
+}
+
+const fn = methods[method];
+if (!fn) {
+  console.error(`unknown method: ${method}`);
+  process.exit(2);
+}
+
+const nums = rest.map((s) => {
+  if (s === "NaN") return NaN;
+  if (s === "Infinity") return Infinity;
+  if (s === "-Infinity") return -Infinity;
+  const n = Number(s);
+  if (Number.isNaN(n)) throw new Error(`not a number: ${s}`);
+  return n;
+});
+
+try {
+  const out = fn(nums);
+  // patch for boolean result true false -> 1 0 between ts and zig to solidify to numbers only
+  if ( typeof out === "boolean") console.log(out?1:0)
+  else if (typeof out === "number") {
+    console.log(float_to_string(out));
+  } else {
+    console.log(Array.from(out).map(float_to_string).join(" "));
+  }
+} catch (e) {
+  console.error(e instanceof Error ? e.message : e);
+  process.exit(1);
+}
+
+function float_to_string(val: number): string {
+  if (Number.isNaN(val)) {
+    return "NaN";
+  } else if (!Number.isFinite(val)) {
+    return val > 0 ? "Infinity" : "-Infinity";
+  } else {
+    return String(val);
+  }
+}
