@@ -24,6 +24,7 @@ const test_d3_line_x_plane = @import("tests/test_d3_line_x_plane.zig").test_d3_l
 const test_p3_d3d3d3 = @import("tests/test_p3_d3d3d3.zig").test_p3_d3d3d3;
 const test_p3_d3d3 = @import("tests/test_p3_d3d3.zig").test_p3_d3d3;
 const test_p3_d3v3v3 = @import("tests/test_p3_d3v3v3.zig").test_p3_d3v3v3;
+const test_p3_d3v3 = @import("tests/test_p3_d3v3.zig").test_p3_d3v3;
 
 pub fn main(init: std.process.Init) !void {
     dp.init_from_env_map(init.environ_map);
@@ -53,6 +54,7 @@ pub fn main(init: std.process.Init) !void {
         try test_p3_d3d3d3(epsilon),
         try test_p3_d3d3(epsilon),
         try test_p3_d3v3v3(epsilon),
+        try test_p3_d3v3(epsilon),
     };
 
     report.print_test_sum_report(&results);
